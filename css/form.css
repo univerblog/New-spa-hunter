@@ -1,0 +1,89 @@
+.layout-form {border-radius:20px; padding:30px;
+              /*
+              border:1px solid #4d4d4d;
+             background: radial-gradient(circle at -150% , #353535, #1e1e1e);
+             box-shadow: inset 20px 20px 30px rgb(0 0 0 / 19%); */
+             background:var(--bg-card);
+             border: 1px solid var(--color-border); 
+             }
+button {font-family: var(--font-family); background:none;}
+/**** dropdown-block ****/
+.dropdown-block {position:relative;}
+.dropdown-item {position:absolute; flex-direction:column; gap:0px;
+                margin-top:14px; z-index:2; overflow:hidden;
+               background:#2c2c2c; border-radius:12px; padding:6px; border:1px solid #454545}
+.dropdown-item {opacity: 0;visibility: hidden;transform: translateY(-6px);
+    transition: opacity .22s ease,transform .25s cubic-bezier(.4,0,.2,1),visibility 0s linear .22s;}
+.dropdown-block.is-open .dropdown-item {opacity: 1;visibility: visible;transform: translateY(0);transition-delay: 0s;}
+
+/*****/
+.input-field {display:flex; flex-direction: column; gap:8px; flex:1; position:relative; align-items:stretch;}
+.input-field label {color:#ccc; font-size:16px; margin-left:20px}
+.input-field input, .input-field textarea, .input-field select {
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--bg-input);
+    
+    font-size: 15px;
+    color: #ccc;
+    padding:0px 20px;  outline: none;
+    font-family: var(--font-family); 
+    display:inline-flex; flex:1; 
+    box-shadow: inset 0px 0px 20px #14181fa8;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+    line-height: 1;
+    box-sizing: border-box;
+    align-items:center;
+    height:50px; min-height:50px;
+}
+::placeholder {
+  color: #999;
+  opacity: 1; /* Убирает полупрозрачность по умолчанию (особенно в Firefox) */
+}
+.input-field input:focus-visible, .input-field textarea:focus-visible {
+    border: 1px solid rgb(148 170 203 / 50%);
+    box-shadow: 0 0 4px rgb(148 170 203 / 50%);
+}
+
+.input__min input, .input__min textarea, .input__min select {
+    border-radius: 10px;
+    padding:10px 14px;  
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus{
+    -webkit-text-fill-color: #ccc;
+    -webkit-box-shadow: 0 0 0 40rem #1a1f27 inset;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-background-clip: text
+}
+/*--- input-group ---*/
+.input-group {display:flex; flex-direction:column; gap:10px;}
+.input-group-horisontal {display:flex; gap:10px; flex-wrap:wrap; align-items:end;}
+.input-group-horisontal > * {}
+/*----- Buttons -----*/
+.btn {padding: 0 28px;background: var(--btn);color: #000000;border: none; text-decoration:none;
+      border-radius:12px; font-size:16px; cursor:pointer; border: 2px solid var(--btn);
+     transition:all 0.3s; display:inline-flex; justify-content:center; align-items:center;
+     box-sizing: border-box; 
+     height:50px;}
+.btn.gray {background:var(--bg-d); border-color:var(--bg-d); color:#ccc;}
+.btn:disabled {opacity: 0.6;cursor: default;}  
+.btn.outline {background: transparent;border: 2px solid var(--btn); color: var(--btn);}
+.btn.gray.outline {background: transparent;border: 2px solid var(--bg-e); color: #ccc;}  
+.btn.min {padding: 8px 16px;font-size: 15px; height:40px;}
+
+.btn-group {display:flex; flex-wrap:wrap; gap:10px;}
+
+
+@media (min-width: 1200px){
+.btn:hover:not(:disabled) {opacity:0.8;} 
+}
+/***********************************/
+@media (max-width: 1000px) {
+
+}
+@media (max-width: 640px) {
+
+}
+

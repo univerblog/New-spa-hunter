@@ -1,0 +1,80 @@
+@charset "utf-8";
+* {margin:0; padding:0;}
+html, body {scrollbar-gutter: stable;}
+html {position: relative; height: 100%; scroll-behavior: smooth;}
+
+:root {
+  --font-family:'Roboto', Tahoma, sans-serif;
+  --primary:#c8ff00;
+  --btn:#b1e100;
+  --header:#1A1F27;
+  --bg:#15191f;
+  --bg-black:#0F1218;
+  --bg-card:#1f252b;
+  --bg-input:#1a1f28;
+  
+  --bg-a:#1F242D;
+  --bg-b:#1f252b;
+  --bg-c:#2A303A;
+  --bg-c2:#2f3641;
+  --bg-d:#39414F;
+  --bg-e:#465163; 
+  --color-border:#3f4859a3;
+}
+
+body {width: 100%;min-width: 320px;font-family: var(--font-family);
+      font-size:16px;-webkit-text-size-adjust: none;color:#ffffff; background:var(--bg);}
+
+.wrapper {position:relative;}
+header, main, footer {padding:0px;}
+main {margin-top:50px;}
+a {transition: all 0.3s; color:var(--primary);}
+p {line-height:1.5;}
+.gray-link {color:#999; text-decoration:none;}
+
+.container {position:relative; }
+.container-item {margin:0 auto;max-width:1200px;padding:90px 40px;position:relative;z-index:1;}
+.bg-black {background: var(--bg-black);}
+.bg-gray {background: var(--bg-gray);}
+.full {max-width:1920px;}
+
+
+
+/************************/
+.container-title {margin-bottom:20px;text-align:center; position:relative;} 
+.container-title h2, .container-title h1 {margin: 0;padding: 0;font-size: 38px;font-weight: 700; line-height:1.2; 
+  margin-bottom:20px; color:#fff; text-wrap:balance; 
+}
+.container-title h3 {font-size: 36px;}
+.container-title h2 span, .container-title h1 span {font-weight: 900; }
+.container-title p {display: block;font-size: 18px;color: #999; text-wrap:balance; margin:0 auto; 
+  max-width:900px;line-height:1.4;}
+.text-left {text-align: left;}
+
+
+.flex-block-wrapper {display:flex; flex-direction:column; gap:30px;}
+
+
+
+
+
+/****** HOVERS *******/
+@media (min-width: 1200px){ 
+
+}
+/***************/
+
+
+
+
+@media (max-width: 640px) {
+   .container-item {padding:60px 20px;}
+   .container-title {margin-bottom:20px;} 
+   .container-item .container-title h2, .container-item .container-title h1 {font-size:32px; line-height:1.2;}
+ }
+
+
+
+
+
+

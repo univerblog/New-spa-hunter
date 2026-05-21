@@ -1,0 +1,15 @@
+# секреты
+.vscode/sftp.json
+
+# мусор
+.DS_Store
+Thumbs.db
+node_modules/
+vendor/
+
+# кэш BladeOne
+cache/
+*.bladec
+
+# IDE
+.idea/
