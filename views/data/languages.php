@@ -1,0 +1,21 @@
+<?php
+return [
+    'en' => ['flag' => 'us', 'code' => 'EN', 'label' => 'English',          'url' => '/en'],
+    'es' => ['flag' => 'es', 'code' => 'ES', 'label' => 'Español',          'url' => '/es'],
+    'fr' => ['flag' => 'fr', 'code' => 'FR', 'label' => 'Français',         'url' => '/fr'],
+    'de' => ['flag' => 'de', 'code' => 'DE', 'label' => 'Deutsch',          'url' => '/de'],
+    'it' => ['flag' => 'it', 'code' => 'IT', 'label' => 'Italiano',         'url' => '/it'],
+    'pt' => ['flag' => 'pt', 'code' => 'PT', 'label' => 'Português',        'url' => '/pt'],
+    'pl' => ['flag' => 'pl', 'code' => 'PL', 'label' => 'Polski',           'url' => '/pl'],
+    'nl' => ['flag' => 'nl', 'code' => 'NL', 'label' => 'Nederlands',       'url' => '/nl'],
+    'sv' => ['flag' => 'se', 'code' => 'SV', 'label' => 'Svenska',          'url' => '/sv'],
+    'da' => ['flag' => 'dk', 'code' => 'DA', 'label' => 'Dansk',            'url' => '/da'],
+    'nb' => ['flag' => 'no', 'code' => 'NO', 'label' => 'Norsk',            'url' => '/nb'],
+    'zh' => ['flag' => 'cn', 'code' => 'ZH', 'label' => '中文',              'url' => '/zh'],
+    'hi' => ['flag' => 'in', 'code' => 'HI', 'label' => 'हिन्दी',              'url' => '/hi'],
+    'ar' => ['flag' => 'sa', 'code' => 'AR', 'label' => 'العربية',          'url' => '/ar'],
+    'id' => ['flag' => 'id', 'code' => 'ID', 'label' => 'Indonesia',         'url' => '/id'],
+    'ja' => ['flag' => 'jp', 'code' => 'JA', 'label' => '日本語',            'url' => '/ja'],
+    'ko' => ['flag' => 'kr', 'code' => 'KO', 'label' => '한국어',            'url' => '/ko'],
+    'ru' => ['flag' => 'ru', 'code' => 'RU', 'label' => 'Русский',          'url' => '/'],
+];

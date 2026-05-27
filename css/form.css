@@ -6,16 +6,7 @@
              background:var(--bg-card);
              border: 1px solid var(--color-border); 
              }
-button {font-family: var(--font-family); background:none;}
-/**** dropdown-block ****/
-.dropdown-block {position:relative;}
-.dropdown-item {position:absolute; flex-direction:column; gap:0px;
-                margin-top:14px; z-index:2; overflow:hidden;
-               background:#2c2c2c; border-radius:12px; padding:6px; border:1px solid #454545}
-.dropdown-item {opacity: 0;visibility: hidden;transform: translateY(-6px);
-    transition: opacity .22s ease,transform .25s cubic-bezier(.4,0,.2,1),visibility 0s linear .22s;}
-.dropdown-block.is-open .dropdown-item {opacity: 1;visibility: visible;transform: translateY(0);transition-delay: 0s;}
-
+button {font-family: var(--font-family); background:none; border:0; font-size:initial;}
 /*****/
 .input-field {display:flex; flex-direction: column; gap:8px; flex:1; position:relative; align-items:stretch;}
 .input-field label {color:#ccc; font-size:16px; margin-left:20px}

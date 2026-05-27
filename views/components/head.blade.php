@@ -15,8 +15,11 @@
 <link rel="stylesheet" type="text/css" href="/css/icons/icon-font-css/brands.css"/> 
 <link rel="stylesheet" type="text/css" href="/css/icons/icon-font-css/chisel-regular.css"/> 
 
+<!-- flag-style -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
+
 
 <!-- Font-style -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.bunny.net/css?family=inter:400,500,600&amp;display=swap" rel="stylesheet">

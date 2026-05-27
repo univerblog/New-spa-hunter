@@ -1,0 +1,150 @@
+# Russian translations for CPA Hunter
+# Copyright (C) 2025
+msgid ""
+msgstr ""
+"Project-Id-Version: CPA Hunter 1.0\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+
+# =====================================================
+#  HEADER  /  Шапка
+# =====================================================
+
+msgid "Log in"
+msgstr "Войти"
+
+msgid "Menu"
+msgstr "Меню"
+
+msgid "Toggle theme"
+msgstr "Переключить тему"
+
+
+# =====================================================
+#  TOP NAV — top-level buttons  /  Пункты верхнего меню
+# =====================================================
+
+msgid "Tools"
+msgstr "Инструменты"
+
+msgid "Programs"
+msgstr "Программы"
+
+msgid "Platforms"
+msgstr "Платформы"
+
+msgid "About us"
+msgstr "О нас"
+
+
+# =====================================================
+#  TOOLS dropdown  /  Дропдаун «Инструменты»
+# =====================================================
+
+msgid "How it works"
+msgstr "Как это работает"
+
+msgid "Create link"
+msgstr "Создать ссылку"
+
+msgid "Statistics"
+msgstr "Статистика"
+
+
+# =====================================================
+#  PROGRAMS dropdown — niches  /  Дропдаун «Программы» (ниши)
+# =====================================================
+
+msgid "For beginners"
+msgstr "Для новичков"
+
+msgid "For micro-bloggers"
+msgstr "Для микро-блогеров"
+
+msgid "High commission"
+msgstr "Высокая комиссия"
+
+msgid "Kids & Parenting"
+msgstr "Дети и родительство"
+
+msgid "Home & Interior"
+msgstr "Дом и интерьер"
+
+msgid "Food & Cooking"
+msgstr "Еда и кулинария"
+
+msgid "Health"
+msgstr "Здоровье"
+
+msgid "Gaming"
+msgstr "Игры"
+
+msgid "Beauty & Cosmetics"
+msgstr "Красота и косметика"
+
+msgid "Fashion"
+msgstr "Мода"
+
+msgid "Pets"
+msgstr "Питомцы"
+
+msgid "Travel"
+msgstr "Путешествия"
+
+msgid "Lifestyle & Vlogs"
+msgstr "Стиль жизни и влоги"
+
+msgid "Tech & Gadgets"
+msgstr "Техника и гаджеты"
+
+msgid "Finance"
+msgstr "Финансы"
+
+msgid "Fitness"
+msgstr "Фитнес"
+
+
+# =====================================================
+#  ABOUT dropdown  /  Дропдаун «О нас»
+# =====================================================
+
+msgid "Who we are"
+msgstr "Кто мы"
+
+msgid "Contacts"
+msgstr "Контакты"
+
+msgid "Roadmap"
+msgstr "Дорожная карта"
+
+# =====================================================
+#  FOOTER
+# =====================================================
+
+msgid "For creators"
+msgstr "Для авторов"
+
+msgid "Company"
+msgstr "Компания"
+
+msgid "Blog"
+msgstr "Блог"
+
+msgid "Open API"
+msgstr "Open API"
+
+msgid "merchants and services"
+msgstr "магазинов и сервисов"
+
+msgid "The largest affiliate platform for creators. Quick setup. Start earning today."
+msgstr "Крупнейшая партнёрская платформа для авторов. Быстрая настройка. Начни зарабатывать уже сегодня."
+
+msgid "Terms of use"
+msgstr "Условия использования"
+
+msgid "Privacy policy"
+msgstr "Политика конфиденциальности"

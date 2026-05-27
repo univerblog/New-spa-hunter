@@ -14,48 +14,70 @@
 
 
         <div class="foot-wrapper" data-foot-accordion>
-            <div class="foot-item">
+            <div class="foot-brand">
                 <a href="/" class="foot-logo"><img src="/img/logo.svg" alt=""></a>
-                <p class="foot-merch">41,693 Unique Merchants.</p>
-                <p>The largest creator affiliate platform. Quick setup. Start earning today.</p>
+                <p class="foot-merch"><span>41 783</span> {{ __('merchants and services') }}</p>
+                <p>{{ __('The largest affiliate platform for creators. Quick setup. Start earning today.') }}</p>
             </div>
-            <div class="foot-item foot-nav-block">
-                <div class="foot-tit">Для авторов <i class="fa-solid fa-caret-down"></i></div>
-                <ul class="ul-wrap ">
-                    <li><a href="/">Как это работает</a></li>
-                    <li><a href="/">Создать ссылку</a></li>
-                    <li><a href="/">Статистика</a></li>
-                    <li><a href="/">Блог</a></li>
-                </ul>
+
+            <div class="foot-nav">
+                <!-- 1. Программы -->
+                <div class="foot-item foot-nav-block">
+                    <div class="foot-tit">{{ __('Programs') }} <i class="fa-regular fa-angle-down"></i></div>
+                    <ul class="ul-wrap programs-list ">
+                        <li><a href="/niche/parenting">{{ __('Kids & Parenting') }}</a></li>
+                        <li><a href="/niche/home">{{ __('Home & Interior') }}</a></li>
+                        <li><a href="/niche/food">{{ __('Food & Cooking') }}</a></li>
+                        <li><a href="/niche/wellness">{{ __('Health') }}</a></li>
+                        <li><a href="/niche/gaming">{{ __('Gaming') }}</a></li>
+                        <li><a href="/niche/beauty">{{ __('Beauty & Cosmetics') }}</a></li>
+                        <li><a href="/niche/fashion">{{ __('Fashion') }}</a></li>
+                        <li><a href="/niche/pets">{{ __('Pets') }}</a></li>
+                        <li><a href="/niche/travel">{{ __('Travel') }}</a></li>
+                        <li><a href="/niche/lifestyle">{{ __('Lifestyle & Vlogs') }}</a></li>
+                        <li><a href="/niche/tech">{{ __('Tech & Gadgets') }}</a></li>
+                        <li><a href="/niche/finance">{{ __('Finance') }}</a></li>
+                        <li><a href="/niche/fitness">{{ __('Fitness') }}</a></li>
+                        <li><a href="/niche/beginners">{{ __('For beginners') }}</a></li>
+                        <li><a href="/niche/micro">{{ __('For micro-bloggers') }}</a></li>
+                        <li><a href="/niche/high-commission">{{ __('High commission') }}</a></li>
+                    </ul>
+                </div>
+                <!-- 2. Платформы -->
+                <div class="foot-item foot-nav-block">
+                    <div class="foot-tit">{{ __('Platforms') }} <i class="fa-regular fa-angle-down"></i></div>
+                    <ul class="ul-wrap">
+                        <li><a href="/platform/youtube">YouTube</a></li>
+                        <li><a href="/platform/instagram">Instagram</a></li>
+                        <li><a href="/platform/tiktok">TikTok</a></li>
+                        <li><a href="/platform/telegram">Telegram</a></li>
+                        <li><a href="/platform/x">X (Twitter)</a></li>
+                        <li><a href="/platform/twitch">Twitch</a></li>
+                        <li><a href="/platform/facebook">Facebook</a></li>
+                    </ul>
+                </div>
+                <!-- 3. Для авторов -->
+                <div class="foot-item foot-nav-block">
+                    <div class="foot-tit">{{ __('For creators') }} <i class="fa-regular fa-angle-down"></i></div>
+                    <ul class="ul-wrap">
+                        <li><a href="#how">{{ __('How it works') }}</a></li>
+                        <li><a href="/getlink">{{ __('Create link') }}</a></li>
+                        <li><a href="/stats">{{ __('Statistics') }}</a></li>
+                        <li><a href="/blog">{{ __('Blog') }}</a></li>
+                    </ul>
+                </div>
+                <!-- 4. Компания -->
+                <div class="foot-item foot-nav-block">
+                    <div class="foot-tit">{{ __('Company') }} <i class="fa-regular fa-angle-down"></i></div>
+                    <ul class="ul-wrap">
+                        <li><a href="/about">{{ __('About us') }}</a></li>
+                        <li><a href="/contacts">{{ __('Contacts') }}</a></li>
+                        <li><a href="/roadmap">{{ __('Roadmap') }}</a></li>
+                        <li><a href="https://api.cpahunter.io/docs" target="_blank" rel="noopener">{{ __('Open API') }}</a></li>
+                    </ul>
+                </div>
             </div>
-        <div class="foot-item foot-nav-block">
-            <div class="foot-tit">Компания <i class="fa-solid fa-caret-down"></i></div>
-            <ul class="ul-wrap ">
-                <li><a href="/">Политика конфиденциальности</a></li>
-                <li><a href="/">Условия использования</a></li>
-                <li><a href="/">Удаление данных</a></li>
-                <li><a href="/">Open API</a></li>
-            </ul>
-        </div>
-        <div class="foot-item foot-nav-block">
-            <div class="foot-tit">Партнёрские программы <i class="fa-solid fa-caret-down"></i></div>
-            <ul class="ul-wrap  programs-list ">
-                <li><a href="/">Мода</a></li>
-                <li><a href="/">Игры</a></li>
-                <li><a href="/">Красота</a></li>
-                <li><a href="/">Финансы</a></li>
-                <li><a href="/">Животные</a></li>
-                <li><a href="/">Начинающим</a></li>
-                <li><a href="/">Путешествия</a></li>
-                <li><a href="/">Дом и интерьер</a></li>
-                <li><a href="/">Еда и кулинария</a></li>
-                <li><a href="/">Высокая комиссия</a></li>
-                <li><a href="/">Здоровье и фитнес</a></li>
-                <li><a href="/">Дети и родители</a></li>
-                <li><a href="/">Техника и гаджеты</a></li>
-                <li><a href="/">Микро инфлюенсерам</a></li>
-            </ul>
-        </div>
+           
         
     </div>
 
@@ -68,22 +90,28 @@
                 <a target="_blank" rel="nofollow" href="https://"><i class="fa-brands fa-medium"></i></a>
             </div>  
 
-            <div class="dropdown-block">
-                <div class="btn-min-outline dropdown-btn">
-                    <i class="fa-regular fa-globe"></i>
-                    <span>EN</span>
-                    <i class="fa-solid fa-caret-down"></i>
-                </div>
-                <div class="dropdown-item" style="display: none;">
-                    <a href="/" class=""><img src="/img/flags/en.svg" alt="">English</a>
-                    <a href="/es" class=""><img src="/img/flags/es.svg" alt="">Español</a>
-                    <a href="/ru" class=""><img src="/img/flags/ru.svg" alt="">Русский</a>
+            <div class="dropdown-block lang-picker">
+                <button class="dropdown-btn">
+                    <span class="fi fi-{{ $current['flag'] }}"></span>
+                    <span>{{ $current['code'] }}</span>
+                    <i class="fa-regular fa-angle-down"></i>
+                </button>
+                <div class="dropdown-item">
+                    @foreach ($languages as $code => $lng)
+                        <a href="{{ $lng['url'] }}" class="@if($code === $lang) active @endif">
+                            <span class="fi fi-{{ $lng['flag'] }}"></span>{{ $lng['label'] }}
+                        </a>
+                    @endforeach
                 </div>
             </div>   
         </div>
 
         <div class="foot-copy">
-            © 2026 CPA Hunter. All rights reserved. <a href="#">Privacy</a> · <a href="#">Terms</a>
+            © 2026 CPA Hunter. People PRO Inc. / 30 N Gould St Ste R, Sheridan, WY, 82801, USA
+           <span>
+                <a href="/terms">{{ __('Terms of use') }}</a>
+                <a href="/privacy">{{ __('Privacy policy') }}</a>
+            </span>
         </div>
 
     </div>

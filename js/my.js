@@ -65,10 +65,10 @@ document.addEventListener('keydown', (e) => {
 const ACCORDION_TYPES = {
     'mob-menu': {
         breakpoint: 1200,
-        item:    '.parent',
-        trigger: 'a',
-        content: 'ul',
-        openByDefault: '.programs-list',
+        item:    '.nav-dropdown',
+        trigger: 'button',
+        content: '.nav-dropdown-menu',
+        openByDefault: '.is-open',
         
     },
 
