@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>CPA Hunter</title>
 <meta name="description" content="CPA Hunter" />
 
@@ -13,7 +13,6 @@
 <link rel="stylesheet" type="text/css" href="/css/icons/icon-font-css/regular.css"/>
 <link rel="stylesheet" type="text/css" href="/css/icons/icon-font-css/light.css"/>
 <link rel="stylesheet" type="text/css" href="/css/icons/icon-font-css/brands.css"/> 
-<link rel="stylesheet" type="text/css" href="/css/icons/icon-font-css/chisel-regular.css"/> 
 
 <!-- flag-style -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">

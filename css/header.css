@@ -11,30 +11,33 @@ header .container-item {padding:0px 40px; height:56px; display:flex; gap:10px;}
 /*----- NAV -----*/
 .nav {display:flex; width:100%; justify-content:center;}
 .nav .nav-dropdown button, .nav a {border:0; text-decoration:none; display:flex; align-items:center;
-                                  gap:10px; white-space:nowrap; color:#ccc; font-size:15px; 
+                                  gap:10px; white-space:nowrap; color:var(--text-muted); font-size:15px; 
                                   cursor:pointer; transition: all 0.3s;}
 .nav .nav-dropdown button, .nav > a {padding:8px 12px; border-radius:12px;
                                     position:relative; z-index:1;}
 .nav .nav-dropdown {position:relative;}
-.nav-dropdown-menu {display:flex; flex-direction:column; position:absolute;  background:#283038;
+.nav-dropdown-menu {display:flex; flex-direction:column; position:absolute; 
                    border-radius:12px; padding:8px; top: calc(100% + 8px);
-                   border:1px solid #cccccc36;min-width:140px;}
+                   min-width:140px;background: var(--bg-card);
+                   border: 1px solid var(--border);
+                   border-radius: var(--radius-md);
+                   }
 .nav-dropdown-menu:before {content:""; position:absolute; height:10px; top:-10px;
                             left:0px; right:0px;}
-.nav-dropdown-menu a {padding:8px 12px; border-radius:12px; font-size:14px;}
-.nav-dropdown-menu a i {font-weight:200; color:var(--primary);}
+.nav-dropdown-menu a {padding:10px 12px; border-radius:12px; font-size:14px;}
+.nav-dropdown-menu a i {font-weight:200; color:var(--lime);}
 .nav-dropdown-section {margin:8px 4px 4px 4px;} 
 .nav-special {display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-             border-bottom:1px solid #cccccc2e; padding-bottom:16px; margin-bottom:0px;
+             border-bottom:1px solid var(--border); padding-bottom:16px; margin-bottom:0px;
             }
-.nav-special a {border:1px solid #cccccc91; border-radius:30px;}
+.nav-special a {border:1px solid var(--border); border-radius:30px;}
 .nav-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 0px;}
 
 /*------ menu-icon-down ---------*/
 .arrow-icon {font-family: "Font Awesome 7 Pro";display:flex;transition:all 0.5s;
              justify-content:center;align-items:center;font-style:normal;}
 @media (min-width: 1200px){
-  .arrow-icon {font-weight: 900;  font-size:9px; color:#ccc;}
+  .arrow-icon {font-weight: 900;  font-size:9px; color:var(--text-muted);}
   .arrow-icon::before {content: "\f0d7";}
   .top-menu-list > li:hover > a > .arrow-icon {transform: rotate(0deg);}
 }
@@ -48,13 +51,14 @@ header .container-item {padding:0px 40px; height:56px; display:flex; gap:10px;}
 @media (min-width: 1200px){
   .nav-dropdown-menu {opacity: 0;visibility: hidden;transform: translateY(-6px);
     transition: opacity .22s ease,transform .25s cubic-bezier(.4,0,.2,1),visibility .22s;
-                       box-shadow:0px 5px 20px #00000070;}
+    box-shadow:0px 5px 20px var(--box-shadow);                  
+    }
   .nav .nav-dropdown:hover .nav-dropdown-menu {opacity: 1;visibility: visible;
                                                       transform: translateY(0);}
-  .nav .nav-dropdown:hover > button {color:#fff;}
-  .nav-dropdown-menu a:hover {background:#333d46;}
-  .nav .nav-dropdown button:hover, .nav a:hover {color:#fff;}
-  .nav-special a:hover {border-color:var(--primary); color:var(--primary);}
+  .nav .nav-dropdown:hover > button {color:var(--text);}
+  .nav-dropdown-menu a:hover {background:var(--hover-1);}
+  .nav .nav-dropdown button:hover, .nav a:hover {color:var(--text);}
+  .nav-special a:hover {border-color:var(--lime); color:var(--lime);}
   
 }
 
@@ -67,7 +71,7 @@ header .container-item {padding:0px 40px; height:56px; display:flex; gap:10px;}
 .nav-toggle {position: absolute;  right: 22px;  top: 4px; z-index: 12; outline:none;
             cursor: pointer; padding: 24px 41px 26px 14px; display:none;}
 .nav-toggle span, .nav-toggle span:before, .nav-toggle span:after {cursor: pointer;border-radius: 1px;
-  height: 2px;width: 24px;background: white;position: absolute;display: block;content: '';}
+  height: 2px;width: 24px;background: var(--text);position: absolute;display: block;content: '';}
 .nav-toggle span:before {top: -10px; }
 .nav-toggle span:after {bottom: -10px;}
 .nav-toggle span, .nav-toggle span:before, .nav-toggle span:after {transition: all 200ms ease-in-out;}
@@ -95,10 +99,10 @@ header .container-item {padding:0px 40px; height:56px; display:flex; gap:10px;}
 .nav-dropdown-menu .nav-special a:last-child {margin-bottom:0px;}    
 .nav-special, .nav-grid {display:contents}
 .nav-special a {border:0;}  
-.nav > * {border-bottom:1px solid #cccccc38 !important;  width:100%; box-sizing:border-box;} 
+.nav > * {border-bottom:1px solid var(--border) !important;  width:100%; box-sizing:border-box;} 
 .nav .nav-dropdown button, .nav > a {padding:16px 12px; border-radius:0; width:100%; 
                                      justify-content:space-between;} 
-.nav .nav-dropdown button {color:#858585;}  
+.nav .nav-dropdown button {color:var(--text-muted);}  
 .nav-dropdown-menu:before {display:none;} 
 }
 @media (max-width: 640px) {

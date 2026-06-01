@@ -32,16 +32,27 @@
 </div>
 <div class="layout-form">
     <div class="btn-group">
-        <a href="" class="btn">Кнопка</a>
-        <button class="btn">Кнопка</button>
-        <button class="btn gray">Кнопка</button>
-        <button class="btn gray outline">Кнопка</button>
+        <button class="btn big">Кнопка</button>
+        <button class="btn big outline">Кнопка</button>
         <button class="btn" disabled>Кнопка недоступна</button>
-        <button class="btn gray" disabled>Кнопка недоступна</button>
+        
+        <button class="btn">Кнопка</button>
         <button class="btn outline">Кнопка</button>
-        <button class="btn outline" disabled>Кнопка недоступна</button>
+
         <button class="btn min">Кнопка</button>
         <button class="btn min outline">Кнопка</button>
     </div>
 </div>
+
+<div class="btn-group">
+        <button class="btn big">Кнопка</button>
+        <button class="btn big outline">Кнопка</button>
+        <button class="btn" disabled>Кнопка недоступна</button>
+        
+        <button class="btn">Кнопка</button>
+        <button class="btn outline">Кнопка</button>
+
+        <button class="btn min">Кнопка</button>
+        <button class="btn min outline">Кнопка</button>
+    </div>
 

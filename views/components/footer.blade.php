@@ -24,7 +24,7 @@
                 <!-- 1. Программы -->
                 <div class="foot-item foot-nav-block">
                     <div class="foot-tit">{{ __('Programs') }} <i class="fa-regular fa-angle-down"></i></div>
-                    <ul class="ul-wrap programs-list ">
+                    <ul class="ul-wrap programs-list start-open">
                         <li><a href="/niche/parenting">{{ __('Kids & Parenting') }}</a></li>
                         <li><a href="/niche/home">{{ __('Home & Interior') }}</a></li>
                         <li><a href="/niche/food">{{ __('Food & Cooking') }}</a></li>
@@ -83,36 +83,34 @@
 
         
         <div class="foot-wrapper-2">
-            <div class="foot-item-soz">
-                <a target="_blank" rel="nofollow" href="https://"><i class="fa-brands fa-instagram"></i></a>
-                <a target="_blank" rel="nofollow" href="https://"><i class="fa-brands fa-facebook-f"></i></a>
-                <a target="_blank" rel="nofollow" href="https://"><i class="fa-brands fa-threads"></i></a>
-                <a target="_blank" rel="nofollow" href="https://"><i class="fa-brands fa-medium"></i></a>
-            </div>  
-
-            <div class="dropdown-block lang-picker">
-                <button class="dropdown-btn">
-                    <span class="fi fi-{{ $current['flag'] }}"></span>
-                    <span>{{ $current['code'] }}</span>
-                    <i class="fa-regular fa-angle-down"></i>
-                </button>
-                <div class="dropdown-item">
-                    @foreach ($languages as $code => $lng)
-                        <a href="{{ $lng['url'] }}" class="@if($code === $lang) active @endif">
-                            <span class="fi fi-{{ $lng['flag'] }}"></span>{{ $lng['label'] }}
-                        </a>
-                    @endforeach
-                </div>
-            </div>   
-        </div>
-
-        <div class="foot-copy">
-            © 2026 CPA Hunter. People PRO Inc. / 30 N Gould St Ste R, Sheridan, WY, 82801, USA
-           <span>
+            <div class="foot-copy">
+                <span>© 2026 CPA Hunter. People PRO Inc. / 30 N Gould St Ste R, Sheridan, WY, 82801, USA</span>
                 <a href="/terms">{{ __('Terms of use') }}</a>
                 <a href="/privacy">{{ __('Privacy policy') }}</a>
-            </span>
+                
+            </div>
+            <div class="foot-toggle">
+                <button class="theme-toggle">
+                    <i class="fa-regular fa-sun-bright"></i>
+                </button>
+                <div class="dropdown-block lang-picker">
+                    <button class="dropdown-btn">
+                        <span class="fi fi-{{ $current['flag'] }}"></span>
+                        <span>{{ $current['code'] }}</span>
+                        <i class="fa-regular fa-angle-down"></i>
+                    </button>
+                    <div class="dropdown-item">
+                        @foreach ($languages as $code => $lng)
+                            <a href="{{ $lng['url'] }}" class="@if($code === $lang) active @endif">
+                                <span class="fi fi-{{ $lng['flag'] }}"></span>{{ $lng['label'] }}
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>  
         </div>
+
+        
 
     </div>
 </footer>

@@ -19,9 +19,10 @@
      @include('components.footer')
 </div>
 
-<!-- Тут форма и модалка -->
-
- @include('components.modal')
+<!-- Тут общая модалка -->
+@include('components.forms.login')
+@include('components.modal')
+ 
 <!------------------------->
 
 @yield('scripts')

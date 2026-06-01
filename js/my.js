@@ -68,8 +68,7 @@ const ACCORDION_TYPES = {
         item:    '.nav-dropdown',
         trigger: 'button',
         content: '.nav-dropdown-menu',
-        openByDefault: '.is-open',
-        
+        openByDefault: '.start-open',
     },
 
     'foot-accordion': {
@@ -77,6 +76,7 @@ const ACCORDION_TYPES = {
         item:    '.foot-nav-block',
         trigger: '.foot-tit',
         content: '.ul-wrap',
+        openByDefault: '.start-open',
     },
 
     'faq': {

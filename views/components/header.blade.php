@@ -11,9 +11,9 @@
             <nav class="nav" data-mob-menu>
 
             <!-- 1. Инструменты -->
-            <div class="nav-dropdown is-open">
+            <div class="nav-dropdown">
                 <button><span>{{ __('Tools') }}</span><i class="arrow-icon"></i></button>
-                <div class="nav-dropdown-menu">
+                <div class="nav-dropdown-menu start-open">
                 <a href="#how"><i class="fa-solid fa-circle-question"></i> {{ __('How it works') }}</a>
                 <a href="/getlink"><i class="fa-solid fa-link"></i> {{ __('Create link') }}</a>
                 <a href="/stats"><i class="fa-solid fa-chart-line"></i> {{ __('Statistics') }}</a>
@@ -78,7 +78,7 @@
            
             
             <div class="header-actions">
-                <span></span>
+                <button class="btn min" onclick="openModal('modal-login')">Вход</button>
                 <span></span>
                
                 
