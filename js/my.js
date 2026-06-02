@@ -5,6 +5,30 @@ navToggle.addEventListener('click', function () {
     topMenu.classList.toggle('show');
 });
 
+/* ============ THEME TOGGLE ============ */
+(function(){
+  var html = document.documentElement;
+  var KEY = 'cpah-theme';
+
+  function apply(t){
+    if (t === 'light') html.setAttribute('data-theme','light');
+    else html.removeAttribute('data-theme');
+  }
+  function toggle(){
+    var next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    apply(next);
+    try { localStorage.setItem(KEY, next); } catch(e){}
+  }
+  function bind(){
+    document.querySelectorAll('.theme-toggle').forEach(function(b){
+      b.addEventListener('click', toggle);
+    });
+  }
+  document.readyState === 'loading'
+    ? document.addEventListener('DOMContentLoaded', bind)
+    : bind();
+})();
+
 //// Закрываем мобильное меню при клике по якорям
 document.addEventListener('DOMContentLoaded', function() {
     const menuLinks = document.querySelectorAll('.top-menu-list a');

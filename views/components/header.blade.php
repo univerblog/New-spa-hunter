@@ -2,8 +2,8 @@
     <link rel="stylesheet" type="text/css" href="/css/header.css?v={{ rand() }}">  
 @endpush
 
-<header class="container">
-    <div class="container-item top-block">
+<header class="header">
+    <div class="container top-block">
         <a href="/" class="logo"><img src="/img/logo.svg" alt=""></a>
         <div class="top-menu">
             
@@ -78,8 +78,30 @@
            
             
             <div class="header-actions">
-                <button class="btn min" onclick="openModal('modal-login')">Вход</button>
-                <span></span>
+                <div class="header-toggle">
+                    <button class="theme-toggle" type="button" aria-label="{{ __('Toggle theme') }}">
+                        <i class="fa-regular fa-sun-bright icon-sun"></i>
+                        <i class="fa-regular fa-moon icon-moon"></i>
+                    </button>
+                    <div class="dropdown-block lang-picker">
+                        <button class="dropdown-btn">
+                            <span class="fi fi-{{ $current['flag'] }}"></span>
+                            <span>{{ $current['code'] }}</span>
+                            <i class="fa-regular fa-angle-down"></i>
+                        </button>
+                        <div class="dropdown-item">
+                            @foreach ($languages as $code => $lng)
+                                <a href="{{ $lng['url'] }}" class="@if($code === $lang) active @endif">
+                                    <span class="fi fi-{{ $lng['flag'] }}"></span>{{ $lng['label'] }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>  
+                <div class="header-auth">
+                    <button class="btn min" onclick="openModal('modal-login')">Вход</button>
+                </div>
+                
                
                 
 

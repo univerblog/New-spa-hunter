@@ -9,8 +9,8 @@
 
 
 
-<footer class="container">
-    <div class="container-item">
+<footer class="footer">
+    <div class="container">
 
 
         <div class="foot-wrapper" data-foot-accordion>

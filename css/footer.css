@@ -1,6 +1,6 @@
 /********* FOOTER **********/
-footer {background: var(--footer); color:var(--text-muted);}
-footer .container-item {padding:60px 40px 60px 40px;}
+.footer {background: var(--footer); color:var(--text-muted);}
+.footer .container {padding:60px 40px 60px 40px;}
 .foot-wrapper { gap:30px; border-bottom:1px solid var(--border); padding-bottom:30px; margin-bottom:30px;
                display:flex;}
 .foot-brand {width:300px; display:flex; flex-direction:column; gap:8px; }
@@ -36,6 +36,7 @@ footer .container-item {padding:60px 40px 60px 40px;}
               text-decoration: underline;text-underline-offset: 4px;text-decoration-thickness: 1px; 
               margin-left:0px;}
 .foot-toggle {display:flex;  align-items:end; gap:14px;}
+.foot-toggle .lang-picker {position:relative;}
 .foot-toggle .dropdown-item {margin-top:0; bottom:44px; right:0;}
 /****** HOVERS *******/
 @media (min-width: 1200px){
@@ -70,7 +71,7 @@ footer .container-item {padding:60px 40px 60px 40px;}
 }
 
  @media (max-width: 640px) {
-   footer .container-item {padding:60px 20px 60px 20px;}
+  .footer .container {padding:60px 20px 40px 20px;}
   .foot-wrapper-2 {flex-direction:column; gap:30px;}
   .foot-copy {gap:6px 20px;}
  }

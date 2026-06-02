@@ -2,8 +2,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>CPA Hunter</title>
 <meta name="description" content="CPA Hunter" />
-
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v={{ rand() }}">
+<!-- For theme -->
+<script>
+  (function(){
+    try {
+      if (localStorage.getItem('cpah-theme') === 'light')
+        document.documentElement.setAttribute('data-theme','light');
+    } catch(e){}
+  })();
+</script>
+
 <link rel="stylesheet" type="text/css" href="/css/base.css?v={{ rand() }}" />
 <link rel="stylesheet" type="text/css" href="/css/form.css?v={{ rand() }}" />
 

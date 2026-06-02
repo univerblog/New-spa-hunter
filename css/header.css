@@ -1,5 +1,5 @@
-header {position:fixed !important; background: var(--header); right:0; left:0; top:0; z-index:10;  }
-header .container-item {padding:0px 40px; height:56px; display:flex; gap:10px;}
+.header {position:fixed !important; background: var(--header); right:0; left:0; top:0; z-index:10;  }
+.header .container {padding:0px 40px; height:56px; display:flex; gap:10px;}
 .logo {display:flex; align-items:center;}
 .logo img {height:40px; display:block;}
  
@@ -9,7 +9,7 @@ header .container-item {padding:0px 40px; height:56px; display:flex; gap:10px;}
 .top-menu::-webkit-scrollbar {display: none;} 
 
 /*----- NAV -----*/
-.nav {display:flex; width:100%; justify-content:center;}
+.nav {display:flex; width:100%; justify-content:center; position:relative; z-index:1;}
 .nav .nav-dropdown button, .nav a {border:0; text-decoration:none; display:flex; align-items:center;
                                   gap:10px; white-space:nowrap; color:var(--text-muted); font-size:15px; 
                                   cursor:pointer; transition: all 0.3s;}
@@ -25,7 +25,7 @@ header .container-item {padding:0px 40px; height:56px; display:flex; gap:10px;}
 .nav-dropdown-menu:before {content:""; position:absolute; height:10px; top:-10px;
                             left:0px; right:0px;}
 .nav-dropdown-menu a {padding:10px 12px; border-radius:12px; font-size:14px;}
-.nav-dropdown-menu a i {font-weight:200; color:var(--lime);}
+.nav-dropdown-menu a i {font-weight:var(--top-menu-icon); color:var(--top-menu-lime);}
 .nav-dropdown-section {margin:8px 4px 4px 4px;} 
 .nav-special {display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
              border-bottom:1px solid var(--border); padding-bottom:16px; margin-bottom:0px;
@@ -58,14 +58,14 @@ header .container-item {padding:0px 40px; height:56px; display:flex; gap:10px;}
   .nav .nav-dropdown:hover > button {color:var(--text);}
   .nav-dropdown-menu a:hover {background:var(--hover-1);}
   .nav .nav-dropdown button:hover, .nav a:hover {color:var(--text);}
-  .nav-special a:hover {border-color:var(--lime); color:var(--lime);}
+  .nav-special a:hover {border-color:var(--top-menu-lime); color:var(--top-menu-lime);}
   
 }
 
 
 /*------ header-actions ---------*/
-.header-actions {display:flex; gap:10px; align-items:center; }
-.header-actions > span {display:flex; max-width:100%; min-width:40px; height:50px; background:#000;}
+.header-actions {display:flex; gap:20px; align-items:center; z-index:0;}
+.header-toggle {display:flex; gap:10px;}
 
 /********* HAMBURGER **********/
 .nav-toggle {position: absolute;  right: 22px;  top: 4px; z-index: 12; outline:none;
@@ -84,8 +84,8 @@ header .container-item {padding:0px 40px; height:56px; display:flex; gap:10px;}
 .nav-toggle {display: block !important;}
 .top-menu {position:fixed !important;top:56px;bottom:0px;right:0px;left:auto;
               display:flex !important; flex-direction:column; justify-content:start; gap:20px;
-              background: var(--header); width:260px;
-              overflow-y:auto; overflow-x:hidden; padding:16px 16px 30px 16px !important;
+              background: var(--bg-card); width:280px;
+              overflow-y:auto; overflow-x:hidden; padding:16px 16px 20px 16px !important;
               transition: all 0.3s; transition: transform 0.3s ease;
               transform: translateX(100%);
              }
@@ -102,10 +102,19 @@ header .container-item {padding:0px 40px; height:56px; display:flex; gap:10px;}
 .nav > * {border-bottom:1px solid var(--border) !important;  width:100%; box-sizing:border-box;} 
 .nav .nav-dropdown button, .nav > a {padding:16px 12px; border-radius:0; width:100%; 
                                      justify-content:space-between;} 
-.nav .nav-dropdown button {color:var(--text-muted);}  
+.nav .nav-dropdown button, .nav a {color:var(--mob-menu-text);}  
 .nav-dropdown-menu:before {display:none;} 
+.header-auth {display:flex; flex-direction:column; width:100%;}
+.header-actions {display:contents;}
+.header-toggle {width:100%; justify-content:space-between;}  
+.header-toggle .lang-picker {position:relative;}
+.lang-picker .dropdown-item {margin-top:auto; bottom:42px;
+                             grid-template-columns: repeat(2, 1fr); }  
+.nav           { order:2; }
+.header-auth   { order:1; margin-bottom:-10px;}                    
+.header-toggle { order:3; margin-top:auto; } 
 }
 @media (max-width: 640px) {
-   header .container-item {padding:0px 20px; padding-right:80px;}
+   .header .container {padding:0px 20px; padding-right:80px;}
    .nav-toggle {position: absolute;  right: 6px;}
  }

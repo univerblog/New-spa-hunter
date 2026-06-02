@@ -148,3 +148,126 @@ msgstr "Условия использования"
 
 msgid "Privacy policy"
 msgstr "Политика конфиденциальности"
+
+# =====================================================
+#  HOME — HERO  /  Главная, первый экран
+# =====================================================
+
+msgid "Affiliate platform for creators"
+msgstr "Партнёрская платформа для авторов"
+
+msgid "Earn on your <span class=\"accent\">recommendations</span>"
+msgstr "Зарабатывайте на&nbsp;своих <span class=\"accent\">рекомендациях</span>"
+
+msgid "Your audience buys on your advice — you get a commission on every sale."
+msgstr "Аудитория покупает по вашим советам — вы получаете комиссию с каждой продажи."
+
+msgid "The world's largest affiliate network."
+msgstr "Крупнейшая партнёрская сеть в мире."
+
+msgid "Brand not here? Then it has no affiliate program at all."
+msgstr "Нет бренда у нас? Значит, у него вообще нет партнёрской программы."
+
+msgid "Watch demo"
+msgstr "Посмотреть демо"
+
+msgid "shops"
+msgstr "магазинов"
+
+msgid "No"
+msgstr "Без"
+
+msgid "moderation"
+msgstr "модерации"
+
+msgid "Payout from"
+msgstr "Вывод от"
+
+msgid "Bank"
+msgstr "Банк"
+
+msgid "Week"
+msgstr "Неделя"
+
+msgid "Month"
+msgstr "Месяц"
+
+msgid "Year"
+msgstr "Год"
+
+msgid "confirmed"
+msgstr "подтверждено"
+
+msgid "pending"
+msgstr "в ожидании"
+
+msgid "Clicks"
+msgstr "Клики"
+
+msgid "Sales"
+msgstr "Продажи"
+
+msgid "Reward"
+msgstr "Вознаграждение"
+
+msgid "Merchant"
+msgstr "Магазин"
+
+msgid "Link"
+msgstr "Ссылка"
+
+msgid "Status"
+msgstr "Статус"
+
+# =====================================================
+#  HOME — HOW IT WORKS  /  Как это работает
+# =====================================================
+
+msgid "From sign-up to first payout — 4 simple steps."
+msgstr "От регистрации до первой выплаты — 4 простых шага."
+
+msgid "Free registration"
+msgstr "Бесплатная регистрация"
+
+msgid "30 seconds — via social login or email and password. No moderation, no entry barrier."
+msgstr "30 секунд — через соцсети или email и пароль. Без модерации и порога входа."
+
+msgid "Add your platform"
+msgstr "Добавьте площадку"
+
+msgid "Connect Instagram, TikTok, YouTube, Twitch, X, Telegram or Facebook. We approve very fast!"
+msgstr "Подключите Instagram, TikTok, YouTube, Twitch, X, Telegram или Facebook. Одобряем очень быстро!"
+
+msgid "Paste a product or store URL — get an affiliate link in 3 seconds."
+msgstr "Вставьте URL товара или магазина — получите партнёрскую ссылку за 3 секунды."
+
+msgid "Get paid"
+msgstr "Получайте выплаты"
+
+msgid "Your audience buys — you earn. Real-time tracking."
+msgstr "Аудитория покупает — вы зарабатываете. Отслеживание в реальном времени."
+
+# =====================================================
+#  HOME — CREATE LINK FORM  /  Форма создания ссылки
+# =====================================================
+
+msgid "Create your first link right now"
+msgstr "Создайте первую ссылку прямо сейчас"
+
+msgid "Paste a product URL or brand name — we'll find the store and generate an affiliate link."
+msgstr "Вставьте URL товара или название бренда — мы найдём магазин и сгенерируем партнёрскую ссылку."
+
+msgid "nike.com or https://nike.com/some-product-page"
+msgstr "nike.com или https://nike.com/some-product-page"
+
+msgid "Earning rules"
+msgstr "Правила заработка"
+
+msgid "Rules"
+msgstr "Правила"
+
+msgid "All my links"
+msgstr "Все мои ссылки"
+
+msgid "My links"
+msgstr "Мои ссылки"

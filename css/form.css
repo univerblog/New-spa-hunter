@@ -2,11 +2,11 @@
              background:var(--bg-card);
              border: 1px solid var(--border); 
              }
-.container-modal {display:flex; flex-direction:column; gap:14px;}
+.container-modal {display:flex; flex-direction:column; gap:18px;}
 button {font-family: var(--font-family); background:none; border:0; font-size:initial;}
 /*****/
 .input-field {display:flex; flex-direction: column; gap:8px; flex:1; position:relative; align-items:stretch;}
-.input-field label {color:#ccc; font-size:14px; margin-left:20px}
+.input-field label {color: var(--text-dim); font-size:14px; margin-left:20px}
 .input-field input, .input-field textarea, .input-field select {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
@@ -22,6 +22,8 @@ button {font-family: var(--font-family); background:none; border:0; font-size:in
     box-sizing: border-box;
     align-items:center;
     height:48px; min-height:48px;
+    -webkit-appearance: none;
+    appearance: none;
 }
 ::placeholder {
   color: #999;
@@ -58,16 +60,16 @@ input:-webkit-autofill:focus{
 .form-btn-link {color:var(--text-muted); cursor:pointer;}
 .form-line {background:var(--border); height:1px;}
 /*----- Buttons -----*/
-.btn {padding: 14px 24px;background: var(--lime);color: #000000;border: none; text-decoration:none;
+.btn {padding: 0px 24px;background: var(--lime);color: #000000;border: none; text-decoration:none;
      font-size:15px; cursor:pointer;
      transition:all 0.3s; display:inline-flex; justify-content:center; align-items:center;
      box-sizing: border-box; border-radius:var(--radius-md);
-     height:48px;}
+     height:48px; gap:6px;}
 .btn:disabled {opacity: 0.6;cursor: default;}  
 .btn.outline {background:var(--bg-soft-2); border: 1px solid var(--border); color: var(--text);}
 
-.btn.big {padding: 20px 32px;font-size: 16px; height:56px; border-radius:var(--radius-lg);}
-.btn.min {padding: 8px 16px;font-size: 14px; height:36px; border-radius:var(--radius-sm);}
+.btn.big {padding: 0px 32px;font-size: 16px; height:56px; border-radius:var(--radius-lg);}
+.btn.min {padding: 0px 16px;font-size: 14px; height:40px; border-radius:var(--radius-sm);}
 
 .btn-group {display:flex; flex-wrap:wrap; gap:10px;}
 /* icon social form */
