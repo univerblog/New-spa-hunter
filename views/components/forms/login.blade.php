@@ -6,11 +6,11 @@
         <input type="hidden" name="" value="">
     
         <div class="social-block-auth">
-            <a href="" title="Google"><i class="fa-brands fa-google"></i></a>
-            <a href="" title="Google"><i class="fa-brands fa-apple"></i></a>
-            <a href="" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="" title="X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="" title="X"><i class="fa-solid fa-paper-plane"></i></a>
+            <a href="" title="Google"><img src="img/social/google.svg" alt="Google"></a>
+            <a href="" title="apple"><img src="img/social/apple-white.svg" alt="Apple"></a>
+            <a href="" title="Facebook"><img src="img/social/facebook.svg" alt="Facebook"></a>
+            <a href="" title="X"><img src="img/social/x-white.svg" alt="x"></a>
+            <a href="" title="telegram"><img src="img/social/tg.svg" alt="telegram"></a>
         </div>
         <p class="form-text-line">или войдите по email</p>
     

@@ -1,4 +1,5 @@
-.header {position:fixed !important; background: var(--header); right:0; left:0; top:0; z-index:10;  }
+.header {position:fixed !important; background: var(--header); right:0; left:0; top:0; z-index:10;  
+        box-shadow:0px 0px 10px var(--box-shadow);    }
 .header .container {padding:0px 40px; height:56px; display:flex; gap:10px;}
 .logo {display:flex; align-items:center;}
 .logo img {height:40px; display:block;}
@@ -17,7 +18,7 @@
                                     position:relative; z-index:1;}
 .nav .nav-dropdown {position:relative;}
 .nav-dropdown-menu {display:flex; flex-direction:column; position:absolute; 
-                   border-radius:12px; padding:8px; top: calc(100% + 8px);
+                   border-radius:12px; padding:8px; top: calc(100% + 4px);
                    min-width:140px;background: var(--bg-card);
                    border: 1px solid var(--border);
                    border-radius: var(--radius-md);
@@ -50,7 +51,7 @@
 
 @media (min-width: 1200px){
   .nav-dropdown-menu {opacity: 0;visibility: hidden;transform: translateY(-6px);
-    transition: opacity .22s ease,transform .25s cubic-bezier(.4,0,.2,1),visibility .22s;
+    transition: opacity .0s ease,transform .25s cubic-bezier(.4,0,.2,1),visibility .22s;
     box-shadow:0px 5px 20px var(--box-shadow);                  
     }
   .nav .nav-dropdown:hover .nav-dropdown-menu {opacity: 1;visibility: visible;
@@ -84,7 +85,7 @@
 .nav-toggle {display: block !important;}
 .top-menu {position:fixed !important;top:56px;bottom:0px;right:0px;left:auto;
               display:flex !important; flex-direction:column; justify-content:start; gap:20px;
-              background: var(--bg-card); width:280px;
+              background: var(--header); width:280px;
               overflow-y:auto; overflow-x:hidden; padding:16px 16px 20px 16px !important;
               transition: all 0.3s; transition: transform 0.3s ease;
               transform: translateX(100%);

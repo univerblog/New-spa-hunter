@@ -68,6 +68,9 @@
  .foot-item.is-open .foot-tit i {transform: rotate(180deg);}
  .foot-item .programs-list { display: grid;grid-template-columns: repeat(2, 1fr);gap:0px; }
  .foot-item .programs-list li {break-inside: avoid;  border-bottom: 0; } 
+html[data-theme="light"] {
+    .foot-tit, .foot-tit i { color: var(--text); }
+   }
 }
 
  @media (max-width: 640px) {

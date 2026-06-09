@@ -11,19 +11,13 @@
 .hero h1 .accent { color: var(--lime); }
 
 .hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 14px;
-  background: var(--lime-soft);
-  border: 1px solid var(--lime-soft-2);
-  border-radius: var(--radius-pill);
-  color: var(--lime);
+  color: var(--cyan);
   font-size: 13px; font-weight: 500;
-  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em ;
+  margin-bottom: 24px; line-height:1.5;
 }
-.hero-eyebrow::before {
-  content: ''; width: 6px; height: 6px;
-  background: var(--lime); border-radius: 50%;
-}
+
 
 .hero-lead {
   font-size: 18px; color: var(--text-muted);
@@ -60,7 +54,8 @@
 .hero-pay-method + .hero-pay-method::before { content: "·"; color: var(--text-dim); margin-right: 6px; }
 
 /* Dashboard mockup */
-.dash { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; position: relative; }
+.dash { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); 
+       padding: 20px; position: relative; box-shadow:10px 10px 20px var(--box-shadow-light);}
 .dash-head { display: flex; align-items: center; justify-content: space-between; 
             margin-bottom: 16px; font-size: 13px; gap:20px;}
 .dash-tabs { display: flex; gap: 6px; }
@@ -110,7 +105,7 @@
   .hero-ctas > .btn { width: 100%; min-width: 0; flex: 0 0 auto; }
 }
 @media (max-width: 640px) {
-  .hero { padding: 16px 0 0px 0; }
+  .hero .container { padding: 40px 20px 50px 20px; }
   .hero h1 { font-size: 36px; }
   .hero-grid { gap: 28px; }
   .dash {padding:10px;}
@@ -135,6 +130,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 28px 24px;
+  box-shadow:0px 10px 20px var(--box-shadow-light);
 }
 .hiw-top {
   display: flex;
@@ -165,7 +161,31 @@
   .hiw-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
-  .section { padding: 48px 0; }
   .hiw-grid { grid-template-columns: 1fr; }
 }
 
+/*---Create link form---*/
+.create-link__select {flex-basis:100%;}
+.create-link__btn {}
+.create-form-bottom {display: flex; align-items: center;
+  justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  margin-top: 24px;padding-top: 24px;border-top: 1px solid var(--border);
+}
+.create-footer-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.create-footer-btns > * {color: var(--text-dim)}
+html[data-theme="light"] .create-footer-btns > * {color:#333333e0;}
+.create-helpers-inline {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; color: var(--text-dim);
+}
+.create-helpers-inline .js-merchants-count { color: var(--lime); font-weight: 500; }
+html[data-theme="light"] .js-merchants-count { color: var(--text); }
+/* ---- адаптив для Create link form ---- */
+@media (max-width: 1000px) {
+  .create-link__wrapper > * {flex:1; flex-basis:46%;}
+  .create-link__select {flex-basis:100%;}
+}
+@media (max-width: 640px) {
+ .create-footer-btns {width:100%;}
+ .create-footer-btns > * {flex:1;}
+}

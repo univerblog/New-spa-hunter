@@ -157,7 +157,7 @@ msgid "Affiliate platform for creators"
 msgstr "Партнёрская платформа для авторов"
 
 msgid "Earn on your <span class=\"accent\">recommendations</span>"
-msgstr "Зарабатывайте на&nbsp;своих <span class=\"accent\">рекомендациях</span>"
+msgstr "Зарабатывайте на том, что <span class=\"accent\">уже&nbsp;советуете</span> аудитории"
 
 msgid "Your audience buys on your advice — you get a commission on every sale."
 msgstr "Аудитория покупает по вашим советам — вы получаете комиссию с каждой продажи."
@@ -271,3 +271,24 @@ msgstr "Все мои ссылки"
 
 msgid "My links"
 msgstr "Мои ссылки"
+
+msgid "Nothing found"
+msgstr "Не найдено"
+
+msgid "Add folder"
+msgstr "Добавить папку"
+
+msgid "Add tag"
+msgstr "Добавить тег"
+
+msgid "Empty. Start typing to add."
+msgstr "Начни вводить, чтобы добавить."
+
+msgid "Tag (e.g. youtube)"
+msgstr "Тег (напр. youtube)"
+
+msgid "Note (optional)"
+msgstr "Заметка (опционально)"
+
+msgid "Folder (new or existing)"
+msgstr "Папка (новая или существующая)"

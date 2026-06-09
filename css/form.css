@@ -1,14 +1,10 @@
-.layout-form {border-radius:20px; padding:30px;
-             background:var(--bg-card);
-             border: 1px solid var(--border); 
-             }
-.container-modal {display:flex; flex-direction:column; gap:18px;}
+
 button {font-family: var(--font-family); background:none; border:0; font-size:initial;}
 /*****/
 .input-field {display:flex; flex-direction: column; gap:8px; flex:1; position:relative; align-items:stretch;}
 .input-field label {color: var(--text-dim); font-size:14px; margin-left:20px}
 .input-field input, .input-field textarea, .input-field select {
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-input);
     border-radius: var(--radius-md);
     background: var(--bg-input);
     font-size: 14px;
@@ -29,10 +25,12 @@ button {font-family: var(--font-family); background:none; border:0; font-size:in
   color: #999;
   opacity: 1; /* Убирает полупрозрачность по умолчанию (особенно в Firefox) */
 }
-.input-field input:focus-visible, .input-field textarea:focus-visible {
+.input-field input:focus-visible, .input-field textarea:focus-visible, 
+.select.open .select-trigger {
     border: 1px solid var(--input-focus);
     box-shadow: 0 0 4px var(--input-focus);
 }
+
 
 .input__min input, .input__min textarea, .input__min select {
     border-radius: 10px;
@@ -41,11 +39,18 @@ button {font-family: var(--font-family); background:none; border:0; font-size:in
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus{
-    -webkit-text-fill-color: #ccc;
-    -webkit-box-shadow: 0 0 0 40rem #1a1f27 inset;
+   background: var(--bg-input) !important;
+    -webkit-text-fill-color: var(--text);
+    box-shadow: inset 5px 5px 5px var(--input-shadow);
     transition: background-color 5000s ease-in-out 0s;
-    -webkit-background-clip: text
+    -webkit-background-clip: text;
+  
 }
+input:-webkit-autofill:focus {
+   border: 1px solid var(--input-focus);
+    box-shadow: 0 0 4px var(--input-focus);
+}
+
 /*--- input-group ---*/
 .input-group {display:flex;flex-direction:column;gap:10px;}
 .input-group-horisontal {display:flex; gap:10px; flex-wrap:wrap; align-items:end;}
@@ -66,26 +71,179 @@ input:-webkit-autofill:focus{
      box-sizing: border-box; border-radius:var(--radius-md);
      height:48px; gap:6px;}
 .btn:disabled {opacity: 0.6;cursor: default;}  
-.btn.outline {background:var(--bg-soft-2); border: 1px solid var(--border); color: var(--text);}
+.btn.outline {background:var(--bg-soft-2); border: 1px solid var(--border-input); color: var(--text);}
 
 .btn.big {padding: 0px 32px;font-size: 16px; height:56px; border-radius:var(--radius-lg);}
-.btn.min {padding: 0px 16px;font-size: 14px; height:40px; border-radius:var(--radius-sm);}
+.btn.min {padding: 0px 16px;font-size: 14px; height:40px; border-radius:var(--radius-sm); line-height:0.9;}
+html[data-theme="light"] .btn.outline {border: 1px solid #00000040; background:#cccccc5c;}
 
 .btn-group {display:flex; flex-wrap:wrap; gap:10px;}
 /* icon social form */
-.social-block-auth {display:flex; justify-content:center; gap:10px;}
-.social-block-auth a {background:var(--bg); display:flex; align-items:center; justify-content:center;
-                     border-radius:50%; width:40px; height:40px; text-decoration:none;
-                     color:var(--text-muted);}
+.social-block-auth {display:flex; justify-content:center; gap:20px;}
+.social-block-auth a {display:flex; align-items:center; justify-content:center;
+                     width:40px; height:40px; text-decoration:none;}
+.social-block-auth a img {height:30px;}
+html[data-theme="light"] .social-block-auth img[src$="apple-white.svg"] { content: url('/img/social/apple.svg'); }
+html[data-theme="light"] .social-block-auth img[src$="x-white.svg"]     { content: url('/img/social/x.svg'); }
+
+/* полная/короткая подпись на кнопках */
+.pill-short { display: none; }
+
+/* ============ SELECT (универсальный) ============ */
+.select { position: relative; flex:1; min-width:200px;}
+
+/* --- триггер-кнопка (вид 1, 2) --- */
+.select-trigger {
+  width:100%;
+  height: 48px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 16px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-md);
+  /*box-shadow: inset 5px 5px 5px var(--input-shadow);*/
+  color: var(--text);
+  font-family: var(--font-family);
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .2s, box-shadow .2s;
+}
+button.select-trigger:focus-visible { outline: none; }
+.select.open .select-trigger,
+.select-value { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.select-arrow { flex-shrink: 0; color: var(--text-dim); font-size: 12px; transition: transform .2s ease; }
+.select.open .select-arrow { transform: rotate(180deg); }
+
+
+
+/* --- панель --- */
+.select-panel {position: absolute;
+  top: calc(100% + 6px);
+  left: 0; right: 0;
+  z-index: 10;
+  display: none;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 6px var(--box-shadow);
+  overflow:hidden;
+  padding:8px 4px 8px 8px;
+}
+html[data-theme="light"] .select-panel  {background: var(--bg-card);}
+.select.open .select-panel { display: block; }
+
+
+/* --- поиск внутри селект --- */
+.select-search {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0px 20px; 
+  border-bottom: 1px solid var(--border);
+   height:48px; min-height:48px;
+    -webkit-appearance: none;
+    appearance: none;
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-md);
+  margin:0 20px 10px 0;
+}
+.select-search i { color: var(--text-dim); font-size: 13px; }
+.select-search input {
+  flex: 1; border: 0; background: none; outline: none;
+  color: var(--text); font-family: var(--font-family); font-size: 14px;
+}
+.select-search input::placeholder { color: var(--text-dim); }
+
+.select-list {
+  max-height: 270px;
+  overflow-y: auto;
+  scroll-behavior: smooth; 
+  padding-right:4px;
+}
+.select-list::-webkit-scrollbar { width: 14px;  }
+.select-list::-webkit-scrollbar-button { display: none; width: 0; height: 0; }  /* стрелки */
+.select-list::-webkit-scrollbar-track  { background: #86868600; }
+.select-list::-webkit-scrollbar-thumb  { background: #cccccc85; border-radius: 30px;
+                                         border:5px solid var(--bg);}
+html[data-theme="light"] .select-list::-webkit-scrollbar-thumb  {
+  border:5px solid var(--bg-card); 
+}
+
+
+
+/* --- пункт --- */
+.select-option {
+  width: 100%;
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 16px 14px 16px;
+  background: none; border-bottom: 0px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-family: var(--font-family); font-size: 14px;
+  text-align: left; cursor: pointer;
+  transition: background .12s ease, color .12s ease;
+  position:relative;
+  
+}
+
+.select-option.active { background: var(--hover-1);}
+.select-option.is-selected { color: var(--lime); background: #2a323985; }
+.select-option.is-selected.active { background: var(--hover-1); }
+html[data-theme="light"] .select-option.is-selected { color: var(--text); font-weight:500; 
+                                                     background:#89898926;}
+html[data-theme="light"] .select-option.active {background:#8989891f !important;}
+.select-option.is-selected::after {
+  content: "\f00c";                    
+  font-family: "Font Awesome 7 Pro";
+  margin-left: auto;                   
+  font-size: 15px;
+}
+.select-option-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+.select-option-sub { font-family:var(--font-family); font-size: 12px; color: var(--text-dim); }
+.select-option[hidden] { display: none !important; }
+/* --- «добавить новое» --- */
+.select-add { color: var(--lime); margin:16px 0px 0 0px; width:calc(100% - 4px); font-weight: 400;}
+html[data-theme="light"] .select-add { color: var(--text);}
+.select-add:before {content:""; height:1px; background:var(--border); flex-basis:100%;
+                   margin:0px 0 0 0; position:absolute; top:-8px; left:-8px; right:-8px;}
+.select-add i {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--lime); color: #000;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 10px; flex-shrink: 0;
+}
+.select-add strong {font-weight: 600; }
+
+/* --- пусто --- */
+.select-empty, .select-hint {
+  padding: 14px 16px 14px 16px; font-size: 14px; font-style: italic;
+  color: var(--text-dim); 
+}
+.select-empty[hidden], .select-hint[hidden] { display: none !important; }
+
+
 @media (min-width: 1200px){
 .btn:hover:not(:disabled) {background:var(--hover-btn);} 
-.btn.outline:hover:not(:disabled) { background:var(--border);}     
+.btn.outline:hover:not(:disabled) { background:var(--hover-1);}   
+.select-option:hover { background: #2a323985;}   
+html[data-theme="light"] .select-option:hover { background: var(--hover-1);}  
+.select-option:not(.is-selected):hover {color:var(--text);}  
 }
 /***********************************/
+@media (max-width: 1200px) {
+  .select-search {margin:0 0px 10px 0;} 
+}
 @media (max-width: 1000px) {
-
+html[data-theme="light"] .input-field input:focus-visible, 
+html[data-theme="light"] .input-field textarea:focus-visible, 
+html[data-theme="light"] .select.open .select-trigger {
+    border: 1px solid var(--lime);
+    box-shadow: 0 0 6px #b0d300;
+} 
 }
 @media (max-width: 640px) {
-
+.select-option, .select-search input {font-size:16px;}
 }
-
+@media (max-width: 480px) {
+  .pill-full { display: none; }
+  .pill-short { display: inline; }
+}

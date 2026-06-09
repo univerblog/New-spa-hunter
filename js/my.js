@@ -244,4 +244,237 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+/* ============ UNIVERSAL SELECT ============ */
+(function(){
+  var current = null;
+  var lastNav = 0;
+  var downX = 0, downY = 0;
+
+  function close(){
+    if(!current) return;
+    var root = current;
+    current = null;
+    root.classList.remove('open');
+    root.querySelectorAll('.select-option.active').forEach(function(o){ o.classList.remove('active'); });
+    var f = root.querySelector('input, textarea');
+    if(f) f.blur();
+  }
+  
+  function open(root){
+    if(current && current !== root) close();
+    root.classList.add('open');
+    current = root;
+  }
+
+  function wordStarts(text, q){
+    var words = text.toLowerCase().split(/\s+/);
+    for(var i = 0; i < words.length; i++){
+        if(words[i].indexOf(q) === 0) return true;   
+    }
+    return false;
+  }
+
+  function init(root){
+    var trigger = root.querySelector('.select-trigger');
+    if(!trigger) return;
+    var field = trigger.matches('input, textarea')
+              ? trigger
+              : trigger.querySelector('input, textarea');
+    var searchInput = root.querySelector('.select-search input');
+    var remote = root.hasAttribute('data-remote');
+    var closeTimer;
+
+    function filter(raw){
+        var q  = (raw || '').trim();
+        var ql = q.toLowerCase();
+        var listVisible = 0;
+
+        root.querySelectorAll('.select-list .select-option').forEach(function(opt){
+            var show = !ql || wordStarts(opt.textContent, ql);
+            opt.hidden = !show;
+            if(show) listVisible++;
+        });
+
+        var add = root.querySelector('.select-add');
+        if(add){
+            var exact = false;
+            root.querySelectorAll('.select-list .select-option').forEach(function(opt){
+            if(opt.textContent.trim().toLowerCase() === ql) exact = true;
+            });
+            var showAdd = !!q && !exact;
+            add.hidden = !showAdd;
+            var term = add.querySelector('.select-add-term');
+            if(showAdd && term) term.textContent = q;
+        }
+
+        var total = root.querySelectorAll('.select-list .select-option').length;
+
+        var hint = root.querySelector('.select-hint');
+        if(hint) hint.hidden = total > 0;                     // список пуст → подсказка видна всегда (и при вводе)                   // список пуст и ничего не введено
+
+        var empty = root.querySelector('.select-empty');
+        if(empty) empty.hidden = !(q && listVisible === 0 && total > 0);  // пункты есть, но ввод не нашёл
+    }
+
+   function choose(opt){
+        var isAdd = opt.classList.contains('select-add');
+        var label, value;
+
+        if(isAdd){
+            label = value = (field && field.value || '').trim();
+            if(!label) return;
+            var list = root.querySelector('.select-list');           // создаём реальный пункт
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'select-option';
+            b.setAttribute('data-value', value);
+            b.textContent = label;
+            list.appendChild(b);
+            opt = b;                                                  // дальше как обычный пункт
+        } else {
+            var nameEl = opt.querySelector('.select-option-name');
+            label = (nameEl || opt).textContent.trim();
+            value = opt.getAttribute('data-value');
+        }
+
+        var valueEl = root.querySelector('.select-value');
+        if(valueEl) valueEl.textContent = label;
+        if(field) field.value = remote ? value : label;  
+
+        if(!remote){
+            root.querySelectorAll('.select-option').forEach(function(o){ o.classList.remove('is-selected'); });
+            opt.classList.add('is-selected');                         // галочка теперь на нужном
+        }
+
+        root.dispatchEvent(new CustomEvent('select:change', {
+            detail: { value: value, label: label, option: opt, added: isAdd }, bubbles: true
+        }));
+
+        clearTimeout(closeTimer);
+        if(!remote && !isAdd){
+            closeTimer = setTimeout(function(){ if(current === root) close(); }, 340);
+        } else {
+            close();   // add и remote — закрываем сразу, иначе новый пункт «прыгает»
+        }
+    }
+
+    // открытие + ввод
+    if(field){
+      if(!remote){
+
+        field.addEventListener('focus', function(){
+            open(root);
+
+            var sel = root.querySelector('.select-option.is-selected');
+            var selLabel = '';
+            if(sel){
+                var n = sel.querySelector('.select-option-name');
+                selLabel = (n ? n.textContent : sel.textContent).trim();
+            }
+            var committed = sel && selLabel === field.value.trim();   // в поле — выбранное?
+
+            filter(committed ? '' : field.value);   // выбранное → показать все; черновик → отфильтровать
+            if(!matchMedia('(pointer: coarse)').matches) field.select();
+        });
+
+        field.addEventListener('input', function(){
+            if(field.value.trim() === ''){
+                root.querySelectorAll('.select-option').forEach(function(o){ o.classList.remove('is-selected'); });
+                root.dispatchEvent(new CustomEvent('select:change', {
+                detail: { value: '', label: '', option: null, cleared: true }, bubbles: true
+                }));
+            }
+            filter(field.value);
+        });
+      } else {
+        field.addEventListener('focus', function(){
+            var q = field.value.trim();
+            if(!q) return;                                       // пусто — панели нет
+            filter(q);
+            if(root.querySelector('.select-list .select-option:not([hidden])')) open(root);
+        });
+        field.addEventListener('input', function(){
+            var q = field.value.trim();
+            if(!q){ close(); return; }
+            filter(q);
+            root.querySelector('.select-list .select-option:not([hidden])')
+            ? open(root)
+            : close();
+        });
+    }
+      field.addEventListener('blur', function(){ close(); });
+    } else {
+      trigger.addEventListener('click', function(){
+        if(root.classList.contains('open')){ close(); }
+        else {
+          open(root);
+          if(searchInput) searchInput.value = '';
+          filter('');
+          //if(searchInput) searchInput.focus(); // при открытии data-search ставим курсов в поиск
+        }
+      });
+    }
+    if(searchInput){
+      searchInput.addEventListener('input', function(){ filter(searchInput.value); });
+    }
+
+    // тап по пункту не блюрит поле/поиск
+    root.addEventListener('mousedown', function(e){
+      if(e.target.closest('.select-option')) e.preventDefault();
+    });
+
+    // выбор
+    root.addEventListener('click', function(e){
+      var opt = e.target.closest('.select-option');
+      if(!opt || !root.contains(opt) || opt.hidden) return;
+      choose(opt);
+    });
+
+  }
+
+  function visibleOpts(root){
+     return Array.prototype.slice.call(root.querySelectorAll('.select-list .select-option'))
+              .filter(function(o){ return !o.hidden; });
+  }
+    function move(root, dir){
+        var opts = visibleOpts(root);
+        if(!opts.length) return;
+        var cur = root.querySelector('.select-list .select-option.active');
+        var i = opts.indexOf(cur);
+        i = (i === -1) ? (dir > 0 ? 0 : opts.length - 1) : i + dir;
+        if(i < 0) i = opts.length - 1;
+        if(i >= opts.length) i = 0;
+        root.querySelectorAll('.select-option.active').forEach(function(o){ o.classList.remove('active'); });
+        opts[i].classList.add('active');
+        opts[i].scrollIntoView({ block: 'nearest' });
+    }
+
+    document.addEventListener('keydown', function(e){
+        if(!current) return;                                  // работает только при открытой панели
+        var root = current;
+        if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+            e.preventDefault();
+            var now = Date.now();
+            if(e.repeat && now - lastNav < 120) return;   // зажатие — не чаще раза в 120мс
+            lastNav = now;
+            move(root, e.key === 'ArrowDown' ? 1 : -1);
+        }
+        else if(e.key === 'Enter'){
+            var a = root.querySelector('.select-list .select-option.active');
+            if(a){ e.preventDefault(); a.click(); }             // выбрать подсвеченный (через choose)
+        }
+        else if(e.key === 'Escape'){ e.preventDefault(); close(); }
+    });
+
+  document.addEventListener('pointerdown', function(e){ downX = e.clientX; downY = e.clientY; });
+  document.addEventListener('pointerup', function(e){
+    if(!current) return;
+    var moved = Math.abs(e.clientX - downX) > 10 || Math.abs(e.clientY - downY) > 10;
+    if(!moved && !current.contains(e.target)) close();
+  });
+
+  function boot(){ document.querySelectorAll('[data-select]').forEach(init); }
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
+})();
+/////////////////////// 
   

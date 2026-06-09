@@ -169,7 +169,7 @@
 </section>
 
 
-<section class="section create-section" id="create">
+<section class="section" id="create">
   <div class="container">
     <div class="section-title">
       <h2>{{ __('Create your first link right now') }}</h2>
