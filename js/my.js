@@ -246,10 +246,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ============ UNIVERSAL SELECT ============ */
 (function(){
-  var current = null;
-  var lastNav = 0;
-  var downX = 0, downY = 0;
+  var current = null;          // селект, открытый прямо сейчас
+  var lastNav = 0;             // метка времени для троттлинга стрелок
+  var downX = 0, downY = 0;    // старт касания (тап vs скролл)
 
+  /* Закрыть открытый селект: снять .open и подсветку, увести фокус */
   function close(){
     if(!current) return;
     var root = current;
@@ -259,158 +260,162 @@ document.addEventListener('DOMContentLoaded', () => {
     var f = root.querySelector('input, textarea');
     if(f) f.blur();
   }
-  
+
+  /* Открыть селект (предварительно закрыв прежний) */
   function open(root){
     if(current && current !== root) close();
     root.classList.add('open');
     current = root;
   }
 
+  /* Совпадение по началу слова: режем текст на слова и ищем префикс */
   function wordStarts(text, q){
     var words = text.toLowerCase().split(/\s+/);
     for(var i = 0; i < words.length; i++){
-        if(words[i].indexOf(q) === 0) return true;   
+      if(words[i].indexOf(q) === 0) return true;
     }
     return false;
   }
 
+  /* Инициализация одного селекта: тип триггера, фильтр, выбор, обработчики */
   function init(root){
+    if(root.dataset.selectReady) return;      // защита от повторной инициализации
+    root.dataset.selectReady = '1';
+
     var trigger = root.querySelector('.select-trigger');
     if(!trigger) return;
-    var field = trigger.matches('input, textarea')
+
+    var field = trigger.matches('input, textarea')      // поле: сам триггер-инпут…
               ? trigger
-              : trigger.querySelector('input, textarea');
-    var searchInput = root.querySelector('.select-search input');
+              : trigger.querySelector('input, textarea'); // …либо инпут внутри обёртки
     var remote = root.hasAttribute('data-remote');
+
+    // статичные части панели — кэшируем один раз (пункты внутри списка читаем живьём)
+    var list        = root.querySelector('.select-list');
+    var addBtn      = root.querySelector('.select-add');
+    var hintEl      = root.querySelector('.select-hint');
+    var emptyEl     = root.querySelector('.select-empty');
+    var valueEl     = root.querySelector('.select-value');
+    var searchInput = root.querySelector('.select-search input');
     var closeTimer;
 
+    /* Фильтр списка по вводу: прячем неподходящие, рулим add/hint/empty (один проход) */
     function filter(raw){
-        var q  = (raw || '').trim();
-        var ql = q.toLowerCase();
-        var listVisible = 0;
+      var q  = (raw || '').trim();
+      var ql = q.toLowerCase();
+      var opts = list ? list.querySelectorAll('.select-option') : [];
+      var total = opts.length, listVisible = 0, exact = false;
 
-        root.querySelectorAll('.select-list .select-option').forEach(function(opt){
-            var show = !ql || wordStarts(opt.textContent, ql);
-            opt.hidden = !show;
-            if(show) listVisible++;
-        });
+      opts.forEach(function(opt){
+        var txt  = opt.textContent;
+        var dv   = (opt.getAttribute('data-value') || '').toLowerCase();
+        var show = !ql || wordStarts(txt, ql) || dv.indexOf(ql) === 0;   // совпадение по тексту ИЛИ по домену
+        opt.hidden = !show;
+        if(show) listVisible++;
+        if(txt.trim().toLowerCase() === ql) exact = true;
+      });
 
-        var add = root.querySelector('.select-add');
-        if(add){
-            var exact = false;
-            root.querySelectorAll('.select-list .select-option').forEach(function(opt){
-            if(opt.textContent.trim().toLowerCase() === ql) exact = true;
-            });
-            var showAdd = !!q && !exact;
-            add.hidden = !showAdd;
-            var term = add.querySelector('.select-add-term');
-            if(showAdd && term) term.textContent = q;
-        }
-
-        var total = root.querySelectorAll('.select-list .select-option').length;
-
-        var hint = root.querySelector('.select-hint');
-        if(hint) hint.hidden = total > 0;                     // список пуст → подсказка видна всегда (и при вводе)                   // список пуст и ничего не введено
-
-        var empty = root.querySelector('.select-empty');
-        if(empty) empty.hidden = !(q && listVisible === 0 && total > 0);  // пункты есть, но ввод не нашёл
+      if(addBtn){
+        var showAdd = !!q && !exact;                 // есть ввод И нет точного совпадения
+        addBtn.hidden = !showAdd;
+        var term = addBtn.querySelector('.select-add-term');
+        if(showAdd && term) term.textContent = q;
+      }
+      if(hintEl)  hintEl.hidden  = total > 0;                              // список пуст → подсказка видна
+      if(emptyEl) emptyEl.hidden = !(q && listVisible === 0 && total > 0); // пункты есть, но ввод не нашёл
     }
 
-   function choose(opt){
-        var isAdd = opt.classList.contains('select-add');
-        var label, value;
+    /* Выбор пункта (или создание нового через «Добавить») */
+    function choose(opt){
+      var isAdd = opt.classList.contains('select-add');
+      var label, value;
 
-        if(isAdd){
-            label = value = (field && field.value || '').trim();
-            if(!label) return;
-            var list = root.querySelector('.select-list');           // создаём реальный пункт
-            var b = document.createElement('button');
-            b.type = 'button';
-            b.className = 'select-option';
-            b.setAttribute('data-value', value);
-            b.textContent = label;
-            list.appendChild(b);
-            opt = b;                                                  // дальше как обычный пункт
-        } else {
-            var nameEl = opt.querySelector('.select-option-name');
-            label = (nameEl || opt).textContent.trim();
-            value = opt.getAttribute('data-value');
-        }
+      if(isAdd){
+        label = value = (field && field.value || '').trim();
+        if(!label) return;
+        var b = document.createElement('button');    // материализуем новый пункт в списке
+        b.type = 'button';
+        b.className = 'select-option';
+        b.setAttribute('data-value', value);
+        b.textContent = label;
+        list.appendChild(b);
+        opt = b;                                      // дальше — как обычный пункт
+      } else {
+        var nameEl = opt.querySelector('.select-option-name');
+        label = (nameEl || opt).textContent.trim();
+        value = opt.getAttribute('data-value');
+      }
 
-        var valueEl = root.querySelector('.select-value');
-        if(valueEl) valueEl.textContent = label;
-        if(field) field.value = remote ? value : label;  
+      if(valueEl) valueEl.textContent = label;
+      if(field)   field.value = remote ? value : label;   // ссылка → домен, остальное → подпись
 
-        if(!remote){
-            root.querySelectorAll('.select-option').forEach(function(o){ o.classList.remove('is-selected'); });
-            opt.classList.add('is-selected');                         // галочка теперь на нужном
-        }
+      if(!remote){                                         // у remote галочку не ставим
+        root.querySelectorAll('.select-option').forEach(function(o){ o.classList.remove('is-selected'); });
+        opt.classList.add('is-selected');
+      }
 
-        root.dispatchEvent(new CustomEvent('select:change', {
-            detail: { value: value, label: label, option: opt, added: isAdd }, bubbles: true
-        }));
+      root.dispatchEvent(new CustomEvent('select:change', {
+        detail: { value: value, label: label, option: opt, added: isAdd }, bubbles: true
+      }));
 
-        clearTimeout(closeTimer);
-        if(!remote && !isAdd){
-            closeTimer = setTimeout(function(){ if(current === root) close(); }, 340);
-        } else {
-            close();   // add и remote — закрываем сразу, иначе новый пункт «прыгает»
-        }
+      clearTimeout(closeTimer);
+      if(!remote && !isAdd){
+        closeTimer = setTimeout(function(){ if(current === root) close(); }, 340);  // дать увидеть галочку
+      } else {
+        close();   // add и remote — сразу, иначе новый пункт «прыгает»
+      }
     }
 
-    // открытие + ввод
+    /* --- открытие + ввод по типу триггера --- */
     if(field){
       if(!remote){
-
+        // папка/тег: открываем по фокусу
         field.addEventListener('focus', function(){
-            open(root);
-
-            var sel = root.querySelector('.select-option.is-selected');
-            var selLabel = '';
-            if(sel){
-                var n = sel.querySelector('.select-option-name');
-                selLabel = (n ? n.textContent : sel.textContent).trim();
-            }
-            var committed = sel && selLabel === field.value.trim();   // в поле — выбранное?
-
-            filter(committed ? '' : field.value);   // выбранное → показать все; черновик → отфильтровать
-            if(!matchMedia('(pointer: coarse)').matches) field.select();
+          open(root);
+          var sel = root.querySelector('.select-option.is-selected');
+          var selLabel = '';
+          if(sel){
+            var n = sel.querySelector('.select-option-name');
+            selLabel = (n ? n.textContent : sel.textContent).trim();
+          }
+          var committed = sel && selLabel === field.value.trim();   // в поле — выбранное?
+          filter(committed ? '' : field.value);                     // выбранное → всё; черновик → фильтр
+          if(!matchMedia('(pointer: coarse)').matches) field.select(); // выделять текст только на ПК
         });
-
         field.addEventListener('input', function(){
-            if(field.value.trim() === ''){
-                root.querySelectorAll('.select-option').forEach(function(o){ o.classList.remove('is-selected'); });
-                root.dispatchEvent(new CustomEvent('select:change', {
-                detail: { value: '', label: '', option: null, cleared: true }, bubbles: true
-                }));
-            }
-            filter(field.value);
+          if(field.value.trim() === ''){                            // стёр всё → сбросить выбор
+            root.querySelectorAll('.select-option').forEach(function(o){ o.classList.remove('is-selected'); });
+            root.dispatchEvent(new CustomEvent('select:change', {
+              detail: { value: '', label: '', option: null, cleared: true }, bubbles: true
+            }));
+          }
+          filter(field.value);
         });
       } else {
+        // ссылка: панель только при вводе/возврате с текстом, не на пустой фокус
         field.addEventListener('focus', function(){
-            var q = field.value.trim();
-            if(!q) return;                                       // пусто — панели нет
-            filter(q);
-            if(root.querySelector('.select-list .select-option:not([hidden])')) open(root);
+          var q = field.value.trim();
+          if(!q) return;
+          filter(q);
+          if(root.querySelector('.select-list .select-option:not([hidden])')) open(root);
         });
         field.addEventListener('input', function(){
-            var q = field.value.trim();
-            if(!q){ close(); return; }
-            filter(q);
-            root.querySelector('.select-list .select-option:not([hidden])')
-            ? open(root)
-            : close();
+          var q = field.value.trim();
+          if(!q){ close(); return; }
+          filter(q);
+          root.querySelector('.select-list .select-option:not([hidden])') ? open(root) : close();
         });
-    }
+      }
       field.addEventListener('blur', function(){ close(); });
     } else {
+      // кнопка-триггер: тоггл
       trigger.addEventListener('click', function(){
         if(root.classList.contains('open')){ close(); }
         else {
           open(root);
           if(searchInput) searchInput.value = '';
           filter('');
-          //if(searchInput) searchInput.focus(); // при открытии data-search ставим курсов в поиск
+          // if(searchInput) searchInput.focus();  // авто-фокус в поиск отключён (мобила)
         }
       });
     }
@@ -418,54 +423,58 @@ document.addEventListener('DOMContentLoaded', () => {
       searchInput.addEventListener('input', function(){ filter(searchInput.value); });
     }
 
-    // тап по пункту не блюрит поле/поиск
+    // тап по пункту не должен блюрить поле раньше клика
     root.addEventListener('mousedown', function(e){
       if(e.target.closest('.select-option')) e.preventDefault();
     });
 
-    // выбор
+    // выбор пункта (делегирование — ловит и впрыснутые JS-ом)
     root.addEventListener('click', function(e){
       var opt = e.target.closest('.select-option');
       if(!opt || !root.contains(opt) || opt.hidden) return;
       choose(opt);
     });
-
   }
 
+  /* Видимые пункты списка (для навигации стрелками) */
   function visibleOpts(root){
-     return Array.prototype.slice.call(root.querySelectorAll('.select-list .select-option'))
-              .filter(function(o){ return !o.hidden; });
+    return Array.prototype.slice.call(root.querySelectorAll('.select-list .select-option'))
+                .filter(function(o){ return !o.hidden; });
   }
-    function move(root, dir){
-        var opts = visibleOpts(root);
-        if(!opts.length) return;
-        var cur = root.querySelector('.select-list .select-option.active');
-        var i = opts.indexOf(cur);
-        i = (i === -1) ? (dir > 0 ? 0 : opts.length - 1) : i + dir;
-        if(i < 0) i = opts.length - 1;
-        if(i >= opts.length) i = 0;
-        root.querySelectorAll('.select-option.active').forEach(function(o){ o.classList.remove('active'); });
-        opts[i].classList.add('active');
-        opts[i].scrollIntoView({ block: 'nearest' });
+
+  /* Сдвиг подсветки .active по списку с зацикливанием */
+  function move(root, dir){
+    var opts = visibleOpts(root);
+    if(!opts.length) return;
+    var cur = root.querySelector('.select-list .select-option.active');
+    var i = opts.indexOf(cur);
+    i = (i === -1) ? (dir > 0 ? 0 : opts.length - 1) : i + dir;
+    if(i < 0) i = opts.length - 1;
+    if(i >= opts.length) i = 0;
+    root.querySelectorAll('.select-option.active').forEach(function(o){ o.classList.remove('active'); });
+    opts[i].classList.add('active');
+    opts[i].scrollIntoView({ block: 'nearest' });
+  }
+
+  /* Клавиатура (только при открытой панели): ↑↓ — навигация (троттл), Enter — выбрать, Esc — закрыть */
+  document.addEventListener('keydown', function(e){
+    if(!current) return;
+    var root = current;
+    if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+      e.preventDefault();
+      var now = Date.now();
+      if(e.repeat && now - lastNav < 120) return;   // зажатие — не чаще раза в 120мс
+      lastNav = now;
+      move(root, e.key === 'ArrowDown' ? 1 : -1);
     }
+    else if(e.key === 'Enter'){
+      var a = root.querySelector('.select-list .select-option.active');
+      if(a){ e.preventDefault(); a.click(); }        // выбрать подсвеченный (через choose)
+    }
+    else if(e.key === 'Escape'){ e.preventDefault(); close(); }
+  });
 
-    document.addEventListener('keydown', function(e){
-        if(!current) return;                                  // работает только при открытой панели
-        var root = current;
-        if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
-            e.preventDefault();
-            var now = Date.now();
-            if(e.repeat && now - lastNav < 120) return;   // зажатие — не чаще раза в 120мс
-            lastNav = now;
-            move(root, e.key === 'ArrowDown' ? 1 : -1);
-        }
-        else if(e.key === 'Enter'){
-            var a = root.querySelector('.select-list .select-option.active');
-            if(a){ e.preventDefault(); a.click(); }             // выбрать подсвеченный (через choose)
-        }
-        else if(e.key === 'Escape'){ e.preventDefault(); close(); }
-    });
-
+  /* Закрытие по тапу вне (отличаем тап от скролла по сдвигу пальца) */
   document.addEventListener('pointerdown', function(e){ downX = e.clientX; downY = e.clientY; });
   document.addEventListener('pointerup', function(e){
     if(!current) return;
