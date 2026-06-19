@@ -7,6 +7,7 @@
 .foot-brand p {font-size:14px;}
 .foot-brand p.foot-merch {font-size:16px;  white-space: nowrap; color:var(--text);}
 .foot-brand p.foot-merch span {color:var(--lime); font-size:18px; }
+html[data-theme="light"] .foot-brand p.foot-merch span {color:var(--text); }
 .foot-nav {display:flex; gap:0px; width:100%;}
 .foot-item {display:flex; flex-direction:column; gap:22px; flex:1;
            border-left:1px solid var(--border); padding:0 20px 0 30px;}
@@ -18,9 +19,9 @@
 
 
 /********* FOOT MENU **********/
-.foot-item ul {display:flex;flex-direction:column;gap:10px;list-style:none;}
+.foot-item ul {display:flex;flex-direction:column;gap:12px;list-style:none;}
 .foot-item ul li a {text-decoration:none; color:var(--text-muted); font-size:14px;
-                    display:block; line-height:1.4}
+                    display:block; line-height:1.2; }
 .foot-item .programs-list {display: grid; grid-template-columns: repeat(2, 1fr); gap:0px 20px;
                          display: grid;  }
 .foot-item .programs-list li {break-inside: avoid;  border-bottom: 12px solid transparent; }

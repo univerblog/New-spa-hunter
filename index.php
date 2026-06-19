@@ -63,6 +63,7 @@ $blade->share('current', $languages[$lang] ?? $languages[$defaultLang]);
 
 $routes = [
     '' => 'pages.home',
+    'cabinet' => 'pages.cabinet.cabinet',
 ];
 
 try {

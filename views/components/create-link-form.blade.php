@@ -87,9 +87,10 @@ $shops = [
   </div>
 
 </div>
-<br /><br />
+
 <!-- ============ CREATE LINK FORM ============ -->
 
+<br /><br />
 <div class="layout-block" id="">
 
 

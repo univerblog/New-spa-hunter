@@ -154,10 +154,10 @@ msgstr "Политика конфиденциальности"
 # =====================================================
 
 msgid "Affiliate platform for creators"
-msgstr "Партнёрская платформа для авторов"
+msgstr "Партнёрская платформа для&nbsp;авторов"
 
 msgid "Earn on your <span class=\"accent\">recommendations</span>"
-msgstr "Зарабатывайте на том, что <span class=\"accent\">уже&nbsp;советуете</span> аудитории"
+msgstr "Зарабатывайте на&nbsp;том, что <span class=\"accent\">уже&nbsp;советуете</span> аудитории"
 
 msgid "Your audience buys on your advice — you get a commission on every sale."
 msgstr "Аудитория покупает по вашим советам — вы получаете комиссию с каждой продажи."
@@ -292,3 +292,209 @@ msgstr "Заметка (опционально)"
 
 msgid "Folder (new or existing)"
 msgstr "Папка (новая или существующая)"
+
+# =====================================================
+#  HOME — No sponsors  /  Короткий блок
+# =====================================================
+
+msgid "90% of creators are leaving money on the table"
+msgstr "90% авторов упускают свои деньги"
+
+msgid "No sponsors?"
+msgstr "Нет спонсоров?"
+
+msgid "No platform monetization?"
+msgstr "Нет монетизации от площадки?"
+
+msgid "No matter. Affiliate links work from day one — for beginners and pros alike. No budget, no technical skills, no waiting."
+msgstr "Неважно. Партнёрские ссылки работают с первого дня – и у новичков, и у профи. Без бюджета, без технических навыков, без ожидания."
+
+msgid "You already recommend products to your audience."
+msgstr "Вы и так советуете товары своей аудитории."
+
+msgid "Start earning a commission for it."
+msgstr "Начните получать за это комиссию."
+
+msgid "Start earning"
+msgstr "Начать зарабатывать"
+
+# =====================================================
+#  ---------- F A Q ---------- 
+# =====================================================
+
+msgid "Questions? We've Got You"
+msgstr "Вопросы? Мы поможем"
+
+msgid "Search our FAQs for quick answers, or connect with us for extra support."
+msgstr "Найдите быстрые ответы в нашем FAQ или свяжитесь с нами для дополнительной поддержки."
+
+msgid "Didn't find an answer"
+msgstr "Не нашли ответ"
+
+msgid "Contact support"
+msgstr "Написать в поддержку"
+
+msgid "Getting started"
+msgstr "С чего начать"
+
+msgid "Earnings"
+msgstr "Заработок"
+
+msgid "Payouts and taxes"
+msgstr "Выплаты и налоги"
+
+msgid "Brands and niches"
+msgstr "Бренды и ниши"
+
+msgid "Trust and support"
+msgstr "Доверие и поддержка"
+
+msgid "Do I need a large following to sign up?"
+msgstr "Нужно ли мне много подписчиков для регистрации?"
+
+msgid "No. CPA Hunter works with creators of any size — from under 1,000 followers to millions. The platform pays for the value you bring, not the size of your audience. Some of our top earners have fewer than 10,000 followers."
+msgstr "Нет. CPA Hunter работает с авторами любого размера - от менее 1000 подписчиков до миллионников. Платформа платит за ценность, которую вы приносите, а не за размер аудитории. У некоторых наших топ-зарабатывающих авторов меньше 10 000 подписчиков."
+
+msgid "I don't consider myself an influencer — is this for me?"
+msgstr "Я не считаю себя инфлюенсером - подойдёт ли мне это?"
+
+msgid "Absolutely. If you share recommendations with friends, family or an audience — through any channel — you can monetize it. Bloggers, podcasters, newsletter authors and Telegram channel admins all earn with us."
+msgstr "Конечно. Если вы делитесь рекомендациями с друзьями, семьёй или аудиторией - через любой канал - можете это монетизировать. Зарабатывают блогеры, подкастеры, авторы рассылок и админы Telegram-каналов."
+
+msgid "How quickly will I start earning?"
+msgstr "Как быстро я начну зарабатывать?"
+
+msgid "Most creators publish their first link within 15 minutes of signing up. First earnings usually arrive within the first week."
+msgstr "Большинство авторов публикуют первую ссылку в течение 15 минут после регистрации. Первые заработки обычно приходят в первую неделю."
+
+msgid "Is signing up to CPA Hunter paid?"
+msgstr "Платная ли регистрация в CPA Hunter?"
+
+msgid "No. Signing up is free — no entry fees, subscriptions or hidden charges. We only earn when you earn."
+msgstr "Нет. Регистрация бесплатна — никаких платежей за вход, подписок или скрытых комиссий. Мы зарабатываем только когда зарабатываете вы."
+
+msgid "Do I have to wait for approval on every campaign?"
+msgstr "Нужно ли ждать одобрения каждой кампании?"
+
+msgid "No. Only your traffic source — your Instagram, TikTok, YouTube or Telegram — is reviewed, and that usually takes no more than an hour. After that all 41,783 programs are available instantly: create a link and publish. This is the key difference from Awin, CJ and Admitad, where every campaign waits 1–3 days for separate approval."
+msgstr "Нет. Модерируется только источник трафика – ваш Instagram, TikTok, YouTube или Telegram – и обычно это занимает не больше часа. После этого все 41 783 программ доступны мгновенно: создаёте ссылку и публикуете. Это главное отличие от Awin, CJ и Admitad, где каждая кампания ждёт отдельного одобрения 1–3 дня."
+
+msgid "How do I create an affiliate link?"
+msgstr "Как создать партнёрскую ссылку?"
+
+msgid "In three clicks: find a brand or product in the catalog of 50,000+ stores, click \"Create link\", copy your unique tracking link and share it. The Chrome extension lets you create links right from a store page."
+msgstr "В три клика: найдите бренд или товар в каталоге из 50 000+ магазинов, нажмите «Создать ссылку», скопируйте уникальную трекинг-ссылку и поделитесь ею. Chrome-расширение позволяет создавать ссылки прямо со страницы магазина."
+
+msgid "Which platforms can I share links on?"
+msgstr "На каких платформах можно делиться ссылками?"
+
+msgid "Anywhere you have an audience: Instagram, TikTok, YouTube, Twitter/X, Pinterest, Telegram, WhatsApp, Discord, a blog or a newsletter."
+msgstr "Везде, где есть аудитория: Instagram, TikTok, YouTube, Twitter/X, Pinterest, Telegram, WhatsApp, Discord, блог или рассылка."
+
+msgid "Do I need a website or blog?"
+msgstr "Нужен ли мне сайт или блог?"
+
+msgid "No website needed. CPA Hunter is built for creators on any platform — social media, messengers, video or audio."
+msgstr "Сайт не нужен. CPA Hunter построен для авторов на любой платформе — соцсети, мессенджеры, видео или аудио."
+
+msgid "Is there a mobile app?"
+msgstr "Есть ли мобильное приложение?"
+
+msgid "CPA Hunter works through the mobile web version on any phone. Native iOS and Android apps are on our roadmap."
+msgstr "CPA Hunter работает через мобильную веб-версию на любом телефоне. Нативные iOS и Android приложения — в нашем roadmap."
+
+msgid "How much can I realistically earn?"
+msgstr "Сколько я реально могу заработать?"
+
+msgid "It depends on your niche, engagement and consistency. Active creators earn from $50/mo (casual) to $10,000+/mo (full-time in high-value niches — tech, finance, travel)."
+msgstr "Зависит от ниши, engagement и регулярности. Активные авторы зарабатывают от $50/мес (casual) до $10 000+/мес (full-time в high-value нишах — tech, finance, travel)."
+
+msgid "What commissions do brands pay?"
+msgstr "Какие комиссии платят бренды?"
+
+msgid "From 3% (mass retail) to 50%+ (digital, SaaS, finance). Travel can pay $20–100+ per sale, SaaS pays recurring commissions."
+msgstr "От 3% (mass retail) до 50%+ (digital, SaaS, финансы). Travel может платить $20—100+ за продажу, SaaS — recurring комиссии."
+
+msgid "What if a customer returns an item?"
+msgstr "Что если клиент возвращает товар?"
+
+msgid "Commissions are paid after the brand's return window closes (30–60 days). Returns void the commission, but that's less than 5% of sales."
+msgstr "Комиссии выплачиваются после закрытия return-окна бренда (30—60 дней). Возвраты аннулируют комиссию, но это менее 5% продаж."
+
+msgid "Are there bonuses on top of commissions?"
+msgstr "Есть ли бонусы поверх комиссий?"
+
+msgid "Yes — a referral bonus, performance bonuses for top earners and exclusive brand campaigns with higher payouts."
+msgstr "Да — реферальный бонус, performance-бонусы для топ-зарабатывающих и эксклюзивные брендовые кампании с повышенными выплатами."
+
+msgid "How and when do I get paid?"
+msgstr "Как и когда мне платят?"
+
+msgid "Payouts go out every two weeks once you reach the $50 minimum. Processing takes 1–3 business days."
+msgstr "Выплаты идут раз в две недели при достижении минимума $50. Обработка — 1—3 рабочих дня."
+
+msgid "What payout methods are available?"
+msgstr "Какие способы выплат доступны?"
+
+msgid "PayPal, bank transfer, Wise, Payoneer. Cryptocurrency (USDT, USDC) is optional in settings."
+msgstr "PayPal, банковский перевод, Wise, Payoneer. Криптовалюта (USDT, USDC) — опционально в настройках."
+
+msgid "What about taxes?"
+msgstr "Что с налогами?"
+
+msgid "We provide annual earnings reports compatible with tax reporting in your country. You pay the taxes yourself — we just make the process easier."
+msgstr "Мы предоставляем годовые отчёты о доходах, совместимые с налоговой отчётностью в вашей стране. Налоги вы платите сами — мы упрощаем процесс."
+
+msgid "Which brands are on CPA Hunter?"
+msgstr "Какие бренды есть на CPA Hunter?"
+
+msgid "Over 50,000 brands across every niche — tech, finance, SaaS, fashion, beauty, home, travel, gaming, health. From mass retailers to premium DTC."
+msgstr "Более 50 000 брендов во всех нишах — tech, finance, SaaS, fashion, beauty, home, travel, gaming, health. От mass retailers до премиум DTC."
+
+msgid "Which niches earn the most?"
+msgstr "Какие ниши приносят больше всего?"
+
+msgid "Finance & fintech ($50–300+ per signup), SaaS (20–30% recurring), travel ($20–100+ per booking), tech (5–10% on high AOV)."
+msgstr "Finance & fintech ($50—300+ за регистрацию), SaaS (20—30% recurring), travel ($20—100+ за бронирование), tech (5—10% с высокого AOV)."
+
+msgid "Can I work with other networks?"
+msgstr "Можно ли работать с другими сетями?"
+
+msgid "Yes. You can use CPA Hunter alongside any other affiliate network. We don't require exclusivity."
+msgstr "Да. CPA Hunter можно использовать одновременно с любой другой affiliate-сетью. Эксклюзивность мы не требуем."
+
+msgid "What if my niche isn't available yet?"
+msgstr "Что если моей ниши пока нет?"
+
+msgid "Email partnerships@cpahunter.io. We add 500+ new brands every month and prioritize requests."
+msgstr "Напишите на partnerships@cpahunter.io. Мы добавляем 500+ новых брендов ежемесячно и приоритизируем запросы."
+
+msgid "Is CPA Hunter a legitimate service?"
+msgstr "CPA Hunter — это легитимный сервис?"
+
+msgid "CPA Hunter is operated by Landcompany OÜ, registered in Tallinn, Estonia. You can check reviews on Trustpilot."
+msgstr "CPA Hunter управляется Landcompany OÜ, зарегистрированной в Таллинне (Эстония). Отзывы можно проверить на Trustpilot."
+
+msgid "Do I need to disclose affiliate links?"
+msgstr "Нужно ли указывать партнёрскую ссылку?"
+
+msgid "Yes — to comply with FTC requirements (#ad, #affiliate) in the US and similar rules in the EU. Disclosure templates are in your dashboard."
+msgstr "Да — для соответствия требованиям FTC (#ad, #affiliate) в США и аналогичным в ЕС. Шаблоны раскрытия — в вашем дашборде."
+
+msgid "What about data privacy?"
+msgstr "Что с приватностью данных?"
+
+msgid "GDPR-compliant for the EU, CCPA for California. We never sell your data. Account export and deletion are available at any time."
+msgstr "GDPR-совместимы для ЕС, CCPA для Калифорнии. Мы никогда не продаём ваши данные. Экспорт и удаление аккаунта — в любой момент."
+
+msgid "Will I have an account manager?"
+msgstr "Будет ли у меня аккаунт-менеджер?"
+
+msgid "Creators earning $1,000+/mo get a dedicated account manager. All creators get chat and email support, with replies within 6 hours."
+msgstr "Авторы с доходом $1000+/мес получают выделенного аккаунт-менеджера. Все авторы — поддержка через чат и email, ответ в течение 6 часов."
+
+msgid "Is there training and a community?"
+msgstr "Есть ли обучение и сообщество?"
+
+msgid "Yes. A Creator Academy with free courses on growth and strategy, monthly webinars, offline meetups and a private Discord with 14,000+ creators."
+msgstr "Да. Creator Academy с бесплатными курсами по росту и стратегии, ежемесячные вебинары, оффлайн-митапы и приватный Discord на 14 000+ авторов."

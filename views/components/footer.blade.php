@@ -90,8 +90,9 @@
                 
             </div>
             <div class="foot-toggle">
-                <button class="theme-toggle">
-                    <i class="fa-regular fa-sun-bright"></i>
+                <button class="theme-toggle" aria-label="{{ __('Toggle theme') }}">
+                    <i class="fa-regular fa-sun-bright icon-sun"></i>
+                    <i class="fa-regular fa-moon icon-moon"></i>
                 </button>
                 <div class="dropdown-block lang-picker">
                     <button class="dropdown-btn">

@@ -80,7 +80,13 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-///////
+// TABS
+ function switchTab(i) {
+    document.querySelectorAll('.tab-btn').forEach((b, idx) => b.classList.toggle('active', idx === i));
+    document.querySelectorAll('.tab-panel').forEach((p, idx) => p.classList.toggle('active', idx === i));
+ }
+
+
 
 // =============================================
 // ACCORDION
@@ -113,6 +119,12 @@ const ACCORDION_TYPES = {
             closed: 'fa-plus',
             opened: 'fa-minus',
         },
+    },
+    'shops': {
+        item:    '.shop-row',
+        trigger: '.shop-btn',
+        content: '.shop-details',
+        
     },
 };
 

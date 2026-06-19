@@ -20,8 +20,8 @@
 </div>
 
 <!-- Тут общая модалка -->
-@include('components.forms.login')
-@include('components.modal')
+@include('components.modal.modal-windows')
+@include('components.modal.modal')
  
 <!------------------------->
 

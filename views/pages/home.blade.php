@@ -14,108 +14,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="container hero-grid">
-   
-
-      <div class="hero-left">
-        <div class="hero-eyebrow">{{ __('Affiliate platform for creators') }}</div>
-        <h1>{!! __('Earn on your <span class="accent">recommendations</span>') !!}</h1>
-        <p class="hero-lead">{{ __('Your audience buys on your advice — you get a commission on every sale.') }}</p>
-        <p class="hero-claim"><span class="accent">{{ __("The world's largest affiliate network.") }}</span> {{ __("Brand not here? Then it has no affiliate program at all.") }}</p>
-
-        <div class="hero-ctas">
-          <a href="#create" class="btn big">{{ __('Create link') }}</a>
-          <button type="button" class="btn big outline" id="hero-video-btn" aria-label="{{ __('Watch demo') }}">
-            <span class="hero-play-circle"><i class="fa-solid fa-play"></i></span>
-            {{ __('Watch demo') }}
-          </button>
-        </div>
-
-        <div class="hero-note">
-          <span>
-            <span class="hero-note-dot"></span>
-            <span><strong class="hero-note-num js-merchants-count">41&nbsp;783</strong> {{ __('shops') }}</span>
-          </span>
-          <span>
-            <span class="hero-note-dot"></span>
-            <span><strong>{{ __('No') }}</strong> {{ __('moderation') }}</span>
-          </span>
-          <span>
-            <span class="hero-note-dot"></span>
-            <span>{{ __('Payout from') }} <strong>$50</strong></span>
-          </span>
-          <span>
-            <span class="hero-note-dot"></span>
-            <span class="hero-pay-method">{{ __('Bank') }}</span>
-            <span class="hero-pay-method">PayPal</span>
-            <span class="hero-pay-method">Wise</span>
-            <span class="hero-pay-method">Payoneer</span>
-            <span class="hero-pay-method">Skrill</span>
-            <span class="hero-pay-method">Neteller</span>
-            <span class="hero-pay-method">Crypto</span>
-          </span>
-        </div>
-      </div>
-
-      <!-- Dashboard mockup (декоративный) -->
-      <div class="dash">
-        <div class="dash-head">
-          <div class="dash-tabs">
-            <span class="dash-tab">{{ __('Week') }}</span>
-            <span class="dash-tab active">{{ __('Month') }}</span>
-            <span class="dash-tab">{{ __('Year') }}</span>
-          </div>
-          <div class="dash-stats">
-            <span class="dash-stat dash-stat-green">$0.00 {{ __('confirmed') }}</span>
-            <span class="dash-stat dash-stat-orange">$20.86 {{ __('pending') }}</span>
-          </div>
-        </div>
-        <div class="chart-wrap">
-          <svg viewBox="0 0 400 160" preserveAspectRatio="none">
-            <line x1="0" y1="40" x2="400" y2="40" stroke="rgba(255,255,255,0.04)" stroke-width="1"></line>
-            <line x1="0" y1="80" x2="400" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="1"></line>
-            <line x1="0" y1="120" x2="400" y2="120" stroke="rgba(255,255,255,0.04)" stroke-width="1"></line>
-            <path d="M0,140 L20,135 L40,128 L60,138 L80,120 L100,115 L120,135 L140,90 L160,110 L180,55 L200,80 L220,40 L240,60 L260,30 L280,50 L300,70 L320,65 L340,90 L360,55 L380,75 L400,95" fill="none" stroke="#4DD8E5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
-            <path d="M0,150 L40,148 L80,145 L120,142 L160,135 L200,120 L220,80 L240,100 L260,105 L280,115 L320,108 L360,90 L400,118" fill="none" stroke="#FFB547" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
-            <circle cx="220" cy="80" r="3" fill="#FFB547"></circle>
-            <circle cx="260" cy="30" r="3" fill="#4DD8E5"></circle>
-            <circle cx="180" cy="55" r="3" fill="#4DD8E5"></circle>
-          </svg>
-        </div>
-        <div class="legend">
-          <span><i class="l-c"></i>{{ __('Clicks') }}</span>
-          <span><i class="l-p"></i>{{ __('Sales') }}</span>
-          <span><i class="l-r"></i>{{ __('Reward') }}</span>
-        </div>
-        <div class="dash-table">
-          <div class="dash-th">
-            <div>{{ __('Merchant') }}</div>
-            <div>{{ __('Link') }}</div>
-            <div>{{ __('Clicks') }}</div>
-            <div>{{ __('Sales') }}</div>
-            <div>{{ __('Status') }}</div>
-          </div>
-          <div class="dash-tr">
-            <div class="merchant"><span class="merchant-dot">T</span>Trip.com</div>
-            <div class="short-link">cpa.cx/d6...</div>
-            <div>40</div><div>7</div>
-            <div><span class="pill pill-amber">$29.33</span></div>
-          </div>
-          <div class="dash-tr">
-            <div class="merchant"><span class="merchant-dot">A</span>aviasales</div>
-            <div class="short-link">cpa.cx/29...</div>
-            <div>7</div><div>3</div>
-            <div><span class="pill pill-amber">$0.01</span></div>
-          </div>
-          <div class="dash-tr">
-            <div class="merchant"><span class="merchant-dot">A</span>adidas thailand</div>
-            <div class="short-link">cpa.cx/1c...</div>
-            <div>4</div><div>1</div>
-            <div><span class="pill pill-amber">$3.33</span></div>
-          </div>
-        </div>
-      </div>
-
-   
+      @include('components.hero-home')
   </div>
 </section>
 
@@ -168,6 +67,50 @@
   </div>
 </section>
 
+<section class="section" id="create">
+  <div class="container">
+      <div class="section-title" style="margin:0 auto 10px auto;">
+        <h2>Модалки</h2>
+        <p>Ввод данных</p>
+      </div>
+      <div class="modal-triggers">
+        <button class="btn min outline" onclick="openModal('modal-login')"> Вход </button>
+        <button class="btn min outline" onclick="openModal('modal-register')"> Регистрация </button>
+        <button class="btn min outline" onclick="openModal('modal-password-reset')"> Восстановление пароля </button>
+        <button class="btn min outline" onclick="openModal('modal-password-change')"> Смена пароля </button>
+        <button class="btn min outline" onclick="openModal('modal-email-change')"> Смена email </button>
+        <button class="btn min outline" onclick="openModal('modal-note-add')"> Добавить заметку </button>
+        <button class="btn min outline" onclick="openModal('modal-support-message')"> Сообщение в поддержку </button>
+        <button class="btn min outline" onclick="openModal('modal-2fa')"> Двухфакторная аутентификация </button>
+      </div>
+
+      <div class="section-title" style="margin:30px auto 10px auto;">
+        <p>Действия</p>
+      </div>
+      <div class="modal-triggers">
+        <button class="btn min outline" onclick="openModal('modal-link-delete')"> Отключить источник </button>
+        <button class="btn min outline" onclick="openModal('modal-account-delete')"> Удалить аккаунт </button>
+      </div>
+      
+      <div class="section-title" style="margin:30px auto 10px auto;">
+          <p>Вывод ошибок и сообщений</p>
+      </div>
+      <div class="modal-triggers">
+        <button class="btn min outline" onclick="openModal('modal-link-created')"> Ссылка готова </button>
+        <button class="btn min outline" onclick="openModal('modal-shop-not-found')"> Магазин не найден </button>
+        <button class="btn min outline" onclick="openModal('modal-reset-link-expired')"> Ссылка на пароль устарела </button>
+        <!-- <button class="btn min outline" onclick="openModal('modal-reset-link-expired-2')"> Ссылка на пароль устарела 2 </button> -->
+        <button class="btn min outline" onclick="openModal('modal-password-changed')"> Пароль успешно изменён </button>
+        <!-- <button class="btn min outline" onclick="openModal('modal-password-changed-2')"> Пароль успешно изменён 2 </button> -->
+        
+        <button class="btn min outline" onclick="openModal('modal-link-duplicate')"> Обнаружен дубликат ссылки </button>
+        <!-- <button class="btn min outline" onclick="openModal('modal-link-duplicate-2')"> Обнаружен дубликат ссылки 2 </button> -->
+        <button class="btn min outline" onclick="openModal('modal-link-error')"> Ошибка создания ссылки </button>
+        <!-- <button class="btn min outline" onclick="openModal('modal-link-invalid')"> Недействительная ссылка </button> -->
+    </div>
+  </div>
+</section> 
+
 
 <section class="section" id="create">
   <div class="container">
@@ -175,23 +118,69 @@
       <h2>{{ __('Create your first link right now') }}</h2>
       <p>{{ __("Paste a product URL or brand name — we'll find the store and generate an affiliate link.") }}</p>
     </div>
-    @include('components.forms.create-link-form')
+    @include('components.create-link-form')
     </div>
 </section> 
 
-<section class="sectiom" style="scroll-margin-top: 30px;">
-    <div class="container">
-        <div class="section-title">
-            <h2>Формы</h2>
-            <p>From signup to first commission in 4 simple steps.</p>
-        </div>
- 
-        <div class="flex-block-wrapper">
-            @include('components.form')
-        </div>
-            
+<section class="section">
+  <div class="container">
+     <div class="section-title">
+         <p class="text-eyebrow">{{ __('90% of creators are leaving money on the table') }}</p>
+         <h2>{{ __('No sponsors?') }}<br>{{ __('No platform monetization?') }}</h2>
+      </div>
+      <div class="objection-wrap">
+         <p>{{ __('No matter. Affiliate links work from day one — for beginners and pros alike. No budget, no technical skills, no waiting.') }}</p>
+         <p>{{ __('You already recommend products to your audience.') }} <span>{{ __('Start earning a commission for it.') }}</span></p>
+         <div class="btn-group">
+            <a data-auth="register" class="btn big">{{ __('Start earning') }}</a>
+         </div>
+      </div>
     </div>
-</section> 
+</section>
+
+<section class="section">
+  <div class="container">
+     <div class="section-title">
+        <h2>Продвигайте бренды,<br /> которые ваша аудитория уже покупает</h2>
+        <p>Тысячи топовых магазинов в каждой нише.</p>
+      </div>
+      @include('components.shops')
+    </div>
+</section>
+
+<section class="section">
+  <div class="container">
+     <div class="section-title">
+        <p class="text-eyebrow">Калькулятор доходности</p>
+        <h2>Реальные цифры дохода блогеров</h2>
+        <p>Выберите платформу, аудиторию, нишу и географию – посмотрите ожидаемый месячный доход.</p>
+      </div>
+      @include('components.calculator')
+    </div>
+</section>
+
+<section class="section">
+  <div class="container">
+     <div class="section-title">
+        <p class="text-eyebrow">Бренды-партнёры</p>
+        <h2>Топ детских магазинов</h2>
+      </div>
+      @include('components.shops-category')
+    </div>
+</section>
+
+<section class="section">
+  <div class="container">
+     <div class="section-title">
+        <h2>{{ __('Questions? We\'ve Got You') }}</h2>
+        <p>{{ __('Search our FAQs for quick answers, or connect with us for extra support.') }}</p>
+      </div>
+      @include('components.faq')
+    </div>
+</section>
+
+
+
 
 
 @endsection

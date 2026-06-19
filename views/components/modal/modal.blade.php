@@ -1,3 +1,6 @@
+@push('styles')
+    <link rel="stylesheet" type="text/css" href="/css/modal.css?v={{ rand() }}">  
+@endpush
 {{-- ============================================================
     УНИВЕРСАЛЬНАЯ СИСТЕМА МОДАЛОК (схема: один шелл, разные .modal-content)
     
@@ -84,8 +87,15 @@
         document.body.style.overflow = '';
     };
 
-    backdrop.addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
+    var _downOnBackdrop = false;
+
+    backdrop.addEventListener('mousedown', function (e) {
+        _downOnBackdrop = (e.target === this);   // нажатие началось именно на фоне
+    });
+
+    backdrop.addEventListener('click', function (e) {
+        if (e.target === this && _downOnBackdrop) closeModal();
+        _downOnBackdrop = false;
     });
 
     document.addEventListener('keydown', function(e) {
