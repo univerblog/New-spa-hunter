@@ -6,6 +6,7 @@
 Thumbs.db
 node_modules/
 vendor/
+img/
 
 # кэш BladeOne
 cache/
