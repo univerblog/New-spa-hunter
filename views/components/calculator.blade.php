@@ -17,6 +17,8 @@ foreach ($calc as $group => $items) {
     }
 }
 
+ini_set('serialize_precision', -1);
+
 @endphp
 
 <div class="calc" data-calc='{{ json_encode($ratesJson) }}'>

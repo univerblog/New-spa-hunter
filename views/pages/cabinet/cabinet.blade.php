@@ -1,7 +1,3 @@
-@php 
-//$faq = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/faq.php';
-@endphp
-
 @extends('layout.app')
 
 @push('styles')
@@ -13,7 +9,9 @@
     <div class="container">
         <div class="cabinet-wrapper">
              @include('components.cabinet.cabinet-nav')
-            <div class="cab-main"></div>
+            <div class="cabinet-main">
+                @include('pages.cabinet.cabinet-start')
+            </div>
         </div>  
       
     </div>

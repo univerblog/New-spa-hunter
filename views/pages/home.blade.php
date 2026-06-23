@@ -32,8 +32,8 @@
           <div class="hiw-icon"><i class="fa-solid fa-user-plus"></i></div>
           <div class="hiw-num">01</div>
         </div>
-        <h3>{{ __('Free registration') }}</h3>
-        <p>{{ __('30 seconds — via social login or email and password. No moderation, no entry barrier.') }}</p>
+        <h3>Зарегистрируйтесь и&nbsp;добавьте площадку</h3>
+        <p>30 секунд. Без порога входа по подписчикам и модерации кампаний. Также даём $5 бонусом к будущим выплатам.</p>
       </div>
 
       <div class="hiw-card">
@@ -41,8 +41,8 @@
           <div class="hiw-icon"><i class="fa-solid fa-display"></i></div>
           <div class="hiw-num">02</div>
         </div>
-        <h3>{{ __('Add your platform') }}</h3>
-        <p>{{ __('Connect Instagram, TikTok, YouTube, Twitch, X, Telegram or Facebook. We approve very fast!') }}</p>
+        <h3>Создайте партнёрскую ссылку</h3>
+        <p>Выберите любой из 40 000+ магазинов из каталога или вставьте URL на конкретный товар.</p>
       </div>
 
       <div class="hiw-card">
@@ -50,8 +50,8 @@
           <div class="hiw-icon"><i class="fa-solid fa-link"></i></div>
           <div class="hiw-num">03</div>
         </div>
-        <h3>{{ __('Create link') }}</h3>
-        <p>{{ __('Paste a product or store URL — get an affiliate link in 3 seconds.') }}</p>
+        <h3>Разместите ссылку в&nbsp;соцсетях</h3>
+        <p>Создавайте интересный и полезный контент о товаре и прикрепляйте к нему наши партнёрские ссылки.</p>
       </div>
 
       <div class="hiw-card">
@@ -59,8 +59,9 @@
           <div class="hiw-icon"><i class="fa-solid fa-dollar-sign"></i></div>
           <div class="hiw-num">04</div>
         </div>
-        <h3>{{ __('Get paid') }}</h3>
-        <p>{{ __('Your audience buys — you earn. Real-time tracking.') }}</p>
+        <h3>Получайте выплаты в&nbsp;любое время</h3>
+        <p>Аудитория покупает – вы зарабатываете. Отслеживание в реальном времени.</p>
+        <p class="hiw-dop">Первая выплата – $20 вместо $50. Плюс $5 наш бонус – до вывода остаётся заработать $15.</p>
       </div>
 
     </div>

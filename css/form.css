@@ -336,11 +336,12 @@ html[data-theme="light"] .select.open .select-trigger {
 } 
 }
 @media (max-width: 640px) {
-.select-list {max-height: 290px;}  
+.select-list {max-height: 286px;}  
 .select-option, .select-search input {font-size:16px;}
 }
 @media (max-width: 480px) {
   .btn-group > * {flex:1;}
+  .btn-group > .btn {min-height:48px;}
   .pill-full { display: none; }
   .pill-short { display: inline; }
   .modal-checkbox {padding:10px; margin:0 0 0 -2px;}

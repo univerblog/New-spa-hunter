@@ -61,6 +61,21 @@ $blade->share('route', '/' . $uri);
 $blade->share('languages', $languages);
 $blade->share('current', $languages[$lang] ?? $languages[$defaultLang]);
 
+// AJAX-фрагменты: рендерим ТОЛЬКО компонент транзакций, без страницы и лейаута
+$fragment = $_SERVER['HTTP_X_FRAGMENT'] ?? '';
+if ($fragment !== '') {
+    $fragments = [
+        'transactions' => 'components.cabinet.transactions',
+    ];
+    if (isset($fragments[$fragment])) {
+        echo $blade->run($fragments[$fragment], ['source' => $_GET['source'] ?? 'default']);
+    } else {
+        http_response_code(404);
+    }
+    exit;
+}
+////////////////////////////////////////////
+
 $routes = [
     '' => 'pages.home',
     'cabinet' => 'pages.cabinet.cabinet',
