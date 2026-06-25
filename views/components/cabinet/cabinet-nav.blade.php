@@ -4,7 +4,10 @@
             <div class="cab-prof__ava">SP</div>
             <div class="cab-prof__meta">
                 <h4>Sergey Pavlovich</h4>
-                <span class="level-bronze"><i class="fa-solid fa-circle fa-2xs"></i>Bronze</span>
+                <div class="cab-nav-level">
+                    <i class="fa-regular fa-chess-rook-piece"></i>
+                    <span>Bronze</span>
+                </div>
             </div>
         </div>
         <div class="cab-prof__progress">
@@ -17,6 +20,8 @@
             </div>
         </div>
     </div>
+
+    <div class="cab-nav-line"></div>
 
     <div class="cab-nav-group">
         <div class="cab-nav-title">Главное</div>

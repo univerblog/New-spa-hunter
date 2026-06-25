@@ -1,0 +1,84 @@
+/* --- Мменю личного кабинета --- */
+.cab-sidebar {display: flex;flex-direction: column;gap: 20px; background:var(--bg-card); border: 1px solid var(--border);
+              border-radius: var(--radius-md); padding:20px 14px 14px 14px; position: sticky; top: 80px;  }
+.cab-nav-line { background:var(--border);margin:0 -14px; display:flex; padding:1px;}
+.cab-prof__head { display: flex; align-items: center; gap: 12px; text-decoration:none; color:var(--text);}
+.cab-prof__ava {flex-shrink: 0;width: 44px; height: 44px; border-radius: 50%;
+    color: #000; display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px; background: linear-gradient(90deg, var(--lime) 0%, var(--cyan) 100%);
+}
+.cab-prof__meta h4 { font-size: 15px; font-weight: 600; margin: 0; }
+.cab-prof__meta .cab-nav-level {display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--text-muted); margin-top: 6px; margin-left:-2px;
+}
+.cab-prof__meta .cab-nav-level i { color:#fcff0087; font-weight:200; font-size:13px;}
+.cab-prof__progress { margin-top: 16px; }
+.cab-prof__progress-line {
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--text-muted); margin-bottom: 10px;
+}
+.cab-prof__progress-line .next-tier { color: var(--text); font-weight: 600; margin-left:6px;}
+.cab-prof__progress-bar {height: 4px; border-radius: var(--radius-pill); background: var(--text-dim); overflow: hidden;}
+.cab-prof__progress-fill { height: 100%; border-radius: inherit; background: var(--lime); }
+
+.cab-nav-group { display: flex; flex-direction: column; gap: 4px;}
+
+.cab-nav-title {font-size: 11px; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-dim); padding: 0 12px; margin-bottom: 4px;}
+.cab-nav-field { display: flex; flex-direction: column; gap: 2px; }
+.cab-nav-field a {display: flex; align-items: center; gap: 10px;padding: 10px 10px; border-radius: var(--radius-sm);
+    color: var(--text); font-size: 14px;
+    transition: background .15s, color .15s;text-decoration:none;
+}
+.cab-nav-field a i { font-size: 14px; color: var(--text-dim); margin-top:1px;}
+.cab-nav-field a.red, .cab-nav-field a.red i {color:var(--danger);}
+ html[data-theme="light"] .cab-nav-field a i {color:#888888; font-weight:600;}
+.cab-nav-field a.active {background: var(--lime-soft); color: var(--lime);  }
+.cab-nav-field a.active i {color: var(--lime);}
+
+.cab-nav-badge {margin-left: auto; min-width: 18px; height: 18px; 
+    border-radius: 50%; background: var(--lime); color: #000000;
+    font-size: 12px; font-weight: 500;
+    display: inline-flex; align-items: center; justify-content: center;
+                line-height:0.5;
+}
+
+.cab-nav-field a.featured i { color: var(--lime); }
+html[data-theme="light"] .cab-nav-field a.featured { background: #c3e9007a; color: #000000; }
+html[data-theme="light"] .cab-nav-field a.featured i { color: #000000;}
+
+/* --- Дропдаун верхнего меню кабинета для ПК --- */
+.header-auth {display:flex; align-items:center;}
+.header-auth > .btn {height:36px;}
+.header-auth .header-avatar {display:flex; justify-content:center; align-items:center; border-radius:50%;
+                              background: #00000070; border:1px solid var(--border-2); color:var(--lime);
+                              height:38px; width:38px; font-weight:600; text-transform:uppercase;}
+.header-auth .header-avatar img {width: 38px; height:38px;  border-radius:50%; display:flex; object-fit: cover;}
+.dropdown-item.header-cab-list {position:absolute; right:0; background:var(--bg-card); border-radius: var(--radius-md); padding:8px; 
+                             border:1px solid var(--border); margin-top:8px; width:280px;
+                            display: flex;flex-direction: column;gap: 8px;}
+.dropdown-item.header-cab-list .cab-nav-line {margin:0 -8px;}
+.dropdown-item.header-cab-list .cab-nav-field .cab-nav-line {margin:6px -8px;}
+.header-cab-list .cab-nav-profile {padding:4px 8px 14px 8px;}
+
+/* --- адаптив для левого меню кабинета --- */
+@media (min-width: 1200px) {
+    .cab-nav-field a:not(.active):not(.red):hover { background:var(--hover-1); color: var(--text); }
+    .cab-nav-field a.red:hover { background:var(--hover-1); }
+}
+@media (max-width: 1200px) {
+.cab-sidebar  {position:fixed !important;top:56px;bottom:0px; right:0px;
+              display:flex; flex-direction:column; justify-content:start; gap:20px;
+              background: var(--header); width:280px;
+              overflow-y:auto; overflow-x:hidden; padding:20px 16px 20px 16px !important;
+              transition: all 0.3s; transition: transform 0.3s ease;
+              transform: translateX(00%);
+              border: 0;
+              border-radius: 0; z-index:2; background:var(--bg); display:none;
+             }
+.cab-sidebar.show {transform: translateX(0); }  
+.cab-nav-profile {padding:0 4px 0 12px;}    
+}
+@media (max-width: 640px) {
+   .header-auth .header-avatar, .header-auth .header-avatar img {height:38px; width:38px; }
+}

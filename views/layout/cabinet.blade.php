@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
 @include('components.head')
+<link rel="stylesheet" type="text/css" href="/css/cabinet.css?v={{ rand() }}">  
 @stack('styles')
 </head>
 <body>
 
 <div class="wrapper">
-
     @include('components.header')
     <main>
-        <div class="for-mobile">
-            @include('components.cabinet.cabinet-nav')
-        </div>
-        @yield('content')
+        <section class="section">
+            <div class="container">
+                <div class="cabinet-wrapper">
+                    @include('components.cabinet.cabinet-nav')
+                    <div class="cabinet-main">
+                         @yield('content')
+                    </div>
+                </div>  
+            
+            </div>
+        </section>
     </main>
      @include('components.footer')
 </div>

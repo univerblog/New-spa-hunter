@@ -15,6 +15,7 @@
 
 <link rel="stylesheet" type="text/css" href="/css/base.css?v={{ rand() }}" />
 <link rel="stylesheet" type="text/css" href="/css/form.css?v={{ rand() }}" />
+<link rel="stylesheet" type="text/css" href="/css/cabinet-naw.css?v={{ rand() }}">  
 
 <!-- Icon-style -->
 <link rel="stylesheet" type="text/css" href="/css/icons/icon-font-css/fontawesome.css"/>

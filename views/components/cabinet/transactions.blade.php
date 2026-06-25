@@ -51,8 +51,8 @@
                 <div class="cab-tx-row" data-status="{{ $row['status'] }}">
                     <div class="cab-tx-date">{{ $row['date'] }}</div>
                     <div class="cab-tx-shop">{{ $row['shop'] }}</div>
-                    <div class="cab-tx-order">{{ $row['order'] }}</div>
-                    <div class="cab-tx-rate">{{ $row['rate'] }}</div>
+                    <div class="cab-tx-order"><span>Сумма заказа</span>{{ $row['order'] }}</div>
+                    <div class="cab-tx-rate"><span>Ставка</span>{{ $row['rate'] }}</div>
                     <div class="cab-tx-earned">{{ $row['earned'] }}</div>
                     <div class="cab-tx-status">{{ $tabs[$row['status']] }}</div>
                 </div>

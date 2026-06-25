@@ -1,9 +1,13 @@
 .header {position:fixed !important; background: var(--header); right:0; left:0; top:0; z-index:10;  
         box-shadow:0px 0px 10px var(--box-shadow);    }
-.header .container {padding:0px 40px; height:56px; display:flex; gap:10px;}
-.logo {display:flex; align-items:center;}
+.header .container {padding:0px 40px; height:56px; display:flex; gap:10px; justify-content:space-between; }
+.logo {display:flex; align-items:center; text-decoration:none; gap:4px; font-size:22px; font-weight:400; letter-spacing:1px; 
+       color:#c5c5c5;}
 .logo img {height:40px; display:block;}
- 
+.logo span {background:#0000004a; border-radius:6px; color:#d6ff00; padding:1px 0px 1px 4px; letter-spacing:0px; overflow:hidden;
+           height:28px; display:flex; align-items:center}
+.logo span i {font-style:italic; font-weight:600; margin-right:-5px} 
+html[data-theme="light"] .logo {color:var(--text)}
 /*----- menu -----*/
 .top-menu {display:flex;  position:relative;
     justify-content:space-between;  gap:10px; right:0; align-items:center; width:100%;}
@@ -59,20 +63,18 @@
   .nav .nav-dropdown:hover > button {color:var(--text);}
   .nav-dropdown-menu a:hover {background:var(--hover-1);}
   .nav .nav-dropdown button:hover, .nav a:hover {color:var(--text);}
-  .nav-special a:hover {border-color:var(--top-menu-lime); color:var(--top-menu-lime);}
-  
+  .nav-special a:hover {border-color:var(--top-menu-lime); color:var(--top-menu-lime);} 
 }
-
 
 /*------ header-actions ---------*/
 .header-actions {display:flex; gap:20px; align-items:center; z-index:0;}
 .header-toggle {display:flex; gap:10px;}
 
 /********* HAMBURGER **********/
-.nav-toggle {position: absolute;  right: 22px;  top: 4px; z-index: 12; outline:none;
-            cursor: pointer; padding: 24px 41px 26px 14px; display:none;}
+.nav-toggle {position: relative; top: 0px; z-index: 12; outline:none; margin-left:-20px;
+            cursor: pointer; padding: 28px 44px 26px 18px; display:none;}
 .nav-toggle span, .nav-toggle span:before, .nav-toggle span:after {cursor: pointer;border-radius: 1px;
-  height: 2px;width: 24px;background: var(--text);position: absolute;display: block;content: '';}
+  height: 2px;width: 24px;background: var(--text-muted); position: absolute;display: block;content: '';}
 .nav-toggle span:before {top: -10px; }
 .nav-toggle span:after {bottom: -10px;}
 .nav-toggle span, .nav-toggle span:before, .nav-toggle span:after {transition: all 200ms ease-in-out;}
@@ -82,13 +84,16 @@
 .nav-toggle.active span:after {transform: rotate(-45deg);}
 
 @media (max-width: 1200px) {
-.nav-toggle {display: block !important;}
-.top-menu {position:fixed !important;top:56px;bottom:0px;right:0px;left:auto;
+.nav-toggle {display: flex; order:-1;}  
+logo {order:12;} 
+.header-auth {order:2;} 
+.header-auth > .btn {height:36px;}  
+.top-menu {position:fixed !important;top:56px;bottom:0px; left:0px;
               display:flex !important; flex-direction:column; justify-content:start; gap:20px;
               background: var(--header); width:280px;
               overflow-y:auto; overflow-x:hidden; padding:16px 16px 20px 16px !important;
               transition: all 0.3s; transition: transform 0.3s ease;
-              transform: translateX(100%);
+              transform: translateX(-100%);
              }
 .top-menu.show {transform: translateX(0); }  
 .nav {flex-direction:column;}  
@@ -105,17 +110,21 @@
                                      justify-content:space-between;} 
 .nav .nav-dropdown button, .nav a {color:var(--mob-menu-text);}  
 .nav-dropdown-menu:before {display:none;} 
-.header-auth {display:flex; flex-direction:column; width:100%;}
 .header-actions {display:contents;}
 .header-toggle {width:100%; justify-content:space-between;}  
 .header-toggle .lang-picker {position:relative;}
 .lang-picker .dropdown-item {margin-top:auto; bottom:42px;
                              grid-template-columns: repeat(2, 1fr); }  
-.nav           { order:2; }
-.header-auth   { order:1; margin-bottom:-10px;}                    
-.header-toggle { order:3; margin-top:auto; } 
+.nav           { order:0; }                  
+.header-toggle { order:1; margin-top:auto; } 
 }
 @media (max-width: 640px) {
-   .header .container {padding:0px 20px; padding-right:80px;}
-   .nav-toggle {position: absolute;  right: 6px;}
+   .header .container {padding:0px 20px;}
+  
  }
+@media (max-width: 360px) {
+  .logo {margin-left:0px;}
+  .header-auth > .btn {padding:0 10px;}
+}
+
+

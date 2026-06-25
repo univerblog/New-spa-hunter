@@ -1,5 +1,8 @@
+@extends('layout.cabinet')
+
+@section('content')
 <div class="cab-page-title">
-    <h1>Привет, Alex!</h1>
+    <h1>Привет, Sergey Pavlovich!</h1>
     <p>Только начали&nbsp;– первые результаты обычно появляются за&nbsp;день-два после первой ссылки.</p>
 </div>
 
@@ -7,7 +10,7 @@
 <div class="cab-kpi-grid">
     <a href="" class="cab-kpi-card">
         <div class="cab-kpi-label">Доступно к&nbsp;выводу</div>
-        <div class="cab-kpi-value lime">$234,50</div>
+        <div class="cab-kpi-value lime">$24 234,50</div>
         <div class="cab-kpi-note">
             <div class="cab-link"><span>Вывести</span><i class="fa-regular fa-arrow-right fa-xs"></i></div>
         </div>
@@ -56,8 +59,8 @@
     <div class="cab-loyalty-card__head">
         <div class="cab-loyalty-current">
             <div class="cab-loyalty-current__level tier-silver">
-                <i class="fa-solid fa-triangle"></i>
-                <span>Silver</span>
+                <i class="fa-regular fa-chess-rook-piece"></i>
+                <span>Bronze</span>
             </div>
             <small>С 17 февраля 2026</small>
         </div>
@@ -82,40 +85,35 @@
 
    
     <div class="cab-loyalty-tiers">
-        <div class="cab-loyalty-tiers__item">
+        <div class="cab-loyalty-tiers__item current">
             <div class="cab-loyalty-tiers__name tier-bronze">
-                <i class="fa-solid fa-square fa-xs"></i>
+                <i class="fa-regular fa-chess-rook-piece"></i>
                 Bronze
             </div>
             <span>пройден</span>
         </div>
-        <div class="cab-loyalty-tiers__item current">
+        <div class="cab-loyalty-tiers__item">
             <div class="cab-loyalty-tiers__name tier-silver">
-               <i class="fa-solid fa-triangle"></i>
+               <i class="fa-regular fa-star"></i>
                 Silver</div>
             <span><b>+14%</b> · текущий</span>
         </div>
         <div class="cab-loyalty-tiers__item">
             <div class="cab-loyalty-tiers__name tier-gold">
-                <i class="fa-solid fa-star-sharp"></i>
+                <i class="fa-regular fa-trophy"></i>
                 Gold</div>
             <span><b>+29%</b> · $1&nbsp;500</span>
         </div>
         <div class="cab-loyalty-tiers__item">
             <div class="cab-loyalty-tiers__name tier-platinum">
-                <i class="fa-solid fa-crown"></i>
+                <i class="fa-regular fa-crown"></i>
                 Platinum</div>
             <span><b>+36%</b> · $7&nbsp;500</span>
         </div>
     </div>   
            
-      
-        
-    
-
     
 </div>
-
 
 <!-- Последние выплаты -->
 @include('components.cabinet.transactions', ['source' => 'cabinet'])
@@ -144,3 +142,11 @@
         </div>
     </a>
 </div>
+
+@endsection
+
+@push('scripts')
+
+
+
+@endpush

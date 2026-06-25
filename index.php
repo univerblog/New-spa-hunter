@@ -78,7 +78,8 @@ if ($fragment !== '') {
 
 $routes = [
     '' => 'pages.home',
-    'cabinet' => 'pages.cabinet.cabinet',
+    'cabinet' => 'pages.cabinet.cabinet-start',
+    'cabinet/cabinet-sources' => 'pages.cabinet.cabinet-sources',
 ];
 
 try {
