@@ -6,11 +6,11 @@
         <input type="hidden" name="" value="">
     
         <div class="social-block-auth">
-            <a href="" title="Google"><img src="img/social/google.svg" alt="Google"></a>
-            <a href="" title="apple"><img src="img/social/apple-white.svg" alt="Apple"></a>
-            <a href="" title="Facebook"><img src="img/social/facebook.svg" alt="Facebook"></a>
-            <a href="" title="X"><img src="img/social/x-white.svg" alt="x"></a>
-            <a href="" title="telegram"><img src="img/social/tg.svg" alt="telegram"></a>
+            <a href="" title="Google"><img src="/img/social/google.svg" alt="Google"></a>
+            <a href="" title="apple"><img src="/img/social/apple-white.svg" alt="Apple"></a>
+            <a href="" title="Facebook"><img src="/img/social/facebook.svg" alt="Facebook"></a>
+            <a href="" title="X"><img src="/img/social/x-white.svg" alt="x"></a>
+            <a href="" title="telegram"><img src="/img/social/tg.svg" alt="telegram"></a>
         </div>
         <p class="form-text-line">или войдите по email</p>
     
@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn">
+        <button type="submit" class="btn" onclick="cabLogin();">
             Войти 
         </button>
 
@@ -47,11 +47,11 @@
         <input type="hidden" name="" value="">
     
         <div class="social-block-auth">
-            <a href="" title="Google"><img src="img/social/google.svg" alt="Google"></a>
-            <a href="" title="apple"><img src="img/social/apple-white.svg" alt="Apple"></a>
-            <a href="" title="Facebook"><img src="img/social/facebook.svg" alt="Facebook"></a>
-            <a href="" title="X"><img src="img/social/x-white.svg" alt="x"></a>
-            <a href="" title="telegram"><img src="img/social/tg.svg" alt="telegram"></a>
+            <a href="" title="Google"><img src="/img/social/google.svg" alt="Google"></a>
+            <a href="" title="apple"><img src="/img/social/apple-white.svg" alt="Apple"></a>
+            <a href="" title="Facebook"><img src="/img/social/facebook.svg" alt="Facebook"></a>
+            <a href="" title="X"><img src="/img/social/x-white.svg" alt="x"></a>
+            <a href="" title="telegram"><img src="/img/social/tg.svg" alt="telegram"></a>
         </div>
         <p class="form-text-line">или используйте email</p>
     
@@ -227,21 +227,7 @@
         </div>
     </div>
 </div> 
-<!-- Пароль успешно изменён 2 -->
-<div class="modal-content" id="modal-password-changed-2" style="display:none;">
-    <h3>Ваш пароль успешно изменён</h3>
-    <div class="container-modal">
-        <div class="form-text-content" style="margin-bottom:10px;">
-            Ваш пароль успешно изменён.
-        </div>
-        <div class="btn-group right-group">
-            <button class="btn">
-            Войти с новым паролем <i class="fa-regular fa-arrow-right-to-bracket"></i>
-            </button>
-        </div>
-        
-    </div>
-</div> 
+
 
 <!-- Ссылка создана! -->
 <div class="modal-content" id="modal-link-created" style="display:none;">
@@ -277,23 +263,7 @@
             <button class="btn full">Да создать</button>
         </div>
     </div>
-</div>  
-<!-- Обнаружен дубликат ссылки 2-->
-<div class="modal-content" id="modal-link-duplicate-2" style="display:none;">
-    <h3 class="orange">
-        <i class="fa-regular fa-triangle-exclamation"></i> 
-        Обнаружен дубликат ссылки
-    </h3>
-    <div class="container-modal">
-        <div class="form-text-content" style="margin-bottom:10px;">
-            Такая реферальная ссылка уже создана. Точно создать ещё одну?
-        </div>
-        <div class="btn-group right-group">
-            <button class="btn outline">Отмена</button>
-            <button class="btn">Да создать</button>
-        </div>
-    </div>
-</div>  
+</div>   
 <!-- Ошибка! Не удалось создать ссылку. -->
  <div class="modal-content" id="modal-link-error" style="display:none;">
     <h3>Ошибка!</h3>
@@ -309,17 +279,18 @@
 </div>  
 <!-- Отключить источник -->
 <div class="modal-content" id="modal-link-delete" style="display:none;">
-    <h3>Отключить источник?</h3>
+    <h3>Отключить <span data-platform-name></span>?</h3>
     <div class="container-modal">
         <div class="form-text-content" style="margin-bottom:10px;">
             После отключения партнёрские ссылки этой площадки перестанут засчитываться.
         </div>
         <div class="btn-group right-group">
-            <button class="btn outline">Отмена</button>
-            <button class="btn red">Отключить</button>
+            <button class="btn outline" onclick="closeModal()">Отмена</button>
+            <button class="btn red" data-delete-confirm>Отключить</button>
         </div>
+        <div class="modal-loader"><i></i><span>Авторизуемся через API...</span></div>
     </div>
-</div>  
+</div>
 <!-- Удалить аккаунт -->
 <div class="modal-content" id="modal-account-delete" style="display:none;">
     <h3>Удалить аккаунт?</h3>
@@ -418,6 +389,48 @@
         </div>
     </div>
 </div>  
+
+<!-- Подключить источник через API -->
+<div class="modal-content" id="modal-connect-source" style="display:none;">
+    <h3>Подключить <span data-platform-name></span></h3>
+    <div class="container-modal">
+        <div class="form-text-content">
+            Авторизация через официальный API – мы получаем только базовую инфу о канале (название, число подписчиков, тематика). Доступ к публикации/чтению – нет.
+        </div>
+        <div class="modal-card">
+            <h4>Что мы получим:</h4>
+            <ul class="ul-modal-list">
+                <li>Название канала и handle</li>
+                <li>Число подписчиков</li>
+                <li>Тематика канала</li>
+                <li>Гео аудитории (агрегированно)</li>
+            </ul>
+        </div>
+
+        <div class="btn-group right-group">
+            <button class="btn outline" onclick="closeModal()">Отмена</button>
+            <a href="#" class="btn full" data-connect-oauth>Авторизация через <span data-platform-name></span></a>
+        </div>
+        <div class="modal-loader"><i></i><span>Авторизуемся через API...</span></div>
+    </div>
+</div>
+
+<!-- Подключить источник через ввод @ника -->
+<div class="modal-content" id="modal-connect-input-source" style="display:none;">
+    <h3>Подтвердите ваш аккаунт <span data-platform-name></span></h3>
+    <div class="container-modal">
+        <div class="input-group">
+            <div class="input-field">
+                <input type="text" name="" autofocus="" placeholder="Введите ваш @username" maxlength="254" data-connect-handle>
+            </div>
+        </div>
+        <div class="btn-group right-group">
+            <button class="btn outline" onclick="closeModal()">Отмена</button>
+            <button class="btn" data-connect-submit>Продолжить</button>
+        </div>
+        <div class="modal-loader"><i></i><span>Авторизуемся через API...</span></div>
+    </div>
+</div>
 @endpush
 
 @push('scripts')

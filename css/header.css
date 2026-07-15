@@ -1,7 +1,7 @@
 .header {position:fixed !important; background: var(--header); right:0; left:0; top:0; z-index:10;  
         box-shadow:0px 0px 10px var(--box-shadow);    }
 .header .container {padding:0px 40px; height:56px; display:flex; gap:10px; justify-content:space-between; }
-.logo {display:flex; align-items:center; text-decoration:none; gap:4px; font-size:22px; font-weight:400; letter-spacing:1px; 
+.logo {display:flex; align-items:center; text-decoration:none; gap:8px; font-size:22px; font-weight:400; letter-spacing:1px; 
        color:#c5c5c5;}
 .logo img {height:40px; display:block;}
 .logo span {background:#0000004a; border-radius:6px; color:#d6ff00; padding:1px 0px 1px 4px; letter-spacing:0px; overflow:hidden;
@@ -85,7 +85,6 @@ html[data-theme="light"] .logo {color:var(--text)}
 
 @media (max-width: 1200px) {
 .nav-toggle {display: flex; order:-1;}  
-logo {order:12;} 
 .header-auth {order:2;} 
 .header-auth > .btn {height:36px;}  
 .top-menu {position:fixed !important;top:56px;bottom:0px; left:0px;

@@ -4,6 +4,8 @@
 
 <header class="header">
     <div class="container top-block">
+        <div class="nav-toggle"><span></span></div>
+        
         <a href="/" class="logo"><span><i>CPA</i></span>Hunter</a>
         <div class="top-menu">
             
@@ -77,10 +79,12 @@
            
             <div class="header-actions">
                 <div class="header-toggle">
+
                     <button class="theme-toggle" type="button" aria-label="{{ __('Toggle theme') }}">
                         <i class="fa-regular fa-sun-bright icon-sun"></i>
                         <i class="fa-regular fa-moon icon-moon"></i>
                     </button>
+
                     <div class="dropdown-block lang-picker">
                         <button class="dropdown-btn">
                             <span class="fi fi-{{ $current['flag'] }}"></span>
@@ -95,61 +99,75 @@
                             @endforeach
                         </div>
                     </div>
+
                 </div>               
             </div>
 
         </div>
       
         <div class="header-auth">
-            <!-- <button class="btn min" onclick="openModal('modal-login')">Вход</button> -->
+            <button class="btn min" onclick="openModal('modal-login')" style="display:none;">Вход</button>
+
+            <a href="/cabinet/balance" class="header-balance">
+                <div>
+                    <small>Подтверждено</small>
+                    <span class="green">$234,50</span>
+                </div>
+                <div>
+                    <small>В ожидании</small>
+                    <span>$124,00</span>
+                </div>
+            </a>
 
             <div class="dropdown-block">
-                <button class="dropdown-btn header-avatar">
+                <button class="dropdown-btn header-avatar" data-cab-toggle>
                     <img src="/img/ava.webp" alt="">
                     <!-- <span>Sp</span> -->
                 </button>
                 <div class="dropdown-item header-cab-list">
-
-                    <div class="cab-nav-profile">
-                        <a href="cabinet" class="cab-prof__head">
-                           
-                            <div class="cab-prof__meta">
-                                <h4>Sergey Pavlovich</h4>
-                                <div class="cab-nav-level">
-                                    <i class="fa-regular fa-chess-rook-piece"></i>
-                                    <span>Bronze</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="cab-prof__progress">
-                            <div class="cab-prof__progress-line">
-                                <span>До <span class="next-tier">Silver</span></span>
-                                <span>$234 / $300</span>
-                            </div>
-                            <div class="cab-prof__progress-bar">
-                                <div class="cab-prof__progress-fill" style="width:78%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cab-nav-line"></div>
-                    <div class="cab-nav-group">
-                        <div class="cab-nav-field">
-                            <a href=""><i class="fa-regular fa-gear"></i>Настройки</a>
-                            <a href=""><i class="fa-regular fa-chart-line"></i>Статистика</a>
-                            <a href=""><i class="fa-regular fa-gift"></i>Партнёрская программа</a>
-                            <a href=""><i class="fa-regular fa-headset"></i>Поддержка</a>
-                            <div class="cab-nav-line"></div>
-                            <a href="" class="red"><i class="fa-regular fa-arrow-right-from-bracket"></i>Выйти</a>
-                        </div>
-                    </div>
-
+                    @include('components.cabinet.cabinet-short-nav')
                 </div>
             </div>
 
         </div>
 
-        <div class="nav-toggle"><span></span></div>
-
 
     </div>
 </header>
+
+@push('scripts')
+<script>
+// открытие меню кабинета в хедере можно выводить только у юзеров     
+(function(){
+    var btn    = document.querySelector('[data-cab-toggle]');   
+    var cab    = document.querySelector('.cab-sidebar');         
+    var navBtn = document.querySelector('.nav-toggle');          
+    var top    = document.querySelector('.top-menu');            
+    if(!btn || !cab) return;
+
+    var mq = window.matchMedia('(max-width:1200px)');
+
+    // ава: тоггл кабинета + закрыть основное
+    btn.addEventListener('click', function(e){
+        if(!mq.matches) return;          // ПК: не мешаем дропдауну
+        e.stopPropagation();             // мобила: гасим дропдаун-логику my.js
+        cab.classList.toggle('show');
+        if(top)    top.classList.remove('show');
+        if(navBtn) navBtn.classList.remove('active');
+    });
+
+    // бургер основного: закрыть кабинет
+    if(navBtn){
+        navBtn.addEventListener('click', function(){
+            cab.classList.remove('show');
+        });
+    }
+})();
+</script>
+
+<script>
+/// ЭТО ВРЕМЕННЫЙ СКРИПТ, ЛОГИН/ВЫХОД - УДАЛИТЬ ПОТОМ НА БЭКЕ !!!    
+
+/////////////////////////////////// ВЫШЕ УДАЛИТЬ !!!
+</script>
+@endpush

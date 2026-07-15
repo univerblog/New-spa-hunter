@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -66,6 +68,7 @@ $fragment = $_SERVER['HTTP_X_FRAGMENT'] ?? '';
 if ($fragment !== '') {
     $fragments = [
         'transactions' => 'components.cabinet.transactions',
+        'sources' => 'components.cabinet.sources',
     ];
     if (isset($fragments[$fragment])) {
         echo $blade->run($fragments[$fragment], ['source' => $_GET['source'] ?? 'default']);
@@ -79,7 +82,15 @@ if ($fragment !== '') {
 $routes = [
     '' => 'pages.home',
     'cabinet' => 'pages.cabinet.cabinet-start',
-    'cabinet/cabinet-sources' => 'pages.cabinet.cabinet-sources',
+    'cabinet/balance' => 'pages.cabinet.cabinet-balance', // Баланс
+    'cabinet/level' => 'pages.cabinet.cabinet-level', // Мой уровень
+    'cabinet/notifications' => 'pages.cabinet.cabinet-notifications', // Уведомления
+    'cabinet/referrals' => 'pages.cabinet.cabinet-referrals', // Реферальная программа
+    'cabinet/settings' => 'pages.cabinet.cabinet-settings', // Настройки
+    'cabinet/sources' => 'pages.cabinet.cabinet-sources', // Источники трафика
+    'cabinet/support' => 'pages.cabinet.cabinet-support', // Поддержка
+    'cabinet/tax' => 'pages.cabinet.cabinet-tax', // Налоговая информация
+    'cabinet/withdraw' => 'pages.cabinet.cabinet-withdraw', // Вывод средств
 ];
 
 try {

@@ -10,7 +10,7 @@
 <div class="wrapper">
     @include('components.header')
     <main>
-        <section class="section">
+        <section class="section cabinet-page">
             <div class="container">
                 <div class="cabinet-wrapper">
                     @include('components.cabinet.cabinet-nav')

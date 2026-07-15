@@ -6,10 +6,5 @@
     <p>Соцсети и площадки, с которых вы отправляете аудиторию. Кликните по плитке – подключим через OAuth.</p>
 </div>
 
+@include('components.cabinet.sources')
 @endsection
-
-@push('scripts')
-
-
-
-@endpush

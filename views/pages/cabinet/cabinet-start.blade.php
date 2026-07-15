@@ -58,7 +58,7 @@
 <div class="cab-loyalty-card">
     <div class="cab-loyalty-card__head">
         <div class="cab-loyalty-current">
-            <div class="cab-loyalty-current__level tier-silver">
+            <div class="cab-loyalty-current__level tier-bronze">
                 <i class="fa-regular fa-chess-rook-piece"></i>
                 <span>Bronze</span>
             </div>

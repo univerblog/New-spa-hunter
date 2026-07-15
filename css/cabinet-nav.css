@@ -47,8 +47,22 @@
 html[data-theme="light"] .cab-nav-field a.featured { background: #c3e9007a; color: #000000; }
 html[data-theme="light"] .cab-nav-field a.featured i { color: #000000;}
 
+/*------ header-balance ---------*/
+.header-auth {display:flex; align-items:center; gap:10px;}
+.header-balance { display: flex; align-items: center; gap: 10px; padding: 4px 16px; border-radius: 30px; 
+                 border: 1px solid var(--border-2); text-decoration: none; background: #00000008;
+                height:38px;}
+.header-balance > div { display: flex; flex-direction: column; }
+.header-balance > div:first-child {border-right:1px solid  var(--border-2); padding-right:10px; }
+.header-balance small { font-size: 8px; color: var(--text-muted); text-transform: uppercase; white-space: nowrap;}
+.header-balance span { font-size: 15px; font-weight: 500; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.header-balance span.green { color: var(--lime); }
+/* --- адаптив для header-balance --- */
+@media (min-width: 1200px) {
+   .header-balance:hover { border-color: rgba(214,255,0,0.4); }
+}
+
 /* --- Дропдаун верхнего меню кабинета для ПК --- */
-.header-auth {display:flex; align-items:center;}
 .header-auth > .btn {height:36px;}
 .header-auth .header-avatar {display:flex; justify-content:center; align-items:center; border-radius:50%;
                               background: #00000070; border:1px solid var(--border-2); color:var(--lime);
@@ -72,13 +86,14 @@ html[data-theme="light"] .cab-nav-field a.featured i { color: #000000;}
               background: var(--header); width:280px;
               overflow-y:auto; overflow-x:hidden; padding:20px 16px 20px 16px !important;
               transition: all 0.3s; transition: transform 0.3s ease;
-              transform: translateX(00%);
+              transform: translateX(100%);
               border: 0;
-              border-radius: 0; z-index:2; background:var(--bg); display:none;
+              border-radius: 0; z-index:2; background:var(--bg); 
              }
 .cab-sidebar.show {transform: translateX(0); }  
 .cab-nav-profile {padding:0 4px 0 12px;}    
 }
 @media (max-width: 640px) {
-   .header-auth .header-avatar, .header-auth .header-avatar img {height:38px; width:38px; }
+   .header-auth .header-avatar, .header-auth .header-avatar img {height:34px; width:34px; }
+    .header-balance {display:none;}
 }

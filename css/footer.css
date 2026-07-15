@@ -12,7 +12,12 @@ html[data-theme="light"] .foot-brand p.foot-merch span {color:var(--text); }
 .foot-item {display:flex; flex-direction:column; gap:22px; flex:1;
            border-left:1px solid var(--border); padding:0 20px 0 30px;}
 .foot-item:first-child {flex:3;}
-.foot-logo {margin-top:-13px; margin-bottom:-2px;}
+.foot-logo {margin-top:-13px; margin-bottom:12px;}
+.foot-logo {display:flex; align-items:center; text-decoration:none; gap:8px; font-size:22px; font-weight:400; letter-spacing:1px; 
+       color:#c5c5c5;}
+.foot-logo span {background:#000000c7; border-radius:6px; color:#d6ff00; padding:1px 0px 1px 4px; letter-spacing:0px; overflow:hidden;
+           height:28px; display:flex; align-items:center}
+.foot-logo span i {font-style:italic; font-weight:600; margin-right:-5px} 
 .foot-tit {font-size:17px; color:var(--text);}
 .foot-tit i {display:none;}
 .foot-item p {font-size:14px;}

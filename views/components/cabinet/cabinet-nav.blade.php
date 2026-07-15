@@ -26,36 +26,37 @@
     <div class="cab-nav-group">
         <div class="cab-nav-title">Главное</div>
         <div class="cab-nav-field">
-            <a href="" class="active"><i class="fa-regular fa-objects-column"></i>Главная</a>
+            <a href="/cabinet" class="{{ $route === '/cabinet' ? 'active' : '' }}"><i class="fa-regular fa-objects-column"></i>Главная</a>
             <a href=""><i class="fa-regular fa-link"></i>Мои ссылки</a>
             <a href=""><i class="fa-regular fa-chart-line"></i>Статистика</a>
-            <a href=""><i class="fa-regular fa-bell"></i>Уведомления<span class="cab-nav-badge">2</span></a>
+            <a href="/cabinet/sources" class="{{ $route === '/cabinet/sources' ? 'active' : '' }}"><i class="fa-regular fa-signal-stream"></i>Источники трафика</a>
+            <a href="/cabinet/level" class="{{ $route === '/cabinet/level' ? 'active' : '' }}"><i class="fa-regular fa-trophy"></i>Мой уровень</a>
         </div>
     </div>
 
     <div class="cab-nav-group">
         <div class="cab-nav-title">Деньги</div>
         <div class="cab-nav-field">
-            <a href=""><i class="fa-regular fa-wallet"></i>Баланс</a>
-            <a href=""><i class="fa-regular fa-arrow-down-to-line"></i>Вывод средств</a>
-            <a href=""><i class="fa-regular fa-file-invoice-dollar"></i>Налоги</a>
+            <a href="/cabinet/balance" class="{{ $route === '/cabinet/balance' ? 'active' : '' }}"><i class="fa-regular fa-wallet"></i>Баланс</a>
+            <a href="/cabinet/withdraw" class="{{ $route === '/cabinet/withdraw' ? 'active' : '' }}"><i class="fa-regular fa-arrow-down-to-line"></i>Вывод средств</a>
+            <a href="/cabinet/tax" class="{{ $route === '/cabinet/tax' ? 'active' : '' }}"><i class="fa-regular fa-file-invoice-dollar"></i>Налоговая информация</a>
         </div>
     </div>
 
     <div class="cab-nav-group">
         <div class="cab-nav-title">Заработать ещё</div>
         <div class="cab-nav-field">
-            <a href="" class="featured"><i class="fa-regular fa-gift"></i>Партнёрская программа</a>
+            <a href="/cabinet/referrals" class="featured {{ $route === '/cabinet/referrals' ? 'active' : '' }}"><i class="fa-regular fa-gift"></i>Партнёрская программа</a>
         </div>
     </div>
 
     <div class="cab-nav-group">
         <div class="cab-nav-title">Аккаунт</div>
         <div class="cab-nav-field">
-            <a href=""><i class="fa-regular fa-signal-stream"></i>Источники трафика</a>
-            <a href=""><i class="fa-regular fa-trophy"></i>Мой уровень</a>
-            <a href=""><i class="fa-regular fa-gear"></i>Настройки</a>
-            <a href=""><i class="fa-regular fa-arrow-right-from-bracket"></i>Выйти</a>
+            <a href="/cabinet/notifications" class="{{ $route === '/cabinet/notifications' ? 'active' : '' }}"><i class="fa-regular fa-bell"></i>Уведомления<span class="cab-nav-badge">2</span></a>
+            <a href="/cabinet/settings" class="{{ $route === '/cabinet/settings' ? 'active' : '' }}"><i class="fa-regular fa-gear"></i>Настройки</a>
+            <a href="/cabinet/support" class="{{ $route === '/cabinet/support' ? 'active' : '' }}"><i class="fa-regular fa-headset"></i>Поддержка</a>
+            <a href="" onclick="cabLogout(); return false;"><i class="fa-regular fa-arrow-right-from-bracket"></i>Выйти</a>
         </div>
     </div>
 </div>

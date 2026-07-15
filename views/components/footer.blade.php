@@ -15,7 +15,7 @@
 
         <div class="foot-wrapper" data-foot-accordion>
             <div class="foot-brand">
-                <a href="/" class="foot-logo"><img src="/img/logo.svg" alt=""></a>
+                <a href="/" class="foot-logo"><span><i>CPA</i></span>Hunter</a>
                 <p class="foot-merch"><span>41 783</span> {{ __('merchants and services') }}</p>
                 <p>{{ __('The largest affiliate platform for creators. Quick setup. Start earning today.') }}</p>
             </div>
