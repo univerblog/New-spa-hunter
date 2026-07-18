@@ -68,17 +68,10 @@ html[data-theme="light"] .modal-brand-stats span:first-child {color:var(--text);
 .modal-window .close:hover {background:var(--hover-1); color:var(--text-muted);}  
 }    
 /***************/
-
 @media (max-width: 640px) {  
  .modal-wrapper {transition: opacity 0s ease, visibility 0s;}   
  .modal-window {padding:20px 20px 20px 20px;}
  .modal-window .close {right:12px; top:12px;}
- .modal-content h3 {font-size:18px;margin-top:0px;} 
-   
+ .modal-content h3 {font-size:18px;margin-top:0px;}  
 }
-
-@media (max-width: 370px) {
-  
-}
-
 .modal-triggers {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}

@@ -100,6 +100,9 @@
         <button class="btn min outline" onclick="openModal('modal-link-created')"> Ссылка готова </button>
         <button class="btn min outline" onclick="openModal('modal-shop-not-found')"> Магазин не найден </button>
         <button class="btn min outline" onclick="openModal('modal-reset-link-expired')"> Ссылка на пароль устарела </button>
+
+        <button class="btn min outline" onclick="openModal('modal-add-payment-method')"> Метод оплаты добавлен </button>
+        <button class="btn min outline" onclick="openModal('mmodal-delete-payment-method')"> Удалить метод оплаты? </button>
         <!-- <button class="btn min outline" onclick="openModal('modal-reset-link-expired-2')"> Ссылка на пароль устарела 2 </button> -->
         <button class="btn min outline" onclick="openModal('modal-password-changed')"> Пароль успешно изменён </button>
         <!-- <button class="btn min outline" onclick="openModal('modal-password-changed-2')"> Пароль успешно изменён 2 </button> -->

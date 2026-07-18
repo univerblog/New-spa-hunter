@@ -116,7 +116,7 @@
 </div>
 
 <!-- Последние выплаты -->
-@include('components.cabinet.transactions', ['source' => 'cabinet'])
+@include('components.cabinet.transactions', ['source' => 'cabinet', 'perPage' => 6])
 
 <!-- Ссылки внизу -->
 <div class="cab-actions">

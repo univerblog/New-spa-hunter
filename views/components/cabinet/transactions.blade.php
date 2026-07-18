@@ -1,6 +1,7 @@
 @php
     // ===== выборка (бэк потом заменит источник на запрос к БД по $source) =====
     $source = $source ?? ($_GET['source'] ?? 'default');
+    $perPage = $perPage ?? (int) ($_GET['perPage'] ?? 6);
 
     $tabs = [
         'all'       => 'Все',
@@ -18,7 +19,6 @@
         ? $all
         : array_values(array_filter($all, fn($t) => $t['status'] === $status));
 
-    $perPage    = 6;
     $total      = count($rows);
     $totalPages = max(1, (int) ceil($total / $perPage));
     $page       = max(1, min($totalPages, (int) ($_GET['page'] ?? 1)));
@@ -32,7 +32,7 @@
 @php $fragment = function () use ($tabs, $status, $page, $totalPages, $pageRows) { @endphp
     @if (count($pageRows) === 0)
         <div class="cab-tx-empty">
-            <div class="cab-tx-empty-icon"><i class="fa-regular fa-clock"></i></div>
+            <div class="cab-tx-empty-icon"><i class="fa-light fa-clock"></i></div>
             <div class="cab-tx-empty-title">Транзакций ещё нет</div>
             <div class="cab-tx-empty-text">Поделись ссылкой в&nbsp;видео или посте&nbsp;– первый клик и&nbsp;комиссия появятся здесь после прохождения через мерчанта.</div>
         </div>
@@ -89,7 +89,7 @@
     @php $fragment(); @endphp
 @else
     {{-- ===== обычный заход: весь блок ===== --}}
-    <div class="cab-card cab-tx-block" data-source="{{ $source }}" id="transactions">
+   <div class="cab-card cab-tx-block" data-source="{{ $source }}" data-per-page="{{ $perPage }}" id="transactions">
         <div class="cab-card-head">
             <div class="cab-card-title">Последние транзакции</div>
 
@@ -138,14 +138,16 @@
         }
 
         function loadTx(block, status, page) {
-            var source = block.dataset.source || 'default';
-            var panel  = block.querySelector('.cab-tx-panel');
-            panel.classList.add('is-loading');
+        var source  = block.dataset.source || 'default';
+        var perPage = block.dataset.perPage || 6;
+        var panel   = block.querySelector('.cab-tx-panel');
+        panel.classList.add('is-loading');
 
-            var url = location.pathname +
-                      '?source=' + encodeURIComponent(source) +
-                      '&status=' + encodeURIComponent(status) +
-                      '&page='   + encodeURIComponent(page);
+        var url = location.pathname +
+                '?source='  + encodeURIComponent(source) +
+                '&status='  + encodeURIComponent(status) +
+                '&page='    + encodeURIComponent(page) +
+                '&perPage=' + encodeURIComponent(perPage);
 
             fetch(url, { headers: { 'X-Fragment': 'transactions' } })
                 .then(function (r) { return r.text(); })

@@ -1,4 +1,4 @@
-
+.layout-form {display:flex; flex-direction:column; gap:18px;}
 button {font-family: var(--font-family); background:none; border:0; font-size:initial;}
 .input-fix-btn {color:#999; border:0; position:absolute; right:0px; bottom:0px; display:flex; width:52px; 
                 height:48px; border-radius: var(--radius-sm); align-items:center; justify-content:center; 
@@ -6,14 +6,14 @@ button {font-family: var(--font-family); background:none; border:0; font-size:in
 .input-field:has(.input-fix-btn) input {padding-right:60px;}
 /*****/
 .input-field {display:flex; flex-direction: column; gap:8px; flex:1; position:relative; align-items:stretch;}
-.input-field label {color: var(--text-dim); font-size:14px; margin-left:20px}
+.input-field label {color: var(--text-dim); font-size:14px; margin-left:18px}
 .input-field input, .input-field textarea, .input-field select {
     border: 1px solid var(--border-input);
     border-radius: var(--radius-md);
     background: var(--bg-input);
     font-size: 14px;
     color: var(--text);
-    padding:0px 20px;
+    padding:0px 18px;
     outline: none;
     font-family: var(--font-family);
     display:inline-flex;
@@ -44,23 +44,26 @@ button {font-family: var(--font-family); background:none; border:0; font-size:in
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
-input:-webkit-autofill:focus{
-   background: var(--bg-input) !important;
-    -webkit-text-fill-color: var(--text);
+input:-webkit-autofill:focus {
     box-shadow: inset 5px 5px 5px var(--input-shadow);
     transition: background-color 5000s ease-in-out 0s;
-    -webkit-background-clip: text;
-  
+    -webkit-text-fill-color: var(--text) !important;
+    caret-color: var(--text) !important;
 }
 input:-webkit-autofill:focus {
-   border: 1px solid var(--input-focus);
+    border: 1px solid var(--input-focus);
     box-shadow: 0 0 4px var(--input-focus);
 }
 
 /*--- input-group ---*/
 .input-group {display:flex;flex-direction:column;gap:10px;}
-.input-group-horisontal {display:flex; gap:10px; flex-wrap:wrap; align-items:end;}
+.input-group-horisontal {display:flex; gap:18px 10px; flex-wrap:wrap; align-items:end;}
 .input-group-horisontal > * {}
+.form-group-name {border-bottom:1px solid var(--border); padding:0 0px 14px 0px; text-align:center; margin-top:10px;}
+.form-group-name h3 {color:var(--text-muted); font-size:14px; margin-bottom:4px;}
+.form-group-name p {color:var(--text-dim); font-size:13px;}
+
+.input-field__hint {color: var(--text-dim); font-size:14px; margin-left:18px;}
 
 /*--- Подсказки для ввода пароля ---*/
 .auth-pwhints {display: flex;flex-wrap: wrap;gap: 4px; justify-content:center; margin:0 -10px;}
@@ -146,11 +149,11 @@ html[data-theme="light"] .social-block-auth img[src$="x-white.svg"]     { conten
   width:100%;
   height: 48px;
   display: flex; align-items: center; gap: 10px;
-  padding: 0 16px;
+  padding: 0 18px 0 18px;
   background: var(--bg-input);
   border: 1px solid var(--border-input);
   border-radius: var(--radius-md);
-  /*box-shadow: inset 5px 5px 5px var(--input-shadow);*/
+  box-shadow: inset 5px 5px 5px var(--input-shadow);
   color: var(--text);
   font-family: var(--font-family);
   font-size: 14px;
@@ -168,7 +171,7 @@ button.select-trigger:focus-visible { outline: none; }
 .select-panel {position: absolute;
   top: calc(100% + 6px);
   left: 0; right: 0;
-  z-index: 10;
+  z-index: 2;
   display: none;
   background: var(--bg);
   border: 1px solid var(--border);
@@ -182,20 +185,15 @@ html[data-theme="light"] .select-panel  {background: var(--bg-card);}
 
 /* --- поиск внутри селект --- */
 .select-search {
-  display: flex; align-items: center; gap: 8px;
-  padding: 0px 20px; 
-  border-bottom: 1px solid var(--border);
-   height:48px; min-height:48px;
-    -webkit-appearance: none;
-    appearance: none;
-  border: 1px solid var(--border-input);
-  border-radius: var(--radius-md);
-  margin:0 20px 10px 0;
+  display:flex; position:relative; margin:0 4px 10px 0;
 }
-.select-search i { color: var(--text-dim); font-size: 13px; }
+.select-search i { color: var(--text-dim); font-size: 16px; position:absolute; top:17px; left:14px;}
 .select-search input {
-  flex: 1; border: 0; background: none; outline: none;
-  color: var(--text); font-family: var(--font-family); font-size: 14px;
+  background: none; outline: none;
+  color: var(--text); font-family: var(--font-family); font-size: 14px; border:1px solid #99999942;
+  flex:1; padding-left:46px;  height:48px; min-height:48px;
+    -webkit-appearance: none;
+    appearance: none; background:#242424; box-sizing:border-box;
 }
 .select-search input::placeholder { color: var(--text-dim); }
 
@@ -318,7 +316,7 @@ html[data-theme="light"] textarea::-webkit-scrollbar-thumb  { background: #a8a8a
 .btn:hover:not(:disabled) {background:var(--hover-btn);} 
 .btn.red:hover:not(:disabled) {background:#da2222;}  
 .btn.outline:hover:not(:disabled) { background:var(--hover-1);}   
-.select-option:hover { background: #36363685;}   
+.select-option:hover { background: #36363657;}   
 html[data-theme="light"] .select-option:hover { background: var(--hover-1);}  
 .select-option:not(.is-selected):hover {color:var(--text);} 
 .form-text a:hover, .form-text-mini a:hover, .form-btn-link:hover {color:var(--text);}   

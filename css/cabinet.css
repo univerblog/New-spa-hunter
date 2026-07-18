@@ -145,8 +145,8 @@ html[data-theme="light"] .cab-graph-area { fill: rgb(214 255 0 / 33%); }
 .cab-tx-empty-icon { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.04); 
                     color: var(--text-muted); display: flex; align-items: center; justify-content: center; 
                     font-size: 22px; margin-bottom: 4px; }
-.cab-tx-empty-title { font-size: 14px; font-weight: 500; color: var(--text); }
-.cab-tx-empty-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; max-width: 320px; }
+.cab-tx-empty-title { font-size: 16px; font-weight: 500; color: var(--text); }
+.cab-tx-empty-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; max-width: 420px; }
 
 /*--- АДАПТИВ для таблицы транзакций ---*/
 @media (min-width: 1200px) {
@@ -231,13 +231,15 @@ html[data-theme="light"] .cab-graph-area { fill: rgb(214 255 0 / 33%); }
                     font-size: 22px; margin-bottom: 4px; }
 .sources-empty-title span {font-size:16px; color: var(--text);}
 /* ===== Подключённый источник (строка списка) ===== */
-.source-row { display: flex; align-items: center; gap: 14px; padding: 12px 10px; background: rgba(255,255,255,0.025); 
+.source-row { display: flex; align-items: center; gap: 14px; padding: 12px 10px 12px 42px; background: rgba(255,255,255,0.025); 
              border-radius: 6px; transition: background 0.15s;
-             background: var(--bg-card); border: 1px solid var(--border);}
-.source-row i { flex-shrink: 0; width: 22px; font-size: 22px; color: var(--lime); text-align: center; }
+             background: var(--bg-card); border: 1px solid var(--border); position:relative;}
+.source-row i { flex-shrink: 0; width: 22px; font-size: 18px; color: var(--lime); text-align: center; }
+.source-row > i {position:absolute;
+              top:13px; left:10px;}
 .source-row.blocked > i, .source-row.blocked > div {opacity: 0.4; }
-.source-row div { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
-.source-row strong { font-size: 15px; font-weight: 500; color: var(--text); }
+.source-row div { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+.source-row strong { font-size: 16px; font-weight: 500; color: var(--text); }
 .source-row small { font-size: 13px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .source-row .badge { flex-shrink: 0; padding: 3px 9px; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; border-radius: 999px; }
 .source-row .badge.review { background: rgba(255,180,0,0.14); color: var(--orange); }
@@ -401,3 +403,268 @@ html[data-theme="light"] .cab-graph-area { fill: rgb(214 255 0 / 33%); }
     .level-benefits__grid { grid-template-columns: 1fr; }
     .level-top__row { grid-template-columns: 96px 1fr 56px; gap: 10px; }
 }
+
+/*   --- Страница баланса ---   */
+/* --- Бонус на старт (баланс) --- */
+.bonus-card { padding: 16px 18px; }
+.bonus-card__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0; }
+.bonus-card__row span { font-size: 13px; color: var(--text-muted); }
+.bonus-card__row:first-child span {font-size: 16px; color: var(--text); }
+.bonus-card__row b { font-size: 13px; font-weight: 600; color: var(--text); }
+.bonus-card__row b.lime { color: var(--lime); }
+.bonus-card__track { height: 6px; background: rgba(255, 255, 255, 0.06); border-radius: 8px; overflow: hidden; 
+                    margin-top: 8px; margin-bottom:10px;}
+.bonus-card__fill { height: 100%; background: linear-gradient(90deg, var(--lime), #5BE584); border-radius: 999px; }
+.bonus-card__link { display: inline-block; margin-top: 9px; font-size: 12px; color: var(--cyan); text-decoration: none; }
+.bonus-card__link span { border-bottom: 1px dashed currentColor; padding-bottom: 1px; }
+.bonus-card__link i { margin-left: 4px; }
+/* Адаптив для стр баланса */
+@media (max-width: 640px) {
+    .bonus-card { padding: 8px 10px 14px 10px; }
+}
+
+/* --- СТР ВЫВОД СРЕДСТВ -- */
+/* === ФОРМА ВЫВОДА === */
+/* --- Плашка 2FA --- */
+.tfa-note { display: flex; gap: 12px; align-items: flex-start; padding: 16px 18px; background: rgba(77,216,229,0.07); border: 1px solid rgba(77,216,229,0.28); border-radius: var(--radius-md); }
+.tfa-note__cont i { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--cyan); color: #000; 
+                   display: flex; align-items: center; justify-content: center; font-size: 13px; margin-top:4PX;}
+.tfa-note__cont { display: flex; gap: 20px; flex: 1;}
+.tfa-note__cont__txt {display:flex; flex-direction:column; gap:8px;}
+.tfa-note__cont__txt strong { font-size: 14px; font-weight: 600; color: var(--text); }
+.tfa-note__cont__txt small { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; max-width: 640px; }
+
+
+/* --- Раскладка формы --- */
+.wd-block { display: flex; gap: 20px; align-items:start; justify-content:space-between;}
+.wd-block__fields {min-width:10px; flex:1; max-width:560px;}
+.wd-block__aside {background: #00000000; border: 0px solid var(--border); border-radius: var(--radius-md); padding: 0px 10px;
+                 }
+
+.wd-available { font-size: 30px; font-weight: 500; color: var(--lime); font-variant-numeric: tabular-nums; line-height: 1; 
+              text-align:right; white-space:nowrap;}
+.wd-block__fields .cab-card-head {margin-bottom:16px;}
+.wd-block__aside .cab-card-title { margin-bottom: 6px; font-size:13px; color:var(--text-muted);}
+.wd-label { font-size: 14px; margin: 16px 0 0px; color:var(--text-dim);}
+.wd-block__fields > .wd-label:first-of-type { margin-top: 0; margin-bottom: 10px; }
+
+/* --- Поле суммы --- */
+.wd-amount { display: flex; align-items: center; padding: 0px 14px; margin: 10px 0; 
+           background: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-md);
+  box-shadow: inset 5px 5px 5px var(--input-shadow);}
+.wd-amount__prefix { font-size: 17px; color: var(--text-muted); margin-right: 8px; }
+.wd-amount input { flex: 1; background: #00000000; border: none; outline: none; color: var(--text); font-size: 17px; 
+                  font-weight: 500; font-family: inherit; font-variant-numeric: tabular-nums; min-width:100px;
+                 height:48px;}
+.wd-amount .cab-link span {white-space:nowrap;}
+.wd-amount:focus-within {
+    border: 1px solid var(--input-focus);
+    box-shadow: 0 0 4px var(--input-focus);
+}
+
+/* --- Строка комиссии --- */
+.wd-calc { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); margin: 10px 0 18px; }
+.wd-calc div {line-height:1.4;}
+.wd-calc div > span {white-space:nowrap;}
+/* --- Адаптив --- */
+@media (min-width: 1200px) {
+    .tfa-note > .btn:hover {background:#00000000 !important; }
+}
+@media (max-width: 640px) {
+    .tfa-note {padding: 10px 14px !important; }
+    .tfa-note__cont {gap:14px;}
+    .tfa-note > .btn {width:100%;}
+     .tfa-note { flex-direction: column; padding:14px 14px;}
+   
+    .wd-block { gap: 16px; flex-direction:column; align-items:stretch;}
+    .wd-block__fields {order:1; }
+    .wd-block__fields .btn {width:100%; padding:0 20px;}
+    .wd-block__aside {order: 0; display:flex; align-items:center; gap:20px; justify-content:space-between;
+                     background:none; border:0; padding:14px; border-bottom:1px solid var(--border); border-radius:0;
+                     margin:-14px -14px 0 -14px;}
+    .wd-block__aside .cab-card-title {margin-bottom:0;}
+    .wd-available {font-size:18px;}
+    .wd-calc div:last-child {text-align:right;}
+    .wd-calc div span {display:block;}
+   
+}
+/***** Методы оплаты *****/
+.pay-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.pay-method { background: #0000001c; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px; position: relative; }
+.pay-method__top { display: flex; align-items: flex-start; gap: 12px; }
+.pay-method__icon { flex-shrink: 0; width: 38px; height: 38px; border-radius: 8px; background: #4a4a4a63; 
+                   display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 18px; }
+.pay-method__name { font-size: 15px; font-weight: 600; line-height: 1.25; margin-top: -2px; }
+.pay-method__type { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+.pay-method__menu { flex-shrink: 0; margin-left: auto; width: 38px; height: 38px; border-radius: 8px; background: #00000000; 
+                   border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; 
+                   justify-content: center; transition: background 0.15s, color 0.15s; margin-right:-4px; margin-top:-4px;}
+.pay-method__pop { position: absolute; top: 10px; right: 58px; display: none; padding: 6px; background: var(--bg-card); 
+                  border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 5; }
+.pay-method__pop.show { display: block; }
+.pay-method__del { display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 7px; 
+                  background: transparent; border: none; color: #FF5C5C; font-size: 13px; cursor: pointer; 
+                  white-space: nowrap; transition: all 0.3s; }
+
+.pay-method__kv { display: flex; justify-content: space-between; font-size: 13px; margin-top: 16px; }
+.pay-method__kv + .pay-method__kv { margin-top: 6px; }
+.pay-method__kv span:first-child { color: var(--text-muted); }
+
+.pay-method__status { display: flex; align-items: center; justify-content: center; gap: 7px; 
+                     font-size: 12px; padding: 12px 12px; border-radius: 9px; margin-top: 18px; }
+.pay-method__status.ok { background: rgba(214,255,0,0.08); color: var(--lime); }
+.pay-method__status.pending { background: rgba(255,180,0,0.08); color: #FFB400; }
+
+/* Плитка «Добавить метод» */
+.pay-method-add { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; 
+                 min-height: 150px; padding: 18px; background: transparent; border: 1px dashed var(--border); 
+                 border-radius: var(--radius-md); color: var(--text-muted); text-align: center; cursor: pointer; 
+                 transition: border-color 0.15s, color 0.15s; min-height:187px;}
+.pay-method-add__plus { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.pay-method-add strong { font-size: 14px; font-weight: 600; color: var(--text); }
+.pay-method-add small { font-size: 12px; }
+/* Скрытие форм на заполнение методов */
+[data-method-fields] { display: none; }
+[data-method-fields].show { display: flex; }
+[data-method-form-card] { display: none; }
+[data-method-form-card].show { display: block; }
+[data-method-form-card] { scroll-margin-top: 66px; }
+[data-pay-methods] { scroll-margin-top: 66px; }
+
+.close-cab-card {color:var(--text-dim); cursor:pointer; transition:all 0.3s; 
+                width:38px; height:38px; border-radius:8px; margin-right:-4px;}
+
+/* Адаптив */
+@media (min-width: 1200px){    
+.pay-method__menu:hover { background: rgba(255,255,255,0.06); color: var(--text); }    
+.pay-method-add:hover { border-color: rgba(214,255,0,0.35); color: var(--lime); }
+.pay-method-add:hover .pay-method-add__plus { color: var(--lime); }
+.pay-method__del:hover {background:var(--hover-1);}  
+.close-cab-card:hover {color:var(--text-muted); background:#cccccc1f;}    
+} 
+@media (max-width: 760px) { 
+    .pay-methods { grid-template-columns: 1fr; } 
+}
+@media (max-width: 640px) { 
+    .pay-methods-wrap {padding:14px; overflow:hidden;}
+    .pay-methods {margin:-8px -8px -5px -8px; gap:10px;}
+}
+
+/* === ИСТОРИЯ ВЫПЛАТ === */
+.cab-pay-panel { display: flex; flex-direction: column; gap:20px;}
+.cab-pay-panel.is-loading { opacity: .5; pointer-events: none; }
+
+.cab-pay-head, .cab-pay-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 60px; gap: 20px; 
+                             align-items: center; }
+.cab-pay-head { padding: 10px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+.cab-pay-head > div:last-child {text-align:center;}
+.cab-pay-row { padding: 14px 12px; font-size: 13px; border-bottom: 1px solid var(--border); }
+.cab-pay-row span { display: none; }
+
+.cab-pay-id { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.cab-pay-amount, .cab-pay-fee, .cab-pay-receive { font-variant-numeric: tabular-nums; }
+.cab-pay-invoice button { display: flex; align-items: center; justify-content: center; height: 30px; 
+                         padding: 0 10px; background: var(--bg); border: 1px solid var(--border-input); border-radius: 6px; color: var(--text-muted); 
+                         cursor: pointer; transition: color .15s, background .15s; margin:0 auto; gap:4px;}
+.cab-pay-invoice button span {display:none; font-size:13px; color: var(--text-muted); }
+
+/* статусы */
+.cab-pay-row[data-status="pending"] .cab-pay-status { color: var(--text-muted); }
+.cab-pay-row[data-status="paid"] .cab-pay-status { color: var(--lime); }
+.cab-pay-row[data-status="cancelled"] .cab-pay-status { color: var(--danger); }
+.cab-pay-row[data-status="cancelled"] .cab-pay-amount { color: var(--danger); }
+
+.cab-pay-row[data-status="pending"] .cab-pay-amount,
+.cab-pay-row[data-status="pending"] .cab-pay-fee,
+.cab-pay-row[data-status="pending"] .cab-pay-receive {
+    color: var(--text-muted); 
+}
+
+/* прочерк в пустых ячейках (комиссия/получение у отменённых) */
+.cab-pay-row[data-status="cancelled"] .cab-pay-fee, .cab-pay-row[data-status="cancelled"] .cab-pay-receive { color: var(--text-dim); }
+
+/* Кнопка статуса с комментарием */
+.cab-pay-status__btn { display: inline-flex; align-items: center; gap: 5px; padding: 0; background: none; border: none; 
+                      color: inherit; font: inherit; cursor: pointer; }
+.cab-pay-status__btn i { font-size: 8px; transition: transform .18s ease; margin-top:3px;}
+.cab-pay-status__btn[aria-expanded="true"] i { transform: rotate(180deg); }
+
+.cab-pay-comment { display: none; gap: 8px; padding: 12px; margin-bottom: 4px; background: rgb(22 22 22); border-radius: 8px; 
+                  font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top:-6px;}
+.cab-pay-comment.is-open { display: flex; }
+.cab-pay-comment i { flex-shrink: 0; margin-top: 1px; font-size:17px;}
+
+.cab-pay-comment[data-status="pending"] i { color: var(--orange); }
+.cab-pay-comment[data-status="cancelled"] i { color: var(--danger); }
+
+/*--- АДАПТИВ ---*/
+@media (min-width: 1200px) {
+    .cab-pay-row:hover { background: rgba(255,255,255,0.02); }
+    .cab-pay-invoice button:hover { color: var(--text);  }
+}
+@media (max-width: 860px) {
+    .cab-pay-head { display: none; }
+    .cab-pay-row { grid-template-columns: 1fr auto; 
+                  grid-template-areas: "id status" "date amount" "method fee" "method receive" "invoice receive"; 
+                  gap: 8px 12px; padding: 14px 0; align-items: baseline; }
+    .cab-pay-row span { display: inline-block; color: var(--text-dim); margin-right: 6px; }
+    .cab-pay-id     { grid-area: id; font-size: 14px; font-weight: 500; color: var(--text); }
+    .cab-pay-status { grid-area: status; text-align: right; font-size: 13px; }
+    .cab-pay-date   { grid-area: date; font-size: 13px; color: var(--text-muted); }
+    .cab-pay-amount { grid-area: amount; text-align: right; font-size: 13px; }
+    .cab-pay-method { grid-area: method; font-size: 13px; color: var(--text-muted); }
+    .cab-pay-fee    { grid-area: fee; text-align: right; font-size: 13px; color: var(--text-muted); }
+    .cab-pay-receive{ grid-area: receive; text-align: right; font-size: 15px; color: var(--lime); margin-top:4px}
+    .cab-pay-receive span {font-size:13px;}
+    .cab-pay-invoice {grid-area: invoice; text-align: right; }
+    .cab-pay-invoice button {margin:-8px 0 0 0; background:#00000000; border: 1px solid #cccccc4d;}
+    .cab-pay-invoice button span {display:block;}
+}
+@media (max-width: 640px) {
+    .cab-pay-block .cab-card-head { flex-wrap: nowrap; }
+    .cab-tx-controls .select { min-width: 90px; width: 140px; }
+}
+@media (max-width: 380px) {
+    .cab-pay-date span {display:none;}
+    .cab-pay-method span {display:none;}
+}
+
+/* -- Модалки для доков -- */
+.doc-modal-window {background:#fff !important; width:740px !important;}
+.doc-modal-window .doc-bar {display:flex; align-items:center; gap:20px; justify-content:right;
+                           margin:-10px -10px 0px -10px;}
+.doc-modal-window .doc-bar .close {color:#000; position:relative; top:auto; right:auto;}
+/* === ДОКУМЕНТ (инвойс / справка) === */
+.doc-page {color: #111; border-radius: 10px; padding: 20px; }
+.doc-brand {display:flex; align-items:center; text-decoration:none; gap:8px; font-size:18px; font-weight:400; letter-spacing:1px; 
+       color:#000000; margin-bottom:20px;}
+.doc-brand span {background:var(--lime); border-radius:6px; color:#000000; padding:1px 0px 1px 4px; letter-spacing:0px; overflow:hidden;
+           height:28px; display:flex; align-items:center; font-style:italic; font-weight:600; margin-right:-5px}
+.doc-page h1 { font-size: 38px; margin: 0 0 10px; color: #111; }
+.doc-page .doc-muted { color: #71717a; font-size: 13.5px; margin-bottom: 24px; }
+.doc-page table { width: 100%; border-collapse: collapse; margin: 18px 0; }
+.doc-page th, .doc-page td { text-align: left; padding: 13px 0; border-bottom: 1px solid #eee; font-size: 15px; color: #111; }
+.doc-page th { color: #71717a; font-weight: 500; }
+.doc-page td { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.doc-page .doc-foot { margin-top: 30px; font-size: 12.5px; color: #9499a3; line-height: 1.6; }
+@media print {
+    body.doc-printing > *:not(#doc-backdrop) { display: none !important; }
+    body.doc-printing #doc-backdrop { position: static !important; display: block !important; padding: 0 !important; background: none !important; overflow: visible !important; opacity: 1 !important; visibility: visible !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+    body.doc-printing .doc-modal-window { width: 100% !important; max-width: 100% !important; min-width: 0 !important; margin: 0 !important; padding: 0 !important; background: #fff !important; border: none !important; border-radius: 0 !important; transform: none !important; box-shadow: none !important; }
+    body.doc-printing .doc-bar { display: none !important; }
+    body.doc-printing .doc-page { padding: 0 !important; border-radius: 0 !important; }
+}
+/* адаптив инвойс */
+@media (min-width: 1200px) {
+    .doc-modal-window .doc-bar .close:hover { background: #cccccca1; color:#000; }
+}
+@media (max-width: 640px) {
+    .doc-page { padding: 10px 0 0 0; }
+    .doc-brand {margin-bottom:8px;}
+    .doc-page h1 { font-size: 22px;}
+}
+

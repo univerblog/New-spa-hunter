@@ -496,6 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function boot(){ document.querySelectorAll('[data-select]').forEach(init); }
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', boot) : boot();
+  window.initSelects = boot;
 })();
 /////////////////////// 
   

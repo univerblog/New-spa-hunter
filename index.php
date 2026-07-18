@@ -69,6 +69,8 @@ if ($fragment !== '') {
     $fragments = [
         'transactions' => 'components.cabinet.transactions',
         'sources' => 'components.cabinet.sources',
+        'payout-methods'  => 'components.cabinet.payout-methods',
+        'payouts'      => 'components.cabinet.payouts',
     ];
     if (isset($fragments[$fragment])) {
         echo $blade->run($fragments[$fragment], ['source' => $_GET['source'] ?? 'default']);

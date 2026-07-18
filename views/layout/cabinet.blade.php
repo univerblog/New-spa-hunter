@@ -28,6 +28,7 @@
 <!-- Тут общая модалка -->
 @include('components.modal.modal-windows')
 @include('components.modal.modal')
+@include('components.modal.doc-modal')
  
 <!------------------------->
 

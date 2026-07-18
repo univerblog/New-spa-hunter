@@ -228,6 +228,45 @@
     </div>
 </div> 
 
+<!-- Метож оплаты создан -->
+<div class="modal-content" id="modal-add-payment-method" style="display:none;">
+    <h3>Метод оплаты добавлен!</h3>
+    <div class="container-modal">
+        
+        <div class="form-text-content" style="margin-bottom:10px;">
+            Метод оплаты успешно добавлен. Проверьте почту для подтверждения перед использованием для вывода средств.
+        </div>
+        <div class="btn-group center-group">
+            <button class="btn full" onclick="closeModal()">Все понятно</button>
+        </div>
+    </div>
+</div> 
+
+<!-- Удалить метод оплаты -->
+<div class="modal-content" id="modal-delete-payment-method" style="display:none;">
+    <h3>Удалить метод оплаты?</h3>
+    <div class="container-modal">
+        <div class="form-text-content" style="margin-bottom:10px;">
+            Вы уверены, что хотите удалить этот метод оплаты?
+        </div>
+        <div class="btn-group right-group">
+            <button class="btn outline" onclick="closeModal()">Отмена</button>
+            <button class="btn red" data-del-confirm>Удалить</button>
+        </div>
+    </div>
+</div>
+<!-- Метод оплаты удалён -->
+<div class="modal-content" id="modal-delete-payment-method-done" style="display:none;">
+    <h3>Метод оплаты удалён</h3>
+    <div class="container-modal">
+        <div class="form-text-content" style="margin-bottom:10px;">
+            Метод оплаты успешно удалён из вашего аккаунта.
+        </div>
+        <div class="btn-group center-group">
+            <button class="btn full" onclick="closeModal()">Все понятно</button>
+        </div>
+    </div>
+</div>
 
 <!-- Ссылка создана! -->
 <div class="modal-content" id="modal-link-created" style="display:none;">
