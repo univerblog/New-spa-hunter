@@ -74,7 +74,7 @@
 
     {{-- форма --}}
     <div class="cab-card" data-method-form-card hidden>
-        <div class="cab-card-head">
+        <div class="cab-card-head" style="flex-wrap:nowrap;">
             <div class="cab-card-title">Добавить метод оплаты</div>
             <button type="button" class="close-cab-card" data-method-cancel><i class="fa-regular fa-xmark"></i></button>
         </div>

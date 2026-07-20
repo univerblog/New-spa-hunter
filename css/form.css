@@ -4,6 +4,7 @@ button {font-family: var(--font-family); background:none; border:0; font-size:in
                 height:48px; border-radius: var(--radius-sm); align-items:center; justify-content:center; 
                 font-size:16px; cursor:pointer;}
 .input-field:has(.input-fix-btn) input {padding-right:60px;}
+.input-fix-btn.copied {color:var(--lime);}
 /*****/
 .input-field {display:flex; flex-direction: column; gap:8px; flex:1; position:relative; align-items:stretch;}
 .input-field label {color: var(--text-dim); font-size:14px; margin-left:18px}
@@ -88,6 +89,7 @@ html[data-theme="light"] .alert-success { color: #5e9100; background:#c3e90052;}
 /*----- Form-text -----*/
 .form-text-title {font-size:20px; margin-bottom:-2px;}
 .form-text-content {font-size:15px; color:var(--text-muted); line-height:1.4; text-wrap:balance;}
+.form-text-label {font-size:12px; color:var(--text-muted); line-height:1.4; text-wrap:balance; text-transform:uppercase;}
 .form-text, .form-text-line, .form-btn-link {font-size:14px; color:var(--text-dim); text-wrap:balance;}
 .form-text-mini {font-size:13px; color:var(--text-dim); text-wrap:balance;}
 .form-text-mini a {color:var(--text-muted);}
@@ -163,7 +165,7 @@ html[data-theme="light"] .social-block-auth img[src$="x-white.svg"]     { conten
 }
 button.select-trigger:focus-visible { outline: none; }
 .select.open .select-trigger,
-.select-value { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.select-value { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
 .select-arrow { flex-shrink: 0; color: var(--text-dim); font-size: 12px; transition: transform .2s ease; }
 .select.open .select-arrow { transform: rotate(180deg); }
 
@@ -239,8 +241,12 @@ html[data-theme="light"] .select-option.active {background:#8989891f !important;
   margin-left: auto;                   
   font-size: 15px;
 }
-.select-option-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
-.select-option-sub { font-family:var(--font-family); font-size: 12px; color: var(--text-dim); }
+.select-option-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text);}
+.select-option-txt { color: var(--text); display:flex; gap:8px;}
+.sel-val-num {display:flex; gap:8px; overflow:visible;}
+.select-option-txt b, .sel-val-num b {font-size: 12px; color: var(--text-dim); background:#d6ff004d;
+                      display:flex; width:19px; height:19px; border-radius:50%; color:var(--lime);
+                      align-items:center; justify-content:center; margin:-2px 0; position:relative; top:2px;}
 .select-option[hidden] { display: none !important; }
 /* --- «добавить новое» --- */
 .select-add { color: var(--lime); margin:16px 0px 0 0px; width:calc(100% - 4px); font-weight: 400;}
@@ -311,6 +317,12 @@ html[data-theme="light"] textarea::-webkit-scrollbar-thumb  { background: #a8a8a
     box-shadow: 0 0 4px var(--input-focus);
 }
 
+/* --- Тумблер --- */
+.cab-toggle { position: relative; display: inline-block; flex-shrink: 0; width: 40px; height: 22px; background: rgb(132 132 132 / 40%); border-radius: 11px; cursor: pointer; transition: background .15s; }
+.cab-toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: transform .15s; }
+.cab-toggle.on { background: var(--lime); }
+.cab-toggle.on::after { transform: translateX(18px); background: #0a0a0a; }
+
 /* АДАПТИВ */
 @media (min-width: 1200px){
 .btn:hover:not(:disabled) {background:var(--hover-btn);} 
@@ -346,4 +358,7 @@ html[data-theme="light"] .select.open .select-trigger {
 }
 @media (max-width: 360px) {
   .code-input {gap:6px;}
+}
+@media (max-width: 380px) {
+   .btn-group > .btn span {display:none;}
 }

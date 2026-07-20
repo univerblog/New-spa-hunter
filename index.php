@@ -71,6 +71,9 @@ if ($fragment !== '') {
         'sources' => 'components.cabinet.sources',
         'payout-methods'  => 'components.cabinet.payout-methods',
         'payouts'      => 'components.cabinet.payouts',
+        'tax-profiles' => 'components.cabinet.tax-profiles',
+        'referrals' => 'components.cabinet.referrals-table',
+        'notifications' => 'components.cabinet.notifications',
     ];
     if (isset($fragments[$fragment])) {
         echo $blade->run($fragments[$fragment], ['source' => $_GET['source'] ?? 'default']);

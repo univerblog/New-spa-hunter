@@ -6,6 +6,7 @@
     <p>События по вашему аккаунту, заказам и выплатам.</p>
 </div>
 
+@include('components.cabinet.notifications')
 @endsection
 
 @push('scripts')

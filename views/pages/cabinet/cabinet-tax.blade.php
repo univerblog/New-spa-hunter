@@ -6,6 +6,9 @@
     <p>Налоговые формы и годовые отчёты.</p>
 </div>
 
+@include('components.cabinet.tax-profiles')
+@include('components.cabinet.tax-reports')
+
 @endsection
 
 @push('scripts')

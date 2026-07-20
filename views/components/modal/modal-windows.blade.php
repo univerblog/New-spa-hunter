@@ -267,6 +267,19 @@
         </div>
     </div>
 </div>
+<!-- Удалить налоговый профиль -->
+<div class="modal-content" id="modal-tax-delete" style="display:none;">
+    <h3>Удалить налоговый профиль?</h3>
+    <div class="container-modal">
+        <div class="form-text-content" style="margin-bottom:10px;">
+            Профиль будет удалён. Методы выплат, привязанные к нему, потребуют выбрать другой профиль.
+        </div>
+        <div class="btn-group right-group">
+            <button class="btn outline" onclick="closeModal()">Отмена</button>
+            <button class="btn red" data-tax-del-confirm>Удалить</button>
+        </div>
+    </div>
+</div>
 
 <!-- Ссылка создана! -->
 <div class="modal-content" id="modal-link-created" style="display:none;">
@@ -274,7 +287,7 @@
     <div class="container-modal">
         <div class="input-field" style="margin-top:10px;">
             <input type="text" name="" placeholder="" value="https://cpa.cx/a7e39246" readonly>
-            <button type="button" class="input-fix-btn">
+            <button type="button" class="input-fix-btn" data-copy>
                 <i class="fa-regular fa-copy"></i>
             </button>
         </div>
@@ -405,7 +418,7 @@
         </div>
         <div class="input-field">
             <input type="text" name="" placeholder="" value="JBSW Y3DP EHPK 3PXP" readonly>
-            <button type="button" class="input-fix-btn">
+            <button type="button" class="input-fix-btn" data-copy>
                 <i class="fa-regular fa-copy"></i>
             </button>
         </div>
@@ -468,6 +481,80 @@
             <button class="btn" data-connect-submit>Продолжить</button>
         </div>
         <div class="modal-loader"><i></i><span>Авторизуемся через API...</span></div>
+    </div>
+</div>
+
+<!-- Настройки уведомлений -->
+<div class="modal-content" id="modal-notif-settings" style="display:none;">
+    <h3>Настройки уведомлений</h3>
+    <div class="container-modal">
+        <div class="form-text-content">Выберите, о чём получать уведомления</div>
+
+        <div class="form-text-label">Каналы доставки</div>
+
+        <div class="notif-chan">
+            <i class="fa-regular fa-envelope"></i>
+            <span class="notif-chan__name">Email</span>
+            <span class="notif-chan__addr">bloggers.tools.view@gmail.com</span>
+            <div class="cab-toggle" data-toggle></div>
+        </div>
+        <div class="notif-chan">
+            <i class="fa-regular fa-paper-plane"></i>
+            <span class="notif-chan__name">Telegram</span>
+            <span class="notif-chan__addr">@xx757xx</span>
+            <div class="cab-toggle on" data-toggle></div>
+        </div>
+        <div class="notif-chan">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notif-chan__name">На сайте</span>
+            <span class="notif-chan__addr">В браузере</span>
+            <div class="cab-toggle on" data-toggle></div>
+        </div>
+
+        <div class="form-text-label">Типы уведомлений</div>
+
+        <div class="notif-matrix">
+            <div class="notif-matrix__head">
+                <span></span>
+                <span>Email</span>
+                <span>Telegram</span>
+                <span>Сайт</span>
+            </div>
+            <div class="notif-matrix__row">
+                <span>Изменение баланса</span>
+                <span><div class="cab-toggle" data-toggle></div></span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+            </div>
+            <div class="notif-matrix__row">
+                <span>Обновление ссылки</span>
+                <span><div class="cab-toggle" data-toggle></div></span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+            </div>
+            <div class="notif-matrix__row">
+                <span>Аккаунт одобрен</span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+            </div>
+            <div class="notif-matrix__row">
+                <span>Выплата</span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+            </div>
+            <div class="notif-matrix__row">
+                <span>Система</span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+                <span><div class="cab-toggle on" data-toggle></div></span>
+            </div>
+        </div>
+
+        <div class="btn-group right-group">
+            <button class="btn" onclick="closeModal()">Готово</button>
+        </div>
     </div>
 </div>
 @endpush

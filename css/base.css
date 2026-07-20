@@ -236,8 +236,8 @@ html[data-theme="light"] .acc-title i {color: var(--text);}
 .acc-title i.fa-minus {transform: rotate(180deg);}
 
 /*** TABS ***/
-
-
+/*** icon telegram ***/
+.fa-paper-plane {display: inline-block; transform: scaleY(0.9); transform-origin: center; }
 /****** HOVERS *******/
 @media (min-width: 1200px){   
 .lang-picker .dropdown-item a:hover {background:var(--hover-1); color:var(--text);}

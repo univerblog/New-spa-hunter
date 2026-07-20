@@ -17,7 +17,7 @@
                      justify-content:center; align-items:center; width:40px; height:40px; right:18px; 
                       top:21px; cursor:pointer;color:var(--text-dim); transition: all 0.3s; z-index:2; 
                      border-radius:50%;}
-.modal-window.long {width:740px;}
+.modal-window.long {width:640px;}
 .modal-content h3 {font-size:20px; margin-bottom:18px; 
                   line-height:1.3;  padding-right:50px; margin-top:-2px}
 .modal-content h4 {font-size:20px; text-align:center; color:#999; font-weight:600;}
@@ -61,7 +61,45 @@ html[data-theme="light"] .modal-brand-stats span:first-child {color:var(--text);
 .modal-loader i { width: 24px; height: 24px; border: 2.5px solid rgba(214,255,0,0.2); border-top-color: var(--lime); border-radius: 50%; animation: modal-spin 0.8s linear infinite; }
 @keyframes modal-spin { to { transform: rotate(360deg); } }
 .modal-content.is-loading .modal-loader { display: flex; }
-.modal-content.is-loading .container-modal > *:not(.modal-loader) { opacity: 0.1; pointer-events: none; }                            
+.modal-content.is-loading .container-modal > *:not(.modal-loader) { opacity: 0.1; pointer-events: none; }   
+/*** Notif settings ***/
+/* --- Настройки уведомлений --- */
+.notif-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin: 0 0 12px; }
+.notif-label--mt { margin-top: 24px; }
+
+.notif-chan {  border: 1px solid var(--border-input); border-radius: var(--radius-md);  background: var(--bg-input); 
+             font-size: 14px; color: var(--text);  padding:0px 18px;  display:inline-flex;   
+               line-height: 1;  box-sizing: border-box; align-items:center;  height:48px;  min-height:48px; gap:10px;
+             box-shadow: inset 5px 5px 5px var(--input-shadow);
+            }
+.notif-chan .cab-toggle { margin-left: auto; }
+.notif-chan:last-of-type { border-bottom: none; }
+.notif-chan i { flex-shrink: 0; color: var(--text-muted); font-size: 16px; }
+.notif-chan__name { font-size: 14px; font-weight: 500; }
+.notif-chan__addr { flex: 1; min-width: 0; font-size: 13px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.notif-matrix { padding: 8px 16px; background: var(--bg-input); border: 1px solid var(--border); border-radius: var(--radius-md); 
+              box-shadow: inset 5px 5px 5px var(--input-shadow);}
+.notif-matrix__head, .notif-matrix__row { display: grid; grid-template-columns: 1fr 64px 64px 64px; align-items: center; 
+                                        gap:10px;}
+.notif-matrix__head { padding: 10px 0; border-bottom: 1px solid var(--border); }
+.notif-matrix__head span + span { font-size: 12px; color: var(--text-muted); text-align: center; }
+.notif-matrix__row { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.notif-matrix__row:last-child { border-bottom: none; }
+.notif-matrix__row span:first-child { font-size: 14px; }
+.notif-matrix__row span + span { text-align: center; }
+
+@media (max-width: 560px) {
+    .notif-matrix { padding: 8px 10px; }
+    .notif-matrix__head, .notif-matrix__row { grid-template-columns: 1fr 52px 52px 52px; gap:6px;}
+    .notif-matrix__row span:first-child { font-size: 13px;}
+    .notif-chan__addr { display: none; }
+}
+@media (max-width: 340px) {
+ .notif-matrix__head span + span {overflow: hidden; text-overflow: ellipsis; }
+ .notif-matrix__row span:first-child { font-size: 12px;}
+ .notif-matrix__head, .notif-matrix__row { grid-template-columns: 1fr 40px 40px 40px; gap:8px;}
+}
 
 /****** HOVERS *******/
 @media (min-width: 1200px){ 

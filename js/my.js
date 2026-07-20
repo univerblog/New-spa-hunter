@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Выбор пункта (или создание нового через «Добавить») */
     function choose(opt){
       var isAdd = opt.classList.contains('select-add');
-      var label, value;
+      var label, value, nameEl = null;
 
       if(isAdd){
         label = value = (field && field.value || '').trim();
@@ -353,12 +353,15 @@ document.addEventListener('DOMContentLoaded', () => {
         list.appendChild(b);
         opt = b;                                      // дальше — как обычный пункт
       } else {
-        var nameEl = opt.querySelector('.select-option-name');
+        nameEl = opt.querySelector('.select-option-name, .select-option-txt');
         label = (nameEl || opt).textContent.trim();
         value = opt.getAttribute('data-value');
       }
 
-      if(valueEl) valueEl.textContent = label;
+      if(valueEl){
+        if(nameEl) valueEl.innerHTML  = nameEl.innerHTML;   // обёртка есть → переносим разметку (с <b>)
+        else       valueEl.textContent = label;             // как было
+      }
       if(field)   field.value = remote ? value : label;   // ссылка → домен, остальное → подпись
 
       if(!remote){                                         // у remote галочку не ставим
@@ -499,4 +502,30 @@ document.addEventListener('DOMContentLoaded', () => {
   window.initSelects = boot;
 })();
 /////////////////////// 
+
+/* ===== Копирование в буфер ===== */
+document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-copy]');
+    if (!btn) return;
+
+    // ищем источник, поднимаясь от кнопки вверх
+    var el = btn.parentElement, src = null;
+    while (el && !src) { src = el.querySelector('input, textarea, [data-copy-text]'); el = el.parentElement; }
+    if (!src) return;
+
+    navigator.clipboard.writeText((src.value !== undefined ? src.value : src.textContent).trim());
+
+    var i = btn.querySelector('i');
+    if (!i) return;
+    var cls = i.className;
+    i.className = 'fa-regular fa-check';
+    btn.classList.add('copied');
+    setTimeout(function(){ i.className = cls; btn.classList.remove('copied'); }, 1700);
+});
+
+/* ===== Тумблеры ===== */
+document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-toggle]');
+    if (t) t.classList.toggle('on');
+});
   

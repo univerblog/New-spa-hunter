@@ -91,6 +91,7 @@
       <div class="modal-triggers">
         <button class="btn min outline" onclick="openModal('modal-link-delete')"> Отключить источник </button>
         <button class="btn min outline" onclick="openModal('modal-account-delete')"> Удалить аккаунт </button>
+        <button class="btn min outline" onclick="openModal('modal-notif-settings', { className: 'long' })" title="Настройки уведомлений"><i class="fa-regular fa-gear"></i>Настройка уведомлений</button>
       </div>
       
       <div class="section-title" style="margin:30px auto 10px auto;">
