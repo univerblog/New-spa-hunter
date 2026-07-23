@@ -27,8 +27,8 @@ $folders = [];
 
 @section('content')
 
-<div class="container">
-    <div class="container-item full">
+<section class="section">
+    <div class="container full">
 
         <div class="stata-setting-block">
             <div class="stata-setting-item">
@@ -91,19 +91,19 @@ $folders = [];
             <table class="stata-table" id="for-paginate-only">
                 <thead>
                     <tr>
-                        <th><div class="tab-filter">Merchant</div></th>
-                        <th><div class="tab-filter">Product URL</div></th>
-                        <th>Short Link</th>
-                        <th><div class="tab-filter">Tag</div></th>
-                        <th><div class="tab-filter">Folder</div></th>
-                        <th><div class="tab-filter">Note</div></th>
-                        <th><div class="tab-filter">Created</div></th>
-                        <th><div class="tab-filter">Clicks</div></th>
-                        <th><div class="tab-filter">Purchases</div></th>
+                        <th><div class="tab-filter">Магазин</div></th>
+                        <th><div class="tab-filter">Ссылка на товар</div></th>
+                        <th>Короткая ссылка</th>
+                        <th><div class="tab-filter">Тег</div></th>
+                        <th><div class="tab-filter">Папка</div></th>
+                        <th><div class="tab-filter">Заметка</div></th>
+                        <th><div class="tab-filter">Создано</div></th>
+                        <th><div class="tab-filter">Клики</div></th>
+                        <th><div class="tab-filter">Покупки</div></th>
                         <th><div class="tab-filter">CR</div></th>
-                        <th><div class="tab-filter">Pending</div></th>
-                        <th><div class="tab-filter">Confirmed</div></th>
-                        <th><div class="tab-filter">Declined</div></th>
+                        <th><div class="tab-filter">В ожидании</div></th>
+                        <th><div class="tab-filter">Подтверждено</div></th>
+                        <th><div class="tab-filter">Отменено</div></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -180,7 +180,7 @@ $folders = [];
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td>Total of page:</td>
+                        <td>Итого по странице:</td>
                         <td colspan="6"><i class="fa-light fa-arrow-right"></i></td>
                         <td class="center" id="page-clicks">0</td>
                         <td class="center" id="page-purchases">0</td>
@@ -191,7 +191,7 @@ $folders = [];
                         <td></td>
                     </tr>
                     <tr>
-                        <td>All Total:</td>
+                        <td>Итого:</td>
                         <td colspan="6"><i class="fa-light fa-arrow-right"></i></td>
                         <td class="center">{{ $totalClicks }}</td>
                         <td class="center">{{ $totalPurchases }}</td>
@@ -222,7 +222,7 @@ $folders = [];
         </div>
            
     </div>  
-</div>
+</section>
 
 
 
@@ -254,7 +254,6 @@ $folders = [];
     </div>
 </div>
 
-@include('parts.profile-mob-menu')
 
 @endsection
 

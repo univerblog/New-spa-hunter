@@ -28,7 +28,7 @@
         <div class="cab-nav-field">
             <a href="/cabinet" class="{{ $route === '/cabinet' ? 'active' : '' }}"><i class="fa-regular fa-objects-column"></i>Главная</a>
             <a href=""><i class="fa-regular fa-link"></i>Мои ссылки</a>
-            <a href=""><i class="fa-regular fa-chart-line"></i>Статистика</a>
+            <a href="/cabinet/statistics"><i class="fa-regular fa-chart-line"></i>Статистика</a>
             <a href="/cabinet/sources" class="{{ $route === '/cabinet/sources' ? 'active' : '' }}"><i class="fa-regular fa-signal-stream"></i>Источники трафика</a>
             <a href="/cabinet/level" class="{{ $route === '/cabinet/level' ? 'active' : '' }}"><i class="fa-regular fa-trophy"></i>Мой уровень</a>
         </div>
