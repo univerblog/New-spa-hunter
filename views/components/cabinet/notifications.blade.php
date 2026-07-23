@@ -2,12 +2,9 @@
     $data       = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/notifications.php';
     $categories = $data['categories'];
     $periods    = $data['periods'];
+    $all        = $data['rows'];
 
-    $cat = $_GET['cat'] ?? 'all';
-    if (!isset($categories[$cat])) $cat = 'all';
-
-    $all  = $data['rows'];
-    $rows = $cat === 'all' ? $all : array_values(array_filter($all, fn($r) => $r['cat'] === $cat));
+    foreach ($all as $i => $r) $all[$i]['id'] = $i;
 
     // счётчики непрочитанных по категориям
     $counts = [];
@@ -16,97 +13,125 @@
         $counts['all']     = ($counts['all'] ?? 0) + 1;
         $counts[$r['cat']] = ($counts[$r['cat']] ?? 0) + 1;
     }
-
-    // группировка по периодам
-    $grouped = [];
-    foreach ($rows as $r) $grouped[$r['period']][] = $r;
-
-    $isFragment = ($_SERVER['HTTP_X_FRAGMENT'] ?? '') === 'notifications';
 @endphp
+<div class="cab-card notif-block" id="notifications">
 
-@php $fragment = function () use ($categories, $periods, $grouped) { @endphp
-    @if (empty($grouped))
-        <div class="cab-tx-empty">
-            <div class="cab-tx-empty-icon"><i class="fa-regular fa-bell"></i></div>
-            <div class="cab-tx-empty-title">Уведомлений нет</div>
-            <div class="cab-tx-empty-text">Здесь появятся события по балансу, ссылкам, выплатам и аккаунту.</div>
-        </div>
-    @else
-        @foreach ($periods as $pKey => $pLabel)
-            @if (!empty($grouped[$pKey]))
-                <div class="notif-group">{{ $pLabel }}</div>
-
-                @foreach ($grouped[$pKey] as $row)
-                    <div class="notif-item{{ !empty($row['unread']) ? ' unread' : '' }}" data-cat="{{ $row['cat'] }}">
-                        <div class="notif-item__icon">{!! $categories[$row['cat']]['icon'] !!}</div>
-                        <div class="notif-item__body">
-                            <div class="notif-item__text">{{ $row['text'] }}</div>
-                            <div class="notif-item__date">{{ $row['date'] }}</div>
-                        </div>
-                    </div>
-                @endforeach
-            @endif
-        @endforeach
-    @endif
-@php }; @endphp
-
-
-@if ($isFragment)
-    @php $fragment(); @endphp
-@else
-    <div class="cab-card notif-block" id="notifications">
-        <div class="cab-card-head">
-            <div class="cab-card-title">
-                <button class="cab-link"><span>Отметить всё прочитанным</span></button>
-            </div>
-
-            <div class="cab-tx-controls">
-                <div class="select" data-select data-notif-filter>
-                    <button type="button" class="select-trigger">
-                        <span class="select-value sel-val-num">{{ $categories[$cat]['name'] }}@if (!empty($counts[$cat]))<b>{{ $counts[$cat] }}</b>@endif</span>
-                        <i class="fa-solid fa-chevron-down select-arrow"></i>
-                    </button>
-                    <div class="select-panel">
-                        <div class="select-list">
-                            @foreach ($categories as $key => $c)
-                                <button type="button" class="select-option{{ $cat === $key ? ' is-selected' : '' }}" data-value="{{ $key }}"><span class="select-option-txt">{{ $c['name'] }}@if (!empty($counts[$key]))<b>{{ $counts[$key] }}</b>@endif</span></button>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-
-                <button class="cab-notif-gear" onclick="openModal('modal-notif-settings', { className: 'long' })" title="Настройки уведомлений"><i class="fa-regular fa-gear"></i></button>
-            </div>
-        </div>
-
-        <div class="notif-panel">
-            @php $fragment(); @endphp
+    <div class="notif-block-head">
+        <nav class="tabs-nav tabs-for-notif">
+            @foreach ($categories as $key => $c)
+                <button class="tab-btn{{ $loop->first ? ' active' : '' }}" data-cat="{{ $key }}" onclick="switchTab({{ $loop->index }})">    
+                    {!! $c['icon'] !!}
+                    <span class="tab-label">{{ $c['name'] }}</span>
+                    @if (!empty($counts[$key]))<span class="tab-count">{{ $counts[$key] }}</span>@endif
+                </button>
+            @endforeach
+        </nav>
+        <div class="notif-block-head_actions">
+            <button class="cab-link" data-notif-read-all><span>Отметить все прочитанным</span></button>
+            <button class="notif-setting-btn" onclick="openModal('modal-notif-settings', { className: 'long' })"><i class="fa-regular fa-gear"></i></button>
         </div>
     </div>
 
-    <script>
-    (function () {
-        if (window.__notifInit) return;
-        window.__notifInit = true;
+    @foreach ($categories as $key => $c)
+        @php
+            $rows = $key === 'all' ? $all : array_values(array_filter($all, fn($r) => $r['cat'] === $key));
 
-        document.addEventListener('select:change', function (e) {
-            var sel = e.target.closest('[data-notif-filter]');
-            if (!sel) return;
+            $grouped = [];
+            foreach ($rows as $r) $grouped[$r['period']][] = $r;
 
-            var block = sel.closest('.notif-block');
-            var panel = block.querySelector('.notif-panel');
-            var cat   = e.detail.value;
+            $n = 0;
+        @endphp
 
-            panel.classList.add('is-loading');
-            fetch(location.pathname + '?cat=' + encodeURIComponent(cat), { headers: { 'X-Fragment': 'notifications' } })
-                .then(function (r) { return r.text(); })
-                .then(function (html) {
-                    panel.innerHTML = html;
-                    panel.classList.remove('is-loading');
-                    history.pushState(null, '', location.pathname + '?cat=' + encodeURIComponent(cat));
-                })
-                .catch(function () { panel.classList.remove('is-loading'); });
+        <div class="tab-panel{{ $loop->first ? ' active' : '' }}">
+            @foreach ($periods as $pKey => $pLabel)
+                @if (!empty($grouped[$pKey]))
+                    <div class="notif-group{{ $n >= 6 ? ' is-hidden' : '' }}">{{ $pLabel }}</div>
+
+                    @foreach ($grouped[$pKey] as $row)
+                        @php $n++; @endphp
+                        <div class="notif-item{{ !empty($row['unread']) ? ' unread' : '' }}{{ $n > 6 ? ' is-hidden' : '' }}" data-id="{{ $row['id'] }}" data-cat="{{ $row['cat'] }}">                        
+                            <div class="notif-item__icon">{!! $categories[$row['cat']]['icon'] !!}</div>
+                            <div class="notif-item__body">
+                                <div class="notif-item__text">{{ $row['text'] }}</div>
+                                <div class="notif-item__date">{{ $row['date'] }}</div>
+                            </div>
+                            @if (!empty($row['unread']))
+                                <button class="notif-item__read" data-notif-read>Прочитать</button>
+                            @endif
+                        </div>
+                    @endforeach
+                @endif
+            @endforeach
+            @if (count($rows) > 6)
+                <div class="notif-loadmore-wrap"><button class="notif-loadmore" data-notif-more>Показать ещё</button></div>
+            @endif
+        </div>
+    @endforeach
+
+</div>
+
+@push('scripts')
+<script>
+(function(){
+    var block = document.getElementById('notifications');
+    if (!block) return;
+
+    // уменьшить счётчик на табе категории
+    function dec(cat){
+        var c = block.querySelector('.tab-btn[data-cat="' + cat + '"] .tab-count');
+        if (!c) return;
+        var n = parseInt(c.textContent, 10) - 1;
+        n > 0 ? c.textContent = n : c.remove();
+    }
+
+    block.addEventListener('click', function(e){
+        var btn = e.target.closest('[data-notif-read]');
+        if (!btn) return;
+
+        var item = btn.closest('.notif-item');
+        var id   = item.dataset.id;
+
+        // снять непрочитанное во всех копиях (панель «Все» + панель категории)
+        block.querySelectorAll('.notif-item[data-id="' + id + '"]').forEach(function(it){
+            it.classList.remove('unread');
+            var b = it.querySelector('[data-notif-read]');
+            if (b) b.remove();
         });
-    })();
-    </script>
-@endif
+
+        dec('all');
+        dec(item.dataset.cat);
+    });
+    // Отметить все прочитанными
+    block.addEventListener('click', function(e){
+        if (!e.target.closest('[data-notif-read-all]')) return;
+        block.querySelectorAll('.notif-item.unread').forEach(function(it){
+            it.classList.remove('unread');
+            var b = it.querySelector('[data-notif-read]');
+            if (b) b.remove();
+        });
+        block.querySelectorAll('.tab-count').forEach(function(c){ c.remove(); });
+    });
+    // Показать еще
+    block.addEventListener('click', function(e){
+        var btn = e.target.closest('[data-notif-more]');
+        if (!btn) return;
+        var panel = btn.closest('.tab-panel');
+
+        panel.querySelectorAll('.notif-item.is-hidden').forEach(function(it, i){
+            if (i < 6) it.classList.remove('is-hidden');
+        });
+
+        panel.querySelectorAll('.notif-group.is-hidden').forEach(function(g){
+            var el = g.nextElementSibling;
+            while (el && !el.classList.contains('notif-group')) {
+                if (!el.classList.contains('is-hidden')) { g.classList.remove('is-hidden'); break; }
+                el = el.nextElementSibling;
+            }
+        });
+
+        if (!panel.querySelector('.notif-item.is-hidden')) btn.closest('.notif-loadmore-wrap').remove();
+    });
+
+})();
+</script>
+@endpush

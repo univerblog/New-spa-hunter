@@ -4,8 +4,8 @@
             <div class="cab-prof__ava">SP</div>
             <div class="cab-prof__meta">
                 <h4>Sergey Pavlovich</h4>
-                <div class="cab-nav-level">
-                    <i class="fa-regular fa-chess-rook-piece"></i>
+                <div class="cab-nav-level tier-bronze">
+                    <i class="fa-solid fa-circle"></i>
                     <span>Bronze</span>
                 </div>
             </div>
@@ -56,7 +56,8 @@
             <a href="/cabinet/notifications" class="{{ $route === '/cabinet/notifications' ? 'active' : '' }}"><i class="fa-regular fa-bell"></i>Уведомления<span class="cab-nav-badge">2</span></a>
             <a href="/cabinet/settings" class="{{ $route === '/cabinet/settings' ? 'active' : '' }}"><i class="fa-regular fa-gear"></i>Настройки</a>
             <a href="/cabinet/support" class="{{ $route === '/cabinet/support' ? 'active' : '' }}"><i class="fa-regular fa-headset"></i>Поддержка</a>
-            <a href="" onclick="cabLogout(); return false;"><i class="fa-regular fa-arrow-right-from-bracket"></i>Выйти</a>
+            <div class="cab-nav-line"></div>
+            <a href="" class="red" onclick="cabLogout(); return false;"><i class="fa-regular fa-arrow-right-from-bracket"></i>Выйти</a>
         </div>
     </div>
 </div>

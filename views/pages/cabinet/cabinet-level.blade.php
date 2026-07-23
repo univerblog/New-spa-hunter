@@ -14,7 +14,7 @@
     <div class="level-current__now">
         <small>Текущий уровень</small>
         <div class="level-current__tier tier-bronze">
-           <i class="fa-regular fa-chess-rook-piece"></i>
+           <i class="fa-solid fa-circle"></i>
             Bronze
         </div>
         <div class="level-current__since">С 17 февраля 2026</div>
@@ -142,28 +142,40 @@
     </div>
 
     <div class="level-tiers__row tier-bronze">
-        <div class="level-tiers__name"><i class="fa-regular fa-chess-rook-piece"></i>Bronze</div>
+        <div class="level-tiers__name">
+            <i class="fa-solid fa-circle"></i>
+            Bronze
+        </div>
         <div><span>Порог за 90 дней</span>По умолчанию</div>
         <div><span>Ставки</span>Стандартные</div>
         <div>Базовый уровень для всех новых блогеров</div>
     </div>
 
     <div class="level-tiers__row tier-silver current">
-        <div class="level-tiers__name"><i class="fa-regular fa-star"></i>Silver <span>текущий</span></div>
+        <div class="level-tiers__name">
+           <i class="fa-solid fa-circle"></i>
+            Silver <span>текущий</span>
+        </div>
         <div><span>Порог за 90 дней</span>$300</div>
         <div><span>Ставки</span>Повышенные <b>+14%</b></div>
         <div>Приоритетная поддержка, ранний доступ к новым программам</div>
     </div>
 
     <div class="level-tiers__row tier-gold">
-        <div class="level-tiers__name"><i class="fa-regular fa-trophy"></i>Gold</div>
+        <div class="level-tiers__name">
+            <i class="fa-solid fa-circle"></i>
+            Gold
+        </div>
         <div><span>Порог за 90 дней</span>$1 500</div>
         <div><span>Ставки</span>Премиальные <b>+29%</b></div>
         <div>Личный менеджер, эксклюзивные программы</div>
     </div>
 
     <div class="level-tiers__row tier-platinum">
-        <div class="level-tiers__name"><i class="fa-regular fa-crown"></i>Platinum</div>
+        <div class="level-tiers__name">
+            <i class="fa-solid fa-circle"></i>
+            Platinum
+        </div>
         <div><span>Порог за 90 дней</span>$7 500</div>
         <div><span>Ставки</span>Максимальные <b>+36%</b></div>
         <div>Закрепление статуса на 12 мес, индивидуальные условия</div>

@@ -1,0 +1,73 @@
+/***** STATISTIC  *****/
+.stata-setting-block {display:flex; justify-content:space-between; margin-bottom:30px; flex-wrap:wrap; gap:20px;}
+.stata-setting-item {display:flex; gap:20px; flex-wrap:wrap; align-items:end;}
+.stata-setting-item.entries {flex:1; padding:0 20px; justify-content:center; color:#999; font-size:16px;}
+/********* T A B L E ***********/
+.stata-table {table-layout: fixed !important; border-spacing:0; min-width:100%;}
+.stata-table td, .stata-table th {padding:10px 12px; text-align:left;}
+.stata-table thead tr {background:#161616; }
+.stata-table thead tr th {padding:16px 8px;}
+.stata-table thead tr th:first-child {padding:16px 8px 16px 12px;}
+.stata-table tbody td, .stata-table thead tr th {border-bottom:1px solid #3c3c3c;}
+.stata-table tr:nth-child(even) {background:#161616;}
+.stata-table th {white-space: nowrap; padding:12px 12px;}
+.stata-table td.center {text-align:center; color:#999}
+.stata-table td.center .table-flex {justify-content:center;}
+.table-flex {display:flex; gap:10px; align-items:center;}
+.table-flex a {max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display:block;
+              text-decoration:none; color:var(--blue); position:relative;}
+.table-flex.merch a {padding-left:24px;}
+.table-flex.merch a i {position:absolute; left:0; top:1.2px; color:#868686;}
+.stata-table button {background:#868686; border:0; border-radius:6px; padding:4px 8px; cursor:pointer;
+                             transition:all 0.3s; font-size:16px; min-width:30px; display:inline-flex; align-items:center; gap:4px;
+                    justify-content:center; color:#000;}
+.table-flex.tags span {max-width: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display:block;}
+.table-flex.folder {gap:6px; color:#999; cursor:pointer;}
+.table-flex.folder span {max-width: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.stata-table .note span {font-size:15px; display: -webkit-box; -webkit-line-clamp: 2;  
+  -webkit-box-orient: vertical; overflow: hidden; transition:all 0.3s; color:#999; cursor:pointer; min-width:140px;}
+.stata-table .note button {background:#555555;color:#000000; font-size:15px; padding:4px 8px 5px 8px; color:#fff}
+.stata-table .note button i {margin-top:3px;}
+.stata-table .data-created {font-size:15px; color:#999; min-width:100px; max-width:100px;}
+.copy {gap:0;}
+.copy button {background:none; color:#999; }
+.trash button {background:none; color:#ff0000; font-size:16px;}
+
+.stata-table-wrapper {overflow-x:auto; padding-bottom:30px; }
+.stata-table-wrapper::-webkit-scrollbar {height: 14px; background-color: #3d3d3d; border-radius: 9em;}
+.stata-table-wrapper::-webkit-scrollbar-thumb {background-color:#646464; border-radius: 20px; border: 10px solid #646464;}
+
+.clicks-count button {background:#555555; color:#fff;}
+.purchases-count button {background:var(--blue); font-weight:500;} 
+.pending-count button {background:#ccc;}
+.stata-table tfoot tr td {background:#161616; color:#fff !important; padding-top:20px; padding-bottom:20px;
+                         border-bottom:1px solid #3c3c3c;}
+.stata-table tfoot tr td i {color:#999; display:none;}
+/***** table first td fixed *****/
+.stata-table thead tr th:first-child {position:absolute; width:162px; z-index:1; left:36px; background:#161616;}
+.stata-table tfoot tr td:first-child {position:absolute; width:162px; z-index:1; left:36px; }
+.stata-table tbody tr td:first-child {position:absolute; width:160px; z-index:1; left:36px; 
+                                      background:#1e1e1e;  display:flex; height:36px;
+                                     border-bottom:1px solid #3c3c3c; } 
+.stata-table tbody tr:nth-child(even) td:first-child {background:#161616;}
+.stata-table {padding-left:178px; max-width:calc(100% - 178px);}
+/********************/
+
+.tab-filter {cursor:pointer;  border-radius:8px; transition:all 0.3s; position:relative;
+            padding:10px 26px 10px 10px !important; background:#2e2e2e; }
+.tab-filter::after, .tab-filter::before {
+  content: "";
+  display: inline-block; font-size:10px;
+  position: absolute; right: 8px; bottom:calc(50% - 8px);
+  width: 8px;
+  height: 6px;
+  background-color: #929191;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  border-radius: 2px;
+}
+.tab-filter::before {
+  bottom:calc(50% + 0px);
+ clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.dt-ordering-asc::before {background-color:var(--primary);}
+.dt-ordering-desc::after {background-color:var(--primary);}

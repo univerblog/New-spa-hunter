@@ -5,8 +5,10 @@ button {font-family: var(--font-family); background:none; border:0; font-size:in
                 font-size:16px; cursor:pointer;}
 .input-field:has(.input-fix-btn) input {padding-right:60px;}
 .input-fix-btn.copied {color:var(--lime);}
+
 /*****/
-.input-field {display:flex; flex-direction: column; gap:8px; flex:1; position:relative; align-items:stretch;}
+.input-field {display:flex; flex-direction: column; gap:8px; flex:1; position:relative; align-items:stretch;
+             max-width:100%;}
 .input-field label {color: var(--text-dim); font-size:14px; margin-left:18px}
 .input-field input, .input-field textarea, .input-field select {
     border: 1px solid var(--border-input);
@@ -144,7 +146,7 @@ html[data-theme="light"] .social-block-auth img[src$="x-white.svg"]     { conten
 .pill-short { display: none; }
 
 /* ============ SELECT (универсальный) ============ */
-.select { position: relative; flex:1; min-width:200px;}
+.select {position:relative; flex:1; min-width:200px;}
 
 /* --- триггер-кнопка (вид 1, 2) --- */
 .select-trigger {
@@ -166,6 +168,7 @@ html[data-theme="light"] .social-block-auth img[src$="x-white.svg"]     { conten
 button.select-trigger:focus-visible { outline: none; }
 .select.open .select-trigger,
 .select-value { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.select-value .fi {margin-right:6px;}
 .select-arrow { flex-shrink: 0; color: var(--text-dim); font-size: 12px; transition: transform .2s ease; }
 .select.open .select-arrow { transform: rotate(180deg); }
 
@@ -226,11 +229,10 @@ html[data-theme="light"] .select-list::-webkit-scrollbar-thumb  {
   text-align: left; cursor: pointer;
   transition: background .12s ease, color .12s ease;
   position:relative;
-  
 }
-
 .select-option.active { background: var(--hover-1);}
 .select-option.is-selected { color: var(--lime); background: #36363685; }
+.select-option.is-selected .select-option-name { color: var(--lime); }
 .select-option.is-selected.active { background: var(--hover-1); }
 html[data-theme="light"] .select-option.is-selected { color: var(--text); font-weight:500; 
                                                      background:#89898926;}
@@ -242,6 +244,10 @@ html[data-theme="light"] .select-option.active {background:#8989891f !important;
   font-size: 15px;
 }
 .select-option-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text);}
+.s-o-phone {color:var(--text-muted); }
+.select .fi {border-radius:2px;}
+.s-o-phone > .fi {margin-right:10px;}
+.select-phone .select-option.is-selected span {color:var(--text);}
 .select-option-txt { color: var(--text); display:flex; gap:8px;}
 .sel-val-num {display:flex; gap:8px; overflow:visible;}
 .select-option-txt b, .sel-val-num b {font-size: 12px; color: var(--text-dim); background:#d6ff004d;
@@ -323,14 +329,23 @@ html[data-theme="light"] textarea::-webkit-scrollbar-thumb  { background: #a8a8a
 .cab-toggle.on { background: var(--lime); }
 .cab-toggle.on::after { transform: translateX(18px); background: #0a0a0a; }
 
+/* --- Выбор телефона --- */
+.phone-field {position:relative; display:flex;  gap:6px; }
+.select-phone { flex:none; min-width:auto; position:initial;}
+.select-phone .select-trigger {gap:6px;}
+.select-phone .select-trigger > i{font-size:8px;}
+.select-phone .select-panel {width:100%; min-width:auto; right:20px;}
+.phone-field__input {position:relative; flex:1;}
+.phone-field__input input {width:100%;}
+.select-phone .select-option.is-selected::after { display: none; }
 /* АДАПТИВ */
 @media (min-width: 1200px){
 .btn:hover:not(:disabled) {background:var(--hover-btn);} 
 .btn.red:hover:not(:disabled) {background:#da2222;}  
 .btn.outline:hover:not(:disabled) { background:var(--hover-1);}   
-.select-option:hover { background: #36363657;}   
+  
 html[data-theme="light"] .select-option:hover { background: var(--hover-1);}  
-.select-option:not(.is-selected):hover {color:var(--text);} 
+.select-option:not(.is-selected):hover {color:var(--text); background: #36363657;} 
 .form-text a:hover, .form-text-mini a:hover, .form-btn-link:hover {color:var(--text);}   
 }
 /***********************************/
@@ -338,12 +353,15 @@ html[data-theme="light"] .select-option:hover { background: var(--hover-1);}
   .select-search {margin:0 0px 10px 0;} 
 }
 @media (max-width: 1000px) {
-html[data-theme="light"] .input-field input:focus-visible, 
-html[data-theme="light"] .input-field textarea:focus-visible, 
-html[data-theme="light"] .select.open .select-trigger {
-    border: 1px solid var(--lime);
-    box-shadow: 0 0 6px #b0d300;
-} 
+  html[data-theme="light"] .input-field input:focus-visible, 
+  html[data-theme="light"] .input-field textarea:focus-visible, 
+  html[data-theme="light"] .select.open .select-trigger {
+      border: 1px solid var(--lime);
+      box-shadow: 0 0 6px #b0d300;
+  } 
+}
+@media (max-width: 700px) {
+  .phone-group {flex-direction:column; align-items:inherit;}
 }
 @media (max-width: 640px) {
 .select-list {max-height: 286px;}  
@@ -358,6 +376,12 @@ html[data-theme="light"] .select.open .select-trigger {
 }
 @media (max-width: 360px) {
   .code-input {gap:6px;}
+  .phone-group {margin:0 0px;}
+  .select-phone .select-panel {padding:4px}
+  .select-phone .select-list {padding:0;}
+  .select-phone .select-option {padding:14px 12px;}
+  .select-phone .select-panel .select-search input {width:calc(100% - 48px);}
+  .select-phone .select-trigger {gap:4px;}
 }
 @media (max-width: 380px) {
    .btn-group > .btn span {display:none;}

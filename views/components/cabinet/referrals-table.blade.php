@@ -40,11 +40,11 @@
             @foreach ($pageRows as $row)
                 <div class="ref-row" data-status="{{ $row['status'] }}">
                     <div class="ref-row__name">{{ $row['name'] }}</div>
-                    <div class="ref-row__date"><span>Рег.</span>{{ $row['date'] }}</div>
+                    <div class="ref-row__date"><span>Рег:</span>{{ $row['date'] }}</div>
                     <div class="ref-row__status">{{ $statuses[$row['status']] }}</div>
-                    <div class="ref-row__income"><span>Его доход</span>{{ $row['income'] }}</div>
-                    <div class="ref-row__mine"><span>Ваш доход</span>{{ $row['mine'] }}</div>
-                    <div class="ref-row__days {{ $row['days'] === null ? 'expired' : ($row['days'] <= 14 ? 'warn' : '') }}"><span>Дней осталось</span>{{ $row['days'] === null ? 'Истекло' : $row['days'] }}</div>
+                    <div class="ref-row__income"><span>Его доход:</span>{{ $row['income'] }}</div>
+                    <div class="ref-row__mine"><span>Ваш доход:</span>{{ $row['mine'] }}</div>
+                    <div class="ref-row__days {{ $row['days'] === null ? 'expired' : ($row['days'] <= 14 ? 'warn' : '') }}"><span>Дней осталось:</span>{{ $row['days'] === null ? 'Истекло' : $row['days'] }}</div>
                 </div>
             @endforeach
         </div>

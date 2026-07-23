@@ -354,7 +354,7 @@
             <input type="checkbox" data-gate><span>Я понимаю последствия и хочу удалить аккаунт</span>
         </label>
         <div class="btn-group right-group">
-            <button class="btn outline">Отмена</button>
+            <button class="btn outline" onclick="closeModal()">Отмена</button>
             <button class="btn red" data-gated disabled><i class="fa-regular fa-trash-can"></i>Удалить</button>
         </div>
     </div>

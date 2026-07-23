@@ -1,7 +1,7 @@
 /* --- Мменю личного кабинета --- */
 .cab-sidebar {display: flex;flex-direction: column;gap: 20px; background:var(--bg-card); border: 1px solid var(--border);
               border-radius: var(--radius-md); padding:20px 14px 14px 14px; position: sticky; top: 80px;  }
-.cab-nav-line { background:var(--border);margin:0 -14px; display:flex; padding:1px;}
+.cab-nav-line { background:var(--border);margin:0 -14px; display:flex; height:1px;}
 .cab-prof__head { display: flex; align-items: center; gap: 12px; text-decoration:none; color:var(--text);}
 .cab-prof__ava {flex-shrink: 0;width: 44px; height: 44px; border-radius: 50%;
     color: #000; display: flex; align-items: center; justify-content: center;
@@ -11,7 +11,7 @@
 .cab-prof__meta .cab-nav-level {display: inline-flex; align-items: center; gap: 6px;
     font-size: 12px; color: var(--text-muted); margin-top: 6px; margin-left:-2px;
 }
-.cab-prof__meta .cab-nav-level i { color:#fcff0087; font-weight:200; font-size:13px;}
+.cab-prof__meta .cab-nav-level i {font-size:8px;}
 .cab-prof__progress { margin-top: 16px; }
 .cab-prof__progress-line {
     display: flex; justify-content: space-between;
@@ -73,7 +73,8 @@ html[data-theme="light"] .cab-nav-field a.featured i { color: #000000;}
                             display: flex;flex-direction: column;gap: 8px;}
 .dropdown-item.header-cab-list .cab-nav-line {margin:0 -8px;}
 .dropdown-item.header-cab-list .cab-nav-field .cab-nav-line {margin:6px -8px;}
-.header-cab-list .cab-nav-profile {padding:4px 8px 14px 8px;}
+.cab-nav-field .cab-nav-line {margin:6px -8px;}
+.header-cab-list .cab-nav-profile {padding:4px 8px 4px 8px;}
 
 /* --- адаптив для левого меню кабинета --- */
 @media (min-width: 1200px) {

@@ -59,7 +59,7 @@
     <div class="cab-loyalty-card__head">
         <div class="cab-loyalty-current">
             <div class="cab-loyalty-current__level tier-bronze">
-                <i class="fa-regular fa-chess-rook-piece"></i>
+                <i class="fa-solid fa-circle"></i>
                 <span>Bronze</span>
             </div>
             <small>С 17 февраля 2026</small>
@@ -87,26 +87,26 @@
     <div class="cab-loyalty-tiers">
         <div class="cab-loyalty-tiers__item current">
             <div class="cab-loyalty-tiers__name tier-bronze">
-                <i class="fa-regular fa-chess-rook-piece"></i>
+                <i class="fa-solid fa-circle"></i>
                 Bronze
             </div>
             <span>пройден</span>
         </div>
         <div class="cab-loyalty-tiers__item">
             <div class="cab-loyalty-tiers__name tier-silver">
-               <i class="fa-regular fa-star"></i>
+               <i class="fa-solid fa-circle"></i>
                 Silver</div>
             <span><b>+14%</b> · текущий</span>
         </div>
         <div class="cab-loyalty-tiers__item">
             <div class="cab-loyalty-tiers__name tier-gold">
-                <i class="fa-regular fa-trophy"></i>
+                <i class="fa-solid fa-circle"></i>
                 Gold</div>
             <span><b>+29%</b> · $1&nbsp;500</span>
         </div>
         <div class="cab-loyalty-tiers__item">
             <div class="cab-loyalty-tiers__name tier-platinum">
-                <i class="fa-regular fa-crown"></i>
+               <i class="fa-solid fa-circle"></i>
                 Platinum</div>
             <span><b>+36%</b> · $7&nbsp;500</span>
         </div>

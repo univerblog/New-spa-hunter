@@ -1,5 +1,6 @@
 .header {position:fixed !important; background: var(--header); right:0; left:0; top:0; z-index:10;  
-        box-shadow:0px 0px 10px var(--box-shadow);    }
+        box-shadow:0px 0px 10px var(--box-shadow);  
+        }
 .header .container {padding:0px 40px; height:56px; display:flex; gap:10px; justify-content:space-between; }
 .logo {display:flex; align-items:center; text-decoration:none; gap:8px; font-size:22px; font-weight:400; letter-spacing:1px; 
        color:#c5c5c5;}
@@ -125,5 +126,7 @@ html[data-theme="light"] .logo {color:var(--text)}
   .logo {margin-left:0px;}
   .header-auth > .btn {padding:0 10px;}
 }
-
-
+/*
+.header {background:none;}
+main {margin-top:0;}
+*/

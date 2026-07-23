@@ -152,7 +152,7 @@ main > section:last-child {padding-bottom:80px;}
 /************************/
 .section-title {margin-bottom:32px;text-align:center; position:relative;
                display:flex; flex-direction:column; gap:10px;} 
-.section-title h2, .section-title h1 {margin: 0;padding: 0;font-size: 38px;font-weight: 700; line-height:1.2; 
+.section-title h2, .section-title h1 {margin: 0;padding: 0;font-size: 38px;font-weight: 500; line-height:1.2; 
   color:var(--text); text-wrap:balance; 
 }
 .section-title h3 {font-size: 36px;}
@@ -238,6 +238,13 @@ html[data-theme="light"] .acc-title i {color: var(--text);}
 /*** TABS ***/
 /*** icon telegram ***/
 .fa-paper-plane {display: inline-block; transform: scaleY(0.9); transform-origin: center; }
+
+/* --- Цвета тиров --- */
+.tier-bronze i { color: #cd7f32; }
+.tier-silver i { color: #a0a8b0; }
+.tier-gold i { color: #fbbf24; }
+.tier-platinum i { color: #67e8f9; }
+
 /****** HOVERS *******/
 @media (min-width: 1200px){   
 .lang-picker .dropdown-item a:hover {background:var(--hover-1); color:var(--text);}

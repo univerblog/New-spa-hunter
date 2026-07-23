@@ -87,6 +87,7 @@ if ($fragment !== '') {
 $routes = [
     '' => 'pages.home',
     'cabinet' => 'pages.cabinet.cabinet-start',
+    'cabinet/statistics' => 'pages.cabinet.cabinet-statistics', // Статистика
     'cabinet/balance' => 'pages.cabinet.cabinet-balance', // Баланс
     'cabinet/level' => 'pages.cabinet.cabinet-level', // Мой уровень
     'cabinet/notifications' => 'pages.cabinet.cabinet-notifications', // Уведомления
