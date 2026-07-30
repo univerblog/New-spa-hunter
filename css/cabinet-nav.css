@@ -89,7 +89,7 @@ html[data-theme="light"] .cab-nav-field a.featured i { color: #000000;}
               transition: all 0.3s; transition: transform 0.3s ease;
               transform: translateX(100%);
               border: 0;
-              border-radius: 0; z-index:2; background:var(--bg); 
+              border-radius: 0; z-index:4; background:var(--bg); 
              }
 .cab-sidebar.show {transform: translateX(0); }  
 .cab-nav-profile {padding:0 4px 0 12px;}    

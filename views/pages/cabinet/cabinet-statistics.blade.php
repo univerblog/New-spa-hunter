@@ -27,65 +27,71 @@ $folders = [];
 
 @section('content')
 
-<section class="section">
+<section class="section statistics-page">
     <div class="container full">
 
         <div class="stata-setting-block">
             <div class="stata-setting-item">
-                <div class="input-group input__min">
-                    <select id="select_tags" style="width:calc(100% + 20px);">
-                        <option value="all">All tags ({{ count($stata) }})</option>
-                        @foreach($tags as $tag => $count)
-                            <option value="{{ $tag }}">{{ $tag }} ({{ $count }})</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="input-group input__min">
-                    <select id="select_folder" style="width:calc(100% + 20px);">
-                        <option value="all">All folder ({{ count($stata) }})</option>
-                        @foreach($folders as $folder => $count)
-                            <option value="{{ $folder }}">{{ $folder }} ({{ $count }})</option>
-                        @endforeach
-                    </select>
-                </div>
-                <!--
-                <div class="input-group input__min" style="display:none">
-                    <button class="btn-min-solid yellow folders-btn" onclick="openFolders(this);">
-                        <i class="fa-solid fa-folder-arrow-right"></i> 
-                        Select folder
-                        <i class="fa-solid fa-caret-down"></i>
+
+                <div class="select" data-select data-name="tags" id="select_tags">
+                    <button type="button" class="select-trigger">
+                        <span class="select-value">Все теги ({{ count($stata) }})</span>
+                        <i class="fa-solid fa-chevron-down select-arrow"></i>
                     </button>
-                </div>
-                -->
-            </div>
-            <div class="stata-setting-item entries">
-                Showing 1 to 20 of 100 entries
-            </div>
-            <div class="stata-setting-item">
-                <div class="input-group input__min">
-                    <select id="select_length_table" style="width:80px;">
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="40">40</option>
-                        <option value="80">80</option>
-                        <option value="100">100</option>
-                    </select>
-                </div>
-                <div class="input-group input__min">
-                    <div class="input-horisontal-group">
-                        <input type="text" name="" value="" placeholder="Search" maxlength="150">
+                    <div class="select-panel">
+                        <div class="select-list">
+                            <button type="button" class="select-option is-selected" data-value="all">Все теги ({{ count($stata) }})</button>
+                            @foreach($tags as $tag => $count)
+                                <button type="button" class="select-option" data-value="{{ $tag }}">{{ $tag }} ({{ $count }})</button>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
+
+                <div class="select" data-select data-name="folder" id="select_folder">
+                    <button type="button" class="select-trigger">
+                        <span class="select-value">Все папки ({{ count($stata) }})</span>
+                        <i class="fa-solid fa-chevron-down select-arrow"></i>
+                    </button>
+                    <div class="select-panel">
+                        <div class="select-list">
+                            <button type="button" class="select-option is-selected" data-value="all">Все папки ({{ count($stata) }})</button>
+                            @foreach($folders as $folder => $count)
+                                <button type="button" class="select-option" data-value="{{ $folder }}">{{ $folder }} ({{ $count }})</button>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="stata-setting-item entries">
+                Показано от 1 до 20 из 100 записей
+            </div>
+            <div class="stata-setting-item">
+
+                <div class="select select-min" data-select data-name="length" id="select_length_table">
+                    <button type="button" class="select-trigger">
+                        <span class="select-value">10</span>
+                        <i class="fa-solid fa-chevron-down select-arrow"></i>
+                    </button>
+                    <div class="select-panel">
+                        <div class="select-list">
+                            <button type="button" class="select-option is-selected" data-value="10">10</button>
+                            <button type="button" class="select-option" data-value="20">20</button>
+                            <button type="button" class="select-option" data-value="40">40</button>
+                            <button type="button" class="select-option" data-value="80">80</button>
+                            <button type="button" class="select-option" data-value="100">100</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" placeholder="Search" maxlength="150">
+                </div>
+
             </div>
         </div>
 
-    
-
-        <div class="scroll-icon for-mobile" style="margin-bottom:20px;">
-            <i class="fa-light fa-arrow-left"></i>
-            <i class="fa-light fa-hand-back-point-up fa-rotate-180"></i>
-            <i class="fa-light fa-arrow-right"></i>
-        </div>
 
        <div class="stata-table-wrapper">
             <table class="stata-table" id="for-paginate-only">
@@ -103,80 +109,96 @@ $folders = [];
                         <th><div class="tab-filter">CR</div></th>
                         <th><div class="tab-filter">В ожидании</div></th>
                         <th><div class="tab-filter">Подтверждено</div></th>
-                        <th><div class="tab-filter">Отменено</div></th>
+                        <th><div class="tab-filter">Выведено</div></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($stata as $link)
-                        <tr data-id="{{ $link['id'] }}">
-                            <td>
-                                <div class="table-flex merch">
-                                    <a href="#" onclick="loadMerchantData('{{ $link['merchant_key'] }}'); event.preventDefault();">
-                                        {{ $link['merchant__name'] }} <i class="fa-solid fa-circle-info"></i>
-                                    </a>
-                                </div>
-                            </td>
+                    <tr data-id="{{ $link['id'] }}">
 
-                            <td>
-                                <div class="table-flex"><a href="{{ $link['product_url'] }}" target="_blank">{{ $link['product_url'] }}</a></div>
-                            </td>
+                        <td class="-merchant">
+                            <div class="table-flex merch">
+                                <a href="#" onclick="loadMerchantData('{{ $link['merchant_key'] }}'); event.preventDefault();">
+                                    {{ $link['merchant__name'] }} <i class="fa-solid fa-circle-info"></i>
+                                </a>
+                            </div>
+                        </td>
 
-                            <td>
-                                <div class="table-flex copy">
-                                    <a href="{{ $link['short_url'] }}" target="_blank">{{ $link['short_url'] }}</a>
-                                    <button type="button" onclick="copyUrl(this, '{{ $link['short_url'] }}')"><i class="fa-solid fa-copy"></i></button>
-                                </div>
-                            </td>
+                        <td class="-url">
+                            <span class="td-label">Ссылка на товар</span>
+                            <div class="table-flex"><a href="{{ $link['product_url'] }}" target="_blank">{{ $link['product_url'] }}</a></div>
+                        </td>
 
-                            <td class="center">
-                                <div class="table-flex tags"><span>{{ $link['tag'] ?: '-' }}</span></div>
-                            </td>
+                        <td class="-short">
+                            <div class="table-flex copy">
+                                <a href="{{ $link['short_url'] }}" target="_blank">{{ $link['short_url'] }}</a>
+                                <button type="button" onclick="copyUrl(this, '{{ $link['short_url'] }}')"><i class="fa-solid fa-copy"></i></button>
+                            </div>
+                        </td>
 
-                            <td>
-                                <div class="table-flex folder">
-                                    <i class="fa-solid fa-folder-open"></i> <span>{{ $link['folder'] ?: '-' }}</span>
-                                </div>
-                            </td>
+                        <td class="center -tag">
+                            <div class="table-flex tags"><i class="fa-solid fa-hashtag"></i><span>{{ $link['tag'] ?: '-' }}</span></div>
+                        </td>
 
-                            <td class="center note">
-                                @if($link['note'])
-                                    <span onclick="openNoteModal('{{ $link['id'] }}', this.textContent.trim())">{{ $link['note'] }}</span>
-                                @else
-                                    <button type="button" onclick="openNoteModal('{{ $link['id'] }}', '')"><i class="fa-solid fa-plus" style="font-size:10px;"></i> note</button>
-                                @endif
-                            </td>
-                            <td class="data-created">{{ $link['created_at'] }}</td>
-                            <td class="center clicks-count">
-                                @if($link['clicks_count'] != 0)
-                                    <button type="button" onclick="openDetailsModal('{{ $link['id'] }}', 'clicks')">{{ $link['clicks_count'] }}</button>
-                                @else
-                                    0
-                                @endif
-                            </td>
-                            <td class="center purchases-count">
-                                @if($link['purchases_count'] != 0)
-                                    <button type="button" onclick="openDetailsModal('{{ $link['id'] }}', 'purchases')">{{ $link['purchases_count'] }}</button>
-                                @else
-                                    0
-                                @endif
-                            </td>
-                            <td class="center">16.22%</td>
-                            <td class="center pending-count">
-                                {{-- @if($link['total_reward'] != 0)
-                                    <button type="button">${{ $link['total_reward'] }}</button>
-                                @else
-                                    $0
-                                @endif --}}
-                                ${{ $link['total_reward'] }}
-                            </td>
-                            <td class="center">${{ $link['total_reward'] }}</td>
-                            <td class="center">${{ $link['total_reward'] }}</td>
-                            <td class="center trash">
-                                <button type="button" onclick="openDeleteModal('{{ $link['id'] }}')"><i class="fa-solid fa-trash-can"></i></button>
-                            </td>
-                        </tr>
-                    @endforeach
+                        <td class="-folder">
+                            <div class="table-flex folder">
+                                <i class="fa-solid fa-folder-open"></i> <span>{{ $link['folder'] ?: '-' }}</span>
+                            </div>
+                        </td>
+
+                        <td class="center note -note{{ $link['note'] ? '' : ' no-note' }}">
+                            @if($link['note'])
+                                <span onclick="openNoteModal('{{ $link['id'] }}', this.textContent.trim())">{{ $link['note'] }}</span>
+                            @else
+                                <button type="button" onclick="openNoteModal('{{ $link['id'] }}', '')"><i class="fa-solid fa-plus" style="font-size:10px;"></i> Заметка</button>
+                            @endif
+                        </td>
+
+                        <td class="data-created -created">{{ $link['created_at'] }}</td>
+
+                        <td class="center clicks-count -clicks">
+                            <span class="td-label">Клики</span>
+                            @if($link['clicks_count'] != 0)
+                                <button type="button" onclick="openDetailsModal('{{ $link['id'] }}', 'clicks')">{{ $link['clicks_count'] }}</button>
+                            @else
+                                0
+                            @endif
+                        </td>
+
+                        <td class="center purchases-count -purchases">
+                            <span class="td-label">Покупки</span>
+                            @if($link['purchases_count'] != 0)
+                                <button type="button" onclick="openDetailsModal('{{ $link['id'] }}', 'purchases')">{{ $link['purchases_count'] }}</button>
+                            @else
+                                0
+                            @endif
+                        </td>
+
+                        <td class="center -cr"><span class="td-label">CR</span>16.22%</td>
+
+                        <td class="center pending-count -pending"><span class="td-label">В ожидании</span><b>${{ $link['total_reward'] }}</b></td>
+
+                        <td class="center -confirmed"><span class="td-label">Подтверждено</span><b>${{ $link['total_reward'] }}</b></td>
+
+                        <td class="center -withdrawn"><span class="td-label">Выведено</span><b>${{ $link['total_reward'] }}</b></td>
+
+                        <td class="center -actions">
+                            <button type="button" class="stata-menu" data-stata-menu><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            <div class="stata-pop">
+                                <button type="button" onclick="openNoteModal('{{ $link['id'] }}', '{{ $link['note'] }}')"><i class="fa-regular fa-pen"></i> Заметка</button>
+                                <button type="button" onclick="openNoteModal('{{ $link['id'] }}', '{{ $link['note'] }}')"><i class="fa-regular fa-pen"></i> Тег</button>
+                                <button type="button" onclick="openNoteModal('{{ $link['id'] }}', '{{ $link['note'] }}')"><i class="fa-regular fa-pen"></i> Папка</button>
+                                <button type="button" class="red" onclick="openDeleteModal('{{ $link['id'] }}')"><i class="fa-solid fa-trash-can"></i> Удалить</button>
+                            </div>
+                        </td>
+
+                        <td class="-links-toggle">
+                            <button type="button" data-links-toggle>Доходы<i class="fa-solid fa-chevron-down"></i></button>
+                        </td>
+
+                    </tr>
+                @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
@@ -205,11 +227,6 @@ $folders = [];
             </table>
         </div>
 
-        <div class="scroll-icon for-mobile" style="margin-top:20px;">
-            <i class="fa-light fa-arrow-left"></i>
-            <i class="fa-light fa-hand-back-point-up"></i>
-            <i class="fa-light fa-arrow-right"></i>
-        </div>
 
         <div class="pagination for-desktop" id="pagination"></div>
 
@@ -630,6 +647,21 @@ function closeDeleteAndRemoveRow() {
 
 </script>
 
+<script>
+    ////// меню в блоке статы для мобильного
+document.addEventListener('click', function(e){
+    var menuBtn = e.target.closest('[data-stata-menu]');
+    var pop = menuBtn ? menuBtn.nextElementSibling : null;
+
+    document.querySelectorAll('.stata-pop.show').forEach(function(p){
+        if (p !== pop) p.classList.remove('show');
+    });
+    if (pop) { pop.classList.toggle('show'); return; }
+
+    var lt = e.target.closest('[data-links-toggle]');
+    if (lt) lt.closest('tr').classList.toggle('links-open');
+});
+</script>
 
 
 

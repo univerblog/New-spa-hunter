@@ -119,12 +119,18 @@
 
 <section class="section" id="create">
   <div class="container">
-    <div class="section-title">
-      <h2>{{ __('Create your first link right now') }}</h2>
-      <p>{{ __("Paste a product URL or brand name — we'll find the store and generate an affiliate link.") }}</p>
-    </div>
-    @include('components.create-link-form')
-    </div>
+      <div class="section-title">
+          <h2>{{ __('Create your first link right now') }}</h2>
+          <p>{{ __("Paste a product URL or brand name — we'll find the store and generate an affiliate link.") }}</p>
+      </div>
+      <div class="layout-block layout-form">
+         @include('components.create-link.create-link-short')
+      </div>
+      <br /><br />
+      <div class="layout-block layout-form">
+         @include('components.create-link.create-link-long')
+      </div>
+  </div>
 </section> 
 
 <section class="section">

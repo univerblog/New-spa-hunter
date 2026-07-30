@@ -1,60 +1,64 @@
 /***** STATISTIC  *****/
+.statistics-page {padding-bottom:80px;}
 .stata-setting-block {display:flex; justify-content:space-between; margin-bottom:30px; flex-wrap:wrap; gap:20px;}
-.stata-setting-item {display:flex; gap:20px; flex-wrap:wrap; align-items:end;}
+.stata-setting-item {display:flex; gap:20px; flex-wrap:wrap; align-items:end; flex:1;}
+.stata-setting-item .select-trigger {height: 40px; padding: 0 16px 0 16px;font-size: 14px;}
+.stata-setting-item .select-min {width:120px; min-width:auto; flex:none;}
+.stata-setting-item .input-field input {height: 40px; padding: 0 16px 0 16px; min-height:40px;}
 .stata-setting-item.entries {flex:1; padding:0 20px; justify-content:center; color:#999; font-size:16px;}
+
 /********* T A B L E ***********/
 .stata-table {table-layout: fixed !important; border-spacing:0; min-width:100%; font-size:14px;}
 .stata-table td, .stata-table th {padding:10px 12px; text-align:left;}
-.stata-table thead tr {background:#161616; }
+.stata-table thead tr {}
 .stata-table thead tr th {padding:16px 8px; font-size:13px;}
 .stata-table thead tr th:first-child {padding:16px 8px 16px 12px;}
 .stata-table tbody td, .stata-table thead tr th {border-bottom:1px solid #3c3c3c;}
-.stata-table tr:nth-child(even) {background:#161616;}
 .stata-table th {white-space: nowrap; padding:12px 12px;}
 .stata-table td.center {text-align:center; color:#999}
 .stata-table td.center .table-flex {justify-content:center;}
 .table-flex {display:flex; gap:10px; align-items:center;}
 .table-flex a {max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display:block;
-              text-decoration:none; color:var(--blue); position:relative;}
-.table-flex.merch a {padding-left:24px;}
+              text-decoration:none; color:var(--cyan); position:relative;}
+.table-flex.merch a {padding-left:24px; color:var(--text-muted);}
 .table-flex.merch a i {position:absolute; left:0; top:1.2px; color:#868686;}
 .stata-table button {background:#868686; border:0; border-radius:6px; padding:4px 8px; cursor:pointer;
                              transition:all 0.3s; font-size:14px; min-width:30px; display:inline-flex; align-items:center; gap:4px;
                     justify-content:center; color:#000;}
+.stata-table .-tag i { display: none; }
 .table-flex.tags span {max-width: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display:block;}
 .table-flex.folder {gap:6px; color:#999; cursor:pointer;}
-.table-flex.folder span {max-width: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.table-flex.folder span {max-width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 .stata-table .note span {font-size:14px; display: -webkit-box; -webkit-line-clamp: 2;  
   -webkit-box-orient: vertical; overflow: hidden; transition:all 0.3s; color:#999; cursor:pointer; min-width:140px;}
-.stata-table .note button {background:#555555a1;color:#000000; font-size:14px; padding:4px 8px 5px 8px; color:#fff}
+.stata-table .note button {background:#555555a1;color:#000000; font-size:13px; padding:6px 8px 7px 8px; color:#fff}
 .stata-table .note button i {margin-top:3px;}
 .stata-table .data-created {font-size:14px; color:#999; min-width:100px; max-width:100px;}
 .copy {gap:0;}
 .copy button {background:none; color:#999; }
 .trash button {background:none; color:#ff0000; font-size:16px;}
 
-.stata-table-wrapper {overflow-x:auto; padding-bottom:30px; }
-.stata-table-wrapper::-webkit-scrollbar {height: 14px; background-color: #3d3d3d; border-radius: 9em;}
-.stata-table-wrapper::-webkit-scrollbar-thumb {background-color:#646464; border-radius: 20px; border: 10px solid #646464;}
+.stata-table-wrapper {overflow-x:auto; padding-bottom:0px; margin-bottom:30px; border:1px solid var(--border); border-radius:16px;
+                     background:var(--bg-card);}
+.stata-table-wrapper::-webkit-scrollbar {height: 40px; background-color: var(--bg-card); border-radius: 9em;}
+.stata-table-wrapper::-webkit-scrollbar-thumb {background-color:#6464646b; border-radius: 30px; border: 16px solid var(--bg-card); padding:4px;}
 
 .clicks-count button {background:#555555a1; color:#fff;}
 .purchases-count button {background:#d6ff004d; font-weight:500; color:#fff;} 
 .pending-count button {background:#ccc;}
-.stata-table tfoot tr td {background:#161616; color:#fff !important; padding-top:20px; padding-bottom:20px;
+.stata-table tfoot tr td { color:#fff !important; padding-top:20px; padding-bottom:20px;
                          border-bottom:1px solid #3c3c3c;}
 .stata-table tfoot tr td i {color:#999; display:none;}
+
 /***** table first td fixed *****/
-.stata-table thead tr th:first-child {position:absolute; width:170px; z-index:1; left:36px; background:#161616;}
-.stata-table tfoot tr td:first-child {position:absolute; width:170px; z-index:1; left:36px; }
-.stata-table tbody tr td:first-child {position:absolute; width:170px; z-index:1; left:36px; 
-                                      background:#161616;  display:flex; height:55px;
-                                     border-bottom:1px solid #3c3c3c; } 
-.stata-table tbody tr:nth-child(even) td:first-child {}
-.stata-table {padding-left:168px; max-width:calc(100% - 178px);} 
+/***** первая колонка sticky *****/
+.stata-table th:first-child, .stata-table td:first-child { position: sticky; left: 0; z-index: 1; width: 170px; background: var(--bg-card); }
+.stata-table thead th:first-child { }
+
 /********************/
 
 .tab-filter {cursor:pointer;  border-radius:8px; transition:all 0.3s; position:relative;
-            padding:10px 26px 10px 10px !important; background:#2e2e2e; }
+            padding:10px 26px 10px 10px !important; background:#383838; }
 .tab-filter::after, .tab-filter::before {
   content: "";
   display: inline-block; font-size:10px;
@@ -72,9 +76,120 @@
 .dt-ordering-asc::before {background-color:var(--primary);}
 .dt-ordering-desc::after {background-color:var(--primary);}
 
+/***** меню три точки *****/
+.stata-table .-actions { position: relative; }
+.stata-menu { background: none !important; color: #999 !important; font-size: 16px; min-width: 30px; }
+.stata-pop {
+            position: absolute;
+            top: 14px;
+            right: 50px;
+            display: none;
+            flex-direction: column;
+            padding: 6px;
+            background: #161616;
+            border: 1px solid #3c3c3c;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            z-index: 5;
+            }
+.stata-pop.show {display: flex;}
+.stata-pop > button { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 7px; background: transparent !important; 
+                     color: #fff !important; font-size: 13px; white-space: nowrap; justify-content: flex-start; }
+.stata-pop > button.red {color: #FF5C5C !important;}
+
+/***** кнопка ссылок: на десктопе нет *****/
+.stata-table .-links-toggle { display: none; }
+.stata-table .td-label { display: none; }
+
+@media (min-width: 1600px) {
+    .stata-table tfoot tr:last-child td {border:0;}
+}
+@media (min-width: 1200px) {
+    .stata-pop button:hover { background: #ffffff10 !important; }
+    .stata-table tbody tr, .stata-table tbody tr td { transition:all 0.1S;} 
+    .stata-table tbody tr:hover td:first-child, .stata-table tbody tr:hover  {background: #2c2c2c !important;} 
+}
+/***** мобила: строки-карточки *****/
+@media (max-width: 800px) {
+    .stata-setting-block {flex-direction:column; gap:10px;}
+    .stata-setting-item {gap:10px;}
+    .stata-setting-item.entries {order:2; font-size:13px; justify-content:left; padding:0; margin:10px 0 -10px 0;}
+    .stata-table-wrapper {border:0; border-radius:0; background:none;}
+    .stata-table { padding-left: 0; max-width: 100%; display: block; }
+    .stata-table thead { display: none; }
+    .stata-table tfoot { display: none; }
+    .stata-table tbody { display: flex; flex-direction:column; gap:10px;}
+    .stata-table tbody tr { display: grid; grid-template-columns: 1fr 1fr 1fr 40px; gap: 0px 10px; 
+    grid-template-areas: "merchant merchant merchant menu" "created created created menu" "note note note note" "meta1 meta2 meta2 meta2" "short short short short" "clicks purchases cr cr" "ltoggle ltoggle ltoggle ltoggle" "url url url url" "pending pending pending pending" "confirmed confirmed confirmed confirmed" "withdrawn withdrawn withdrawn withdrawn"; 
+                          position: relative; border:1px solid var(--border); border-radius:16px;
+                          background:var(--bg-card) !important; padding:14px;}
+    
+    .stata-table td { display: block; border: 0 !important; padding: 0; }
+    .stata-table td:first-child { position: static; width: auto; background: none; display: block; }
+
+    .stata-table .-merchant  { grid-area: merchant; font-size: 16px; margin-bottom:6px;}
+  .stata-table .-merchant a {padding:0; color:var(--lime);}
+  .stata-table .-merchant i {font-size:14px; position:relative !important; top:auto !important;}
+    .stata-table .-created   { grid-area: created; min-width: 0; max-width: none; font-size: 13px;
+                              margin-bottom:10px}
+    .stata-table .-actions   { grid-area: menu; position: static; text-align: right; }
+    .stata-table .-note      { grid-area: note; }
+    .stata-table .-note.no-note { display: none; }
+    .stata-table .-note span { min-width: 0; color:var(--text); margin:0px 0 10px 0; font-size:15px; line-height:1.4; }
+    .stata-table .-tag       { grid-area: meta1; overflow:hidden; }
+    .stata-table .-tag i { display: inline-block; color: #999; margin:0px -6px 0 -2px;}
+    .stata-table .-folder    { grid-area: meta2; width:100%; }
+    .table-flex.folder span {max-width: 100% !important;}
+    .stata-table .-clicks    { grid-area: clicks; }
+    
+    .stata-table .-purchases { grid-area: purchases; }
+    .stata-table .-cr        { grid-area: cr; }
+    .stata-table .-clicks, .stata-table .-purchases, .stata-table .-cr     {
+                             background: #3333338a;
+                             padding:10px;
+                             display:flex;
+                             flex-direction:column;
+                             align-items:center;
+                             gap:4px;
+                             border-radius:8px;
+                             margin:14px 0 6px 0;
+                             }
+   
+    .stata-table .-pending   { grid-area: pending; }
+    .stata-table .-confirmed { grid-area: confirmed; }
+    .stata-table .-confirmed b {color:var(--lime)}
+    .stata-table .-withdrawn { grid-area: withdrawn; }
+    .stata-table .-withdrawn b {color:var(--text);}
+    .stata-table .-pending, .stata-table .-confirmed, .stata-table .-withdrawn { margin-bottom: 6px; display: none; }
+    /* суммы: подпись слева, значение справа (видны только в раскрытом) */
+    .stata-table tr.links-open .-pending, .stata-table tr.links-open .-confirmed, .stata-table tr.links-open .-withdrawn { display: flex; justify-content: space-between; align-items: baseline; }
+    .stata-table .-pending .td-label, .stata-table .-confirmed .td-label, .stata-table .-withdrawn .td-label { margin: 0; font-size: 13px; }
+  
+    .stata-table .-links-toggle { grid-area: ltoggle; display: block; margin-top:8px;}
+    .stata-table .-url       { grid-area: url; display: none; margin:20px 0 8px 0; border-bottom:1px solid var(--border) !important; padding-bottom:10px;}
+    .stata-table .-short     { grid-area: short; display: flex; margin-top: 16px; border-top:1px solid var(--border) !important; padding-top:10px;}
+    .stata-table .-short .table-flex {justify-content:space-between;  width:100%;}
+
+    .stata-table tr.links-open .-url { display: flex; flex-direction: column; }
+    .stata-table tr.links-open [data-links-toggle] i { transform: rotate(180deg); }
+
+    .stata-table .td-label { display: block; font-size: 11px; color: #999; margin-bottom: 2px; }
+    .stata-table td.center { text-align: left; }
+   .stata-table td .stata-menu  {background:#333 !important; width:40px; height:40px;}
+    .stata-table td.center .table-flex { justify-content: flex-start;}
+    .table-flex.tags span {max-width: 100%;}
+    .stata-table .table-flex a { max-width: 100%; }
+
+    /* кнопка ссылок */
+    .stata-table [data-links-toggle] { background: #3333338a !important; color: #999 !important; padding: 10px 14px; border-radius: 8px; 
+                                      width: 100%; }
+    .stata-table [data-links-toggle] i { font-size: 9px; transition: transform 0.2s; margin-top:2px;}
+
+    .stata-pop { top: 14px; right: 60px; }
+}
+
 @media (max-width: 640px) {
-  .stata-table {padding-left:148px;} 
-  .stata-table thead tr th:first-child {left:0px; }
-  .stata-table tfoot tr td:first-child {left:0px; }
-  .stata-table tbody tr td:first-child {left:0px;} 
+    .stata-setting-item .select-min {width:90px;}
+    .stata-setting-item:last-child {flex-wrap:nowrap; width:100%;}
+    .stata-setting-item .input-field { max-width: auto; width:calc(100% - 100px); flex:none;}
 }

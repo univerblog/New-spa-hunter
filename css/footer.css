@@ -1,5 +1,5 @@
 /********* FOOTER **********/
-.footer {background: var(--footer); color:var(--text-muted);}
+.footer {background: var(--footer); color:var(--text-muted); position:relative; z-index:1;}
 .footer .container {padding:60px 40px 60px 40px;}
 .foot-wrapper { gap:30px; border-bottom:1px solid var(--border); padding-bottom:30px; margin-bottom:30px;
                display:flex;}

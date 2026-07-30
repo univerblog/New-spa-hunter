@@ -245,12 +245,41 @@ html[data-theme="light"] .acc-title i {color: var(--text);}
 .tier-gold i { color: #fbbf24; }
 .tier-platinum i { color: #67e8f9; }
 
+/*** Pagination ***/
+.pagination {display:flex; gap:6px; margin-top:0px; align-items:center; justify-content:center; font-size:14px;}
+.pagination button, .pagination span {border:0; width:36px; height:36px;
+  background:var(--bg-card); display:flex; justify-content:center; align-items:center; border-radius:6px; cursor:pointer;
+                                             color:var(--text-muted); transition:all 0.3s;}
+.pagination button i {font-size:10px;}
+.pagination button:disabled {color:#828282; cursor:default;}
+.pagination span.active {background:#494949; }
+.pagination strong {padding:0 6px; color:#999;}
+.mini-pagination {display:flex; gap:6px;  align-items:center; justify-content:center; color:#ccc; font-size:14px;
+                }
+.mini-pagination button, .mini-pagination a {border:0; background:#3b3b3b; display:flex; justify-content:center; align-items:center; 
+                          border-radius:6px; cursor:pointer; color:#ccc; transition:all 0.3s;  
+                         gap:6px; font-size:11px; height:30px; width:30px; text-decoration:none;}
+.mini-pagination .paginate-pages {margin:0 10px; }
+.mini-pagination .paginate-pages b {font-weight:400;}
+.mini-pagination button i {font-size:12px;}
+.mini-pagination button:disabled {color:#828282; cursor:default;}
+
+.for-desktop {display:flex;}
+.for-mobile {display:none;}
+
 /****** HOVERS *******/
 @media (min-width: 1200px){   
 .lang-picker .dropdown-item a:hover {background:var(--hover-1); color:var(--text);}
+.pagination button:hover, .pagination span:hover {background:var(--hover-1); display:flex; color:var(--text-muted); }
+.pagination span.active:hover {background:#494949; }    
+.pagination button:disabled:hover {background:#242424; color:#828282;}
 }    
 /***************/
 
+@media (max-width: 800px) {
+   .for-desktop {display:none;}
+   .for-mobile {display:flex;}
+}
 
 @media (max-width: 640px) {
  section {position:relative; padding:50px 0 0 0;}

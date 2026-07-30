@@ -43,13 +43,14 @@ html[data-theme="light"] .modal-brand-stats span:first-child {color:var(--text);
 .modal-qr-image img {width:180px; display:block;  border-radius: var(--radius-md);
                   background:var(--bg); margin:0 auto;}
 
-.modal-card {border-radius: var(--radius-md); background:#00000024; border: 1px solid var(--border); padding:14px;}
-.modal-card h4 {font-size: 11px;color: var(--text-muted);text-transform: uppercase;letter-spacing: 0.05em;
+.modal-card {border-bottom:1px solid var(--border); padding-bottom:18px;}
+.modal-card h4 {font-size: 11px;color: var(--lime);text-transform: uppercase;letter-spacing: 0.05em;
     margin-bottom: 8px; font-weight: 500; text-align:left;}
 /* ol — номер свой через счётчик: размер и цвет ставишь на ::before */
-.ul-modal-list, .ol-modal-list { list-style: none; counter-reset: item; padding: 0; margin: 0; font-size: 13px; color: var(--text); 
-                display: flex; flex-direction: column; gap: 8px; }
-.ul-modal-list li, .ol-modal-list li { padding: 0 0 0 20px; position: relative; counter-increment: item; }
+.ul-modal-list, .ol-modal-list { list-style: none; counter-reset: item; padding: 0; margin: 0; font-size: 13px; color: var(--text-muted); 
+                display: flex; flex-direction: column; gap: 8px; font-weight:400;}
+.ul-modal-list b, .ol-modal-list b {color:var(--text);}
+.ul-modal-list li, .ol-modal-list li { padding: 0 0 0 20px; position: relative; counter-increment: item; line-height:1.5;}
 .ul-modal-list li {padding: 0 0 0 18px;}
 .ul-modal-list li::before { content: '•'; position: absolute; left: 0; top: 1px; font-size: 14px; line-height: 1; 
                            color: var(--lime); }

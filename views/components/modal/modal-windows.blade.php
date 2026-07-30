@@ -460,8 +460,8 @@
         </div>
 
         <div class="btn-group right-group">
-            <button class="btn outline" onclick="closeModal()">Отмена</button>
             <a href="#" class="btn full" data-connect-oauth>Авторизация через <span data-platform-name></span></a>
+            <button class="btn outline" onclick="closeModal()">Отмена</button>
         </div>
         <div class="modal-loader"><i></i><span>Авторизуемся через API...</span></div>
     </div>
@@ -554,6 +554,46 @@
 
         <div class="btn-group right-group">
             <button class="btn" onclick="closeModal()">Готово</button>
+        </div>
+    </div>
+</div>
+<!-- Правила заработка -->
+<div class="modal-content" id="modal-earn-rules" style="display:none;">
+    <h3>Правила заработка</h3>
+    <div class="container-modal">
+        <div class="form-text-content">Как вы зарабатываете на CPA Hunter и когда получаете деньги.</div>
+
+        <div class="modal-card">
+            <h4>Основные правила</h4>
+            <ul class="ul-modal-list">
+                <li>Покупка должна произойти по вашей партнёрской ссылке CPA Hunter – в течение срока действия ссылки (от <b>24 часов до 30 дней</b>, зависит от бренда)</li>
+                <li>Магазины и сервисы передают статус заказа в CPA Hunter – обычно <b>за 1–2 дня</b>, иногда до 7 дней</li>
+                <li>Срок до подтверждения у каждого магазина свой – от <b>30 до 180 дней</b>. Если за это время заказ не отменён, не возвращён и не возмещён – он подтверждается</li>
+                <li>CPA Hunter выплачивает <b>в конце каждого месяца</b> (если достигнут порог выплат) – не забудьте настроить способ вывода средств</li>
+            </ul>
+        </div>
+
+        <div class="modal-card">
+            <h4>Что не засчитывается</h4>
+            <ul class="ul-modal-list">
+                <li>Возвраты товара – комиссия аннулируется автоматически</li>
+                <li>Отменённые или незавершённые оплаты</li>
+                <li>Покупки автором по собственной ссылке</li>
+                <li>Накрутка трафика, вредоносные программы, подмена партнёрских меток – пожизненный бан</li>
+            </ul>
+        </div>
+
+        <div class="modal-card">
+            <h4>Выплаты</h4>
+            <ul class="ul-modal-list">
+                <li>Минимум к выводу: $50</li>
+                <li>Выплаты – в конце каждого месяца</li>
+                <li>Способы: PayPal, банковский перевод (SEPA / SWIFT / ACH), Wise, Payoneer. Криптовалюта (USDT, USDC) – опционально, по запросу в настройках кабинета</li>
+                <li>Обработка – 1–3 рабочих дня в зависимости от метода</li>
+            </ul>
+        </div>
+        <div class="btn-group right-group">
+            <button class="btn" onclick="closeModal()">Понятно</button>
         </div>
     </div>
 </div>

@@ -137,33 +137,6 @@ html[data-theme="light"] .hero h1 .accent { color:#b1d300; }
   .hiw-card p.hiw-dop { margin:14px -14px -18px -14px; padding:14px 14px;}
 }
 
-/*--- БЛОК "СОЗДАТЬ ССЫЛКУ" ---*/
-.create-link__select {flex-basis:100%;}
-.create-link__btn {}
-.create-form-bottom {display: flex; align-items: center;
-  justify-content: space-between; gap: 16px; flex-wrap: wrap;
-  margin-top: 24px;padding-top: 24px;border-top: 1px solid var(--border);
-}
-.create-footer-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-.create-footer-btns > * {color: var(--text-dim)}
-html[data-theme="light"] .create-footer-btns > * {color:#333333e0;}
-.create-helpers-inline {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 13px; color: var(--text-dim);
-}
-.create-helpers-inline .js-merchants-count { color: var(--lime); font-weight: 500; }
-html[data-theme="light"] .js-merchants-count { color: var(--text); }
-
-/* ---- АДАПТИВ ДЛЯ "СОЗДАТЬ ССЫЛКУ" ---- */
-@media (max-width: 1000px) {
-  .create-link__wrapper > * {flex:1; flex-basis:46%;}
-  .create-link__select {flex-basis:100%;}
-}
-@media (max-width: 640px) {
- .create-footer-btns {width:100%;}
- .create-footer-btns > * {flex:1;}
-}
-
 /*---Objection БЛОК---*/
 .objection-wrap {display:flex; flex-direction:column; align-items:center; gap:10px;
                 max-width: 720px; margin: -10px auto 0 auto; text-align:center;}

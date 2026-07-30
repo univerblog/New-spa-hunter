@@ -34,7 +34,7 @@
 
     @if ($count)
         <div class="sources-card-head">
-            <i class="fa-solid fa-check"></i>
+            <i class="fa-solid fa-circle"></i>
             <span>{{ $count }} источников подключено</span>
         </div>
 
@@ -46,14 +46,17 @@
                 @endphp
                 <div class="source-row{{ $row['status'] === 'active' ? '' : ' ' . $st['class'] }}">
                     {!! $p['icon'] !!}
-                    <div>
+                    <div class="source-row_cont">
                         <strong>{{ $p['name'] }}</strong>
                         <small>{{ $row['url'] }}</small>
                     </div>
                     @if ($row['status'] !== 'active')
                         <span class="badge {{ $st['class'] }}">{{ $st['label'] }}</span>
                     @endif
-                    <button data-delete="{{ $row['platform'] }}"><i class="fa-regular fa-trash-can"></i></button>
+                    <button class="source-row__menu" data-source-menu><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                    <div class="source-row__pop">
+                        <button data-delete="{{ $row['platform'] }}"><i class="fa-regular fa-trash-can"></i>Удалить</button>
+                    </div>
                 </div>
             @endforeach
         </div>
@@ -114,6 +117,12 @@
     }
 
     document.addEventListener('click', function(e){
+        var menuBtn = e.target.closest('[data-source-menu]');
+        var pop = menuBtn ? menuBtn.nextElementSibling : null;
+        document.querySelectorAll('.source-row__pop.show').forEach(function(p){
+            if (p !== pop) p.classList.remove('show');
+        });
+        if (pop) { pop.classList.toggle('show'); return; }
 
         var tile = e.target.closest('.platform-tile');
         if (tile) { current = tile.dataset.platform; setName(tile.textContent.trim()); return; }

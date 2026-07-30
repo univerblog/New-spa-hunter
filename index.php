@@ -82,11 +82,12 @@ if ($fragment !== '') {
     }
     exit;
 }
-////////////////////////////////////////////
+//////////////////////////////////////////// 
 
 $routes = [
     '' => 'pages.home',
     'cabinet' => 'pages.cabinet.cabinet-start',
+    'cabinet-start' => 'pages.cabinet.cabinet-quick-start',
     'cabinet/statistics' => 'pages.cabinet.cabinet-statistics', // Статистика
     'cabinet/balance' => 'pages.cabinet.cabinet-balance', // Баланс
     'cabinet/level' => 'pages.cabinet.cabinet-level', // Мой уровень
