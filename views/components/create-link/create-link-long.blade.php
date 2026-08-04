@@ -83,7 +83,6 @@ $shops = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/shops-for-creat-link.p
     </button>
 </div>
 <div class="form-text create-helpers-inline">
-    <i class="fa-solid fa-check" style="color:var(--lime);"></i>
     <span class="js-merchants-count">41&nbsp;783</span>
     <span>{{ __('merchants and services') }}</span>
 </div>

@@ -1,3 +1,7 @@
+@php 
+    $this->share('navLocked', true); 
+@endphp
+
 @extends('layout.cabinet')
 
 @section('content')
@@ -47,7 +51,7 @@
         <!-- \\\\\\\\ -->
         <div class="onboard-note-rail">
             <div class="onboard-note">
-                <span>Шаг 1 из 3</span>
+                <span>Шаг 1 из 4</span>
                 <p>Шаг 1 – подключение источника. Проверка владения через OAuth моментальная, качество площадки оценим в фоне.</p>
                 <div class="btn-group">
                     <button type="button" class="btn min full">Далее</button>
@@ -85,9 +89,16 @@
                         <label for="">Viber</label>
                         @include('components.cabinet.phone-select', ['name' => 'viber'])
                     </div>
-                   <div class="input-field">
+                   <!-- <div class="input-field">
                         <label for="">Telegram</label>
                         <input type="text" id="" value="" placeholder="@xx757xx" maxlength="150">
+                    </div> -->
+                    <div class="input-field">
+                        <label>Telegram</label>
+                        <button type="button" class="input-btn" onclick="openModal('modal-tg-link')">
+                            <i class="fa-brands fa-telegram"></i>
+                            <span>Привязать Telegram-аккаунт</span>
+                        </button>
                     </div>
                 </div>
                 <div class="btn-group" style="margin-top:10px;">
@@ -98,7 +109,7 @@
         <!-- \\\\\\\\ -->
         <div class="onboard-note-rail">
             <div class="onboard-note">
-                <span>Шаг 2 из 3</span>
+                <span>Шаг 2 из 4</span>
                 <p>Шаг 2 – добавь хотя бы один контакт. Нужен, чтобы получать уведомления о выплатах и проблемах с аккаунтом.</p>
                 <div class="btn-group">
                     <button type="button" class="btn min full">Далее</button>
@@ -126,7 +137,7 @@
         <!-- \\\\\\\ -->
         <div class="onboard-note-rail">
             <div class="onboard-note">
-                <span>Шаг 3 из 3</span>
+                <span>Шаг 3 из 4</span>
                 <p>Шаг 3 – создай первую партнёрскую ссылку. Откроется в новом окне с формой и таблицей статистики прямо под ней.</p>
                 <div class="btn-group">
                     <button type="button" class="btn min full">Далее</button>
@@ -145,39 +156,50 @@
 @push('scripts')
 <script>
 (function(){
-    var wrap = document.querySelector('.onboarding');
+    if (window.__onbInit) return;
+    window.__onbInit = true;
+
+    var wrap  = document.querySelector('.onboarding');
     if (!wrap) return;
-    var steps = Array.prototype.slice.call(wrap.querySelectorAll('.onboard-step'));
-    var cur = 0;
+    var steps = [].slice.call(wrap.querySelectorAll('.onboard-step'));
+    var nav   = document.querySelector('.cab-sidebar');
+    var link  = document.querySelector('[data-onb-links]');
+    var cur   = 0;
 
-    /* ========== ШАГИ: подсветка активного + скролл к нему ========== */
-    function show(n){
-        steps.forEach(function(s, i){ s.classList.toggle('is-active', i === n); });
+    // n: 0..2 — шаги; 3 — сайдбар (шаг 4); -1 — тур выключен
+    function state(n){
         cur = n;
-        steps[n].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        var last = n === steps.length;
+        steps.forEach(function(s, i){ s.classList.toggle('is-active', i === n); });
+        if (link) link.classList.toggle('is-onb-target', last);
+        if (nav)  nav.classList.toggle('is-onb-raised', last);
+        wrap.classList.toggle('is-done', n < 0);
+        (n >= 0 ? (last ? nav : steps[n]) : steps[0]).scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    /* ========== ТУР: вкл (Подсказки) / выкл (Пропустить или финиш) ========== */
-    function tourOff(){
-        wrap.classList.add('is-done');
-        steps.forEach(function(s){ s.classList.remove('is-active'); });
-    }
-
-    function tourOn(){
-        wrap.classList.remove('is-done');
-        show(0);
-    }
-
-    /* ========== КЛИКИ ========== */
     document.addEventListener('click', function(e){
-        if (e.target.closest('[data-tour-replay]')) { tourOn(); return; }
-        if (e.target.closest('[data-tour-skip]'))   { tourOff(); return; }
-        if (e.target.closest('.onboard-note button')) {
-            cur < steps.length - 1 ? show(cur + 1) : tourOff();
-        }
+        if (e.target.closest('[data-tour-replay]')) state(0);
+        else if (e.target.closest('[data-tour-skip], [data-tour-finish]')) state(-1);
+        else if (e.target.closest('.onboard-note button')) state(cur + 1);
     });
 
-    show(0);
+   /* ========== МОБИЛА: шаг 4 <-> панель сайдбара ========== */
+    var _state = state;
+    state = function(n){
+        _state(n);
+        if (!matchMedia('(max-width: 1200px)').matches || !nav) return;
+        nav.classList.toggle('show', n === steps.length);
+    };
+
+    if (nav) new MutationObserver(function(){
+        if (cur === steps.length && matchMedia('(max-width: 1200px)').matches && !nav.classList.contains('show')) state(-1);
+    }).observe(nav, { attributes: true, attributeFilter: ['class'] });
+
+    state(0);
+
+    setTimeout(function(){
+        if (cur === 0 && !wrap.classList.contains('is-done')) steps[0].scrollIntoView({ block: 'start' });
+    }, 150);
 })();
 </script>
 

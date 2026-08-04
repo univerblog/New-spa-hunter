@@ -130,8 +130,11 @@
                 @include('components.cabinet.phone-select', ['name' => 'viber'])
             </div>
            <div class="input-field">
-                <label for="">Telegram</label>
-                <input type="text" id="" value="" placeholder="@xx757xx" maxlength="150">
+                <label>Telegram</label>
+                <button type="button" class="input-btn" onclick="openModal('modal-tg-link')">
+                    <i class="fa-brands fa-telegram"></i>
+                    <span>Привязать Telegram-аккаунт</span>
+                </button>
             </div>
         </div>
         <div class="btn-group" style="margin-top:10px;">

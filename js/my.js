@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function filter(raw){
       var q  = (raw || '').trim();
       var ql = q.toLowerCase();
-      if(!ql && list && !list.querySelector('.select-option[hidden]')) return;
+      if(!ql && !addBtn && !hintEl && list && !list.querySelector('.select-option[hidden]')) return;
       var opts = list ? list.querySelectorAll('.select-option') : [];
       var total = opts.length, listVisible = 0, exact = false;
 

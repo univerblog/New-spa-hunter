@@ -40,7 +40,7 @@ html[data-theme="light"] .logo {color:var(--text)}
 .nav-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 0px;}
 
 /*------ menu-icon-down ---------*/
-.arrow-icon {font-family: "Font Awesome 7 Pro";display:flex;transition:all 0.5s;
+.arrow-icon {font-family: var(--font-awesome);display:flex;transition:all 0.5s;
              justify-content:center;align-items:center;font-style:normal;}
 @media (min-width: 1200px){
   .arrow-icon {font-weight: 900;  font-size:9px; color:var(--text-muted);}

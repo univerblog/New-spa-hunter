@@ -597,6 +597,21 @@
         </div>
     </div>
 </div>
+
+<!-- Пароль успешно изменён -->
+<div class="modal-content" id="modal-tg-link" style="display:none;">
+    <h3>Привязка Telegram-аккаунта</h3>
+    <div class="container-modal">
+        
+        <div class="form-text-content" style="margin-bottom:10px;">
+            Нажмите кнопку ниже, чтобы открыть нашего Telegram-бота и подтвердить привязку. Ссылка действительна 10 минут.
+        </div>
+        <div class="btn-group">
+            <a class="btn full" href="https://t.me/cpahunter_bot?start=zVhJIxrVKS1ujQnuQqBbB28LfgdJWVDN94zmamJP3So">Открыть Telegram-бота</a>
+            <button class="btn outline" onclick="closeModal()">Отмена</button>
+        </div>
+    </div>
+</div> 
 @endpush
 
 @push('scripts')

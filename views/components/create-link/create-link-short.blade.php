@@ -28,7 +28,7 @@ $shops = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/shops-for-creat-link.p
 
 <div class="create-form-bottom">
   <div class="create-footer-btns">
-    <button type="button" class="btn min outline" id="rules-trigger">
+    <button type="button" class="btn min outline" id="rules-trigger" onclick="openModal('modal-earn-rules', { className: 'long' })">
       <i class="fa-solid fa-circle-info"></i>
       <span class="pill-full">{{ __('Earning rules') }}</span><span class="pill-short">{{ __('Rules') }}</span>
     </button>
@@ -38,7 +38,7 @@ $shops = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/shops-for-creat-link.p
     </button>
   </div>
   <div class="form-text create-helpers-inline">
-    <i class="fa-solid fa-check" style="color:var(--lime);"></i>
+    <!-- <i class="fa-solid fa-check" style="color:var(--lime);"></i> -->
     <span class="js-merchants-count">41&nbsp;783</span>
     <span>{{ __('merchants and services') }}</span>
   </div>

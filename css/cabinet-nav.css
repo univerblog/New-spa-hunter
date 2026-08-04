@@ -1,6 +1,7 @@
 /* --- Мменю личного кабинета --- */
 .cab-sidebar {display: flex;flex-direction: column;gap: 20px; background:var(--bg-card); border: 1px solid var(--border);
-              border-radius: var(--radius-md); padding:20px 14px 14px 14px; position: sticky; top: 80px;  }
+              border-radius: var(--radius-md); padding:20px 14px 14px 14px; position: sticky; top: 80px; 
+             }
 .cab-nav-line { background:var(--border);margin:0 -14px; display:flex; height:1px;}
 .cab-prof__head { display: flex; align-items: center; gap: 12px; text-decoration:none; color:var(--text);}
 .cab-prof__ava {flex-shrink: 0;width: 44px; height: 44px; border-radius: 50%;
@@ -98,3 +99,9 @@ html[data-theme="light"] .cab-nav-field a.featured i { color: #000000;}
    .header-auth .header-avatar, .header-auth .header-avatar img {height:34px; width:34px; }
     .header-balance {display:none;}
 }
+
+/* --- Заблокированные кнопки для новорегов --- */
+.cab-nav-field a.is-locked { opacity: 0.4; pointer-events: none;  position: relative;}
+.cab-nav-field a.is-locked::after { content: "\f023"; font-family: var(--font-awesome); 
+                                   font-weight: 400; font-size: 11px;
+                                   margin-left: auto; color: var(--text-muted); }
