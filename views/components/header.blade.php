@@ -1,3 +1,8 @@
+@php
+    $data = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/notifications.php';
+    $notifications = array_slice($data['rows'], 0, 6);
+@endphp
+
 @push('styles')
     <link rel="stylesheet" type="text/css" href="/css/header.css?v={{ rand() }}">  
 @endpush
@@ -118,6 +123,44 @@
                     <span>$124,00</span>
                 </div>
             </a>
+
+           
+            <div class="dropdown-block">
+
+                <button type="button" class="dropdown-btn header-notif__btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span>6</span>
+                </button>
+
+                <div class="dropdown-item header-notif__pop">
+
+                    <div class="header-notif__head">
+                        <span>Уведомления</span>
+                        <button type="button" class="header-notif__readall">Прочитать все</button>
+                    </div>
+
+                    <div class="header-notif__list content-scroll">
+
+                        @foreach ($notifications as $row)
+                            <div class="header-notif__item">
+
+                                <div class="header-notif__icon">
+                                    {!! $data['categories'][$row['cat']]['icon'] !!}
+                                </div>
+
+                                <div class="header-notif__body">
+                                    <div class="header-notif__text">{{ $row['text'] }}</div>
+                                    <div class="header-notif__date">{{ $row['date'] }}</div>
+                                </div>
+
+                            </div>
+                        @endforeach
+
+                    </div>
+
+                    <a href="cabinet/notifications" class="header-notif__all">Все уведомления</a>
+                </div>
+            </div>
 
             <div class="dropdown-block">
                 <button class="dropdown-btn header-avatar" data-cab-toggle>

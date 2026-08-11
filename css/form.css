@@ -372,8 +372,10 @@ html[data-theme="light"] .select-option:hover { background: var(--hover-1);}
 .select-option, .select-search input {font-size:16px;}
 }
 @media (max-width: 480px) {
-  .btn-group > * {flex:1;}
-  .btn-group > .btn {min-height:48px;}
+  .btn-group > * {/* flex:1; */}
+  .btn-group > .btn {min-height:48px; overflow:hidden;}
+  .btn-group > .btn bdi {max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+                        display:inline-block !important;}
   .pill-full { display: none; }
   .pill-short { display: inline; }
   .modal-checkbox {padding:10px; margin:0 0 0 -2px;}
@@ -416,4 +418,5 @@ html[data-theme="light"] .js-merchants-count { color: var(--text); }
 @media (max-width: 640px) {
  .create-footer-btns {width:100%;}
  .create-footer-btns > * {flex:1;}
+  .create-helpers-inline {justify-content:center; width:100%; margin-top:4px;}
 }

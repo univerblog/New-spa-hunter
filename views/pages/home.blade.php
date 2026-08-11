@@ -1,5 +1,4 @@
 @php 
-//$faq = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/faq.php';
 
 @endphp
 
@@ -16,6 +15,36 @@
   <div class="container hero-grid">
       @include('components.hero-home')
   </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="live-stats">
+            <div class="live-stats__cell">
+                <span>41 783</span>
+                <small>магазинов и сервисов</small>
+            </div>
+            
+            <div class="live-stats__cell">
+                <span>912</span>
+                <small>активных креаторов сегодня</small>
+            </div>
+           
+            <div class="live-stats__cell">
+                <span>$20 940</span>
+                <small>выплачено за&nbsp;последние&nbsp;7&nbsp;дней</small>
+            </div>
+           
+            <div class="live-stats__cell">
+                <span>231 470</span>
+                <small>переходов по&nbsp;ссылкам&nbsp;за&nbsp;7&nbsp;дней</small>
+            </div>
+        </div>
+        <div class="live-stats__ticker" id="live-stat-ticker">
+            <i class="fa-solid fa-circle fa-fade"></i>
+            <span>Мария из&nbsp;Минска получила $12 от&nbsp;Lamoda · 14&nbsp;мин назад</span>
+        </div>
+    </div>
 </section>
 
 <section class="section">
@@ -273,30 +302,10 @@
     <div class="container">
         <div class="section-title">
             <h2>Найдите программы для вашей ниши</h2>
-            <p>Лучшие партнёрские программы под ваш контент.</p>
+            <p>Лучшие партнёрские программы под&nbsp;ваш&nbsp;контент.</p>
         </div>
-
-        <div class="niches">
-            <a href="#"><i class="fa-regular fa-baby-carriage"></i><span>Дети и родительство</span></a>
-            <a href="#"><i class="fa-regular fa-house"></i><span>Дом и интерьер</span></a>
-            <a href="#"><i class="fa-regular fa-utensils"></i><span>Еда и кулинария</span></a>
-            <a href="#"><i class="fa-regular fa-leaf"></i><span>Здоровье</span></a>
-            <a href="#"><i class="fa-regular fa-gamepad"></i><span>Игры</span></a>
-            <a href="#"><i class="fa-regular fa-heart"></i><span>Красота и косметика</span></a>
-            <a href="#"><i class="fa-regular fa-shirt"></i><span>Мода</span></a>
-            <a href="#"><i class="fa-regular fa-paw"></i><span>Питомцы</span></a>
-            <a href="#"><i class="fa-regular fa-plane"></i><span>Путешествия</span></a>
-            <a href="#"><i class="fa-regular fa-video"></i><span>Стиль жизни и влоги</span></a>
-            <a href="#"><i class="fa-regular fa-mobile"></i><span>Техника и гаджеты</span></a>
-            <a href="#"><i class="fa-regular fa-dollar-sign"></i><span>Финансы</span></a>
-            <a href="#"><i class="fa-regular fa-dumbbell"></i><span>Фитнес</span></a>
-        </div>
-
-        <div class="niches niches--curated">
-            <a href="#"><i class="fa-regular fa-rocket"></i><span>Для новичков</span></a>
-            <a href="#"><i class="fa-regular fa-star"></i><span>Для микро-блогеров</span></a>
-            <a href="#"><i class="fa-regular fa-bolt"></i><span>Высокая комиссия</span></a>
-        </div>
+        @include('components.programs')
+        
     </div>
 </section>
 
@@ -306,10 +315,12 @@
            <p class="text-eyebrow">Система лояльности</p>
            <h2>Чем больше зарабатываете – тем <span class="lime">выше ваши ставки</span></h2>
            <p>С каждым уровнем растут ваши ставки на всех партнёрских программах. На Platinum – максимум платформы и индивидуальные условия. Уровень обновляется автоматически каждые 90 дней.</p>
+            
+            <div class="page-link" style="font-size:15px;">
+                <a href=""><span>Подробнее об уровнях</span> <i class="fa-regular fa-arrow-right fa-xs"></i></a>
+            </div>
         </div>
-        <div class="btn-group flex-left" style="margin-top:30px;">
-           <a href="" class="btn big ">Подробнее об уровнях</a>
-        </div>
+       
      
         <div class="tier-stair">
           <div class="tier-stair__card s0">
@@ -340,29 +351,136 @@
               </div>
               <div class="ts__thr">от $7&nbsp;500 <b>90 дней</b></div>
           </div>
-      </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container">
+        <div class="earn-cta-card">
+            <div class="section-title">
+                <p class="text-eyebrow">Старт за 3 минуты</p>
+                <h2><span class="lime" data-count-from="10100" data-count-to="14831">14 831</span> авторов уже на платформе</h2>
+            </div>
+            
+            <div class="objection-wrap">
+                <p>Делайте то, что любите – рекомендуйте продукты, которые используете сами, и получайте комиссию с каждой продажи. Каждый день кто-то создаёт первую ссылку или получает первую продажу.</p>
+                
+                <div class="btn-group">
+                    <a href="" class="btn big">Создать первую ссылку</a>
+                    <span class="earn-cta-free"><i class="fa-solid fa-circle"></i>Бесплатно · без модерации</span>
+                </div>
+            </div>
+        </div>
+      
     </div>
 </section>
 
 <section class="section">
-  <div class="container">
-     <div class="section-title">
-        <h2>{{ __('Questions? We\'ve Got You') }}</h2>
-        <p>{{ __('Search our FAQs for quick answers, or connect with us for extra support.') }}</p>
-      </div>
-      @include('components.faq')
+    <div class="container">
+        <div class="home-ref-section">
+
+                <div class="ref-hero-num">
+                    <div class="ref-hero-big">
+                        <p>от комиссии <br />приглашённого друга</p>
+                        <strong>10%</strong>
+                        
+                    </div>
+                    <div class="ref-hero-mini">
+                        <div class="ref-hero-minicard">
+                            <span>6 мес.</span>
+                            <small>выплаты с одного  <br />реферала</small>
+                        </div>
+                        <div class="ref-hero-minicard">
+                            <span><i class="fa-solid fa-infinity"></i></span>
+                            <small>без лимита <br />рефералов</small>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="ref-hero-txt">
+                     <div class="section-title">
+                        <p class="text-eyebrow">Партнёрская программа</p>
+                        <h2>Платим за приглашённых <span class="lime">друзей-блогеров</span></h2>
+                    </div>
+                    <div class="objection-wrap">
+                        <p>Приведёте автора – получаете 10% от его дохода первые 6 месяцев. Платим сверху, поверх его обычной комиссии – ваш друг ничего не теряет. Без потолка по сумме и количеству приглашений.</p>
+                     
+                        <div class="btn-group">
+                            <a href="" class="btn big outline">Подробнее о программе</a>
+                        </div>
+                    </div>
+                 </div> 
+           
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="home-faq-wraper">
+            <div class="section-title">
+                <h2>Вопросы, которые задают перед регистрацией</h2>
+                <p>Что волнует почти каждого автора на старте – собрали и ответили без уловок. Больше деталей – в справочном центре.</p>
+                <div class="btn-group">
+                    <a href="/faq-page" class="btn big outline"><bdi>Справочный центр</bdi></a>
+                </div>
+            </div>
+            <div class="home-faq">
+                @include('components.faq-short')
+                
+            </div>
+            
+        </div>
     </div>
 </section>
 
 
 
+<section class="section">
+    <div class="container">
+        <div class="earn-cta-card">
+            <div class="section-title">
+                <p class="text-eyebrow">Готовы начать?</p>
+                <h2>Превратите аудиторию в&nbsp;доход</h2>
+            </div>
+            
+            <div class="objection-wrap">
+                <p>Присоединяйтесь к тысячам авторов, которые монетизируют контент с CPA Hunter.</p>
+                
+                <div class="btn-group">
+                    <a href="" class="btn big">Начать зарабатывать сегодня</a>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+</section>
 
 
 
 @endsection
 
 @push('scripts')
+<script>
+let el = document.querySelector('.live-stats__ticker span');
+let msgs = [
+    'Анна из Москвы получила $34 от Золотого яблока · 2 мин назад',
+    'Арман из Алматы получил $58 от Спортмастера · 7 мин назад',
+    'Мария из Минска получила $12 от Lamoda · 14 мин назад',
+    'Карина из Еревана получила $87 от AliExpress · 23 мин назад',
+    'Давид из Тбилиси получил $19 от Эльдорадо · 41 мин назад',
+    'Ольга из Санкт-Петербурга получила $44 от Детского мира · 1 ч назад'
+];
+let i = 0;
+el.style.transition = 'opacity .22s';
+setInterval(() => { el.style.opacity = 0; setTimeout(() => { i = (i + 1) % msgs.length; el.textContent = msgs[i]; el.style.opacity = 1; }, 220); }, 3800);
+</script>
 
-
-
+<script>
+let el = document.querySelector('.earn-cta-card .lime');
+new IntersectionObserver((e, o) => { if (!e[0].isIntersecting) return; o.disconnect(); let n = 10100, t = setInterval(() => { n += 47; if (n >= 14831) { n = 14831; clearInterval(t); } el.textContent = n.toLocaleString('ru-RU').replace(/,/g, '\u00A0'); }, 15); }).observe(el);
+</script>
 @endpush

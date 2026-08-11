@@ -145,7 +145,7 @@ function accordionInit(rootSelector, userConfig) {
     const roots = document.querySelectorAll(rootSelector);
 
     roots.forEach(root => {
-        // Активен ли аккордеон при текущей ширине
+        const openFirst = root.dataset.openFirst === 'false' ? false : cfg.openFirst;
         const isActive = () => !cfg.breakpoint || window.innerWidth < cfg.breakpoint;
 
         const items = root.querySelectorAll(cfg.item);
@@ -155,20 +155,17 @@ function accordionInit(rootSelector, userConfig) {
             const content = item.querySelector(cfg.content);
             if (!trigger || !content) return;
 
-            // Открыть указанные по умолчанию
             const shouldBeOpen =
                 (cfg.openByDefault && item.querySelector(cfg.openByDefault)) ||
-                (cfg.openFirst && item === items[0]);
+                (openFirst && item === items[0]);
 
             if (shouldBeOpen && isActive()) {
                 accordionOpen(item, content, cfg);
             }
 
-            // Клик по триггеру
             trigger.addEventListener('click', e => {
                 if (!isActive()) return;
 
-                // Реальная ссылка — пропускаем
                 const link = e.target.closest('a');
                 if (link && link.getAttribute('href') && link.getAttribute('href') !== '#') return;
 
@@ -178,7 +175,6 @@ function accordionInit(rootSelector, userConfig) {
                 const isOpen = item.classList.contains(cfg.openClass);
 
                 if (cfg.single) {
-                    // Закрыть всех соседей
                     items.forEach(other => {
                         if (other !== item) {
                             const otherContent = other.querySelector(cfg.content);
@@ -193,7 +189,6 @@ function accordionInit(rootSelector, userConfig) {
             });
         });
 
-        // Пересчёт высоты при resize для открытых items
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
@@ -203,7 +198,6 @@ function accordionInit(rootSelector, userConfig) {
                     if (!content) return;
 
                     if (!isActive()) {
-                        // Перешли на десктоп — сбрасываем инлайн-стиль
                         content.style.maxHeight = null;
                         item.classList.remove(cfg.openClass);
                         return;

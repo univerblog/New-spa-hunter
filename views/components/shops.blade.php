@@ -13,9 +13,10 @@ $shops = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/shops.php';
             <div><span>Средний чек</span><b>{{ $shop['check'] }}</b></div>
             <div><span>Комиссия</span><b> от {{ $shop['commission'] }}</b></div>
         </div>
-        <div class="dropdown-block">
-            <button class="btn min outline dropdown-btn">Подробнее<i class="fa-light fa-angle-down"></i></button>
-            <div class="dropdown-item">
+        
+        <div class="brand-shop__expand">
+            <button class="btn min outline brand-shop__toggle">Подробнее<i class="fa-light fa-angle-down"></i></button>
+            <div class="brand-shop__panel">
                 <h4>{{ $shop['tagline'] }}</h4>
                 <div class="brand-shop__pros">
                     @if (!empty($shop['pros']))
@@ -26,7 +27,6 @@ $shops = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/shops.php';
                             @endforeach
                     </div>
                     @endif
-
                     @if (!empty($shop['cons']))
                     <div>
                         <b>Минусы</b>
@@ -37,8 +37,8 @@ $shops = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/shops.php';
                     @endif
                 </div>
             </div>
+            <button class="btn min">Создать ссылку</button>
         </div>
-        <button class="btn min">Создать ссылку</button>
     </div>
     @endforeach
 </div>
@@ -61,5 +61,17 @@ $shops = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/shops.php';
     ? document.addEventListener('DOMContentLoaded', updateLogos)
     : updateLogos();
 })();
+
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.brand-shop__toggle');
+    if (!btn) return;
+    const card = btn.closest('.brand-shop');
+    if (window.innerWidth <= 800) {
+        card.parentElement.querySelectorAll('.brand-shop.is-open').forEach(el => {
+            if (el !== card) el.classList.remove('is-open');
+        });
+    }
+    card.classList.toggle('is-open');
+});
 </script>
 @endpush

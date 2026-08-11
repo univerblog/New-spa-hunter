@@ -3,6 +3,7 @@
 <title>CPA Hunter</title>
 <meta name="description" content="CPA Hunter" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v={{ rand() }}">
+<meta name="format-detection" content="telephone=no">
 <!-- For theme -->
 <script>
   (function(){

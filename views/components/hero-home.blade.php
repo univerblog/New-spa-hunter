@@ -16,7 +16,7 @@
     <span><strong class="hero-note-num js-merchants-count">41&nbsp;783</strong> {{ __('shops') }}</span>
     <span><strong>{{ __('No') }}</strong> {{ __('moderation') }}</span>
     <span>{{ __('Payout from') }} <strong>$50</strong></span>
-    <span>{{ __('Bank') }} PayPal Wise Payoneer Skrill Neteller Crypto</span>
+    <!-- <span>{{ __('Bank') }} PayPal Wise Payoneer Skrill Neteller Crypto</span> -->
 </div>
 </div>
 
@@ -62,7 +62,7 @@
 
         <div class="hp-trend">
             <div class="hp-trend__img">
-                <img src="/img/hero-boot.png" alt="">
+                <img src="/img/hero-boot-2.png" alt="">
                 <span>adidas</span>
             </div>
             <div class="hp-trend__meta">

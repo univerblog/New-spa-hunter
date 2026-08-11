@@ -593,7 +593,7 @@
             </ul>
         </div>
         <div class="btn-group right-group">
-            <button class="btn" onclick="closeModal()">Понятно</button>
+            <button class="btn min" onclick="closeModal()">Понятно</button>
         </div>
     </div>
 </div>

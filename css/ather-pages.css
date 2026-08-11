@@ -1,0 +1,78 @@
+
+nav.breadcrumb {padding:26px 0 20px 0; margin-bottom:-40px; position:relative; z-index:1;}
+.breadcrumb-list { display: flex; align-items: center; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; 
+                  -ms-overflow-style: none; font-size:14px; gap:8px;}
+.breadcrumb-list::-webkit-scrollbar { display: none; }
+.breadcrumb-list > * { flex-shrink: 0; white-space: nowrap; }
+.breadcrumb-list a {color:var(--text-muted); transition:all 0.3s; text-decoration:none;}
+.breadcrumb-list i {font-size:10px; margin-top:0px; display:inline-block; color:var(--text-dim);}
+.breadcrumb-list span {color:var(--text-dim);}
+
+
+/********* FAQ ********/
+.faq-wrapper {display: grid; grid-template-columns: 320px 1fr; gap: 56px;}
+.tabs-nav {display: flex; flex-direction:column;}
+.faq-top-list {display: flex; flex-direction:column; gap:8px;}
+.faq-top-link { background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: 0px 10px 20px var(--box-shadow-light);
+    display: flex;
+    gap: 30px;
+    padding: 18px 24px; align-items:center; justify-content:space-between; cursor:pointer; transition:all 0.3s;}
+.faq-top-link span {color:var(--text); text-align:left;}
+.faq-top-link i { font-size: 13px; color: var(--lime); flex-shrink: 0; }
+@media (min-width: 1200px) { 
+    .breadcrumb-list a:hover {color:var(--text);}
+    .faq-top-link:hover {  background:rgb(255 255 255 / 8%); } 
+}
+
+
+.tab-btn {padding: 14px 20px; border:0;color: var(--text-muted);font-size: 15px;cursor: pointer; flex:1; text-decoration:none; 
+          text-align:center;display:flex; align-items:center; gap:12px; text-align:left; white-space: nowrap; 
+          border-radius:12px; transition:all 0.3s;}
+.tab-btn i {font-size:15px;}
+.tab-btn.active { color: #000000; background:var(--lime);}
+.tab-btn span.tab-label {flex:1;}
+.faq-support {display:flex; flex-direction:column; gap:8px;
+             padding:18px 20px; margin-top:10px; background:var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+             border: 1px solid var(--border); box-shadow:0px 10px 20px var(--box-shadow-light); }
+.faq-support span {color:var(--text-muted); font-size:15px; text-align:center;}
+.faq-support a {text-decoration:none;}
+.tab-panel {
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+}
+.tab-panel.active {
+    visibility: visible;
+    max-height: none;
+    overflow: visible;
+}
+
+/* ---- АДАПТИВ для FAQ ---- */
+@media (min-width: 1200px){
+  .tab-btn:not(.active):hover {background:var(--border)}
+}
+@media (max-width: 1000px){
+ .breadcrumb-list i {margin-top:3px;}   
+ .faq-wrapper {flex-direction:column; display:flex; gap:0;}
+ .faq-item {display: contents;}
+ .tabs-for-faq {flex-direction: row;flex-wrap: nowrap;overflow-x: auto;overflow-y: hidden;
+        scrollbar-width: none;-webkit-overflow-scrolling: touch; margin-bottom:20px;
+        scroll-behavior: smooth; order:1}
+ .tabs-for-faq::-webkit-scrollbar {display: none;}
+ .tab-btn {padding: 14px 16px; font-size: 14px;border-radius:0px;}
+ .tab-btn i {display:none;}
+ .tab-btn span.tab-count {display:none;}
+ .tab-btn.active {background:none; color:var(--lime); border-bottom:1px solid;} 
+ html[data-theme="light"] .tab-btn.active {color:var(--text); font-weight:600;}
+ .faq-content {order:2;}
+ .faq-wrapper .accordion-wrapper {max-width:100%;}
+ .faq-support {order:3; margin-top:20px;}
+}
+
+@media (max-width: 640px) {
+    nav.breadcrumb {padding:24px 0 20px 0; margin-bottom:-20px;}
+}
