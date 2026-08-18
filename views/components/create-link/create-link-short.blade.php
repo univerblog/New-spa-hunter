@@ -20,7 +20,7 @@ $shops = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/shops-for-creat-link.p
         </div>
     </div>
       
-    <button type="button" class="btn create-link__btn" id="">
+    <button type="button" class="btn create-link__btn" onclick="openModal('modal-link-created')">
         <i class="fa-solid fa-link"></i>{{ __('Create link') }}
     </button>
     
@@ -34,7 +34,7 @@ $shops = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/shops-for-creat-link.p
     </button>
     <button type="button" class="btn min outline" disabled>
       <i class="fa-solid fa-link"></i>
-      <span class="pill-full">{{ __('All my links') }}</span><span class="pill-short">{{ __('My links') }}</span>
+      <span>Правила заработка</span>
     </button>
   </div>
   <div class="form-text create-helpers-inline">

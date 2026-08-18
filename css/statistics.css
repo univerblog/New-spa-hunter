@@ -1,11 +1,33 @@
 /***** STATISTIC  *****/
-.statistics-page {padding-bottom:80px;}
-.stata-setting-block {display:flex; justify-content:space-between; margin-bottom:30px; flex-wrap:wrap; gap:20px;}
-.stata-setting-item {display:flex; gap:20px; flex-wrap:wrap; align-items:end; flex:1;}
+/***** Форма создания ссылки над таблицей *****/
+.statistics-link-block {background:#2b2b2b69; padding-bottom:60px;}
+.create-link__main-mini {padding-top:10px;}
+.create-link__main-mini .btn b {font-weight:400; display:none;}
+.create-link__main-full {display:none;}
+.create-link__main[data-state="full"] .create-link__main-full {display:flex;}
+.create-link__main[data-state="full"] .create-link__main-mini {display:none;}
+.create-link-head {display:flex; justify-content:space-between; align-items:center; margin-top:-10px;}
+.create-link-head span {font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); font-weight:500;}
+.create-link-head .btn {color:var(--text-muted); height:30px; padding:0 10px; font-size:13px;}
+@media (max-width: 640px) {
+   .statistics-link-block {padding:30px 0 0px 0; background:none;} 
+   .create-link-head {margin-top:0;} 
+   .create-link__main-mini {justify-content:center}
+   .create-link__main-mini .input-field {display:none;}
+   .create-link__main-mini .btn b {font-weight:400; display:inline-block;}
+}
+
+.statistics-page-block {padding-top:40px;}
+.stata-setting-block {display:flex; justify-content:space-between; margin-bottom:30px; flex-wrap:wrap; gap:20px;
+                    align-items:center;}
+.stata-setting-item {display:flex; gap:20px; align-items:end; }
+
 .stata-setting-item .select-trigger {height: 40px; padding: 0 16px 0 16px;font-size: 14px;}
-.stata-setting-item .select-min {width:120px; min-width:auto; flex:none;}
-.stata-setting-item .input-field input {height: 40px; padding: 0 16px 0 16px; min-height:40px;}
-.stata-setting-item.entries {flex:1; padding:0 20px; justify-content:center; color:#999; font-size:16px;}
+.stata-setting-item .select {flex:1; width:280px}
+.stata-setting-item .select-min {min-width:auto; flex:none; width:100px !important;}
+.stata-setting-item .input-field {width:calc(100% - 110px); }
+.stata-setting-item .input-field input {height: 40px; padding: 0 16px 0 16px; min-height:40px; }
+.stata-setting-item .entries {justify-content:center; color:#999; font-size:15px; }
 
 /********* T A B L E ***********/
 .stata-table {table-layout: fixed !important; border-spacing:0; min-width:100%; font-size:14px;}
@@ -19,12 +41,25 @@
 .stata-table td.center .table-flex {justify-content:center;}
 .table-flex {display:flex; gap:10px; align-items:center;}
 .table-flex a {max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display:block;
-              text-decoration:none; color:var(--cyan); position:relative;}
-.table-flex.merch a {padding-left:24px; color:var(--text-muted);}
-.table-flex.merch a i {position:absolute; left:0; top:1.2px; color:#868686;}
+              text-decoration:none; color:var(--cyan); position:relative; }
+.table-flex a, .table-flex a span {transition:all 0.2s;}
+.table-flex.merch a {padding-left:26px; color:var(--lime);}
+.table-flex.merch a i {position:absolute; left:0; top:0px; color:#464646; width:18px; height:18px; 
+                       background:#ffffff38; border-radius:50%; display:flex; align-items:center; justify-content:center;
+                      color:#fff; font-size:13px; font-family: serif; font-weight:600;}
 .stata-table button {background:#868686; border:0; border-radius:6px; padding:4px 8px; cursor:pointer;
                              transition:all 0.3s; font-size:14px; min-width:30px; display:inline-flex; align-items:center; gap:4px;
                     justify-content:center; color:#000;}
+.stata-table .page-link {margin-top:6px;}
+.stata-table .page-link button {background:none; padding:inherit; color:var(--text-dim); font-size:inherit; transition:all 0.1s;}
+.table-flex.url-link {}
+.table-flex.url-link a {max-width: 100%; overflow: visible; text-overflow:unset; display:flex; gap:8px; justify-content:space-between;
+                        width:100%; align-items:center;}
+.table-flex.url-link a span {max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display:block;
+              text-decoration:none; color:var(--cyan); position:relative;}
+.table-flex.url-link a i {font-size:11px; color:var(--text-muted); font-weight:400;}
+
+.table-flex.tags {cursor:pointer;}
 .stata-table .-tag i { display: none; }
 .table-flex.tags span {max-width: 80px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display:block;}
 .table-flex.folder {gap:6px; color:#999; cursor:pointer;}
@@ -73,25 +108,15 @@
   bottom:calc(50% + 0px);
  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
-.dt-ordering-asc::before {background-color:var(--primary);}
-.dt-ordering-desc::after {background-color:var(--primary);}
+.dt-ordering-asc::before {background-color:var(--lime);}
+.dt-ordering-desc::after {background-color:var(--lime);}
 
 /***** меню три точки *****/
 .stata-table .-actions { position: relative; }
 .stata-menu { background: none !important; color: #999 !important; font-size: 16px; min-width: 30px; }
-.stata-pop {
-            position: absolute;
-            top: 14px;
-            right: 50px;
-            display: none;
-            flex-direction: column;
-            padding: 6px;
-            background: #161616;
-            border: 1px solid #3c3c3c;
-            border-radius: 8px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            z-index: 5;
-            }
+.stata-pop {position: absolute;top: 14px;right: 50px;display: none;flex-direction: column;
+            padding: 6px; background: #161616;border: 1px solid #3c3c3c;border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);z-index: 5;}
 .stata-pop.show {display: flex;}
 .stata-pop > button { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 7px; background: transparent !important; 
                      color: #fff !important; font-size: 13px; white-space: nowrap; justify-content: flex-start; }
@@ -105,15 +130,40 @@
     .stata-table tfoot tr:last-child td {border:0;}
 }
 @media (min-width: 1200px) {
+    .table-flex {transition:all 0.2s;}
+    .table-flex.url-link a:hover span, .table-flex.copy a:hover {color:var(--text-muted);}
+    .table-flex.merch a:hover {color:#ccc;}
     .stata-pop button:hover { background: #ffffff10 !important; }
     .stata-table tbody tr, .stata-table tbody tr td { transition:all 0.1S;} 
     .stata-table tbody tr:hover td:first-child, .stata-table tbody tr:hover  {background: #2c2c2c !important;} 
+    .stata-table .page-link button:hover {opacity:1; color:var(--text-muted);}
+    .copy button:hover {color:#ccc;}
+    .table-flex.tags:hover, .table-flex.folder:hover, .stata-table td.note span:hover {color:#ccc;}
 }
 /***** мобила: строки-карточки *****/
-@media (max-width: 800px) {
-    .stata-setting-block {flex-direction:column; gap:10px;}
+@media (max-width: 1300px) {
+    .stata-setting-item .select {flex:1; width:200px}
+    .stata-setting-item .select .select-panel {width:100%; right:auto;}
+}
+@media (max-width: 1200px) {
+    .stata-setting-block {flex-direction:row; gap:10px; flex-wrap:wrap;}
     .stata-setting-item {gap:10px;}
-    .stata-setting-item.entries {order:2; font-size:13px; justify-content:left; padding:0; margin:10px 0 -10px 0;}
+    .stata-setting-item .select {flex:1; width:280px;}
+    .stata-setting-item:nth-child(2) {order:2; font-size:13px; justify-content:space-between; padding:0; margin:10px 0 -10px 0;
+                                width:100%; align-items:center; position:relative; flex-wrap:nowrap; gap:20px;}
+    .stata-setting-item:nth-child(2) .select {position:initial; width:40px !important; }
+    .stata-setting-item:nth-child(2) .select-trigger {padding:0 !important; text-align:center; border-radius:8px;}
+    .stata-setting-item:nth-child(2) .select .select-panel .select-list .select-option span i {font-size:10px !important;
+                                                                                              top:-2px; position:relative;}
+}
+@media (max-width: 1000px) {
+    .stata-setting-block {flex-direction:column;}
+    .stata-setting-item {width:100%;}
+    .stata-setting-item .select {flex:1; width:50%;  min-width:auto;}
+    .stata-setting-item .select-min {flex:none; } 
+}
+@media (max-width: 800px) {
+    .stata-table .page-link {position:absolute; bottom:14px; text-align:center; width:calc(100% - 28px); }
     .stata-table-wrapper {border:0; border-radius:0; background:none;}
     .stata-table { padding-left: 0; max-width: 100%; display: block; }
     .stata-table thead { display: none; }
@@ -122,14 +172,15 @@
     .stata-table tbody tr { display: grid; grid-template-columns: 1fr 1fr 1fr 40px; gap: 0px 10px; 
     grid-template-areas: "merchant merchant merchant menu" "created created created menu" "note note note note" "meta1 meta2 meta2 meta2" "short short short short" "clicks purchases cr cr" "ltoggle ltoggle ltoggle ltoggle" "url url url url" "pending pending pending pending" "confirmed confirmed confirmed confirmed" "withdrawn withdrawn withdrawn withdrawn"; 
                           position: relative; border:1px solid var(--border); border-radius:16px;
-                          background:var(--bg-card) !important; padding:14px;}
+                          background:var(--bg-card) !important; padding:14px;
+                          padding-bottom:40px;}
     
     .stata-table td { display: block; border: 0 !important; padding: 0; }
     .stata-table td:first-child { position: static; width: auto; background: none; display: block; }
 
     .stata-table .-merchant  { grid-area: merchant; font-size: 16px; margin-bottom:6px;}
-  .stata-table .-merchant a {padding:0; color:var(--lime);}
-  .stata-table .-merchant i {font-size:14px; position:relative !important; top:auto !important;}
+    .stata-table .-merchant a {padding:0; color:var(--lime); display:flex; gap:8px; }
+    .stata-table .-merchant i {position:relative !important; margin-top:1px; }
     .stata-table .-created   { grid-area: created; min-width: 0; max-width: none; font-size: 13px;
                               margin-bottom:10px}
     .stata-table .-actions   { grid-area: menu; position: static; text-align: right; }
@@ -141,7 +192,8 @@
     .stata-table .-folder    { grid-area: meta2; width:100%; }
     .table-flex.folder span {max-width: 100% !important;}
     .stata-table .-clicks    { grid-area: clicks; }
-    
+    .table-flex.url-link a span {max-width: 100%; }
+    .table-flex.url-link   {margin-right:4px}
     .stata-table .-purchases { grid-area: purchases; }
     .stata-table .-cr        { grid-area: cr; }
     .stata-table .-clicks, .stata-table .-purchases, .stata-table .-cr     {
@@ -175,7 +227,7 @@
 
     .stata-table .td-label { display: block; font-size: 11px; color: #999; margin-bottom: 2px; }
     .stata-table td.center { text-align: left; }
-   .stata-table td .stata-menu  {background:#333 !important; width:40px; height:40px;}
+    .stata-table td .stata-menu  {background:#333 !important; width:40px; height:40px;}
     .stata-table td.center .table-flex { justify-content: flex-start;}
     .table-flex.tags span {max-width: 100%;}
     .stata-table .table-flex a { max-width: 100%; }
@@ -189,7 +241,15 @@
 }
 
 @media (max-width: 640px) {
-    .stata-setting-item .select-min {width:90px;}
-    .stata-setting-item:last-child {flex-wrap:nowrap; width:100%;}
-    .stata-setting-item .input-field { max-width: auto; width:calc(100% - 100px); flex:none;}
+    .stata-setting-item {position:relative;}
+    .stata-setting-item .select:not(.select-min) {position:initial;}
 }
+
+@media (max-width: 360px) {
+    .stata-setting-block {flex-direction:column;}
+    .stata-setting-item {width:100%; flex-wrap:wrap;}
+    .stata-setting-item .select {flex:1; width:100%;  min-width:auto;}
+    .stata-setting-item .select-min {flex:none; } 
+}
+
+

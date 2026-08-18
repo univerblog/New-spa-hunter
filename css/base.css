@@ -212,14 +212,14 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: inline-block; }
              }
 .cont-center {text-align:center;} 
 
-.page-link a {padding-bottom: 1px; cursor: pointer; transition: color .15s; text-decoration: none; color: var(--lime);
-             transition:all 0.3s; }
-.page-link a span {border-bottom: 1px dashed currentColor; }
-.page-link a i {margin-left:6px; display:inline-block; top:1px; position:relative;}
+.page-link a, .page-link button {padding-bottom: 1px; cursor: pointer; transition: color .15s; text-decoration: none; 
+                                 color: var(--lime); transition:all 0.3s; font-size:inherit; }
+.page-link a span, .page-link button span {border-bottom: 1px dashed currentColor; }
+.page-link a i, .page-link button i {margin-left:6px; display:inline-block; top:1px; position:relative;}
 
 @media (min-width: 1200px) {
     .for-mobile {display:none;} 
-    .page-link a:hover {opacity:0.8;}
+    .page-link a:hover, .page-link button:hover {opacity:0.8;}
 }    
 /*********  accordion  *********/
 .accordion-wrapper {display:flex; flex-direction:column; gap:8px; max-width:880px;}
@@ -269,7 +269,7 @@ html[data-theme="light"] .acc-title i {color: var(--text);}
                 }
 .mini-pagination button, .mini-pagination a {border:0; background:#3b3b3b; display:flex; justify-content:center; align-items:center; 
                           border-radius:6px; cursor:pointer; color:#ccc; transition:all 0.3s;  
-                         gap:6px; font-size:11px; height:30px; width:30px; text-decoration:none;}
+                         gap:6px; font-size:12px; height:40px; width:40px; text-decoration:none;}
 .mini-pagination .paginate-pages {margin:0 10px; }
 .mini-pagination .paginate-pages b {font-weight:400;}
 .mini-pagination button i {font-size:12px;}
@@ -320,6 +320,27 @@ html[data-theme="light"] .acc-title i {color: var(--text);}
 
 @media (max-width: 370px) {
   .lang-picker .dropdown-item {grid-template-columns: repeat(2, 1fr);}
+}
+
+/* === breadcrumbs === */
+nav.breadcrumb {padding:26px 0 20px 0; margin-bottom:-40px; position:relative; z-index:1; background:var(--bg)}
+.breadcrumb-list { display: flex; align-items: center; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; 
+                  -ms-overflow-style: none; font-size:14px; gap:8px;}
+.breadcrumb-list::-webkit-scrollbar { display: none; }
+.breadcrumb-list > * { flex-shrink: 0; white-space: nowrap; }
+.breadcrumb-list a {color:var(--text-muted); transition:all 0.3s; text-decoration:none;}
+.breadcrumb-list i {font-size:10px; margin-top:0px; display:inline-block; color:var(--text-dim);}
+.breadcrumb-list span {color:var(--text-dim);}
+
+@media (min-width: 1200px) { 
+    .breadcrumb-list a:hover {color:var(--text);}
+}
+@media (max-width: 1000px){
+ .breadcrumb-list i {margin-top:3px;}   
+}
+
+@media (max-width: 640px) {
+    nav.breadcrumb {padding:24px 0 20px 0; margin-bottom:-20px;}
 }
 
 

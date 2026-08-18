@@ -671,7 +671,8 @@ html[data-theme="light"] .cab-graph-area { fill: rgb(214 255 0 / 33%); }
 
 .cab-pay-head, .cab-pay-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 60px; gap: 20px; 
                              align-items: center; }
-.cab-pay-head { padding: 10px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+.cab-pay-head { padding: 10px 12px; font-size: 11px; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+.cab-pay-head > div {white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .cab-pay-head > div:last-child {text-align:center;}
 .cab-pay-row { padding: 14px 12px; font-size: 13px; border-bottom: 1px solid var(--border); }
 .cab-pay-row span { display: none; }
@@ -700,7 +701,7 @@ html[data-theme="light"] .cab-graph-area { fill: rgb(214 255 0 / 33%); }
 
 /* Кнопка статуса с комментарием */
 .cab-pay-status__btn { display: inline-flex; align-items: center; gap: 5px; padding: 0; background: none; border: none; 
-                      color: inherit; font: inherit; cursor: pointer; }
+                      color: inherit; font: inherit; cursor: pointer; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .cab-pay-status__btn i { font-size: 8px; transition: transform .18s ease; margin-top:3px;}
 .cab-pay-status__btn[aria-expanded="true"] i { transform: rotate(180deg); }
 

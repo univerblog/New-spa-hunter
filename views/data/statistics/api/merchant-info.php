@@ -8,7 +8,7 @@ if (empty($key)) {
     exit;
 }
 
-$merchants = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/merchants.php';
+$merchants = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/statistics/merchants.php';
 
 if (!isset($merchants[$key])) {
     echo json_encode(['error' => 'Merchant not found']);
@@ -17,105 +17,66 @@ if (!isset($merchants[$key])) {
 
 $data = $merchants[$key];
 
-// Формируем HTML на сервере
+$kpi = array_filter([
+    'Средняя комиссия' => $data['avg_commission_rate'] ? $data['avg_commission_rate'] . '%' : null,
+    'Средний чек' => $data['avg_basket_size'] ? '$' . number_format($data['avg_basket_size'], 2) : null,
+    'Средняя конверсия' => $data['avg_conversion_rate'] ? $data['avg_conversion_rate'] . '%' : null,
+    'Комиссия программы' => $data['commission'] ?: null,
+]);
+
 ob_start();
 ?>
 
 <div class="merchant-wrapper">
     <h3><?= htmlspecialchars($data['name']) ?></h3>
-    <div class="modal-scroll-content">
-        <?php if (!empty($data['countries'])): ?>
-        <div class="merchant-item">
-            <strong>Countries:</strong>
-            <div class="mer-open-block">
-                <div class="mer-toggle" onclick="toggleMerchant(event)">
-                    Show Countries <?= count($data['countries']) ?>
-                    <i class="fa-solid fa-caret-down"></i>
-                </div>
-                <div class="mer-content">
-                    <p><?= htmlspecialchars(implode(', ', $data['countries'])) ?></p>
-                </div>
+
+    <?php if (!empty($data['countries'])): ?>
+    <div class="merchant-item">
+        <strong>Страны</strong>
+        <div class="mer-open-block">
+            <div class="mer-toggle" onclick="toggleMerchant(event)">
+                Показать страны (<?= count($data['countries']) ?>)
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="mer-content">
+                <p><?= htmlspecialchars(implode(', ', $data['countries'])) ?></p>
             </div>
         </div>
-        <?php endif; ?>
+    </div>
+    <?php endif; ?>
 
+    <?php if (!empty($data['categories'])): ?>
+    <div class="merchant-item">
+        <strong>Категории</strong>
+        <div class="mer-content">
+            <p><?= htmlspecialchars(implode(', ', $data['categories'])) ?></p>
+         </div>
+    </div>
+    <?php endif; ?>
 
-        
-        <?php if (!empty($data['categories'])): ?>
-        <div class="merchant-item">
-            <strong>Categories:</strong> <?= htmlspecialchars(implode(', ', $data['categories'])) ?>
-        </div>
-        <?php endif; ?>
-
-
-        
-        <?php if (!empty($data['avg_commission_rate'])): ?>
-        <div class="merchant-item">
-            <strong>Avg. Commission Rate:</strong> <?= $data['avg_commission_rate'] ?>%
-        </div>
-        <?php endif; ?>
-        
-
-
-        <?php if (!empty($data['avg_basket_size'])): ?>
-        <div class="merchant-item">
-            <strong>Avg. Basket Size:</strong> $<?= $data['avg_basket_size'] ?>
-        </div>
-        <?php endif; ?>
-
-
-        
-        <?php if (!empty($data['avg_conversion_rate'])): ?>
-        <div class="merchant-item">
-            <strong>Avg. Conversion Rate:</strong> <?= $data['avg_conversion_rate'] ?>%
-        </div>
-        <?php endif; ?>
-
-
-        
-        <?php if (!empty($data['commission'])): ?>
-        <div class="merchant-item">
-            <strong>Commission:</strong> <?= htmlspecialchars($data['commission']) ?>
-        </div>
-        <?php endif; ?>
-
-
-        
-        <?php if (!empty($data['offers'])): ?>
-        <div class="merchant-item">
-            <strong>Offers:</strong>
-            <?php foreach ($data['offers'] as $region => $offers): ?>
-
-            <div class="mer-open-block">
-                <div class="mer-toggle" onclick="toggleMerchant(event)">
-                    <?= htmlspecialchars($region) ?>
-                    <i class="fa-solid fa-caret-down"></i>
-                </div>
-                <div class="mer-content">
-                    <ul>
-                    <?php foreach ($offers as $offer): ?>
-                      <li>Rate: <?= $offer['rate'].'%' ?? '-' ?> (<?= htmlspecialchars($offer['description'] ?? '') ?>)</li>
-                    <?php endforeach; ?>
-                    </ul>
-                </div>
+    <?php if ($kpi): ?>
+    <div class="merchant-item">
+        <strong>Показатели</strong>
+        <div class="merchant-kpi">
+            <?php foreach ($kpi as $label => $value): ?>
+            <div class="merchant-kpi__tile">
+                <small><?= $label ?></small>
+                <b><?= htmlspecialchars($value) ?></b>
             </div>
-
-             <?php endforeach; ?>
-        </div>    
-        <?php endif; ?>
-
-
-
-        
-        <div class="merchant-disclaimer">
-            <strong>Commission Disclaimer</strong>
-            <ol class="disclaimer-list">
-                <li>The final commission amount may vary based on the items purchased, as each brand may have its own policies.</li>
-                <li>Using gift cards or unauthorized promo codes may result in ineligible commissions. Rules can vary by brand.</li>
-                <li>Orders that are canceled, returned, or refunded may not qualify for commission earnings.</li>
-            </ol>
+            <?php endforeach; ?>
         </div>
-    </div>    
+    </div>
+    <?php endif; ?>
+
+    <div class="modal-card">
+        <h4>Что важно знать о комиссиях</h4>
+        <ul class="ul-modal-list">
+            <li>Финальная сумма комиссии может отличаться от заявленной – у каждого магазина свои правила по товарам.</li>
+            <li>Использование подарочных карт или неавторизованных промокодов может привести к аннулированию комиссии.</li>
+            <li>Отменённые, возвращённые или возмещённые заказы не учитываются при начислении.</li>
+        </ul>
+    </div>
+        
 </div>
 <?php
 $html = ob_get_clean();

@@ -27,10 +27,11 @@
 @push('scripts')
 <script>
 (function() {
-    var _active        = null;
+    var _active        = null; 
     var backdrop       = document.getElementById('modal-backdrop');
     var modalWindow    = backdrop.querySelector('.modal-window');
     var dynamicContent = document.getElementById('modal-dynamic');
+
 
     window.openModal = function(id, options) {
         options = options || {};
@@ -64,8 +65,16 @@
 
         modalWindow.className = 'modal-window' + (options.className ? ' ' + options.className : '');
 
-        backdrop.classList.add('open');                // ← вместо display:flex
-        document.body.style.overflow = 'hidden';
+        // Блокировка скролла страницы: снимаем зарезервированный scrollbar-gutter
+        // и компенсируем его паддингом, чтобы контент не сдвигался
+        if (!backdrop.classList.contains('open')) {
+            var sbw = window.innerWidth - document.documentElement.clientWidth;
+            document.documentElement.style.scrollbarGutter = 'auto';
+            document.documentElement.style.overflow = 'hidden';
+            document.documentElement.style.paddingRight = sbw + 'px';
+        }
+
+        backdrop.classList.add('open');
 
         if (typeof options.onOpen === 'function') {
             options.onOpen(targetEl);
@@ -83,13 +92,15 @@
             _active = null;
         }
         modalWindow.className = 'modal-window';
-        backdrop.classList.remove('open');             // ← снимаем класс
-        document.body.style.overflow = '';
+        backdrop.classList.remove('open');
+        document.documentElement.style.scrollbarGutter = '';
+        document.documentElement.style.overflow = '';
+        document.documentElement.style.paddingRight = '';
     };
 
     var _downOnBackdrop = false;
 
-    backdrop.addEventListener('mousedown', function (e) {
+    backdrop.addEventListener('pointerdown', function (e) {
         _downOnBackdrop = (e.target === this);   // нажатие началось именно на фоне
     });
 
@@ -103,6 +114,11 @@
             closeModal();
         }
     });
+
+    // Мобила: при открытой модалке гасим скролл-жесты вне окна
+    document.addEventListener('touchmove', function(e) {
+        if (backdrop.classList.contains('open') && !e.target.closest('.modal-window')) e.preventDefault();
+    }, { passive: false });
 })();
 </script>
 @endpush

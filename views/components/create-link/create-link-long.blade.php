@@ -65,7 +65,7 @@ $shops = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/shops-for-creat-link.p
         <input type="text" placeholder="{{ __('Note (optional)') }}" maxlength="150">
     </div>
 
-    <button type="button" class="btn create-link__btn" id="">
+    <button type="button" class="btn create-link__btn" onclick="openModal('modal-link-created')">
         <i class="fa-solid fa-link"></i>{{ __('Create link') }}
     </button>
     
@@ -75,12 +75,9 @@ $shops = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/shops-for-creat-link.p
 <div class="create-footer-btns">
     <button type="button" class="btn min outline" onclick="openModal('modal-earn-rules', { className: 'long' })">
     <i class="fa-solid fa-circle-info"></i>
-    <span class="pill-full">{{ __('Earning rules') }}</span><span class="pill-short">{{ __('Rules') }}</span>
+    <span>Правила заработка</span>
     </button>
-    <button type="button" class="btn min outline" disabled>
-    <i class="fa-solid fa-link"></i>
-    <span class="pill-full">{{ __('All my links') }}</span><span class="pill-short">{{ __('My links') }}</span>
-    </button>
+   
 </div>
 <div class="form-text create-helpers-inline">
     <span class="js-merchants-count">41&nbsp;783</span>

@@ -291,6 +291,9 @@
                 <i class="fa-regular fa-copy"></i>
             </button>
         </div>
+        <div class="page-link" style="font-size:14px;">
+            <button type="button" onclick="openModal('modal-how-to-place', { className: 'long' })"><span>Как разместить?</span></button>
+        </div>
         <div class="modal-brand-stats">
             <span>Nike</span>•<span>до 3%</span>•<span>180+ стран</span>
         </div>
@@ -298,7 +301,7 @@
             Делитесь в постах, сторис, описаниях видео или в Telegram-канале. Комиссия начисляется автоматически за каждую продажу.
         </div>
         <div class="btn-group center-group">
-            <a href="#" class="btn full">Открыть мои ссылки</a>
+            <a href="#" class="btn full">Все ссылки</a>
             <button class="btn outline">Создать еще</button>
         </div>
     </div>
@@ -373,19 +376,6 @@
     </div>
 </div>  
 
-<!-- Добавить заметку -->
-<div class="modal-content" id="modal-note-add" style="display:none;">
-    <h3>Добавить заметку</h3>
-    <div class="container-modal">
-        <div class="input-field">
-            <textarea rows="6" name="" placeholder="Добавить заметку..." maxlength="450"></textarea>
-        </div>
-        <div class="btn-group right-group">
-            <button class="btn outline">Отмена</button>
-            <button class="btn">Сохранить</button>
-        </div>
-    </div>
-</div>  
 <!-- Сообщение в поддержку -->
 <div class="modal-content" id="modal-support-message" style="display:none;">
     <h3>Сообщение в поддержку</h3>

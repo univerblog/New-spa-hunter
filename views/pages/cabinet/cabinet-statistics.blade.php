@@ -26,8 +26,40 @@ $folders = [];
 @endpush
 
 @section('content')
+<nav class="breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-list">
+            <a href="/">Главная</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="/">Инструменты</a>
+             <i class="fa-solid fa-chevron-right"></i>
+            <span>Статистика</span>
+        </div>
+    </div>
+</nav>
+<section class="section statistics-link-block">
+    <div class="container">
+        <div class="create-link__main" data-state="compact">
+            <div class="create-link__main-mini input-group-horisontal">
+                <div class="input-field">
+                    <input type="text" placeholder="Вставьте URL товара или название бренда – появится полная форма" maxlength="150">
+                </div>
+                <button class="btn"><i class="fa-solid fa-plus"></i><span>Создать <b>ссылку</b></span></button>
+            </div>
+            <div class="create-link__main-full layout-block layout-form">
+                <div class="create-link-head">
+                    <span>Новая ссылка</span>
+                    <button class="btn min outline"><i class="fa-regular fa-xmark"></i>Свернуть</button>
+                </div>
+                @include('components.create-link.create-link-long')
+            </div>
+        </div>
 
-<section class="section statistics-page">
+    </div>
+</section>
+
+<section class="section statistics-page-block">
+    
     <div class="container full">
 
         <div class="stata-setting-block">
@@ -64,8 +96,32 @@ $folders = [];
                 </div>
 
             </div>
-            <div class="stata-setting-item entries">
-                Показано от 1 до 20 из 100 записей
+            <div class="stata-setting-item">
+                <div class="entries">Показано от 1 до 20 из 100 записей</div>
+                <div class="select select-min for-mobile" data-select data-name="sort" id="select_sort_table">
+                    <button type="button" class="select-trigger">
+                        <span class="select-value">
+                            <i class="fa-regular fa-arrow-down-arrow-up"></i>
+                        </span>
+                    </button>
+                    <div class="select-panel">
+                        <div class="select-list">
+                            <button type="button" class="select-option is-selected" data-value="">По умолчанию</button>
+                            <button type="button" class="select-option" data-value="clicks-desc">
+                                Клики <span><i class="fa-regular fa-arrow-up"></i></span></button>
+                            <button type="button" class="select-option" data-value="clicks-asc">
+                                Клики <span><i class="fa-regular fa-arrow-down"></i></span></button>
+                            <button type="button" class="select-option" data-value="purchases-desc">
+                                Покупки <span><i class="fa-regular fa-arrow-up"></i></span></button>
+                            <button type="button" class="select-option" data-value="purchases-asc">
+                                Покупки <span><i class="fa-regular fa-arrow-down"></i></span></button>
+                            <button type="button" class="select-option" data-value="confirmed-desc">
+                                Подтверждено <span><i class="fa-regular fa-arrow-up"></i></span></button>
+                            <button type="button" class="select-option" data-value="confirmed-asc">
+                                Подтверждено <span><i class="fa-regular fa-arrow-down"></i></span></button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="stata-setting-item">
 
@@ -86,7 +142,7 @@ $folders = [];
                 </div>
 
                 <div class="input-field">
-                    <input type="text" placeholder="Search" maxlength="150">
+                    <input type="text" placeholder="Search" maxlength="150" id="stata-search">
                 </div>
 
             </div>
@@ -120,14 +176,20 @@ $folders = [];
                         <td class="-merchant">
                             <div class="table-flex merch">
                                 <a href="#" onclick="loadMerchantData('{{ $link['merchant_key'] }}'); event.preventDefault();">
-                                    {{ $link['merchant__name'] }} <i class="fa-solid fa-circle-info"></i>
+                                    {{ $link['merchant__name'] }} <i>i</i>
                                 </a>
+                            </div>
+                            <div class="page-link" style="font-size:13px;">
+                                <button type="button" onclick="openModal('modal-how-to-place', { className: 'long' })"><span>Как разместить?</span></button>
                             </div>
                         </td>
 
                         <td class="-url">
                             <span class="td-label">Ссылка на товар</span>
-                            <div class="table-flex"><a href="{{ $link['product_url'] }}" target="_blank">{{ $link['product_url'] }}</a></div>
+                            <div class="table-flex url-link"><a href="{{ $link['product_url'] }}" target="_blank">
+                                <span>{{ $link['product_url'] }}</span>
+                                <i class="fa-regular fa-arrow-up-right-from-square"></i>
+                            </a></div>
                         </td>
 
                         <td class="-short">
@@ -138,11 +200,11 @@ $folders = [];
                         </td>
 
                         <td class="center -tag">
-                            <div class="table-flex tags"><i class="fa-solid fa-hashtag"></i><span>{{ $link['tag'] ?: '-' }}</span></div>
+                            <div class="table-flex tags" onclick="openTagModal('{{ $link['id'] }}')"><i class="fa-solid fa-hashtag"></i><span>{{ $link['tag'] ?: '-' }}</span></div>
                         </td>
 
                         <td class="-folder">
-                            <div class="table-flex folder">
+                            <div class="table-flex folder" onclick="openFolderModal('{{ $link['id'] }}')">
                                 <i class="fa-solid fa-folder-open"></i> <span>{{ $link['folder'] ?: '-' }}</span>
                             </div>
                         </td>
@@ -187,8 +249,8 @@ $folders = [];
                             <button type="button" class="stata-menu" data-stata-menu><i class="fa-solid fa-ellipsis-vertical"></i></button>
                             <div class="stata-pop">
                                 <button type="button" onclick="openNoteModal('{{ $link['id'] }}', '{{ $link['note'] }}')"><i class="fa-regular fa-pen"></i> Заметка</button>
-                                <button type="button" onclick="openNoteModal('{{ $link['id'] }}', '{{ $link['note'] }}')"><i class="fa-regular fa-pen"></i> Тег</button>
-                                <button type="button" onclick="openNoteModal('{{ $link['id'] }}', '{{ $link['note'] }}')"><i class="fa-regular fa-pen"></i> Папка</button>
+                                <button type="button" onclick="openTagModal('{{ $link['id'] }}', '{{ $link['note'] }}')"><i class="fa-regular fa-pen"></i> Тег</button>
+                                <button type="button" onclick="openFolderModal('{{ $link['id'] }}', '{{ $link['note'] }}')"><i class="fa-regular fa-pen"></i> Папка</button>
                                 <button type="button" class="red" onclick="openDeleteModal('{{ $link['id'] }}')"><i class="fa-solid fa-trash-can"></i> Удалить</button>
                             </div>
                         </td>
@@ -231,45 +293,206 @@ $folders = [];
         <div class="pagination for-desktop" id="pagination"></div>
 
         <div class="mini-pagination for-mobile" id="mini-pagination">
-            <button onclick="showPage(1)"><i class="fa-solid fa-angles-left"></i></button>
-            <button onclick="showPage(currentPage - 1)"><i class="fa-solid fa-angle-left"></i></button>
+            <button><i class="fa-solid fa-angles-left"></i></button>
+            <button><i class="fa-solid fa-angle-left"></i></button>
             <div class="paginate-pages"><b>Page</b> <span id="mini-current">1</span> of <span id="mini-total">1</span></div>
-            <button onclick="showPage(currentPage + 1)"><i class="fa-solid fa-angle-right"></i></button>
-            <button onclick="showPage(totalPages)"><i class="fa-solid fa-angles-right"></i></button>
+            <button><i class="fa-solid fa-angle-right"></i></button>
+            <button><i class="fa-solid fa-angles-right"></i></button>
         </div>
            
     </div>  
 </section>
 
-
-
-<div id="note-modal-content" style="display:none;">
-    <h3>Add note</h3>
+@push('modals')
+<div class="modal-content" id="note-modal-content" style="display:none;">
+    <h3>Добавить заметку</h3>
     <div class="container-modal">
-        <div class="input-group">
-            <textarea id="note-textarea" rows="5" placeholder="Write a note..."></textarea>
+        <div class="input-field">
+            <textarea id="note-textarea" rows="6" placeholder="Добавить заметку..." maxlength="450"></textarea>
         </div>
-        <div class="btn-group">
-            <button type="button" class="btn-solid gray" onclick="closeModal()">Cancel</button>
-            <button type="button" class="btn-solid" onclick="saveNote()">Save</button>
+        <div class="btn-group right-group">
+            <button type="button" class="btn outline" onclick="closeModal()">Отмена</button>
+            <button type="button" class="btn" onclick="saveNote()">Сохранить</button>
+        </div>
+    </div>
+</div>  
+
+<div class="modal-content" id="delete-modal-content" style="display:none;">
+    <h3>Удалить ссылку</h3>
+    <div class="container-modal">
+        <div class="form-text-content" style="margin-bottom:10px;">
+            Вы уверены? Это действие нельзя&nbsp;отменить, ссылка будет удалена навсегда.
+        </div>
+        <div class="btn-group right-group">
+            <button type="button" class="btn outline" onclick="closeModal()">Отмена</button>
+            <button type="button" class="btn red" onclick="confirmDelete()">Удалить</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-content" id="delete-done-content" style="display:none;">
+    <h3>Ссылка удалена</h3>
+    <div class="container-modal">
+        <div class="form-text-content" style="margin-bottom:10px;">
+            Ссылка успешно удалена из вашего аккаунта.
+        </div>
+        <div class="btn-group right-group">
+            <button class="btn" onclick="closeDeleteAndRemoveRow()">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-content" id="modal-how-to-place" style="display:none;">
+    <h3>Как разместить ссылку</h3>
+    <div class="container-modal">
+        <div class="form-text-content">Где разместить, как пометить и готовый текст, если нужен.</div>
+        <div class="form-text-content">Партнёрские ссылки нужно помечать как рекламу (правила FTC и площадок). Добавь пометку в текст.</div>
+        <div class="modal-card-block">
+            <h4>Если твоя аудитория в США или ЕС</h4>
+            <div class="input-field">
+                <input type="text" value="#ad" readonly>
+                <button type="button" class="input-fix-btn" data-copy><i class="fa-regular fa-copy"></i></button>
+            </div>
+        </div>    
+        <div class="modal-card-block">    
+             <h4>Для RU-аудитории</h4>
+            <div class="input-field">
+                <input type="text" value="#реклама" readonly>
+                <button type="button" class="input-fix-btn" data-copy><i class="fa-regular fa-copy"></i></button>
+            </div>
+        </div>
+
+        <div class="modal-card-block">
+            <h4>Выбери площадку</h4>
+            <div class="place-platforms">
+                <button type="button" class="place-platform is-active" data-name="YouTube" data-text="В описании под видео + в закреплённом комментарии. Первые 3 строки описания и закреп дают 8-15% переходов. Проговори голосом: «ссылки в описании и закрепе».">YouTube</button>
+                <button type="button" class="place-platform" data-name="Instagram" data-text="Ссылка-стикер в Сторис + в шапке профиля. В Reels – призыв «ссылка в профиле».">Instagram</button>
+                <button type="button" class="place-platform" data-name="TikTok" data-text="Одна ссылка в профиле (био) + закреплённый комментарий «ссылка в профиле, копируйте». Назови голосом.">TikTok</button>
+                <button type="button" class="place-platform" data-name="Twitch" data-text="В панелях под плеером + через чат-команду (напр. !mouse). В описании канала укажи про партнёрские ссылки.">Twitch</button>
+                <button type="button" class="place-platform" data-name="X (Twitter)" data-text="НЕ в первом твите (режет охват). Ссылку – в последний твит треда, в reply на свой твит или в закреплённый твит профиля + в био.">X</button>
+                <button type="button" class="place-platform" data-name="Facebook" data-text="Лучше в первый комментарий (ссылка в посте режет охват) либо в текст поста + закреплённый пост страницы.">Facebook</button>
+                <button type="button" class="place-platform" data-name="Telegram" data-text="В тексте поста + в закреплённом сообщении канала.">Telegram</button>
+            </div>
+            <div class="place-platform-content">
+                <strong><i class="fa-solid fa-circle"></i> Где разместить на <span id="place-platform-name">YouTube</span></strong>
+                <p id="place-platform-text">В описании под видео + в закреплённом комментарии. Первые 3 строки описания и закреп дают 8-15% переходов. Проговори голосом: «ссылки в описании и закрепе».</p>
+            </div>
+        </div>
+
+        <div class="modal-card-block">
+            <div class="link-rules__open-block">
+                <div class="link-rules__toggle" onclick="toggleLinkRules(event)">Нужен текст или сценарий? Держи!<i class="fa-solid fa-caret-down"></i></div>
+
+                <div class="link-rules__content">
+                    <p>Снимаешь свой контент или крепишь ссылку в сторис? Просто бери ссылку. Нужен текст – вот готовый:</p>
+
+<div class="link-rules__templates">
+    <div class="link-rules__template">
+        <div class="link-template__head">
+            <span class="link-template__name">Подпись</span>
+            <button class="link-template__copy" data-copy=""><i class="fa-regular fa-copy"></i></button>
+        </div>
+<p data-copy-text="">Пользуюсь [магазин] и реально доволен(льна). Если присматривались –
+вот ссылка:
+[магазин] -> [твоя ссылка]
+#реклама</p>
+    </div>
+
+    <div class="link-rules__template">
+        <div class="link-template__head">
+            <span class="link-template__name">15-сек сценарий</span>
+            <button class="link-template__copy" data-copy=""><i class="fa-regular fa-copy"></i></button>
+        </div>
+<p data-copy-text="">0-3 сек – хук: «[магазин]? Коротко и честно».
+3-12 сек – покажи или назови одну вещь, которая нравится.
+12-15 сек – «Ссылка в шапке/описании, загляни».
+Пометь #реклама.</p>
+        </div>
+
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="page-link" style="font-size:14px;">
+            <a href=""><span>Правила и проверка аккаунта </span> <i class="fa-regular fa-arrow-right fa-xs"></i></a>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-content" id="folder-modal-content" style="display:none;">
+    <h3>Изменить папку</h3>
+    <div class="container-modal">
+        <div class="select" data-select data-add id="folder-modal-select">
+            <div class="input-field">
+                <input type="text" class="select-trigger" placeholder="Папка (новая или существующая)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                 <i class="fa-solid fa-chevron-down select-arrow"></i>
+            </div>
+            <div class="select-panel">
+                <div class="select-list">
+                    @foreach($folders as $folder => $count)
+                        @if($folder !== 'No folder')
+                        <button type="button" class="select-option" data-value="{{ $folder }}">{{ $folder }}</button>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="select-empty" hidden>Ничего не найдено</div>
+                <div class="select-hint" hidden>Пусто. Начните вводить, чтобы добавить.</div>
+                <button type="button" class="select-option select-add" data-value="">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Добавить папку «<strong class="select-add-term"></strong>»</span>
+                </button>
+            </div>
+        </div>
+        <div class="btn-group right-group">
+            <button type="button" class="btn outline" onclick="clearFolderSelect()">Очистить папку</button>
+            <button type="button" class="btn" onclick="saveFolder()">Сохранить</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-content" id="tag-modal-content" style="display:none;">
+    <h3>Изменить тег</h3>
+    <div class="container-modal">
+        <div class="select" data-select data-add id="tag-modal-select">
+            <div class="input-field">
+                <input type="text" class="select-trigger" placeholder="Тег (новый или существующий)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <i class="fa-solid fa-chevron-down select-arrow"></i>
+            </div>
+            <div class="select-panel">
+                <div class="select-list">
+                    @foreach($tags as $tag => $count)
+                        @if($tag !== 'No tag')
+                        <button type="button" class="select-option" data-value="{{ $tag }}">{{ $tag }}</button>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="select-empty" hidden>Ничего не найдено</div>
+                <div class="select-hint" hidden>Пусто. Начните вводить, чтобы добавить.</div>
+                <button type="button" class="select-option select-add" data-value="">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Добавить тег «<strong class="select-add-term"></strong>»</span>
+                </button>
+            </div>
+        </div>
+        <div class="btn-group right-group">
+            <button type="button" class="btn outline" onclick="clearTagSelect()">Очистить тег</button>
+            <button type="button" class="btn" onclick="saveTag()">Сохранить</button>
         </div>
     </div>
 </div>
 
 <div id="merchant-loading-content" style="display:none;">
-    Loading...
+    <div class="modal-loading">Loading...</div>
 </div>
+@endpush
 
-<div id="delete-modal-content" style="display:none;">
-    <h3><i class="fa-solid fa-trash-can" style="color:#ff0000;"></i> Delete link</h3>
-    <div class="container-modal">
-        <p style="text-align:center;">Are you sure? This action cannot be undone and the link will be permanently deleted.</p>
-        <div class="btn-group">
-            <button type="button" class="btn-solid gray" onclick="closeModal()">Cancel</button>
-            <button type="button" class="btn-solid red" onclick="confirmDelete()">Delete</button>
-        </div>
-    </div>
-</div>
+
+
+
+
 
 
 @endsection
@@ -301,98 +524,90 @@ document.querySelectorAll('.tab-filter').forEach(filter => {
 
 
 <script>
-///////// ЭТО скрипт пагинации, потом свое сделаешь  
-const selectLength = document.getElementById('select_length_table');
+////// Фильтры + пагинация: единое состояние
+const rows = Array.from(document.querySelectorAll('#for-paginate-only tbody tr'));
+const state = { tag: 'all', folder: 'all', search: '', perPage: 10, page: 1, sort: '' };
+let visibleRows = rows;
 
-let perPage = parseInt(selectLength.value) || 10;
-let currentPage = 1;
+function cellNum(row, selector) {
+    return parseFloat(row.querySelector(selector)?.textContent.replace(/[^\d.]/g, '')) || 0;
+}
 
-selectLength.addEventListener('change', function() {
-    perPage = parseInt(this.value);
-    currentPage = 1;
-    showPage(1);
-});
+function applyFilters() {
+    visibleRows = rows.filter(row => {
+        const tag = row.querySelector('.tags span')?.textContent.trim() || '-';
+        const folder = row.querySelector('.folder span')?.textContent.trim() || '-';
+        if (state.tag !== 'all' && tag !== state.tag && !(state.tag === 'No tag' && tag === '-')) return false;
+        if (state.folder !== 'all' && folder !== state.folder && !(state.folder === 'No folder' && folder === '-')) return false;
+        if (state.search && !row.textContent.toLowerCase().includes(state.search)) return false;
+        return true;
+    });
 
-const table = document.getElementById('for-paginate-only');
-const rows = Array.from(table.querySelectorAll('tbody tr'));
-//const totalPages = Math.ceil(filteredRows.length / perPage);
+    if (state.sort) {
+        const [field, dir] = state.sort.split('-');
+        const sel = { clicks: '.clicks-count', purchases: '.purchases-count', confirmed: '.-confirmed' }[field];
+        visibleRows = visibleRows.slice().sort((a, b) => (cellNum(a, sel) - cellNum(b, sel)) * (dir === 'asc' ? 1 : -1));
+    }
 
+    state.page = 1;
+    render();
+}
 
 function showPage(page) {
-    currentPage = page;
-    const start = (page - 1) * perPage;
-    const end = start + perPage;
+    state.page = page;
+    render();
+}
 
-    const filteredRows = rows.filter(row => 
-        row.dataset.filtered !== 'false' && 
-        row.dataset.tagFiltered !== 'false'
-    );
+function render() {
+    const total = visibleRows.length;
+    const totalPages = Math.max(1, Math.ceil(total / state.perPage));
+    if (state.page > totalPages) state.page = totalPages;
+    const start = (state.page - 1) * state.perPage;
+    const end = Math.min(start + state.perPage, total);
 
-    filteredRows.forEach((row, index) => {
-        row.style.display = (index >= start && index < end) ? '' : 'none';
-    });
-
-    rows.forEach(row => {
-        if (row.dataset.filtered === 'false' || row.dataset.tagFiltered === 'false') {
-            row.style.display = 'none';
-        }
-    });
-    //// Total
-    // Page totals
     let pageClicks = 0, pagePurchases = 0, pageReward = 0;
-    filteredRows.forEach((row, index) => {
-        if (index >= start && index < end) {
-            pageClicks += parseInt(row.querySelector('.clicks-count')?.textContent) || 0;
-            pagePurchases += parseInt(row.querySelector('.purchases-count')?.textContent) || 0;
-            pageReward += parseFloat(row.querySelector('.pending-count')?.textContent.replace('$', '')) || 0;
-        }
+
+    rows.forEach(row => { row.style.display = 'none'; });
+    visibleRows.forEach((row, i) => {
+        if (i < start || i >= end) return;
+        row.style.display = '';
+        pageClicks += cellNum(row, '.clicks-count');
+        pagePurchases += cellNum(row, '.purchases-count');
+        pageReward += cellNum(row, '.pending-count');
     });
+
     document.getElementById('page-clicks').textContent = pageClicks;
     document.getElementById('page-purchases').textContent = pagePurchases;
     document.getElementById('page-reward').textContent = '$' + pageReward.toFixed(2);
-    //// end Total
+    document.querySelector('.stata-setting-item .entries').textContent = total ? `Показано от ${start + 1} до ${end} из ${total} записей` : 'Записей нет';
 
-    renderPagination();
-
-}
-
-function renderPagination() {
-    const filteredRows = rows.filter(row => 
-        row.dataset.filtered !== 'false' && 
-        row.dataset.tagFiltered !== 'false'
-    );
-    const totalPages = Math.ceil(filteredRows.length / perPage);
-    const pagination = document.getElementById('pagination');
-    let html = '';
-
-    html += `<button onclick="showPage(1)" ${currentPage === 1 ? 'disabled' : ''}><i class="fa-solid fa-angles-left"></i></button>`;
-    html += `<button onclick="showPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}><i class="fa-solid fa-angle-left"></i></button>`;
-
+    let html = `<button onclick="showPage(1)" ${state.page === 1 ? 'disabled' : ''}><i class="fa-solid fa-angles-left"></i></button>`;
+    html += `<button onclick="showPage(${state.page - 1})" ${state.page === 1 ? 'disabled' : ''}><i class="fa-solid fa-angle-left"></i></button>`;
     for (let i = 1; i <= totalPages; i++) {
-        html += `<span onclick="showPage(${i})" class="${i === currentPage ? 'active' : ''}">${i}</span>`;
+        html += `<span onclick="showPage(${i})" class="${i === state.page ? 'active' : ''}">${i}</span>`;
     }
+    html += `<button onclick="showPage(${state.page + 1})" ${state.page === totalPages ? 'disabled' : ''}><i class="fa-solid fa-angle-right"></i></button>`;
+    html += `<button onclick="showPage(${totalPages})" ${state.page === totalPages ? 'disabled' : ''}><i class="fa-solid fa-angles-right"></i></button>`;
+    document.getElementById('pagination').innerHTML = html;
 
-    html += `<button onclick="showPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}><i class="fa-solid fa-angle-right"></i></button>`;
-    html += `<button onclick="showPage(${totalPages})" ${currentPage === totalPages ? 'disabled' : ''}><i class="fa-solid fa-angles-right"></i></button>`;
-
-    pagination.innerHTML = html;
-    /// Mini pagination
-    const miniEl = document.getElementById('mini-pagination');
-    const miniButtons = miniEl.querySelectorAll('button');
-    document.getElementById('mini-current').textContent = currentPage;
+    document.getElementById('mini-current').textContent = state.page;
     document.getElementById('mini-total').textContent = totalPages;
-
-    miniButtons[0].disabled = currentPage === 1;
-    miniButtons[0].onclick = () => showPage(1);
-    miniButtons[1].disabled = currentPage === 1;
-    miniButtons[1].onclick = () => showPage(currentPage - 1);
-    miniButtons[2].disabled = currentPage === totalPages;
-    miniButtons[2].onclick = () => showPage(currentPage + 1);
-    miniButtons[3].disabled = currentPage === totalPages;
-    miniButtons[3].onclick = () => showPage(totalPages);
-    /// End Mini pagination
+    const mini = document.querySelectorAll('#mini-pagination button');
+    mini[0].disabled = mini[1].disabled = state.page === 1;
+    mini[2].disabled = mini[3].disabled = state.page === totalPages;
+    mini[0].onclick = () => showPage(1);
+    mini[1].onclick = () => showPage(state.page - 1);
+    mini[2].onclick = () => showPage(state.page + 1);
+    mini[3].onclick = () => showPage(totalPages);
 }
-showPage(1);
+
+document.getElementById('select_tags').addEventListener('select:change', e => { state.tag = e.detail.value; applyFilters(); });
+document.getElementById('select_sort_table').addEventListener('select:change', function(e) { state.sort = e.detail.value; this.querySelector('.select-value').innerHTML = '<i class="fa-regular fa-arrow-down-arrow-up"></i>'; applyFilters(); });
+document.getElementById('select_folder').addEventListener('select:change', e => { state.folder = e.detail.value; applyFilters(); });
+document.getElementById('select_length_table').addEventListener('select:change', e => { state.perPage = parseInt(e.detail.value); state.page = 1; render(); });
+document.getElementById('stata-search').addEventListener('input', function() { state.search = this.value.trim().toLowerCase(); applyFilters(); });
+
+render();
 </script>
 
 
@@ -400,10 +615,10 @@ showPage(1);
 /// Отображение данных мерча в окне при клике на него   
 function loadMerchantData(merchantKey) {
     openModal('merchant-loading-content', {
-        className: 'modal-wide',
+        className: 'long',
         onOpen: (content) => {
-            content.innerHTML = 'Loading...';
-            fetch('/views/data/api/merchant-info.php?key=' + merchantKey)
+            //content.innerHTML = 'Loading...';
+            fetch('/views/data/statistics/api/merchant-info.php?key=' + merchantKey)
                 .then(r => r.json())
                 .then(data => {
                     content.innerHTML = data.error ? 'Error: ' + data.error : data.html;
@@ -424,55 +639,6 @@ function toggleMerchant(event) {
     block.classList.toggle('open');
 }
 
-/////////  ЭТО скрипт выбора напки из folders
-document.querySelectorAll('.folder-item').forEach(item => {
-    item.addEventListener('click', function() {
-        document.querySelectorAll('.folder-item').forEach(f => f.classList.remove('active'));
-        this.classList.add('active');
-
-        const folder = this.dataset.folder;
-
-        rows.forEach(row => {
-            const rowFolder = row.querySelector('.folder')?.textContent.trim() || '-';
-            if (folder === 'all' || rowFolder === folder || (folder === 'No folder' && rowFolder === '-')) {
-                row.dataset.filtered = 'true';
-            } else {
-                row.dataset.filtered = 'false';
-            }
-        });
-
-        currentPage = 1;
-        showPage(1);
-    });
-});  
-////////// может удалим Открытие папок folders ----------------------------
-
-
-////// Сортировка по папкам через select
-document.getElementById('select_folder').addEventListener('change', function() {
-    const folder = this.value;
-
-    document.querySelectorAll('.folder-item').forEach(f => {
-        f.classList.toggle('active', f.dataset.folder === folder);
-    });
-
-    rows.forEach(row => {
-        if (folder === 'all') {
-            delete row.dataset.filtered;
-        } else {
-            const rowFolder = row.querySelector('.folder')?.textContent.trim() || '-';
-            if (rowFolder === folder || (folder === 'No folder' && rowFolder === '-')) {
-                row.dataset.filtered = 'true';
-            } else {
-                row.dataset.filtered = 'false';
-            }
-        }
-    });
-
-    currentPage = 1;
-    showPage(1);
-});
-
 ////// Копирование URL 
 function copyUrl(btn, url) {
     navigator.clipboard.writeText(url).then(() => {
@@ -492,12 +658,9 @@ let currentNoteId = null;
 
 function openNoteModal(id, text) {
     currentNoteId = id;
-    const isEdit = text.length > 0;
     openModal('note-modal-content', {
         onOpen: (content) => {
-            content.querySelector('h3').innerHTML = isEdit ? 
-            'Edit note' : 
-            'Add note';
+            content.querySelector('h3').textContent = text ? 'Редактировать заметку' : 'Добавить заметку';
             const textarea = content.querySelector('#note-textarea');
             textarea.value = text;
             textarea.focus();
@@ -506,9 +669,9 @@ function openNoteModal(id, text) {
 }
 
 function saveNote() {
-    const text = document.querySelector('.modal-content #note-textarea').value.trim();
+    const text = document.getElementById('note-textarea').value.trim();
 
-    fetch('/views/data/api/save-note.php', {
+    fetch('/views/data/statistics/api/save-note.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -519,25 +682,88 @@ function saveNote() {
     .then(r => r.json())
     .then(data => {
         if (data.success) {
-            // Обновляем ячейку в таблице
             const row = document.querySelector(`tr[data-id="${currentNoteId}"]`);
             const noteCell = row.querySelector('.note');
 
+            noteCell.classList.toggle('no-note', !text);
             if (text) {
                 noteCell.innerHTML = `<span onclick="openNoteModal('${currentNoteId}', this.textContent.trim())">${text}</span>`;
             } else {
-                noteCell.innerHTML = `<button type="button" onclick="openNoteModal('${currentNoteId}', '')"><i class="fa-solid fa-plus" style="font-size:10px;"></i> note</button>`;
+                noteCell.innerHTML = `<button type="button" onclick="openNoteModal('${currentNoteId}', '')"><i class="fa-solid fa-plus" style="font-size:10px;"></i> Заметка</button>`;
             }
 
             closeModal();
         } else {
-            alert(data.error || 'Error saving note');
+            alert(data.error || 'Ошибка сохранения');
         }
     })
     .catch(() => {
-        alert('Error saving note');
+        alert('Ошибка сохранения');
     });
 }
+
+/////// Смена папки
+let currentFolderId = null;
+
+function openFolderModal(id) {
+    currentFolderId = id;
+    const row = document.querySelector(`tr[data-id="${id}"]`);
+    const current = row.querySelector('.folder span')?.textContent.trim() || '';
+    openModal('folder-modal-content', {
+        onOpen: (content) => {
+            const input = content.querySelector('.select-trigger');
+            input.value = '';
+            content.querySelectorAll('.select-option').forEach(o => o.classList.remove('is-selected'));
+            const opt = Array.from(content.querySelectorAll('.select-list .select-option')).find(o => o.dataset.value === current);
+            if (opt) opt.click();
+        }
+    });
+}
+
+/////// Смена тега
+let currentTagId = null;
+
+function openTagModal(id) {
+    currentTagId = id;
+    const row = document.querySelector(`tr[data-id="${id}"]`);
+    const current = row.querySelector('.tags span')?.textContent.trim() || '';
+    openModal('tag-modal-content', {
+        onOpen: (content) => {
+            const input = content.querySelector('.select-trigger');
+            input.value = '';
+            content.querySelectorAll('.select-option').forEach(o => o.classList.remove('is-selected'));
+            const opt = Array.from(content.querySelectorAll('.select-list .select-option')).find(o => o.dataset.value === current);
+            if (opt) opt.click();
+        }
+    });
+}
+
+function saveTag() {
+    const value = document.querySelector('#tag-modal-select .select-trigger').value.trim();
+    const row = document.querySelector(`tr[data-id="${currentTagId}"]`);
+    row.querySelector('.tags span').textContent = value || '-';
+    closeModal();
+}
+
+function clearFolderSelect() {
+    const root = document.getElementById('folder-modal-select');
+    root.querySelector('.select-trigger').value = '';
+    root.querySelectorAll('.select-option').forEach(o => o.classList.remove('is-selected'));
+}
+
+function clearTagSelect() {
+    const root = document.getElementById('tag-modal-select');
+    root.querySelector('.select-trigger').value = '';
+    root.querySelectorAll('.select-option').forEach(o => o.classList.remove('is-selected'));
+}
+
+function saveFolder() {
+    const value = document.querySelector('#folder-modal-select .select-trigger').value.trim();
+    const row = document.querySelector(`tr[data-id="${currentFolderId}"]`);
+    row.querySelector('.folder span').textContent = value || '-';
+    closeModal();
+}
+
 /////// END замены текста в поле note
 
 //// Открытие модалок для clics и далее
@@ -545,8 +771,8 @@ function openDetailsModal(id, type) {
     openModal('merchant-loading-content', {
         className: 'long',
         onOpen: (content) => {
-            content.innerHTML = 'Loading...';
-            fetch('/views/data/api/link-details.php?id=' + id + '&type=' + type)
+            //content.innerHTML = 'Loading...';
+            fetch('/views/data/statistics/api/link-details.php?id=' + id + '&type=' + type)
                 .then(r => r.json())
                 .then(data => {
                     content.innerHTML = data.error ? 'Error: ' + data.error : data.html;
@@ -559,62 +785,78 @@ function openDetailsModal(id, type) {
     });
 }
 
-////// Пагинация для модалки
+////// Пагинация и сортировка для модалки
 function initModalPagination() {
     const table = document.getElementById('modal-details-table');
-    const pagination = document.getElementById('modal-pagination');
-    if (!table || !pagination) return;
+    if (!table) return;
 
-    const rows = Array.from(table.children);
-    const perPage = 10;
+    const content = table.closest('.modal-content');
+    const box = table.closest('.lined-table-box');
+    const pagination = document.getElementById('modal-pagination');
+    const resetBtn = content.querySelector('.modal-sort-reset');
+    const perPage = parseInt(table.dataset.perPage) || 6;
+    const defaultRows = Array.from(table.children);
+    let rows = defaultRows;
     let page = 1;
 
     function render() {
-        const totalPages = Math.ceil(rows.length / perPage);
-        const start = (page - 1) * perPage;
-        const end = start + perPage;
-
         rows.forEach((row, i) => {
-            row.style.display = (i >= start && i < end) ? '' : 'none';
+            table.appendChild(row);
+            row.style.display = (i >= (page - 1) * perPage && i < page * perPage) ? '' : 'none';
         });
 
-        const prevDisabled = page === 1 ? 'disabled' : '';
-        const nextDisabled = page === totalPages ? 'disabled' : '';
+        if (!box.style.minHeight && rows.length > perPage) box.style.minHeight = (box.offsetHeight + 10) + 'px';
 
+        if (!pagination) return;
+
+        const totalPages = Math.ceil(rows.length / perPage);
         pagination.innerHTML = `
-            <button ${prevDisabled} id="mp-prev"><i class="fa-solid fa-angle-left"></i></button>
-            <div class="paginate-pages"><b>Page</b> ${page} of ${totalPages}</div>
-            <button ${nextDisabled} id="mp-next"><i class="fa-solid fa-angle-right"></i></button>
+            <button ${page === 1 ? 'disabled' : ''} id="mp-prev"><i class="fa-solid fa-angle-left"></i></button>
+            <div class="paginate-pages"><b>Стр.</b> ${page} из ${totalPages}</div>
+            <button ${page === totalPages ? 'disabled' : ''} id="mp-next"><i class="fa-solid fa-angle-right"></i></button>
         `;
 
         document.getElementById('mp-prev').addEventListener('click', () => { page--; render(); });
         document.getElementById('mp-next').addEventListener('click', () => { page++; render(); });
     }
 
-    render();
-}
+    function resetSort() {
+        content.querySelectorAll('.tab-filter').forEach(f => f.classList.remove('dt-ordering-asc', 'dt-ordering-desc'));
+        rows = defaultRows;
+        page = 1;
+        render();
+    }
 
-////// Фильтр select по тегам
-document.getElementById('select_tags').addEventListener('change', function() {
-    const tag = this.value;
+    content.querySelectorAll('.tab-filter').forEach(filter => {
+        filter.addEventListener('click', function() {
+            const th = this.closest('th');
+            const col = Array.from(th.parentNode.children).indexOf(th);
+            const state = this.classList.contains('dt-ordering-asc') ? 'asc' : this.classList.contains('dt-ordering-desc') ? 'desc' : '';
 
-    rows.forEach(row => {
-        if (tag === 'all') {
-            delete row.dataset.tagFiltered;
-        } else {
-            const rowTag = row.querySelector('.tags span')?.textContent.trim() || '-';
-            if (rowTag === tag || (tag === 'No tag' && rowTag === '-')) {
-                row.dataset.tagFiltered = 'true';
-            } else {
-                row.dataset.tagFiltered = 'false';
-            }
-        }
+            if (state === 'desc') { resetSort(); return; }
+
+            content.querySelectorAll('.tab-filter').forEach(f => f.classList.remove('dt-ordering-asc', 'dt-ordering-desc'));
+            const asc = state === '';
+            this.classList.add(asc ? 'dt-ordering-asc' : 'dt-ordering-desc');
+
+            rows = defaultRows.slice().sort((a, b) => {
+                const ta = a.children[col].dataset.sort || a.children[col].textContent.trim();
+                const tb = b.children[col].dataset.sort || b.children[col].textContent.trim();
+                const na = Number(ta.replace(/,/g, ''));
+                const nb = Number(tb.replace(/,/g, ''));
+                const cmp = (!isNaN(na) && !isNaN(nb)) ? na - nb : ta.localeCompare(tb, 'ru');
+                return cmp * (asc ? 1 : -1);
+            });
+
+            page = 1;
+            render();
+        });
     });
 
-    currentPage = 1;
-    showPage(1);
-});
+    if (resetBtn) resetBtn.addEventListener('click', resetSort);
 
+    render();
+}
 
 ////// УДАЛЕНИЕ блока
 let deleteId = null;
@@ -625,21 +867,12 @@ function openDeleteModal(id) {
 }
 
 function confirmDelete() {
-    const content = document.querySelector('.modal-content');
-    content.innerHTML = `
-        <div class="container-modal-сonfirm">
-           <i class="fa-solid fa-check"></i>
-           <p style="text-align:center;">Link has been successfully deleted</p>
-           <div class="btn-group">
-                <button type="button" class="btn-solid" onclick="closeDeleteAndRemoveRow()">OK</button>
-            </div>
-        </div>
-    `;
+    openModal('delete-done-content');
 }
 
 function closeDeleteAndRemoveRow() {
     const row = document.querySelector(`tr[data-id="${deleteId}"]`);
-    if (row) row.remove();
+    if (row) { row.remove(); rows.splice(rows.indexOf(row), 1); visibleRows = visibleRows.filter(r => r !== row); render(); }
     deleteId = null;
     closeModal();
 }
@@ -663,7 +896,53 @@ document.addEventListener('click', function(e){
 });
 </script>
 
+<script>
+    ////// Сворачивание формы создания ссылки
+const qsWrap = document.querySelector('.create-link__main');
+const qsInput = qsWrap.querySelector('.create-link__main-mini input');
 
+function qsOpen() {
+    qsWrap.dataset.state = 'full';
+    const fullInput = qsWrap.querySelector('.create-link__wrapper [data-remote] .select-trigger');
+    if (fullInput && qsInput.value) fullInput.value = qsInput.value;
+    setTimeout(() => fullInput && fullInput.focus(), 50);
+}
+
+qsInput.addEventListener('focus', qsOpen);
+qsWrap.querySelector('.create-link__main-mini .btn').addEventListener('click', qsOpen);
+qsWrap.querySelector('.create-link-head .btn').addEventListener('click', () => { qsWrap.dataset.state = 'compact'; });
+</script>
+
+<script>
+    /// открытие блоков в окне "как разместить?"
+function toggleLinkRules(event) {
+    event.preventDefault();
+    const toggle = event.target.closest('.link-rules__toggle');
+    const block = toggle.closest('.link-rules__open-block');
+    
+    block.classList.toggle('open');
+}
+////// Модалка «Как разместить»: площадки и копирование текстов
+document.addEventListener('click', function(e) {
+    const chip = e.target.closest('.place-platform');
+    if (chip) {
+        chip.closest('.place-platforms').querySelectorAll('.place-platform').forEach(c => c.classList.remove('is-active'));
+        chip.classList.add('is-active');
+        chip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        document.getElementById('place-platform-name').textContent = chip.dataset.name;
+        document.getElementById('place-platform-text').textContent = chip.dataset.text;
+        return;
+    }
+
+    const copyBtn = e.target.closest('[data-copy-text]');
+    if (copyBtn) {
+        navigator.clipboard.writeText(copyBtn.closest('.place-snippet').querySelector('p').textContent.trim()).then(() => {
+            copyBtn.textContent = 'Скопировано';
+            setTimeout(() => { copyBtn.textContent = 'Копировать'; }, 1000);
+        });
+    }
+});
+</script>
 
 
 

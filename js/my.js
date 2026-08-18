@@ -417,6 +417,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
       field.addEventListener('blur', function(){ close(); });
+
+      var arrow = root.querySelector('.select-arrow');
+      if(arrow){
+        arrow.addEventListener('pointerdown', function(e){
+          e.preventDefault();
+          root.classList.contains('open') ? close() : field.focus();
+        });
+      }
       } else {
           // кнопка-триггер: тоггл
           trigger.addEventListener('click', function(){

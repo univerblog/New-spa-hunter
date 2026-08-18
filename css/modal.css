@@ -2,10 +2,8 @@
 .container-modal {display:flex; flex-direction:column; gap:18px;}
 .modal-wrapper {position:fixed; top:0; right:0; bottom:0; left:0; z-index:100;
   justify-content:center; background:#080808c2;  padding:20px;
-  overflow-y:auto; align-items:center; display: flex;  opacity: 0;visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s;
-               backdrop-filter: blur(6px);
-                -webkit-backdrop-filter: blur(6px);  }
+  transition: opacity 0.25s ease, visibility 0.25s;backdrop-filter: blur(6px);-webkit-backdrop-filter: blur(6px);  
+               overflow-y:auto; scrollbar-gutter:stable both-edges; align-items:center; display: flex;  opacity: 0;visibility: hidden;}
 .modal-window {min-width:280px; width:460px; box-sizing: border-box; position:relative;
                padding:30px 32px 32px 32px; margin:auto; background: var(--bg-card);
                border: 1px solid var(--border); border-radius: var(--radius-lg); 
@@ -28,6 +26,7 @@ html[data-theme="light"] .modal-content h3 i {color:#b0d200; font-weight:800;}
 .modal-content h3.orange i, .modal-icon.orange {color:var(--orange) !important;}
 
 /******** MODAL CONTENT *********/
+/******** Ссылка готова *********/
 .modal-brand-stats {display:flex; gap:2px 8px; border: 1px solid var(--border);
     border-radius: var(--radius-sm); background: var(--bg);
     font-size: 12px; color: var(--text-dim);
@@ -37,6 +36,7 @@ html[data-theme="light"] .modal-content h3 i {color:#b0d200; font-weight:800;}
 .modal-brand-stats span:first-child {color:var(--lime);}
 html[data-theme="light"] .modal-brand-stats {color:#aaaaaa;}
 html[data-theme="light"] .modal-brand-stats span:first-child {color:var(--text); font-weight:800;}
+/******** Для QR *********/
 .modal-image img {width:100%; display:block;  border-radius: var(--radius-md);
                  border:1px solid var(--border); padding:2px; background:var(--bg);}
 .modal-qr-image {width:100%; display:block;}
@@ -44,8 +44,11 @@ html[data-theme="light"] .modal-brand-stats span:first-child {color:var(--text);
                   background:var(--bg); margin:0 auto;}
 
 .modal-card {border-bottom:1px solid var(--border); padding-bottom:18px;}
-.modal-card h4 {font-size: 11px;color: var(--lime);text-transform: uppercase;letter-spacing: 0.05em;
+.modal-card-block {display:flex; flex-direction:column; gap:0px;}
+.modal-card h4, 
+.modal-card-block h4 {font-size: 11px;color: var(--lime);text-transform: uppercase;letter-spacing: 0.05em;
     margin-bottom: 8px; font-weight: 500; text-align:left;}
+
 /* ol — номер свой через счётчик: размер и цвет ставишь на ::before */
 .ul-modal-list, .ol-modal-list { list-style: none; counter-reset: item; padding: 0; margin: 0; font-size: 13px; color: var(--text-muted); 
                 display: flex; flex-direction: column; gap: 8px; font-weight:400;}
@@ -114,3 +117,120 @@ html[data-theme="light"] .modal-brand-stats span:first-child {color:var(--text);
  .modal-content h3 {font-size:18px;margin-top:0px;}  
 }
 .modal-triggers {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
+@media (max-width: 420px) {  
+      .modal-window .btn-group > * {flex:1; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; 
+        display:inline-block !important; padding:0 10px;}
+}
+
+/***** Модалка мерчанта *****/
+.modal-loading {display:flex; align-items:center; justify-content:center; min-height:300px; font-size:16px; color:var(--text-dim);}
+.merchant-wrapper {display:flex; flex-direction:column; gap:18px;}
+.merchant-wrapper h3 {margin-bottom:0;}
+.merchant-item strong {font-size: 11px; color: var(--lime); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 8px; font-weight: 500; text-align: left; display:block;}
+
+.merchant-kpi {display:grid; grid-template-columns:repeat(2, 1fr); gap:6px; margin-top:4px;}
+.merchant-kpi__tile {background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-md); padding:10px 12px;}
+.merchant-kpi__tile small {display:block; font-size:13px; color:var(--text-muted); margin-bottom:4px;}
+.merchant-kpi__tile b {font-size:16px; color:var(--text); font-weight:500; font-variant-numeric:tabular-nums;}
+.merchant-kpi__tile:first-child b, .merchant-kpi__tile:last-child b {color:var(--lime);}
+
+.mer-open-block .mer-toggle, .link-rules__toggle  {width: 100%;height: 48px;display: flex;align-items: center;gap: 10px;padding: 0 18px 0 18px;
+    background: var(--bg-input);border: 1px solid var(--border-input);border-radius: var(--radius-md);
+    box-shadow: inset 5px 5px 5px var(--input-shadow);color: var(--text);font-family: var(--font-family);
+    font-size: 14px;text-align: left;cursor: pointer;justify-content:space-between}
+.mer-open-block .mer-toggle i, .link-rules__toggle i {font-size:11px; transition:transform 0.2s ease; color:var(--text-muted);}
+.mer-open-block.open .mer-toggle i, .link-rules__open-block.open .link-rules__toggle i {transform:rotate(180deg);}
+.mer-content {overflow:hidden; padding:16px; color:var(--text-muted); font-size:13px; line-height:1.5; 
+              transition:all 0.2s; background:var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-md);}
+.mer-open-block .mer-content {max-height:0; padding:0px 16px;}
+.mer-content p {margin:0;}
+.mer-open-block.open .mer-content {max-height:700px; padding:16px 16px; margin-top:8px;}
+.merchant-wrapper .modal-card {border:0; padding:0;}
+
+@media (min-width: 1200px) {
+    .mer-toggle:hover {border-color:rgba(255,255,255,0.18);}
+}
+@media (max-width: 640px) {
+    .merchant-wrapper .modal-card {margin-bottom:10px;}
+}
+
+/***** Модалки кликов и покупок *****/
+/* ---- ТАБЛИЦА lined-table (клики и покупки) ---- */
+.lined-table-box {margin-bottom:10px;}
+.lined-table {width:100%; border-collapse:collapse; font-size:13px; table-layout:fixed; }
+.lined-table thead th:first-child {}
+.lined-table thead th {text-align:left; padding:10px 4px; color:var(--text);  border-bottom:0px solid var(--border);}
+.lined-table tbody td {padding:12px 12px 12px 14px; border-bottom:1px solid var(--border); color:var(--text-muted); 
+                       font-variant-numeric:tabular-nums; vertical-align:top; text-align:center;}
+.lined-table tbody td:first-child {color:var(--text); text-align:left;}
+.lined-table tbody td:last-child {text-align:left;}
+.lined-table .sub {color:var(--text-dim); display:block; margin-top:2px;}
+.lined-table .reward-cell {color:var(--text-muted); font-weight:500;}
+.lined-table.table-clicks thead th {padding:10px 12px 10px 0px; border-bottom:1px solid var(--border);}
+.lined-table.table-clicks tbody td {padding:12px 12px 12px 0px; text-align:left;}
+/* ---- КОНЕЦ ТАБЛИЦЫ ---- */
+
+/* Статус в покупках */
+.status-pill {display:inline-block; color:var(--text-muted); white-space:nowrap; overflow:hidden; 
+              text-overflow:ellipsis; max-width:100%;}
+.status-pill.approved {color:var(--lime); }
+.status-pill.denied {color:var(--danger);}
+.lined-table .reward-cell.approved {color:var(--lime);}
+.lined-table .reward-cell.denied {color:var(--danger);}
+
+@media (min-width: 1200px) {
+    .modal-sort-reset:hover {border-color:rgba(255,255,255,0.18); color:var(--text);}
+}
+@media (max-width: 640px){
+    .lined-table thead th span {display:none;}
+    .lined-table {margin:0 -14px 10px -14px; width:calc(100% + 28px); font-size:12px;}
+    .lined-table.table-clicks {margin:0 -10px 10px 0px; width:calc(100% + 10px);} 
+    .lined-table-box {margin-bottom:0px;}
+}
+@media (max-width: 540px){
+    .lined-table thead th {font-size:11px; padding:10px 2px;}
+    .lined-table thead th:first-child {width:27%; }
+    .lined-table.table-clicks thead th:first-child {width:35%; }
+    .lined-table thead th .tab-filter { white-space:nowrap; overflow:hidden; 
+              text-overflow:ellipsis; max-width:100%;}
+    .lined-table tbody td {padding:12px 8px 12px 8px;}
+}
+
+/*== Модалка как разместить ссылку ==*/
+
+.link-rules__open-block {}
+.link-rules__toggle {}
+
+.link-rules__content {max-height:0; overflow:hidden; transition:all 0.3s;}
+.link-rules__open-block.open .link-rules__content {max-height:700px; margin-top:18px;}
+.link-rules__content > p {color:var(--text-muted); font-size:14px; margin:0 20px 18px 20px;}
+.link-rules__templates {}
+.link-rules__template {padding: 18px 20px; margin-bottom: 8px; background: var(--bg); border: 1px solid var(--border); 
+               border-radius: 12px; }
+.link-template__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+.link-template__name {font-size: 13px; font-weight: 600; text-transform: uppercase;  color: var(--lime);}
+.link-template__copy {display: inline-flex; align-items: center; padding: 8px 12px; background: #5b5b5b00;
+                     font-size: 16px; color: var(--text-dim); cursor: pointer; position:relative;}
+.link-template__copy.copied { color: var(--lime);}
+.link-rules__template p { font-size: 14px; line-height: 1.6; color: var(--text-muted); white-space: pre-wrap;}
+/***** Модалка «Как разместить» *****/
+.place-platforms {display:flex; gap:8px; margin:4px 0 12px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;}
+.place-platforms::-webkit-scrollbar {display:none;}
+.place-platform {flex-shrink:0;}
+.place-platform {padding:7px 14px; border:1px solid var(--border); border-radius:var(--radius-pill); 
+                 background:transparent; color:var(--text-muted); font-size:12px; 
+                 transition:all 0.15s; cursor:pointer;}
+.place-platform.is-active {border-color:var(--lime); color:#000; background:var(--lime);}
+.place-platform-content {padding: 18px 20px; margin-bottom: 0px; background: var(--bg); border: 1px solid var(--border); 
+               border-radius: 12px;}
+.place-platform-content p {font-size: 14px; line-height: 1.6; color: var(--text-muted);}
+.place-platform-content strong {margin-bottom:10px; display:block; font-size:14px; font-weight:500;}
+.place-platform-content strong > i {font-size:6px; color:var(--cyan); margin-right:6px; position:relative; top:-2px;}
+
+@media (max-width: 767px) {
+    /* .modal-wrapper.select-open .modal-window {margin-top:0px;}
+    .select-panel .select-list {overscroll-behavior:contain;} */
+    .container-modal .select-panel {position: relative; margin-bottom: -70px;}
+}
