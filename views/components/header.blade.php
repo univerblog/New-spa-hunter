@@ -32,25 +32,25 @@
                     <div class="nav-dropdown-menu">
 
                     <div class="nav-dropdown-section nav-special">
-                        <a href="/niche/beginners"><i class="fa-solid fa-rocket-launch"></i> {{ __('For beginners') }}</a>
-                        <a href="/niche/micro"><i class="fa-solid fa-star"></i> {{ __('For micro-bloggers') }}</a>
-                        <a href="/niche/high-commission"><i class="fa-sharp fa-solid fa-bolt"></i> {{ __('High commission') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-rocket-launch"></i> {{ __('For beginners') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-star"></i> {{ __('For micro-bloggers') }}</a>
+                        <a href="program-page"><i class="fa-sharp fa-solid fa-bolt"></i> {{ __('High commission') }}</a>
                     </div>
 
                     <div class="nav-dropdown-section nav-grid">
-                        <a href="/niche/beauty"><i class="fa-solid fa-lips"></i> {{ __('Beauty & Cosmetics') }}</a>
-                        <a href="/niche/fashion"><i class="fa-solid fa-sunglasses"></i> {{ __('Fashion') }}</a>
-                        <a href="/niche/finance"><i class="fa-solid fa-sack-dollar"></i> {{ __('Finance') }}</a>
-                        <a href="/niche/food"><i class="fa-solid fa-burger-glass"></i> {{ __('Food & Cooking') }}</a>
-                        <a href="/niche/gaming"><i class="fa-solid fa-gamepad-modern"></i> {{ __('Gaming') }}</a>
-                        <a href="/niche/wellness"><i class="fa-solid fa-heart-pulse"></i> {{ __('Health') }}</a>
-                        <a href="/niche/fitness"><i class="fa-solid fa-bicycle"></i> {{ __('Fitness') }}</a>
-                        <a href="/niche/home"><i class="fa-solid fa-puzzle-piece"></i> {{ __('Home & Interior') }}</a>
-                        <a href="/niche/parenting"><i class="fa-solid fa-baby-carriage"></i> {{ __('Kids & Parenting') }}</a>
-                        <a href="/niche/pets"><i class="fa-solid fa-paw"></i> {{ __('Pets') }}</a>
-                        <a href="/niche/tech"><i class="fa-solid fa-watch-apple"></i> {{ __('Tech & Gadgets') }}</a>
-                        <a href="/niche/travel"><i class="fa-solid fa-plane fa-rotate-by" style="--fa-rotate-angle:-45deg;"></i> {{ __('Travel') }}</a>
-                        <a href="/niche/lifestyle"><i class="fa-solid fa-camera-retro"></i> {{ __('Lifestyle & Vlogs') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-lips"></i> {{ __('Beauty & Cosmetics') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-sunglasses"></i> {{ __('Fashion') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-sack-dollar"></i> {{ __('Finance') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-burger-glass"></i> {{ __('Food & Cooking') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-gamepad-modern"></i> {{ __('Gaming') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-heart-pulse"></i> {{ __('Health') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-bicycle"></i> {{ __('Fitness') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-puzzle-piece"></i> {{ __('Home & Interior') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-baby-carriage"></i> {{ __('Kids & Parenting') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-paw"></i> {{ __('Pets') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-watch-apple"></i> {{ __('Tech & Gadgets') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-plane fa-rotate-by" style="--fa-rotate-angle:-45deg;"></i> {{ __('Travel') }}</a>
+                        <a href="program-page"><i class="fa-solid fa-camera-retro"></i> {{ __('Lifestyle & Vlogs') }}</a>
                     </div>
 
                     </div>

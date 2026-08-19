@@ -20,7 +20,7 @@ $data = $merchants[$key];
 $kpi = array_filter([
     'Средняя комиссия' => $data['avg_commission_rate'] ? $data['avg_commission_rate'] . '%' : null,
     'Средний чек' => $data['avg_basket_size'] ? '$' . number_format($data['avg_basket_size'], 2) : null,
-    'Средняя конверсия' => $data['avg_conversion_rate'] ? $data['avg_conversion_rate'] . '%' : null,
+    'Средняя конверсия в покупку' => $data['avg_conversion_rate'] ? $data['avg_conversion_rate'] . '%' : null,
     'Комиссия программы' => $data['commission'] ?: null,
 ]);
 

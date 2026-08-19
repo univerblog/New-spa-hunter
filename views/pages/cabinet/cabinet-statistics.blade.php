@@ -165,7 +165,7 @@ $folders = [];
                         <th><div class="tab-filter">CR</div></th>
                         <th><div class="tab-filter">В ожидании</div></th>
                         <th><div class="tab-filter">Подтверждено</div></th>
-                        <th><div class="tab-filter">Выведено</div></th>
+                        <th><div class="tab-filter">Отменено</div></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -243,7 +243,7 @@ $folders = [];
 
                         <td class="center -confirmed"><span class="td-label">Подтверждено</span><b>${{ $link['total_reward'] }}</b></td>
 
-                        <td class="center -withdrawn"><span class="td-label">Выведено</span><b>${{ $link['total_reward'] }}</b></td>
+                        <td class="center -withdrawn"><span class="td-label">Отменено</span><b>${{ $link['total_reward'] }}</b></td>
 
                         <td class="center -actions">
                             <button type="button" class="stata-menu" data-stata-menu><i class="fa-solid fa-ellipsis-vertical"></i></button>

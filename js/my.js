@@ -420,9 +420,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       var arrow = root.querySelector('.select-arrow');
       if(arrow){
-        arrow.addEventListener('pointerdown', function(e){
-          e.preventDefault();
-          root.classList.contains('open') ? close() : field.focus();
+        arrow.addEventListener('click', function(){
+          if(root.classList.contains('open')){ close(); }
+          else { open(root); filter(''); }
         });
       }
       } else {
@@ -443,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // тап по пункту не должен блюрить поле раньше клика
     root.addEventListener('mousedown', function(e){
-      if(e.target.closest('.select-option')) e.preventDefault();
+      if(e.target.closest('.select-option, .select-arrow')) e.preventDefault();
     });
 
     // выбор пункта (делегирование — ловит и впрыснутые JS-ом)

@@ -222,8 +222,8 @@
         <div class="form-text-content" style="margin-bottom:10px;">
             Ваш пароль успешно изменён.
         </div>
-        <div class="btn-group center-group">
-            <button class="btn full">Войти с новым паролем</button>
+        <div class="btn-group right-group">
+            <button class="btn ">Войти с новым паролем</button>
         </div>
     </div>
 </div> 
@@ -236,8 +236,8 @@
         <div class="form-text-content" style="margin-bottom:10px;">
             Метод оплаты успешно добавлен. Проверьте почту для подтверждения перед использованием для вывода средств.
         </div>
-        <div class="btn-group center-group">
-            <button class="btn full" onclick="closeModal()">Все понятно</button>
+        <div class="btn-group right-group">
+            <button class="btn" onclick="closeModal()">Все понятно</button>
         </div>
     </div>
 </div> 
@@ -262,8 +262,8 @@
         <div class="form-text-content" style="margin-bottom:10px;">
             Метод оплаты успешно удалён из вашего аккаунта.
         </div>
-        <div class="btn-group center-group">
-            <button class="btn full" onclick="closeModal()">Все понятно</button>
+        <div class="btn-group right-group">
+            <button class="btn" onclick="closeModal()">Все понятно</button>
         </div>
     </div>
 </div>

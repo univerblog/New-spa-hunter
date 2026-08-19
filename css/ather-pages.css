@@ -61,3 +61,82 @@
  .faq-support {order:3; margin-top:20px;}
 }
 
+/* ===== МАГАЗИНЫ ДЛЯ (СТРАНИЦ ПРОГРАММ) ===== */
+.shop-list {display: flex;flex-direction: column;gap: 0px; overflow:hidden;
+           border-radius: var(--radius-lg); box-shadow:0px 10px 20px var(--box-shadow-light);}
+
+.shop-row {display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px max-content max-content;        
+    align-items: center; gap: 14px 20px;
+    padding: 14px 18px 0 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-bottom:0;
+    box-shadow: 0px 10px 20px var(--box-shadow-light);
+}
+.shop-row:first-child {}
+.shop-row:last-child {}
+/* видны только первые 10, остальные скрыты (раскроются кнопкой «показать больше») */
+.shop-row:nth-child(n+11) { display: none; }
+.shop-row.is-shown { display: grid; }
+
+/* аббревиатура + название/домен */
+.shop-row__head { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.shop-row__abbr {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: #cccccc26;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-weight: 600; font-size: 14px; color: var(--lime); 
+}
+html[data-theme="light"] .shop-row__abbr {color:var(--text-muted);}
+.shop-row__id { display: flex; flex-direction: column; min-width: 0; }
+.shop-row__name { font-weight: 600; color: var(--text); }
+.shop-row__url { font-size: 13px; color: var(--text-muted); }
+
+/* метрики */
+.shop-row__metrics { display: flex; gap: 28px; grid-template-columns: repeat(3, 1fr); }
+.shop-row__metrics > div { display: flex; flex-direction: column; }
+.shop-row__metrics span { font-size: 12px; color: var(--text-dim); }
+.shop-row__metrics b { font-weight: 600; color: var(--text); font-size:14px;}
+
+/* кнопка раскрытия — поворот иконки в открытом состоянии */
+.shop-btn {color:var(--text-muted) !important;}
+.shop-btn i { transition: transform .2s ease; }
+.shop-row.is-open .shop-btn i { transform: rotate(90deg); }
+
+/* раскрывающийся блок */
+.shop-details {grid-column: 1 / -1;  max-height: 0; overflow: hidden; transition: max-height .3s ease;
+              }
+.shop-details .brand-shop__pros {flex-direction:row; margin-bottom:14px;}
+.shop-details > p { margin: 0px 0 10px 0; color: var(--text); text-align:center;
+                  border-top:1px solid var(--border); padding-top:10px;}
+.shop-link__btn-mob {display:none;}
+
+/* ===== АДАПТИВ ДЛЯ МАГАЗИНОВ (СТРАНИЦ ПРОГРАММ) ===== */
+@media (max-width: 1000px) {
+.shop-row__head     { order: 1; }
+.shop-row__metrics    { order: 2; }
+.shop-row > a.btn.min { order: 3; }   
+.shop-btn             { order: 4;  width:40px; height:40px;}   
+.shop-details         { order: 5; }   
+.shop-btn span {display:none;}
+}
+@media (max-width: 768px) {
+  .shop-list {gap:10px; border-radius:0; box-shadow:none;}
+  .shop-row { grid-template-columns: 1fr 1fr; position:relative; border-radius: var(--radius-md);
+            padding: 14px 16px 0 16px;}
+  .shop-row__head, .shop-row__metrics { grid-column: 1 / -1; }
+  .shop-row__metrics { flex-wrap: wrap; gap: 18px; justify-content:space-between;}
+  .shop-row__metrics b {color: var(--text-muted); }
+  .shop-row__metrics span {display:block;}
+  .shop-row__metrics > div:last-child {text-align:right;}
+  .shop-btn {position:absolute; top:14px; right:12px; width:44px; height:44px;}
+  .shop-details .brand-shop__pros {flex-direction:column;}
+  .shop-link__btn {display:none;}
+  .shop-link__btn-mob {display:flex; margin-bottom:14px;}
+  html[data-theme="light"] .shop-row__abbr {background:var( --lime);}
+}
+

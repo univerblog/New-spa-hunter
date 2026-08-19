@@ -117,10 +117,6 @@ html[data-theme="light"] .modal-brand-stats span:first-child {color:var(--text);
  .modal-content h3 {font-size:18px;margin-top:0px;}  
 }
 .modal-triggers {display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
-@media (max-width: 420px) {  
-      .modal-window .btn-group > * {flex:1; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; 
-        display:inline-block !important; padding:0 10px;}
-}
 
 /***** Модалка мерчанта *****/
 .modal-loading {display:flex; align-items:center; justify-content:center; min-height:300px; font-size:16px; color:var(--text-dim);}
@@ -232,5 +228,9 @@ html[data-theme="light"] .modal-brand-stats span:first-child {color:var(--text);
 @media (max-width: 767px) {
     /* .modal-wrapper.select-open .modal-window {margin-top:0px;}
     .select-panel .select-list {overscroll-behavior:contain;} */
-    .container-modal .select-panel {position: relative; margin-bottom: -70px;}
+    .container-modal .select-panel {position:relative; display:block; max-height:0; overflow:hidden; padding-top:0; padding-bottom:0; 
+                                    border-width:0; box-shadow:none; margin-bottom:0; 
+                                    transition:max-height 0.25s ease, padding 0.25s ease, margin 0.25s ease;}
+    .container-modal .select.open .select-panel {max-height:340px; padding:8px 4px 8px 8px; border-width:1px; margin-bottom:-70px;}
+
 }

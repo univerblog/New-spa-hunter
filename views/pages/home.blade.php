@@ -114,7 +114,7 @@
   </div>
 </section>
 
-<!-- <section class="section" id="create">
+<section class="section" id="create">
   <div class="container">
       <div class="section-title" style="margin:0 auto 10px auto;">
         <h2>Модалки</h2>
@@ -160,7 +160,7 @@
        
     </div>
   </div>
-</section>  -->
+</section> 
 
 
 <section class="section" id="create">
@@ -455,6 +455,33 @@
                 </div>
             </div>
         </div>
+      
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+            <div class="section-title">
+                <h2>Ещё сомневаешься,<br> подходит ли тебе CPA Hunter?</h2>
+            </div>
+            <div class="objection-wrap">
+                <p>Пусть ИИ разберётся за тебя. Нажми кнопку и посмотри, что твой любимый ассистент скажет о CPA Hunter.</p>
+            </div>
+            
+            @include('components.ai')
+
+            <div class="ai-badges">
+                <div class="ai-badge ai-badge-box">
+                    <i class="fa-light fa-unlock"></i><span>CCPA</span>
+                </div>
+                <div class="ai-badge ai-badge-stars">
+                    <img src="/img/ai/stars.svg" alt="">
+                </div>
+                <div class="ai-badge ai-badge-box">
+                    <i class="fa-light fa-unlock"></i><span>CPRA</span>
+                </div>
+            </div>
+            
       
     </div>
 </section>

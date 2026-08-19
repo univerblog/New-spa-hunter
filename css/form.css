@@ -129,6 +129,7 @@ html[data-theme="light"] .alert-success { color: #5e9100; background:#c3e90052;}
 .btn.min {padding: 0px 16px;font-size: 14px; height:40px; border-radius:var(--radius-sm); line-height:0.9;}
 html[data-theme="light"] .btn.outline {border: 1px solid #00000040; background:#cccccc5c;}
 .btn.red {background:var(--danger); border-color:var(--danger); color:#fff;}
+.btn svg {height:26px; width:26px;}
 .input-btn {gap:8px; cursor:pointer;}
 .input-btn span {overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color:var(--text-muted);}
 .input-btn i {font-size:15px; color:var(--text-dim)}
@@ -380,10 +381,12 @@ html[data-theme="light"] .select-option:hover { background: var(--hover-1);}
 .select-option, .select-search input {font-size:16px;}
 }
 @media (max-width: 480px) {
-  .btn-group > * {flex:1;}
   .btn-group > .btn {min-height:48px;}
   .btn-group > .btn bdi {max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
                         display:inline-block !important;}
+  .modal-window .btn-group > * {flex:1; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; 
+        display:inline-block !important; padding:0 10px;}
+  .modal-window .btn-group > .btn:only-child {flex:none; padding:0 24px;}
   .pill-full { display: none; }
   .pill-short { display: inline; }
   .modal-checkbox {padding:10px; margin:0 0 0 -2px;}

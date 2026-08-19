@@ -101,7 +101,7 @@
     var _downOnBackdrop = false;
 
     backdrop.addEventListener('pointerdown', function (e) {
-        _downOnBackdrop = (e.target === this);   // нажатие началось именно на фоне
+        _downOnBackdrop = (e.target === this) && !modalWindow.querySelector('.select.open');
     });
 
     backdrop.addEventListener('click', function (e) {

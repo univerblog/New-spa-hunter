@@ -162,6 +162,11 @@
     .stata-setting-item .select {flex:1; width:50%;  min-width:auto;}
     .stata-setting-item .select-min {flex:none; } 
 }
+
+    .stata-table .-pending b  {}
+    .stata-table .-confirmed b {color:#d6ff00c9;}
+    .stata-table .-withdrawn b {color:#ff6464;}
+
 @media (max-width: 800px) {
     .stata-table .page-link {position:absolute; bottom:14px; text-align:center; width:calc(100% - 28px); }
     .stata-table-wrapper {border:0; border-radius:0; background:none;}
@@ -209,9 +214,9 @@
    
     .stata-table .-pending   { grid-area: pending; }
     .stata-table .-confirmed { grid-area: confirmed; }
-    .stata-table .-confirmed b {color:var(--lime)}
+    /* .stata-table .-confirmed b {color:var(--lime)} */
     .stata-table .-withdrawn { grid-area: withdrawn; }
-    .stata-table .-withdrawn b {color:var(--text);}
+    /* .stata-table .-withdrawn b {color:var(--danger);} */
     .stata-table .-pending, .stata-table .-confirmed, .stata-table .-withdrawn { margin-bottom: 6px; display: none; }
     /* суммы: подпись слева, значение справа (видны только в раскрытом) */
     .stata-table tr.links-open .-pending, .stata-table tr.links-open .-confirmed, .stata-table tr.links-open .-withdrawn { display: flex; justify-content: space-between; align-items: baseline; }
