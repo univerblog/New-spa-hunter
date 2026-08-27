@@ -314,21 +314,6 @@ html[data-theme="light"] .brand-shop__stat div:last-child b {color:var(--text);}
 .brand-shop__toggle i { transition: transform .25s ease; }
 .brand-shop.is-open .brand-shop__toggle i { transform: rotate(180deg); }
 
-.brand-shop__pros {display:flex; gap:10px; flex-direction:column;}
-.brand-shop__pros > div {text-align:left; display:flex; flex-direction:column; gap:6px; font-size:13px;
-                        background:#cccccc17; padding:10px; border-radius: var(--radius-sm);
-                        flex:1; color:var(--text-muted);}
-html[data-theme="light"] .brand-shop__pros > div {background:#cccccc45;}
-.brand-shop__pros > div b {color:#f85149;}
-.brand-shop__pros > div:first-child b {color:var(--lime);}
-html[data-theme="light"] .brand-shop__pros > div:first-child b {color:var(--text);}
-.brand-shop__pros > div span {position:relative; padding-left:14px;}
-.brand-shop__pros > div span::before {content: "•";position: absolute;left: 0px;top: -1px;
-   font-size:14px; color:#f85149;
-}
-.brand-shop__pros > div:first-child span::before {color:var(--lime);}
-html[data-theme="light"] .brand-shop__pros > div:first-child span::before {color:var(--text);}
-
 /* ---- АДАПТИВ ДЛЯ ТОП МАГАЗИНОВ ---- */
 @media (max-width: 800px){
   .brand-shops-wrapper {
@@ -358,90 +343,6 @@ html[data-theme="light"] .brand-shop__pros > div:first-child span::before {color
   .brand-shops-wrapper {grid-auto-columns: 88%;}
 }
 
-
-/* ===== КАЛЬКУЛЯТОР ДОХОДА БЛОГЕРОВ ===== */
-.calc-btn-group {display: grid;grid-template-columns: repeat(4, 1fr);gap: 12px;}
-.calc-btn { min-width: 0;}         
-.calc-btn .select {width: 100%;}
-
-/* триггер: метка сверху, значение + стрелка снизу */
-.calc-btn .select-trigger {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-        "label label"
-        "value arrow";
-    align-items: center;
-    gap: 6px 10px;
-    width: 100%;
-    padding: 10px 14px;
-    text-align: left;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    transition: border-color .3s ease;
-    height:auto;
-}
-
-.calc-btn__label { grid-area: label;display: flex;align-items: center;gap: 12px;
-    font-size: 13px;color: var(--text-muted); border-bottom:1px solid var(--border); 
-                  margin:0px -14px 2px -14px; padding:0 14px 8px 14px;
-}
-.calc-btn__label span {display: inline-flex; align-items: center;justify-content: center;
-    width: 22px; height: 22px;border-radius: 50%; background: var(--lime);
-    font-size: 12px; font-weight: 600; color: #000;
-}
-.calc-btn .select-value {grid-area: value;min-width: 0;font-weight: 600;color: var(--text);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;       
-}
-.calc-btn .select-arrow { grid-area: arrow; color: var(--text-dim); }
-/* ===== Калькулятор: результат ===== */
-.calc-result {display: grid; grid-template-columns: 1.2fr 1fr;
-    gap: 24px; margin-top: 12px;padding: 24px;background: var(--bg-card);
-    border: 1px solid var(--border); border-radius: var(--radius-lg);
-             box-shadow:0px 10px 20px var(--box-shadow-light);}
-
-.calc-result__label {font-size: 13px;color: var(--text-muted);text-transform: uppercase;letter-spacing: .04em;}
-.calc-result__amount {display: flex;align-items: baseline;flex-wrap: wrap;gap: 8px;margin-top: 6px;
-    font-size: 48px;font-weight: 400;color: var(--lime);}
-html[data-theme="light"] .calc-result__amount {color:#b1d300;}
-.calc-result__period {font-size: 15px;font-weight: 500;color: var(--text-muted); margin-left:10px;}
-.calc-result__desc {margin-top: 10px;font-size: 14px;line-height: 1.5;color: var(--text-muted);}
-.calc-result__main .btn-group {margin-top: 18px; gap: 30px; align-items:center;}
-.calc-result__note {margin: 0; font-size: 12px;line-height: 1.5;color: var(--text-muted); flex:1;}
-
-/* правая часть — расшифровка */
-.calc-breakdown {
-    border-left: 1px solid var(--border);
-    padding-left:40px; display:flex; flex-direction:column; gap:16px;
-}
-.calc-breakdown__row { display: flex;justify-content: space-between;align-items: center;
-    gap: 12px; font-size: 14px;}
-.calc-breakdown__row span {color: var(--text-muted); }
-.calc-breakdown__row strong { font-weight: 600; color: var(--text); }
-.calc-breakdown__row:last-child strong { color: var(--cyan);}
-
-/* ===== АДАПТИВ ДЛЯ КАЛЬКУЛЯТОРА ДОХОДА БЛОГЕРОВ ===== */
-@media (max-width: 1000px) { 
-  .calc-btn-group { grid-template-columns: repeat(2, 1fr); } 
-}
-@media (max-width: 768px) {
-    .calc-result { grid-template-columns: 1fr; gap: 18px; padding: 14px; }
-    .calc-result__amount { font-size: 30px;}
-    .calc-breakdown {border:0; border-top: 1px solid var(--border);padding:10px 0 0 0;}
-}
-@media (max-width: 460px) { 
-  .calc-btn-group { grid-template-columns: 1fr 1fr;gap:4px; align-items:stretch;} 
-  .calc-btn-group .select {min-width:100px; height:100%; }
-  .calc-btn-group .select .select-trigger {height:100%;}
-  .calc-btn-group .select .select-panel {min-width:280px; width:auto;}
-  .calc-btn-group .select .select-panel .select-option {}
-  .calc-btn-group > .calc-btn:nth-child(2) .select .select-panel ,
-  .calc-btn-group > .calc-btn:nth-child(4) .select .select-panel  {left:auto;}
-  .calc-btn__label {border:0; margin:0px -14px 0px -14px; padding:0 14px 2px 14px; gap:8px;}
-  .calc-result__period {margin-left:0px;}
-  .calc-result__main .btn-group {flex-direction:column; align-items:start; gap:20px;}
-}
 
 /* === Блок блогеров - авторов === */
 .creators-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
@@ -479,35 +380,6 @@ html[data-theme="light"] .calc-result__amount {color:#b1d300;}
   .creator-card {padding:14px;}
   .cre__who span { font-size: 16px; color: var(--text-muted);}
   .cre__who small { font-size: 14px; color: var(--text-dim); }
-}
-
-/* === Программы для вашей ниши === */
-.niches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.niches a { display: flex; align-items: start; gap: 18px; padding: 12px 12px; 
-           border: 0px solid var(--border); border-radius: 12px; font-size: 14px; font-weight: 500; 
-           color: var(--text-muted); text-decoration: none; transition: all 0.15s ease; }
-.niches a i { color: var(--lime); width: 38px;height: 38px;
-    border-radius: 8px;background: #4a4a4a63;display: flex;align-items: center;justify-content: center;
-    color: #d6ff00ba;font-size: 20px;}
-.niches a div {display:flex; flex-direction:column; gap:4px; font-weight:400;}
-.niches a div span {font-size:15px; color:var(--text);}
-.niches a div small {font-size:13px;}
-
-@media (min-width: 1200px) {
-    .niches a:hover { background:var(--hover-1);}
-}
-
-@media (max-width: 900px) { 
-  .niches { grid-template-columns: repeat(2, 1fr); } 
-}
-
-@media (max-width: 640px) {
-    .niches {gap:16px;}
-    .niches a { padding: 0px; font-size: 13px; min-width: 0; gap:6px;}
-    .niches a i {width: 30px; min-width: 30px; height: auto; font-size: 14px; margin:2px 0 0 -4px; background:none; }
-    .niches a div {overflow:hidden;}
-    .niches a div span {font-size:14px;}
-    .niches a div span, .niches a div small { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 }
 
 /* === Чем больше зарабатываете – тем выше ваши ставки === */
@@ -632,12 +504,3 @@ html[data-theme="light"] .calc-result__amount {color:#b1d300;}
 @media (max-width: 640px) {
   .home-faq-wraper .section-title h2 {text-align: center;}
 }
-
-/* === Home Ai === */
-.ai-btns {gap:10px; margin-top:30px;}
-.ai-btns .btn {gap:10px;}
-.ai-badges {display:flex; gap:20px; justify-content:center; margin:30px auto 0 auto; }
-.ai-badge {display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1;
-          gap:6px; max-width:80px; border-radius:var(--radius-lg);}
-.ai-badge-box {background:var(--bg-soft-2); border: 1px solid var(--border-input); color: var(--text-muted); font-size:14px;}
-.ai-badge-stars img {height:100px; margin:-8px 0;}

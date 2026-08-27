@@ -88,6 +88,18 @@ $routes = [
     '' => 'pages.home',
     'faq-page' => 'pages.faq-page',
     'program-page' => 'pages.program-page',
+    'platform-page' => 'pages.platform-page',
+    'roadmap' => 'pages.roadmap',
+    'contacts' => 'pages.contacts',
+    
+    'ai-facts-page' => 'pages.legal.ai-facts-page',
+    'terms' => 'pages.legal.terms', // Условия использования
+    'privacy' => 'pages.legal.privacy', // Политика конфиденциальности
+    'compliance' => 'pages.legal.compliance', // Правила и проверка
+    'dnss' => 'pages.legal.dnss', // Не продавать мои данные
+    'cookie' => 'pages.legal.cookie', // Политика cookies
+    'cookie-settings' => 'pages.legal.cookie-settings', // Настройки cookie
+
     'cabinet' => 'pages.cabinet.cabinet-start',
     'cabinet-start' => 'pages.cabinet.cabinet-quick-start',
     'cabinet/statistics' => 'pages.cabinet.cabinet-statistics', // Статистика

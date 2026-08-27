@@ -1,0 +1,99 @@
+/*  === Факты о ИИ ===  */
+.facts-grid {display:grid; grid-template-columns:300px 1fr; border-top:1px solid var(--border);}
+.facts-grid b {padding:14px 16px 14px 0; border-bottom:1px solid var(--border); font-size:14px; font-weight:500; color:var(--text);}
+.facts-grid p {padding:14px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--text-muted); line-height:1.5;}
+@media (max-width: 700px) {
+  .facts-grid {grid-template-columns:1fr;}
+  .facts-grid b {padding:14px 0 0 0; border-bottom:0; font-size:16px;}
+  .facts-grid p {padding:6px 0 14px 0;}
+}
+
+/* === Страницы правовой информации === */
+.legal-nav {display:flex;  gap:8px; margin-bottom:36px;}
+.legal-nav a {display:inline-flex; align-items:center; gap:7px; padding:9px 16px; border-radius:999px; border:1px solid var(--border); 
+              background:var(--bg-card-2); color:var(--text-muted); font-size:13px; font-weight:500; 
+              text-decoration:none; transition:all 0.15s; line-height:1;}
+.legal-nav a.active {background:var(--lime); color:#0a0a0a; border-color:var(--lime); cursor:default;}
+@media (min-width: 1200px) {
+.legal-nav a:not(.active):hover {color:var(--text); border-color:rgba(255,255,255,0.2);}
+}
+/*--- ШАПКА СТРАНИЦЫ ---*/
+.legal-descr {font-size:18px; line-height:1.55; color:var(--text-muted); margin:0 0 8px; max-width:760px;}
+.legal-updated {font-size:13px; color:var(--text-dim); margin-bottom:26px;}
+
+/*--- СЕТКА ---*/
+.legal-layout {display:grid; grid-template-columns:264px 1fr; gap:48px; align-items:start;}
+
+/*--- ЛЕВОЕ МЕНЮ ---*/
+.legal-left-nav {position:sticky; top:92px; max-height:calc(100vh - 112px); padding-right:20px; 
+                 overscroll-behavior:contain; 
+                }
+.legal-left-nav b {display:block; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-dim); font-weight:600; margin-bottom:12px;}
+.legal-left-nav a + b {margin-top:18px; margin-bottom:10px;}
+.legal-left-nav a {display:block; padding:7px 0 7px 14px; border-left:2px solid var(--border); 
+    color:var(--text-muted); font-size:13.5px; line-height:1.4; text-decoration:none; 
+    transition:color 0.15s, border-color 0.15s; text-wrap:balance;}
+.legal-left-nav a.active {color:var(--lime); border-left-color:var(--lime);}
+
+/*--- КОНТЕНТ ---*/
+.legal-content {min-width:0; font-size:15px; line-height:1.7; color:var(--text-muted);}
+.legal-content .lead {font-size:16px; color:var(--text); margin:0 0 26px 0;}
+.legal-content section {scroll-margin-top:70px; padding:0;}
+
+.legal-content section + section {border-top:1px solid var(--border); margin-top:26px; padding-top:26px;}
+.legal-content h2 {font-size:22px; line-height:1.25; color:var(--text); font-weight:500; margin:0 0 14px; letter-spacing:-0.01em;}
+.legal-content .part h2 {font-size:26px; color:var(--lime);}
+.legal-content p {margin:0 0 14px;}
+.legal-content ul, .legal-content ol {margin:0 0 14px; padding-left:20px;}
+.legal-content li {margin:0 0 8px;}
+.legal-content strong {color:var(--text);}
+.legal-content a {color:var(--lime); text-decoration:none;}
+
+/*--- АДАПТИВ ---*/
+@media (min-width: 1200px) {
+.legal-left-nav a:not(.active):hover {color:var(--text);}
+.legal-content a:hover {color:var(--text);}    
+}
+.legal-nav-box > .dropdown-btn {display:none;}
+
+@media (max-width: 1200px) {
+  .legal-page .container .section-title {margin-top:60px}  
+  .legal-nav-box {position:absolute; margin-bottom:24px; top:-70px; width:calc(100% - 38px); max-width:420px;}
+  .legal-nav-box > .dropdown-btn {display:flex; align-items:center; gap:10px; width:100%; height:48px; padding:0 18px; background:var(--bg-input); border:1px solid var(--border-input); border-radius:var(--radius-md); box-shadow:inset 5px 5px 5px var(--input-shadow); color:var(--text); font-size:14px; cursor:pointer;}
+  .legal-nav-box > .dropdown-btn span {flex:1; text-align:left; gap:10px; display:flex; align-items:center;}
+    .legal-nav-box > .dropdown-btn span i {margin-top:1px;}
+  .legal-nav-box > .dropdown-btn .fa-chevron-down {font-size:12px; color:var(--text-dim); transition:transform 0.2s;}
+  .legal-nav-box.is-open > .dropdown-btn .fa-chevron-down {transform:rotate(180deg);}
+  .legal-nav {display:none;}
+  .legal-nav-box.is-open .legal-nav {display:block; position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:3; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-md); box-shadow:0 4px 6px var(--box-shadow); padding:8px;}
+  html[data-theme="light"] .legal-nav-box.is-open .legal-nav {background:var(--bg-card);}
+  .legal-nav a {display:flex; gap:10px; border:0; background:none; border-radius:var(--radius-sm); padding:14px 16px; font-size:16px;}
+  .legal-nav a.active {background:#36363685; color:var(--lime);}
+  .legal-nav a > i {display:none;}  
+}
+@media (max-width: 900px) {
+  .legal-layout {grid-template-columns:1fr; gap:20px;}
+  .legal-left-nav {display:none;}
+}
+
+/*--- СТРАНИЦА DNSS (отказ от продажи данных) ---*/
+.legal-content h2:not(:first-child) {margin-top:26px;}
+.optout-box {margin-top:30px; padding:20px 22px; border:1px solid var(--border); border-radius:14px; background:var(--bg-card);}
+.optout-toggle {display:flex; align-items:center; gap:13px; cursor:pointer;}
+.optout-toggle input {position:absolute; opacity:0; width:0; height:0;}
+.optout-track {width:46px; height:26px; border-radius:999px; background:rgb(132 132 132 / 40%); position:relative; flex-shrink:0; transition:background 0.2s;}
+.optout-track span {position:absolute; top:3px; left:3px; width:20px; height:20px; border-radius:50%; background:#fff; transition:transform 0.2s;}
+.optout-toggle input:checked + .optout-track {background:var(--lime);}
+.optout-toggle input:checked + .optout-track span {transform:translateX(20px); background:#0a0a0a;}
+.optout-toggle input:disabled + .optout-track {opacity:0.6;}
+.optout-toggle b {font-size:15px; font-weight:500; color:var(--text); line-height:1.4;}
+.optout-box > p {margin:13px 0 0; font-size:13px; color:var(--text-muted);}
+.optout-gpc {margin-top:11px; font-size:12.5px; line-height:1.5; color:var(--cyan); 
+    background:rgba(77,216,229,0.06); border:1px solid rgba(77,216,229,0.2); 
+    border-radius:9px; padding:10px 13px;}
+/*--- СТРАНИЦА НАСТРОЕК COOKIE ---*/
+.consent-row {display:flex; align-items:flex-start; justify-content:space-between; gap:20px; padding:18px 0; border-top:1px solid var(--border);}
+.consent-row:last-of-type {border-bottom:1px solid var(--border); margin-bottom:22px;}
+.consent-row b {display:block; font-size:15px; font-weight:600; color:var(--text); margin-bottom:4px;}
+.consent-row p {font-size:13.5px; color:var(--text-muted); line-height:1.5; margin:0;}
+.consent-status {font-size:13px; color:var(--cyan); min-height:16px; margin-top:12px;}

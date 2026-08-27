@@ -74,6 +74,7 @@
                         <li><a href="/contacts">{{ __('Contacts') }}</a></li>
                         <li><a href="/roadmap">{{ __('Roadmap') }}</a></li>
                         <li><a href="https://api.cpahunter.io/docs" target="_blank" rel="noopener">{{ __('Open API') }}</a></li>
+                        <li><a href="/ai-facts-page">Факты для ИИ</a></li>
                     </ul>
                 </div>
             </div>
@@ -81,35 +82,74 @@
         
     </div>
 
-        
-        <div class="foot-wrapper-2">
-            <div class="foot-copy">
-                <span>© 2026 CPA Hunter. People PRO Inc. / 30 N Gould St Ste R, Sheridan, WY, 82801, USA</span>
-                <a href="/terms">{{ __('Terms of use') }}</a>
-                <a href="/privacy">{{ __('Privacy policy') }}</a>
-                
-            </div>
-            <div class="foot-toggle">
-                <button class="theme-toggle" aria-label="{{ __('Toggle theme') }}">
-                    <i class="fa-regular fa-sun-bright icon-sun"></i>
-                    <i class="fa-regular fa-moon icon-moon"></i>
-                </button>
-                <div class="dropdown-block lang-picker">
-                    <button class="dropdown-btn">
-                        <span class="fi fi-{{ $current['flag'] }}"></span>
-                        <span>{{ $current['code'] }}</span>
-                        <i class="fa-regular fa-angle-down"></i>
-                    </button>
-                    <div class="dropdown-item">
-                        @foreach ($languages as $code => $lng)
-                            <a href="{{ $lng['url'] }}" class="@if($code === $lang) active @endif">
-                                <span class="fi fi-{{ $lng['flag'] }}"></span>{{ $lng['label'] }}
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
+
+     <div class="foot-wrapper">
+        <div class="foot-ai-item">
+            <div class="foot-tit">Ресурсы для ИИ агентов</div>
+            <div class="ai-res-grid">
+                <a href="/ai-facts-page">
+                    <span><b>О CPA Hunter</b><small>Справка для ИИ</small></span>
+                    <i class="fa-solid fa-message-bot"></i>
+                </a>
+                <a href="">
+                    <span><b>llms.txt</b><small>Справочник для агентов</small></span>
+                    <i class="fa-light fa-arrow-right-long"></i>
+                </a>
+                <a href="">
+                    <span><b>llms-full.txt</b><small>Полный контекст</small></span>
+                    <i class="fa-light fa-arrow-right-long"></i>
+                </a>
+                <a href="">
+                    <span><b>robots.txt</b><small>Правила краулинга</small></span>
+                    <i class="fa-light fa-arrow-right-long"></i>
+                </a>
             </div>  
         </div>
+        <div class="foot-ai-item">
+            <div class="foot-tit">Спроси ИИ о нас</div>
+            <p>Посмотри, что твой любимый ассистент скажет о CPA Hunter.</p>
+            <div class="foot-ai-btns">
+                @include('components.ai')
+            </div>
+        </div>
+    </div> 
+    
+     <div class="foot-wrapper">
+        <div class="foot-info">
+            <a href="/terms">Условия использования</a>
+            <a href="/privacy">Политика конфиденциальности</a>
+            <a href="/compliance">Правила и проверка аккаунта</a>
+            <a href="/dnss">Не продавать мои данные</a>
+            <a href="/cookie-settings">Настройки cookie</a>     
+        </div>
+    </div>
+        
+    <div class="foot-wrapper-2">
+        <div class="foot-copy">
+            <span>© 2026 CPA Hunter. People PRO Inc. / 30 N Gould St Ste R, Sheridan, WY, 82801, USA</span>
+            
+        </div>
+        <div class="foot-toggle">
+            <button class="theme-toggle" aria-label="{{ __('Toggle theme') }}">
+                <i class="fa-regular fa-sun-bright icon-sun"></i>
+                <i class="fa-regular fa-moon icon-moon"></i>
+            </button>
+            <div class="dropdown-block lang-picker">
+                <button class="dropdown-btn">
+                    <span class="fi fi-{{ $current['flag'] }}"></span>
+                    <span>{{ $current['code'] }}</span>
+                    <i class="fa-regular fa-angle-down"></i>
+                </button>
+                <div class="dropdown-item">
+                    @foreach ($languages as $code => $lng)
+                        <a href="{{ $lng['url'] }}" class="@if($code === $lang) active @endif">
+                            <span class="fi fi-{{ $lng['flag'] }}"></span>{{ $lng['label'] }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </div>  
+    </div>
 
         
 

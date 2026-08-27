@@ -15,7 +15,7 @@ html[data-theme="light"] .foot-brand p.foot-merch span {color:var(--text); }
 .foot-logo {margin-top:-13px; margin-bottom:12px;}
 .foot-logo {display:flex; align-items:center; text-decoration:none; gap:8px; font-size:22px; font-weight:400; letter-spacing:1px; 
        color:#c5c5c5;}
-.foot-logo span {background:#000000c7; border-radius:6px; color:#d6ff00; padding:1px 0px 1px 4px; letter-spacing:0px; overflow:hidden;
+.foot-logo span {background:#d6ff0026; border-radius:6px; color:#d6ff00; padding:1px 0px 1px 4px; letter-spacing:0px; overflow:hidden;
            height:28px; display:flex; align-items:center}
 .foot-logo span i {font-style:italic; font-weight:600; margin-right:-5px} 
 .foot-tit {font-size:17px; color:var(--text);}
@@ -32,7 +32,7 @@ html[data-theme="light"] .foot-brand p.foot-merch span {color:var(--text); }
 .foot-item .programs-list li {break-inside: avoid;  border-bottom: 12px solid transparent; }
 
 /********* FOOT 2 **********/
-.foot-wrapper-2 {display:flex; justify-content:space-between; align-items:end; gap:40px; 
+.foot-wrapper-2 {display:flex; justify-content:space-between; align-items:start; gap:40px; 
                  margin-bottom:0px;}
 
 .foot-copy {color:var(--text-dim); font-size:14px; line-height:1.6; display:flex; flex-wrap:wrap;
@@ -44,9 +44,32 @@ html[data-theme="light"] .foot-brand p.foot-merch span {color:var(--text); }
 .foot-toggle {display:flex;  align-items:end; gap:14px;}
 .foot-toggle .lang-picker {position:relative;}
 .foot-toggle .dropdown-item {margin-top:0; bottom:44px; right:0;}
+/****** privacy block *******/
+.foot-info {display:flex; flex-wrap:wrap; gap:16px; margin:-10px 0 -10px 0; justify-content:left; width:100%;}
+.foot-info a {text-decoration:none; font-size:14px; color:var(--text-muted);}
+/****** AI block *******/
+.foot-ai-item {display:flex; flex-direction:column; gap:20px;}
+.foot-ai-item:last-child {border-left:1px solid var(--border); padding:0 0px 0 40px;}
+.foot-ai-item > p {font-size:14px; text-wrap:balance;}
+.ai-res-grid {display:flex; flex-wrap:wrap; gap:10px;}
+.ai-res-grid a {flex:1; flex-basis:calc(40%); background:#00000012; display:flex; gap:20px;
+               border-radius:12px; border:1px solid var(--border); padding:10px 20px; text-decoration:none;
+               justify-content:space-between; align-items:center; color:var(--text-dim);}
+.ai-res-grid a span {display:flex; flex-direction:column; gap:4px;}
+.ai-res-grid a span b {color:#ccc;}
+.ai-res-grid a > i {font-size:12px}
+.ai-res-grid a:first-child > i {font-size:16px}
+.foot-ai-btns {display:flex; gap:6px;}
+.foot-ai-btns > a.btn {border-radius:50%; height:40px; padding:0; width:40px; background: #7c7c7c12; }
+.foot-ai-btns > a.btn {border-radius:10px;}
+.foot-ai-btns > a.btn img {width:22px; height:22px;}
+.foot-ai-btns > a.btn span {display:none;}
+
 /****** HOVERS *******/
 @media (min-width: 1200px){
  .foot-item ul li a:hover {color:var(--text);}
+ .foot-info a:hover {color:var(--text);}
+ .ai-res-grid a:hover {background:#0000002e;}
 } 
 
 @media (max-width: 1200px) {
@@ -77,12 +100,19 @@ html[data-theme="light"] .foot-brand p.foot-merch span {color:var(--text); }
 html[data-theme="light"] {
     .foot-tit, .foot-tit i { color: var(--text); }
    }
+ .foot-ai-item {gap: 0px; }
+ .foot-ai-item:first-child {margin-top:-20px;}
+ .foot-ai-item:last-child {border:0; padding:0px; border-bottom:1px solid var(--border); padding-bottom:30px;}
+ .foot-ai-btns {margin-top:10px;}
+ .ai-res-grid a {gap: 10px; padding: 10px 10px; font-size:14px;}
 }
 
  @media (max-width: 640px) {
   .footer .container {padding:60px 20px 40px 20px;}
   .foot-wrapper-2 {flex-direction:column; gap:30px;}
-  .foot-copy {gap:6px 20px;}
+  .foot-copy {gap:6px 20px; font-size:13px;}
+  .foot-toggle .dropdown-item {right: auto;}
+  .foot-info {flex-direction:column;}
  }
 
  @media (max-width: 380px) {

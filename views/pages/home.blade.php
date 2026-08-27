@@ -5,6 +5,7 @@
 @extends('layout.app')
 
 @push('styles')
+    <link rel="stylesheet" type="text/css" href="/css/blocks.css?v={{ rand() }}">
     <link rel="stylesheet" type="text/css" href="/css/home-page.css?v={{ rand() }}">
 @endpush
 
@@ -429,8 +430,9 @@
                 </div>
             </div>
             <div class="home-faq">
-                @include('components.faq-short')
-                
+                <div class="accordion-wrapper" data-faq data-open-first="false">
+                    @include('components.faq-short')
+                </div>
             </div>
             
         </div>
@@ -467,8 +469,9 @@
             <div class="objection-wrap">
                 <p>Пусть ИИ разберётся за тебя. Нажми кнопку и посмотри, что твой любимый ассистент скажет о CPA Hunter.</p>
             </div>
-            
-            @include('components.ai')
+            <div class="btn-group center-group ai-btns">
+                @include('components.ai')
+            </div>
 
             <div class="ai-badges">
                 <div class="ai-badge ai-badge-box">

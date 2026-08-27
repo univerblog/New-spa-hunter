@@ -5,7 +5,7 @@ $faq = include $_SERVER['DOCUMENT_ROOT'] . '/views/data/faq.php';
 @extends('layout.app')
 
 @push('styles')
-    <link rel="stylesheet" type="text/css" href="/css/ather-pages.css?v={{ rand() }}">
+    <link rel="stylesheet" type="text/css" href="/css/blocks.css?v={{ rand() }}">
 @endpush
 
 @section('content')

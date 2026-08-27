@@ -32,25 +32,25 @@
                     <div class="nav-dropdown-menu">
 
                     <div class="nav-dropdown-section nav-special">
-                        <a href="program-page"><i class="fa-solid fa-rocket-launch"></i> {{ __('For beginners') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-star"></i> {{ __('For micro-bloggers') }}</a>
-                        <a href="program-page"><i class="fa-sharp fa-solid fa-bolt"></i> {{ __('High commission') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-rocket-launch"></i> {{ __('For beginners') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-star"></i> {{ __('For micro-bloggers') }}</a>
+                        <a href="/program-page"><i class="fa-sharp fa-solid fa-bolt"></i> {{ __('High commission') }}</a>
                     </div>
 
                     <div class="nav-dropdown-section nav-grid">
-                        <a href="program-page"><i class="fa-solid fa-lips"></i> {{ __('Beauty & Cosmetics') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-sunglasses"></i> {{ __('Fashion') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-sack-dollar"></i> {{ __('Finance') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-burger-glass"></i> {{ __('Food & Cooking') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-gamepad-modern"></i> {{ __('Gaming') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-heart-pulse"></i> {{ __('Health') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-bicycle"></i> {{ __('Fitness') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-puzzle-piece"></i> {{ __('Home & Interior') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-baby-carriage"></i> {{ __('Kids & Parenting') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-paw"></i> {{ __('Pets') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-watch-apple"></i> {{ __('Tech & Gadgets') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-plane fa-rotate-by" style="--fa-rotate-angle:-45deg;"></i> {{ __('Travel') }}</a>
-                        <a href="program-page"><i class="fa-solid fa-camera-retro"></i> {{ __('Lifestyle & Vlogs') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-lips"></i> {{ __('Beauty & Cosmetics') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-sunglasses"></i> {{ __('Fashion') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-sack-dollar"></i> {{ __('Finance') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-burger-glass"></i> {{ __('Food & Cooking') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-gamepad-modern"></i> {{ __('Gaming') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-heart-pulse"></i> {{ __('Health') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-bicycle"></i> {{ __('Fitness') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-puzzle-piece"></i> {{ __('Home & Interior') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-baby-carriage"></i> {{ __('Kids & Parenting') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-paw"></i> {{ __('Pets') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-watch-apple"></i> {{ __('Tech & Gadgets') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-plane fa-rotate-by" style="--fa-rotate-angle:-45deg;"></i> {{ __('Travel') }}</a>
+                        <a href="/program-page"><i class="fa-solid fa-camera-retro"></i> {{ __('Lifestyle & Vlogs') }}</a>
                     </div>
 
                     </div>
@@ -60,13 +60,13 @@
                 <div class="nav-dropdown">
                     <button><span>{{ __('Platforms') }}</span><i class="arrow-icon"></i></button>
                     <div class="nav-dropdown-menu">
-                    <a href="/platform/youtube"><i class="fa-solid fa-circle-play"></i> YouTube</a>
-                    <a href="/platform/instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                    <a href="/platform/tiktok"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-                    <a href="/platform/telegram"><i class="fa-solid fa-paper-plane"></i> Telegram</a>
-                    <a href="/platform/x"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
-                    <a href="/platform/twitch"><i class="fa-brands fa-twitch"></i> Twitch</a>
-                    <a href="/platform/facebook"><i class="fa-brands fa-square-facebook"></i> Facebook</a>
+                    <a href="/platform-page"><i class="fa-solid fa-circle-play"></i> YouTube</a>
+                    <a href="/platform-page"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="/platform-page"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+                    <a href="/platform-page"><i class="fa-solid fa-paper-plane"></i> Telegram</a>
+                    <a href="/platform-page"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
+                    <a href="/platform-page"><i class="fa-brands fa-twitch"></i> Twitch</a>
+                    <a href="/platform-page"><i class="fa-brands fa-square-facebook"></i> Facebook</a>
                     </div>
                 </div>
 

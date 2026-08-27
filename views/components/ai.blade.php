@@ -12,10 +12,9 @@ $aiServices = [
 ];
 @endphp
 
-<div class="btn-group center-group ai-btns">
-    @foreach($aiServices as [$name, $url, $icon])
-    <a class="btn big outline" href="{{ $url }}{{ $aiPrompt }}" target="_blank" rel="noopener nofollow">
-        <img src="/img/ai/{{ $icon }}-color.svg" alt="" width="18" height="18">Спроси {{ $name }}
-    </a>
-    @endforeach
-</div>
+
+@foreach($aiServices as [$name, $url, $icon])
+<a class="btn big outline" href="{{ $url }}{{ $aiPrompt }}" target="_blank" rel="noopener nofollow">
+    <img src="/img/ai/{{ $icon }}-color.svg" alt="" width="18" height="18"><span>Спроси {{ $name }}</span>
+</a>
+@endforeach

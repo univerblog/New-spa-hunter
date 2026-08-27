@@ -381,11 +381,12 @@ html[data-theme="light"] .select-option:hover { background: var(--hover-1);}
 .select-option, .select-search input {font-size:16px;}
 }
 @media (max-width: 480px) {
-  .btn-group > .btn {min-height:48px;}
   .btn-group > .btn bdi {max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
                         display:inline-block !important;}
-  .modal-window .btn-group > * {flex:1; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; 
-        display:inline-block !important; padding:0 10px;}
+  .modal-window .btn-group > .btn {
+    min-height:48px;align-items:center;
+        flex:1;
+}
   .modal-window .btn-group > .btn:only-child {flex:none; padding:0 24px;}
   .pill-full { display: none; }
   .pill-short { display: inline; }
